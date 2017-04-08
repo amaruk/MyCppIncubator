@@ -8,10 +8,12 @@ using std::cout;
 using std::endl;
 using std::cin;
 
-
 int main(int argc, char *argv[])
 {
-	cout << "Hello, my C++ incubator" << endl;
+    // argv[0]是程序自身的名字
+    for (int i = 0; i != argc; i++)
+    { cout << argv[i] << " "; }
+    cout << endl;
 
 	CppPrimer cppPrimerIns = CppPrimer();
 	//cppPrimerIns.displayArithTypes();
@@ -21,11 +23,13 @@ int main(int argc, char *argv[])
 	//cppPrimerIns.vectorTest();
 	//cppPrimerIns.iteratorTest();
 	//cppPrimerIns.arrayTest();
-    cppPrimerIns.exceptionTest();
+    //cppPrimerIns.exceptionTest();
+    cppPrimerIns.functionTest();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
 
+    // 允许main没有return语句直接结束，编译器插入返回0的return语句表示执行成功
     return 0;
 }
 

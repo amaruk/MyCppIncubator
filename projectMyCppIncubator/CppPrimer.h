@@ -1,4 +1,12 @@
 #pragma once
+
+#include <string>
+#include <vector>
+#include <initializer_list>
+
+typedef int intAry3[3];
+using intAry3Using = int[3];
+
 class CppPrimer
 {
 public:
@@ -20,6 +28,22 @@ public:
 	void arrayTest(void);
     // 异常
     void exceptionTest(void);
+    // 函数相关
+    void functionTest(void);
+    // 重载
+    // 同一作用域内的几个函数名字相同但形参列表不同（形参数量或类型）
+    // 编译器根据实参类型判断调用的是哪个函数。编译期决定！
+    // 不允许只有返回值不同的多个函数存在
+    // main不能重载
+    // 形参有顶层const和没有顶层const是一样的，重载时要注意；底层const能实现重载
+    void overloadTest(int intArg);
+    //void overloadTest(const int intArg); // 顶层const，重复声明
+    void overloadTest(int *intPtrArg);
+    //void overloadTest(int * const intPtrArg); // 顶层const，重复声明
+    void overloadTest(const int* intPtrArg); // 底层const，const指针，重载
+    void overloadTest(int &intRefArg); // 普通引用
+    void overloadTest(const int &intRefArg); // 底层const，const引用，重载
+
 private:
 	////////算数类型变量
 	// 最小尺寸规范未定义
@@ -49,8 +73,22 @@ private:
 	long double arithType_longdouble = 0.0987654321L;
 	// 指针
 	short *arithType_ptr = nullptr;
+    // 数组
+    intAry3 intAry3Var = { 1, 2, 3 };
 
+    // 打印数组
+    void CppPrimer::printIntAry(int intAry[], int size);
+    // 抛出异常用
     void exceptionThrower(void);
-
+    // 可变数量形参
+    void initializerListTest(std::initializer_list<std::string> args, std::string extVal);
+    // 列表返回值
+    std::vector<std::string> listReturnTest(void);
+    // 返回数组指针
+    intAry3* funcReturnIntAry3(void);
+    intAry3Using* funcReturnIntAry3Using(void);
+    int(*funcReturnIntAry3Plain(void))[3];
+    auto funcReturnIntAry3Tail(void) -> int(*)[3];
+    decltype(intAry3Var) *funcReturnIntAry3Decltype(void);
 };
 

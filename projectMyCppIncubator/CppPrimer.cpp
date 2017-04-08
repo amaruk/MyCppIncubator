@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <initializer_list>
 using std::cout;
 using std::endl;
 using std::string;
@@ -11,6 +12,7 @@ using std::vector;
 using std::begin;
 using std::end;
 using std::runtime_error;
+using std::initializer_list;
 
 /*
 ******************** 运算符优先级 ********************
@@ -105,6 +107,13 @@ CppPrimer::~CppPrimer()
 {
 }
 
+void CppPrimer::printIntAry(int intAry[], int size)
+{
+    for (int i = 0; i != size; i++)
+        cout << intAry[i] << " ";
+    cout << endl;
+}
+
 void CppPrimer::displayArithTypes(void)
 {
 	cout << "==== Display all arithmetic types ====" << endl;
@@ -122,7 +131,7 @@ void CppPrimer::displayArithTypes(void)
 	cout << "long double[" << (sizeof arithType_longdouble) << " byte]: " << arithType_longdouble << endl;
 	cout << "pointer[" << (sizeof arithType_ptr) << " byte]: " << arithType_ptr << endl;
 
-	//sizeof规则：
+	//// sizeof规则：
 	//  对char或类型为char的表达式执行sizeof，结果为1
 	//  对引用类型执行sizeof得到被引用对象所占空间大小
 	//  对指针执行sizeof得到指针本身所占空间大小
@@ -130,7 +139,7 @@ void CppPrimer::displayArithTypes(void)
 	//  对数组执行sizeof得到整个数组所占空间大小。可用constexpr size_t sz = sizeof(ia) / sizeof(*ia)来获得数组元素个数
 	//  对string对象或vector对象执行sizeof只返回固定部分的大小，而不计算对象中的元素占用多少空间。
 
-	// 命名的强制类型转换
+	//// 命名的强制类型转换
 	// cast name<type>(expression);
 	//     type是目标类型
 	//     expression是要转换的值
@@ -234,36 +243,36 @@ void CppPrimer::ptrRefTest(void)
 
 	int iVal = 135;
 
-	// 普通常量
+	//// 普通常量
 	// 顶层（top-level）const
 	// 必须初始化，可用字面量、变量、返回值初始化
 	const int iConst = 123;
 
-	// 普通引用
+	//// 普通引用
 	// 引用必须初始化，初始化之后无法解除绑定
 	// 只能绑定到对象（可以定义指针的引用），不能绑定到字面量或表达式结果
 	// 赋值的对象类型必须和引用类型一致
 	int &refVal = iVal;
 
-	// 对常量的引用（reference to const）
+	//// 对常量的引用（reference to const）
 	// 以为自己引用了常量，所以不能改变引用的常量的值
 	// 底层（low-level） const
 	// 引用的对象不一定要const，可以绑定到对象、字面量、表达式
 	// 不论引用的对象是不是const类型，都不能通过对常量的引用操作来改变被引用的对象的值（如：refCInt = 123; 错误）
 	const int &refCInt = iConst;
 
-	// 普通指针
+	//// 普通指针
 	// 不能指向const常量，不能指向引用（因为不是对象）
 	int *pInt = &iVal;
 
-	// 指向常量的指针（pointer to const）
+	//// 指向常量的指针（pointer to const）
 	// 以为自己指向了常量，所以不能改变指向的常量的值
 	// 底层（low-level） const
 	// 指向的对象不一定要const
 	// 不论指向的对象是不是const类型，都不能通过指向常量的指针操作来改变被指向的对象的值（如：*ptrCInt = 123; 错误）
 	const int *ptrCInt = &iConst;
 
-	// 常量指针（const pointer）
+	//// 常量指针（const pointer）
 	// 自己是常量，所以不能改变自己的值
 	// 顶层（top-level） const
 	// 初始化规则同常量，不能改变指针常量的值
@@ -283,11 +292,11 @@ void CppPrimer::ptrRefTest(void)
 	using usingInt = int; // C++11规定别名声明alias declaration。usingInt是double的同义词
 	usingInt usingIntVal = 123;
 
-	// 注意如下陷阱
+	//// 注意如下陷阱
 	char charVar = 'a';
 	typedef char *pstring;
-	const pstring cstr = &charVar; //cstr是“指向char的常量指针”
-	const pstring *ps; //ps是一个指针，他的对象是“指向char的常量指针”
+	const pstring cstr = &charVar; // cstr是“指向char的常量指针”
+	const pstring *cstrptr; // cstrptr是一个指针，他的对象是“指向char的常量指针”
 	// 错误的理解为直接把typedef替换进去：const char *cstr = 0;
 	//    这种理解中，数据类型为char，*是声明符的一部分，整个定义表示“指向char常量的指针”
 	// 正确的理解为：pstring是数据类型的别名，表示char*数据类型
@@ -507,7 +516,7 @@ void CppPrimer::exceptionTest(void)
 		cout << "Exception caught: " << e.what() << endl;
 	}
 
-    // 标准异常
+    //// 标准异常
     //  exception头文件定义了最通用的异常类exception，只报告异常发生，不提供任何额外信息
     //  stdexcept头文件定义如下异常类：
     //      exception：最常见的问题
@@ -524,3 +533,134 @@ void CppPrimer::exceptionTest(void)
     //  type_info头文件定义了bad_cast异常类型
 
 }
+
+void CppPrimer::initializerListTest(initializer_list<string> args, string extVal)
+{
+    cout << "initializerListTest: {";
+    for (string cur : args)
+        cout << cur << " ";
+    cout << "} ";
+    cout << extVal << endl;
+}
+
+vector<string> CppPrimer::listReturnTest(void)
+{
+    return vector<string>{ "hello", "list", "return" };
+}
+
+intAry3* CppPrimer::funcReturnIntAry3(void)
+{
+    return &intAry3Var;
+}
+
+intAry3Using* CppPrimer::funcReturnIntAry3Using(void)
+{
+    return &intAry3Var;
+}
+
+int(*CppPrimer::funcReturnIntAry3Plain(void))[3]
+{
+    return &intAry3Var;
+}
+
+auto CppPrimer::funcReturnIntAry3Tail(void) -> int(*)[3]
+{
+    return &intAry3Var;
+}
+
+decltype(CppPrimer::intAry3Var) *CppPrimer::funcReturnIntAry3Decltype(void)
+{
+    return &intAry3Var;
+}
+
+void CppPrimer::overloadTest(int intArg)
+{
+}
+
+void CppPrimer::overloadTest(int * intPtrArg)
+{
+}
+
+void CppPrimer::overloadTest(const int * intPtrArg)
+{
+}
+
+void CppPrimer::overloadTest(int & intRefArg)
+{
+}
+
+void CppPrimer::overloadTest(const int & intRefArg)
+{
+}
+
+void CppPrimer::functionTest(void)
+{
+    // void fcn(const int i) { … }
+    // 和
+    // void fcn(int i) { … }
+    // 是重复定义。因为形参的顶层const被忽略，传常量或非常量的实参都可以。
+
+    //// 数组形参
+    // void print(const int*); //以下两种和本语句等价
+    // void print(const int[]); //函数作用于数组
+    // void print(const int[10]); //维度表示期望的数组元素个数，实际不一定
+    // 传给函数数组作为参数时，实参自动转换为指向数组首元素的指针。数组的大小对函数的调用没有影响。
+
+    //// 可变形参
+    // 对于C++与C的交互的接口，用varargs的c标准库功定义的省略符形参
+    // 实参须为C和C++通用的类型，省略符形参只能出现在形参列表的最后：
+    // void foo(parm_list, …); //逗号可选
+    // void foo(…);
+
+    // C++11提供两种方法
+    // 方法一：如果所有实参类型相同，可以传递initializer_list的标准库类型。
+    initializerListTest(initializer_list<string>{"one", "two", "three"}, "hundred");
+    initializerListTest(initializer_list<string>{"1", "2", "3", "4", "5"}, "100");
+    // 方法二：如果实参类型不同，编写可变参数模板 TODO
+
+    //// 列表初始化返回值
+    // C++11规定，函数可以返回{}包围的值的列表，如
+    for (string curStr : listReturnTest())
+    { cout << curStr << " "; }
+    cout << endl;
+
+    //// 返回数组指针的函数
+    // 方法一： 用类型别名，如下：
+    // typedef int arrT[10]; 或 using arrT = int[10];
+    // arrT* func(int i);
+    intAry3 *aryPtr = nullptr;
+    aryPtr = funcReturnIntAry3();
+    printIntAry(*aryPtr, 3);
+
+    aryPtr = funcReturnIntAry3Using();
+    printIntAry(*aryPtr, 3);
+
+    // 方法二：直接声明，如下：
+    // type(*function(parameter_list))[dimension]
+    aryPtr = funcReturnIntAry3Plain();
+    printIntAry(*aryPtr, 3);
+
+    // 方法三：C++11尾置类型trailing return type
+    // 本该出现返回类型的地方放auto，形参列表之后放->和真正需要的返回类型
+    //  auto func(int i) -> int(*)[10];
+    aryPtr = funcReturnIntAry3Tail();
+    printIntAry(*aryPtr, 3);
+
+    // 方法四：使用decltype，从同类数组返回类型
+    // int odd[] = { 1,2,3,4,5 };
+    // decltype(odd) *attrPtr(int i);
+    aryPtr = funcReturnIntAry3Decltype();
+    printIntAry(*aryPtr, 3);
+
+    //// 重载
+#if 0
+    void overloadTest(int intArg);
+    //void overloadTest(const int intArg); // 顶层const，重复声明
+    void overloadTest(int *intPtrArg);
+    //void overloadTest(int * const intPtrArg); // 顶层const，重复声明
+    void overloadTest(const int* intPtrArg); // 底层const，const指针，重载
+    void overloadTest(int &intRefArg); // 普通引用
+    void overloadTest(const int &intRefArg); // 底层const，const引用，重载
+#endif
+}
+
