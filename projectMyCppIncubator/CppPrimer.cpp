@@ -7,6 +7,8 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
+using std::begin;
+using std::end;
 
 CppPrimer::CppPrimer()
 {
@@ -284,6 +286,72 @@ void CppPrimer::iteratorTest(void)
 	// 可用->来解引用同时访问成员函数，如itr->empty()
 	// 使用迭代器的循环里，类似range for，也不能改变容器的大小。
 	// difference_type是两个迭代器之间的距离，为有符号整数
+}
+
+void CppPrimer::arrayTest(void)
+{
+	// 数组的元素也是对象，所以不存在引用数组
+
+	// 初始化
+	const unsigned sz = 3;
+	int intAry_sizeAssign[sz] = { 0, 1, 2 }; // 含有三个元素0,1,2的数组
+	int intAry_OnlyAssign[] = { 0, 1, 2 }; // 维度是3的数组
+	int intAry_sizePartAssign[5] = { 0, 1, 2 }; // 等价于intAry_sizePartAssign[]={0,1,2,0,0};
+	string strAry[3] = { "hi", "bye" }; // 等价于strAry[] = {"hi","bye",""}
+	char charArray[] = "C++"; //字符数组的特殊初始化，自动添加\0字符
+	// 不能用一个数组初始化另一个数组，也不能直接拷贝数组
+
+	// 复杂的数组声明
+	int intAry[10];
+	int *intPtrAry[10]; // 10个整型指针的数组
+	//int &refs[10]; // 错误，数组存放对象，引用不是对象
+	int(*intAryPtr)[10] = &intAry; // intAryPtr是指针，指向一个含有10个整型的数组
+	int(&intAryRef)[10] = intAry; // intAryRef是引用，引用一个含有10个整型的数组
+	int *(&refIntPtrAry)[10] = intPtrAry; // arry是数组的引用，引用一个含有10个指针的数组
+
+	// 数组与指针
+	string strNum[] = { "one", "two", "three" };
+	string *pStrAryEle = &strNum[0]; //指向第一个元素
+	string *pStrAryName = strNum; //等价于pStrAryEle
+
+	// C++11为数组引入begin和end，但因为数组并不是类，所以这两个函数不以类成员的形式出现,
+	// 而是以函数形式出现，使用如下：
+	char charAry[10] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
+	char *charAryBeg = begin(charAry);
+	char *charAryEnd = end(charAry);
+	cout << "Using begin()&end() to loop array: ";
+	for (char *c = charAryBeg; c != charAryEnd; c++)
+	{ cout << *c; }
+	cout << endl;
+
+	// 指针相减的结果为带符号的ptrdiff_t类型
+	// 数组的下标为内置下标运算，可以使用负数索引；而标准库类型的下标是标准库实现的，下标必须为无符号类型。
+
+	// 数组类型别名
+	using int_array = int[4]; //C++11
+	typedef int int_array[4];
+	// 可以使用int_array*表示指向4给元素的int数组的指针
+
+	// 用range for处理二维数组
+	int intAryAry[2][3] = { {1, 2, 3}, { 4, 5, 6} };
+#if 0
+	for (auto row : intAryAry)
+		for (auto col : row) // ERROR row被编译器转成int*，不能对int*进行range for
+			cout << col << endl;
+#endif
+
+	for (auto &row : intAryAry)
+		for (auto col : row) // row是4个元素数组的引用
+			cout << col << endl;
+
+	for (auto &row : intAryAry)
+		for (auto col : row)
+			col = 123; // col不是引用，所以没有修改到ia的元素
+
+	for (auto &row : intAryAry)
+		for (auto &col : row)
+			col = 123; // col是引用，直接修改到ia的元素
+
 }
 
 
