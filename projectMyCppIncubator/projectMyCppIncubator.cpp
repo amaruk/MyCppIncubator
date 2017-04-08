@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
 	//cppPrimerIns.displayArithTypes();
 	//cppPrimerIns.varInitTest();
 	//cppPrimerIns.ptrRefTest();
-	cppPrimerIns.stringTest();
+	//cppPrimerIns.stringTest();
+	cppPrimerIns.vectorTest();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

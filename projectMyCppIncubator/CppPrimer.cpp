@@ -2,9 +2,11 @@
 #include "CppPrimer.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using std::cout;
 using std::endl;
 using std::string;
+using std::vector;
 
 CppPrimer::CppPrimer()
 {
@@ -195,22 +197,67 @@ void CppPrimer::stringTest(void)
 
 	cout << "==== Range for ====" << endl;
 	string strRangeFor("This is a string to be ranged for...");
-	// 如果declaration为变量，则statement里操作的是序列元素的拷贝。for(char c : str)
-	// 如果declaration为引用，则statement里直接操作序列元素。for(char &c:str)
 	// range for的statement不能改变序列的大小
+	// 如果declaration为变量，则statement里操作的是序列元素的拷贝。for(char c : str)
 	cout << "Range for: ";
 	for (char c : strRangeFor)
 	{ cout << c; }
 	cout << endl;
-	// 相当于用迭代器循环：
-	cout << "Iterator: ";
-	for (auto cur = strRangeFor.begin(), end = strRangeFor.end(); cur != end; ++cur)
-	{ cout << *cur; }
-	cout << endl;
-	// 引用的range for可以修改值
+	// 如果declaration为引用，则statement里直接操作序列元素。for(char &c:str)
 	for (char &c : strRangeFor)
 	{ c = toupper(c); }
 	cout << "Range for toupper: " << strRangeFor << endl;
+}
+
+void CppPrimer::vectorTest(void)
+{
+	// 表示对象的集合，其中所有对象的类型都相同。引用不是对象，所以不存在包含引用的vector。
+	// vector是模板，vector<T>是类型。
+
+	//vector<T> v1; //空vector，元素类型为T，默认初始化
+	vector<int> vInt_default;
+	// vInt_direct中包含vInt_default所有元素的副本
+	vector<int> vInt_direct(vInt_default);
+	// 效果同上
+	vector<int> vInt_assign = vInt_default;
+	// vInt_repeat包含了5个重复的元素，每个元素都是123
+	vector<int> vInt_repeat(5, 123);
+	//vInt_repeatDefault包含了5个重复的元素，每个元素值为默认初始化值
+	vector<int> vInt_repeatDefault(5); 
+
+	// 以下c++11引入
+	// vInt_listDirect包含了初值为1,2,3,...的元素
+	vector<int> vInt_listDirect{ 1, 2, 3 };
+	// 效果同上
+	vector<int> vInt_listAssign = { 1, 2, 3 };
+
+	// 向量接口
+	vector<int> vIntA;
+	vector<int> vIntB = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+
+	// vector中不含元素时返回真，否则返回假
+	cout << "Is vIntA empty: " << vIntA.empty() << endl;
+	cout << "Is vIntB empty: " << vIntB.empty() << endl;
+
+	// vector的元素个数
+	cout << "vIntA size: " << vIntA.size() << endl;
+	cout << "vIntB size: " << vIntB.size() << endl;
+
+	// 向末尾添加元素
+	vIntA.push_back(2);
+	// 返回第n个位置上的引用
+	cout << "vIntA[0]: " << vIntA[0] << endl;
+	// <, <= , >, >= 以字典序比较
+	cout << "vIntA > vIntB: " << (vIntA > vIntB) << endl;
+	// 当且仅当元素数量相同且对应位置元素都相同
+	cout << "v1 == v2: " << (vIntA == vIntB) << endl;
+	// 用vIntB中元素拷贝替换vIntA中元素
+	vIntA = vIntB;
+	cout << "v1 == v2: " << (vIntA == vIntB) << endl;
+	// 用列表中元素替换v1中元素
+	vIntA = { 1, 2, 3, 4 };
+	cout << "vIntA > vIntB: " << (vIntA > vIntB) << endl;
+
 }
 
 

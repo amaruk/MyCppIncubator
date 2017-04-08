@@ -12,6 +12,8 @@ public:
 	void ptrRefTest(void);
 	// 字符串
 	void stringTest(void);
+	// 向量
+	void vectorTest(void);
 private:
 	////////算数类型变量
 	// 最小尺寸规范未定义
