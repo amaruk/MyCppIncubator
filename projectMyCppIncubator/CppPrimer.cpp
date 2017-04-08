@@ -260,4 +260,30 @@ void CppPrimer::vectorTest(void)
 
 }
 
+void CppPrimer::iteratorTest(void)
+{
+	// 所有标准库容器都可以使用迭代器。string不是容器，但可使用迭代器。
+	// 获取迭代器不是类似指针的取地址，有迭代器的类型拥有可以返回迭代器的成员，如begin和end。
+	// begin()返回指向第一个元素的迭代器，end()返回容器里尾元素的下一个位置的迭代器（是超过末尾的不存在的元素）
+	// 可以用++来从一个元素移动到下一个元素
+	string strToBeIterator = "Hello, iterator!";
+	cout << "Iterator: ";
+	for (auto cur = strToBeIterator.begin(), end = strToBeIterator.end(); cur != end; ++cur)
+	{
+		cout << *cur;
+	}
+	cout << endl;
+	// 注意，C++使用 != 来判断末尾条件而不是用<，因为有些迭代器没有定义<运算符。
+	// 迭代器的类型为iterator或const_iterator，如：
+	vector<int>::iterator iteratorVar; //iteratorVar能读写vector<int>的元素
+	vector<int>::const_iterator iteratorConstVar; //iteratorConstVar只能读取vector<int>的元素
+	// 如果vector对象为常量（如，const vector<int>），则只能用const_iterator
+	// begin和end返回的迭代器类型依照对象是否常量决定
+	// cbegin和cend返回的迭代器无视元素是否常量，直接返回const_iterator。
+	// 用*来解引用迭代器得到迭代器所指对象时，需要加括号来访问成员函数，如(*itr).empty()
+	// 可用->来解引用同时访问成员函数，如itr->empty()
+	// 使用迭代器的循环里，类似range for，也不能改变容器的大小。
+	// difference_type是两个迭代器之间的距离，为有符号整数
+}
+
 

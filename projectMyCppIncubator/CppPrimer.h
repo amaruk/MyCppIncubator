@@ -14,6 +14,8 @@ public:
 	void stringTest(void);
 	// 向量
 	void vectorTest(void);
+	// 迭代器
+	void iteratorTest(void);
 private:
 	////////算数类型变量
 	// 最小尺寸规范未定义

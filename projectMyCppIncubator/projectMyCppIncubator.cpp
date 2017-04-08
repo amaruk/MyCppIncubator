@@ -18,7 +18,8 @@ int main(int argc, char *argv[])
 	//cppPrimerIns.varInitTest();
 	//cppPrimerIns.ptrRefTest();
 	//cppPrimerIns.stringTest();
-	cppPrimerIns.vectorTest();
+	//cppPrimerIns.vectorTest();
+	cppPrimerIns.iteratorTest();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
