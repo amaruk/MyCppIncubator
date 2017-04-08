@@ -18,6 +18,8 @@ public:
 	void iteratorTest(void);
 	// 数组
 	void arrayTest(void);
+    // 异常
+    void exceptionTest(void);
 private:
 	////////算数类型变量
 	// 最小尺寸规范未定义
@@ -47,6 +49,8 @@ private:
 	long double arithType_longdouble = 0.0987654321L;
 	// 指针
 	short *arithType_ptr = nullptr;
+
+    void exceptionThrower(void);
 
 };
 

@@ -3,12 +3,98 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
 using std::begin;
 using std::end;
+using std::runtime_error;
+
+/*
+******************** 运算符优先级 ********************
+结合律	运算符	        功能	                用法
+*****************************************************
+左	::	            全局作用域	        ::name
+左	::	            类作用域	            class:name
+左	::	            命名空间作用域	    namespace::name
+*****************************************************
+左	.	            成员选择	            object.member
+左	->	            成员选择	            pointer->member
+左	[]	            下标	                expr[expr]
+左	()	            函数调用	            name(expr_list)
+左	()	            类型构造	            type(expr_list)
+*****************************************************
+右	++	            后置递增运算	        lvalue++
+右	--	            后置递减运算	        lvalue--
+右	typeid	        类型ID	            typeid(type)
+右	typeid	        运行时类型ID	        typeid(expr)
+右	Explicit cast	类型转换	            cast_name<type>(expr)
+*****************************************************
+右	++	            前置递增运算	        ++lvalue
+右	--	            前置递减运算	        --lvalue
+右	~	            位求反	            expr
+右	!	            逻辑非	            !expr
+右		            一元负号	            -expr
+右	+	            一元正号	            +expr
+右	*	            解引用	            *expr
+右	&	            取地址	            &lvalue
+右	()	            类型转换	            (type)expr
+右	sizeof	        对象的大小	        sizeof expr
+右	sizeof	        类型的大小	        sizeof(type)
+右	sizeof…	        参数包的大小	        sizeof…(name)
+右	new	            创建对象	            new type
+右	new[]	        创建数组	            new type[size]
+右	delete	        释放对象	            delete expr
+右	delete[]	    释放数组	            delete[] expr
+右	noexcept	    能否抛出异常	        noexcept(expr)
+*****************************************************
+左	->*	            指向成员选择的指针	ptr->*ptr_to_member
+左	.*	            指向成员选择的指针	obj.*ptr_to_member
+*****************************************************
+左	*	            乘法	                expr * expr
+左	/	            除法	                expr / expr
+左	%	            取模（求余）	        expr % expr
+*****************************************************
+左	+	            加法              	expr + expr
+左		            减法	                expr - expr
+*****************************************************
+左	<<	            向左移位	            expr << expr
+左	>>	            向右移位	            expr >> expr
+*****************************************************
+左	<	            小于	                expr < expr
+左	<=	            小于等于	            expr <= expr
+左	>	            大于	                expr > expr
+左	>=	            大于等于	            expr >= expr
+*****************************************************
+左	==	            相等	                expr == expr
+左	!=	            不相等	            expr != expr
+*****************************************************
+左	&	            位与                expr & expr
+*****************************************************
+左	^	            位亦或	            expr ^ expr
+*****************************************************
+左	|	            位或	                expr | expr
+*****************************************************
+左	&&	            逻辑与	            expr && expr
+*****************************************************
+左	||	            逻辑或	            expr || expr
+*****************************************************
+右	?:	            条件                expr ? expr : expr
+*****************************************************
+右	=	            赋值	                lvalue = rvalue
+右	"*=, /=, %="	复合赋值	            lvalue += rvalue
+右	"+=, -="
+右	"<<=, >>="
+右	"&=, |=, ^="
+*****************************************************
+右	throw	        抛出异常	            throw expr
+*****************************************************
+左	","	            逗号                "expr, expr"
+*****************************************************
+
+*/
 
 CppPrimer::CppPrimer()
 {
@@ -402,86 +488,39 @@ void CppPrimer::arrayTest(void)
 
 }
 
-/*
- ******************** 运算符优先级 ********************
-结合律	运算符	        功能	                用法
- *****************************************************
-    左	::	            全局作用域	        ::name
-    左	::	            类作用域	            class:name
-    左	::	            命名空间作用域	    namespace::name
- *****************************************************
-    左	.	            成员选择	            object.member
-    左	->	            成员选择	            pointer->member
-    左	[]	            下标	                expr[expr]
-    左	()	            函数调用	            name(expr_list)
-    左	()	            类型构造	            type(expr_list)
- *****************************************************
-    右	++	            后置递增运算	        lvalue++
-    右	--	            后置递减运算	        lvalue--
-    右	typeid	        类型ID	            typeid(type)
-    右	typeid	        运行时类型ID	        typeid(expr)
-    右	Explicit cast	类型转换	            cast_name<type>(expr)
- *****************************************************
-    右	++	            前置递增运算	        ++lvalue
-    右	--	            前置递减运算	        --lvalue
-    右	~	            位求反	            expr
-    右	!	            逻辑非	            !expr
-    右		            一元负号	            -expr
-    右	+	            一元正号	            +expr
-    右	*	            解引用	            *expr
-    右	&	            取地址	            &lvalue
-    右	()	            类型转换	            (type)expr
-    右	sizeof	        对象的大小	        sizeof expr
-    右	sizeof	        类型的大小	        sizeof(type)
-    右	sizeof…	        参数包的大小	        sizeof…(name)
-    右	new	            创建对象	            new type
-    右	new[]	        创建数组	            new type[size]
-    右	delete	        释放对象	            delete expr
-    右	delete[]	    释放数组	            delete[] expr
-    右	noexcept	    能否抛出异常	        noexcept(expr)
- *****************************************************
-    左	->*	            指向成员选择的指针	ptr->*ptr_to_member
-    左	.*	            指向成员选择的指针	obj.*ptr_to_member
- *****************************************************
-    左	*	            乘法	                expr * expr
-    左	/	            除法	                expr / expr
-    左	%	            取模（求余）	        expr % expr
- *****************************************************
-    左	+	            加法              	expr + expr
-    左		            减法	                expr - expr
- *****************************************************
-    左	<<	            向左移位	            expr << expr
-    左	>>	            向右移位	            expr >> expr
- *****************************************************
-    左	<	            小于	                expr < expr
-    左	<=	            小于等于	            expr <= expr
-    左	>	            大于	                expr > expr
-    左	>=	            大于等于	            expr >= expr
- *****************************************************
-    左	==	            相等	                expr == expr
-    左	!=	            不相等	            expr != expr
- *****************************************************
-    左	&	            位与                expr & expr
- *****************************************************
-    左	^	            位亦或	            expr ^ expr
- *****************************************************
-    左	|	            位或	                expr | expr
- *****************************************************
-    左	&&	            逻辑与	            expr && expr
- *****************************************************
-    左	||	            逻辑或	            expr || expr
- *****************************************************
-    右	?:	            条件                expr ? expr : expr
- *****************************************************
-    右	=	            赋值	                lvalue = rvalue
-    右	"*=, /=, %="	复合赋值	            lvalue += rvalue
-    右	"+=, -="
-    右	"<<=, >>="
-    右	"&=, |=, ^="
- *****************************************************
-    右	throw	        抛出异常	            throw expr
- *****************************************************
-    左	","	            逗号                "expr, expr"
- *****************************************************
+void CppPrimer::exceptionThrower(void)
+{
+    throw runtime_error("Incubator's exception!");
+}
 
-*/
+void CppPrimer::exceptionTest(void)
+{
+    // throw表达式：用throw表示遇到了无法处理的问题
+    // try语句块：以try开始，一个或多个catch结束
+    // 异常类：用于在throw表达式和相关的catch子句之间传递异常的具体信息
+    // 如果一直没有找到适当类型的catch，则程序转给terminate标准库函数处理
+
+	try {
+        exceptionThrower();
+	}
+	catch (runtime_error e) {
+		cout << "Exception caught: " << e.what() << endl;
+	}
+
+    // 标准异常
+    //  exception头文件定义了最通用的异常类exception，只报告异常发生，不提供任何额外信息
+    //  stdexcept头文件定义如下异常类：
+    //      exception：最常见的问题
+    //      runtime_error：只有在运行时才能检测出的问题
+    //      range_error：运行时错误，生成的结果超出了有意义的值域范围
+    //      overflow_error：运行时错误，计算上溢
+    //      underflow_error：运行时错误，计算下溢
+    //      logic_error：程序逻辑错误
+    //      domain_error：逻辑错误，参数对应的结果值不存在
+    //      invalid_argument：逻辑错误，无效参数
+    //      length_error：逻辑错误，试图创建一个超出该类型最大长度的对象
+    //      out_of_range：逻辑错误，使用一个超出有效范围的值
+    //  new头文件定义了bad_alloc异常类型
+    //  type_info头文件定义了bad_cast异常类型
+
+}

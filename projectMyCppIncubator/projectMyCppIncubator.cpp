@@ -14,13 +14,14 @@ int main(int argc, char *argv[])
 	cout << "Hello, my C++ incubator" << endl;
 
 	CppPrimer cppPrimerIns = CppPrimer();
-	cppPrimerIns.displayArithTypes();
+	//cppPrimerIns.displayArithTypes();
 	//cppPrimerIns.varInitTest();
 	//cppPrimerIns.ptrRefTest();
 	//cppPrimerIns.stringTest();
 	//cppPrimerIns.vectorTest();
 	//cppPrimerIns.iteratorTest();
 	//cppPrimerIns.arrayTest();
+    cppPrimerIns.exceptionTest();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
