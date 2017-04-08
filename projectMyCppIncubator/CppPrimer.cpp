@@ -194,15 +194,23 @@ void CppPrimer::stringTest(void)
 	cout << "string initStr_times(10, 'c'): " << initStr_times << endl;
 
 	cout << "==== Range for ====" << endl;
-#if 0
-	如果declaration为变量，则statement里操作的是序列元素的拷贝。for(char c : str)
-		如果declaration为引用，则statement里直接操作序列元素。for(char &c:str)
-		range for的statement不能改变序列的大小
-		相当于：
-		for (auto cur = v.begin(), end = v.end(); cur != end; ++cur)
-
-			statement;
-#endif
+	string strRangeFor("This is a string to be ranged for...");
+	// 如果declaration为变量，则statement里操作的是序列元素的拷贝。for(char c : str)
+	// 如果declaration为引用，则statement里直接操作序列元素。for(char &c:str)
+	// range for的statement不能改变序列的大小
+	cout << "Range for: ";
+	for (char c : strRangeFor)
+	{ cout << c; }
+	cout << endl;
+	// 相当于用迭代器循环：
+	cout << "Iterator: ";
+	for (auto cur = strRangeFor.begin(), end = strRangeFor.end(); cur != end; ++cur)
+	{ cout << *cur; }
+	cout << endl;
+	// 引用的range for可以修改值
+	for (char &c : strRangeFor)
+	{ c = toupper(c); }
+	cout << "Range for toupper: " << strRangeFor << endl;
 }
 
 
