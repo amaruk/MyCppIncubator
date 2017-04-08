@@ -22,18 +22,66 @@ CppPrimer::~CppPrimer()
 void CppPrimer::displayArithTypes(void)
 {
 	cout << "==== Display all arithmetic types ====" << endl;
-	cout << "bool: " << arithType_bool << endl;
-	cout << "char: " << arithType_char << endl;
-	cout << "wchar_t: " << arithType_wchar << endl;
-	cout << "char16_t: " << arithType_char16 << endl;
-	cout << "char32_t: " << arithType_char32 << endl;
-	cout << "short: " << arithType_short << endl;
-	cout << "int: " << arithType_int << endl;
-	cout << "long: " << arithType_long << endl;
-	cout << "long long: " << arithType_longlong << endl;
-	cout << "float: " << arithType_float << endl;
-	cout << "double: " << arithType_double << endl;
-	cout << "long double: " << arithType_longdouble << endl;
+	cout << "bool[" << (sizeof arithType_bool) << " byte]: " << arithType_bool << endl;
+	cout << "char[" << (sizeof(arithType_char)) << " byte]: " << arithType_char << endl;
+	cout << "wchar_t[" << (sizeof(wchar_t)) << " byte]: " << arithType_wchar << endl;
+	cout << "char16_t[" << (sizeof(char16_t)) << " byte]: " << arithType_char16 << endl;
+	cout << "char32_t[" << (sizeof(char32_t)) << " byte]: " << arithType_char32 << endl;
+	cout << "short[" << (sizeof arithType_short) << " byte]: " << arithType_short << endl;
+	cout << "int[" << (sizeof arithType_int) << " byte]: " << arithType_int << endl;
+	cout << "long[" << (sizeof arithType_long) << " byte]: " << arithType_long << endl;
+	cout << "long long[" << (sizeof arithType_longlong) << " byte]: " << arithType_longlong << endl;
+	cout << "float[" << (sizeof arithType_float) << " byte]: " << arithType_float << endl;
+	cout << "double[" << (sizeof arithType_double) << " byte]: " << arithType_double << endl;
+	cout << "long double[" << (sizeof arithType_longdouble) << " byte]: " << arithType_longdouble << endl;
+	cout << "pointer[" << (sizeof arithType_ptr) << " byte]: " << arithType_ptr << endl;
+
+	//sizeof规则：
+	//  对char或类型为char的表达式执行sizeof，结果为1
+	//  对引用类型执行sizeof得到被引用对象所占空间大小
+	//  对指针执行sizeof得到指针本身所占空间大小
+	//  对解引用指针执行sizeof得到指针指向的对象所占空间大小，指针不需有效
+	//  对数组执行sizeof得到整个数组所占空间大小。可用constexpr size_t sz = sizeof(ia) / sizeof(*ia)来获得数组元素个数
+	//  对string对象或vector对象执行sizeof只返回固定部分的大小，而不计算对象中的元素占用多少空间。
+
+	// 命名的强制类型转换
+	// cast name<type>(expression);
+	//     type是目标类型
+	//     expression是要转换的值
+	//     case-name为：
+	//       static_cast不包含底层const，有明确定义的类型转换。如把int转成char，表明写代码的时候知道并且不在意精度的损失
+	//       dynamic_cast支持运行时类型识别
+	//       const_cast只能改变底层const。去掉const性质。用于函数重载。
+	//       reinterpret_cast为运算对象的位模式提供较低层次上的重新解释，比如把int指针转换成char指针
+	// 旧式的强制类型转换
+	//    type(expr);
+	//    (type)expr;
+
+    // static_cast: double转int
+    double dblVar = 123.456;
+    int intVar = static_cast<int>(dblVar);
+    cout << "double: " << dblVar << " int: " << intVar << endl;
+    // static_cast: void指针转double指针
+    void *ptrVoid = &dblVar;
+    double *ptrDouble = static_cast<double *>(ptrVoid);
+    cout << "*ptrDouble: " << (*ptrDouble) << endl;
+
+    // dynamic_cast: TODO
+
+    // const_cast: 去掉底层const，不是函数重载的用法一般预示设计用问题
+    const int cIntVal = 123;
+    const int *ptrConstInt = &cIntVal;
+    int *ptrInt = const_cast<int *>(ptrConstInt); // 正确，去掉了底层const，但通过指针写值是未定义行为
+    //*ptrInt = 456; // 不一定会崩溃，可能操作无效
+    //int ptrIntImpossible = const_cast<int>(cIntVal); // 错误，无法去掉顶层const
+    // 用于函数重载 TODO
+
+    // reinterpret_cast: int指针转short指针后使用
+    int intValTarget = 0x12345678;
+    int *ptrIntTarget = &intValTarget;
+    short *ptrCharTarget = reinterpret_cast<short *>(ptrIntTarget);
+    cout << "*ptrIntTarget" << *ptrIntTarget << endl;
+    cout << "*ptrCharTarget" << *ptrCharTarget << endl;
 }
 
 // 函数体外的变量未初始化会被初始化为0
@@ -354,4 +402,86 @@ void CppPrimer::arrayTest(void)
 
 }
 
+/*
+ ******************** 运算符优先级 ********************
+结合律	运算符	        功能	                用法
+ *****************************************************
+    左	::	            全局作用域	        ::name
+    左	::	            类作用域	            class:name
+    左	::	            命名空间作用域	    namespace::name
+ *****************************************************
+    左	.	            成员选择	            object.member
+    左	->	            成员选择	            pointer->member
+    左	[]	            下标	                expr[expr]
+    左	()	            函数调用	            name(expr_list)
+    左	()	            类型构造	            type(expr_list)
+ *****************************************************
+    右	++	            后置递增运算	        lvalue++
+    右	--	            后置递减运算	        lvalue--
+    右	typeid	        类型ID	            typeid(type)
+    右	typeid	        运行时类型ID	        typeid(expr)
+    右	Explicit cast	类型转换	            cast_name<type>(expr)
+ *****************************************************
+    右	++	            前置递增运算	        ++lvalue
+    右	--	            前置递减运算	        --lvalue
+    右	~	            位求反	            expr
+    右	!	            逻辑非	            !expr
+    右		            一元负号	            -expr
+    右	+	            一元正号	            +expr
+    右	*	            解引用	            *expr
+    右	&	            取地址	            &lvalue
+    右	()	            类型转换	            (type)expr
+    右	sizeof	        对象的大小	        sizeof expr
+    右	sizeof	        类型的大小	        sizeof(type)
+    右	sizeof…	        参数包的大小	        sizeof…(name)
+    右	new	            创建对象	            new type
+    右	new[]	        创建数组	            new type[size]
+    右	delete	        释放对象	            delete expr
+    右	delete[]	    释放数组	            delete[] expr
+    右	noexcept	    能否抛出异常	        noexcept(expr)
+ *****************************************************
+    左	->*	            指向成员选择的指针	ptr->*ptr_to_member
+    左	.*	            指向成员选择的指针	obj.*ptr_to_member
+ *****************************************************
+    左	*	            乘法	                expr * expr
+    左	/	            除法	                expr / expr
+    左	%	            取模（求余）	        expr % expr
+ *****************************************************
+    左	+	            加法              	expr + expr
+    左		            减法	                expr - expr
+ *****************************************************
+    左	<<	            向左移位	            expr << expr
+    左	>>	            向右移位	            expr >> expr
+ *****************************************************
+    左	<	            小于	                expr < expr
+    左	<=	            小于等于	            expr <= expr
+    左	>	            大于	                expr > expr
+    左	>=	            大于等于	            expr >= expr
+ *****************************************************
+    左	==	            相等	                expr == expr
+    左	!=	            不相等	            expr != expr
+ *****************************************************
+    左	&	            位与                expr & expr
+ *****************************************************
+    左	^	            位亦或	            expr ^ expr
+ *****************************************************
+    左	|	            位或	                expr | expr
+ *****************************************************
+    左	&&	            逻辑与	            expr && expr
+ *****************************************************
+    左	||	            逻辑或	            expr || expr
+ *****************************************************
+    右	?:	            条件                expr ? expr : expr
+ *****************************************************
+    右	=	            赋值	                lvalue = rvalue
+    右	"*=, /=, %="	复合赋值	            lvalue += rvalue
+    右	"+=, -="
+    右	"<<=, >>="
+    右	"&=, |=, ^="
+ *****************************************************
+    右	throw	        抛出异常	            throw expr
+ *****************************************************
+    左	","	            逗号                "expr, expr"
+ *****************************************************
 
+*/
