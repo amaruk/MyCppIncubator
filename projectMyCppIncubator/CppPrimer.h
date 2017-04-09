@@ -43,6 +43,14 @@ public:
     void overloadTest(const int* intPtrArg); // 底层const，const指针，重载
     void overloadTest(int &intRefArg); // 普通引用
     void overloadTest(const int &intRefArg); // 底层const，const引用，重载
+    // const_cast用于重载
+    const std::string &shorterString(const std::string &s1, const std::string &s2);
+    std::string &shorterString(std::string &s1, std::string &s2);
+    // 默认实参
+    void defaultParValTest(int intVal = 1, char charVal = '2', double doubleVal = 3.0);
+    // 内联函数
+    inline void inlineTest(void);
+    constexpr int constexprFuncTest(int x) { return 123 * x; }
 
 private:
 	////////算数类型变量

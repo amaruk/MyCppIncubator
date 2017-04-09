@@ -169,7 +169,7 @@ void CppPrimer::displayArithTypes(void)
     int *ptrInt = const_cast<int *>(ptrConstInt); // 正确，去掉了底层const，但通过指针写值是未定义行为
     //*ptrInt = 456; // 不一定会崩溃，可能操作无效
     //int ptrIntImpossible = const_cast<int>(cIntVal); // 错误，无法去掉顶层const
-    // 用于函数重载 TODO
+    // 用于函数重载
 
     // reinterpret_cast: int指针转short指针后使用
     int intValTarget = 0x12345678;
@@ -593,6 +593,38 @@ void CppPrimer::overloadTest(const int & intRefArg)
 {
 }
 
+const string & CppPrimer::shorterString(const string & s1, const string & s2)
+{ return s1.size() <= s2.size() ? s1 : s2; }
+
+string & CppPrimer::shorterString(string &s1, string &s2)
+{
+    auto &r = shorterString(const_cast<const string&>(s1), const_cast<const string&>(s2));
+    return const_cast<string&>(r);
+}
+
+void CppPrimer::defaultParValTest(int intVal, char charVal, double doubleVal) // 实际默认值依赖于头文件里的声明，定义的时候不能再加默认值
+{
+    cout << "defaultParValTest: ";
+    cout << "intVal: " << intVal << " charVal: " << charVal << " doubelval: " << doubleVal << endl;
+}
+
+inline void CppPrimer::inlineTest(void)
+{
+    cout << "This is an inline function." << endl;
+}
+
+string funcToBePointed(int iVal)
+{
+    if (1 == iVal)
+    {
+        return string("It's 1!");
+    }
+    else
+    {
+        return string("Not 1!");
+    }
+}
+
 void CppPrimer::functionTest(void)
 {
     // void fcn(const int i) { … }
@@ -652,15 +684,66 @@ void CppPrimer::functionTest(void)
     aryPtr = funcReturnIntAry3Decltype();
     printIntAry(*aryPtr, 3);
 
-    //// 重载
-#if 0
-    void overloadTest(int intArg);
-    //void overloadTest(const int intArg); // 顶层const，重复声明
-    void overloadTest(int *intPtrArg);
-    //void overloadTest(int * const intPtrArg); // 顶层const，重复声明
-    void overloadTest(const int* intPtrArg); // 底层const，const指针，重载
-    void overloadTest(int &intRefArg); // 普通引用
-    void overloadTest(const int &intRefArg); // 底层const，const引用，重载
-#endif
+    //// 重载中的const_cast
+    // 如有如下函数：
+    // const string &shorterString(const string &s1, const string &s2)
+    // 参数和返回类型都是const string，可以用两个非常量的string实参调用这个函数，但返回的任然是const string。可以使用const_cast实现：
+    // string &shorterString(string &s1, string &s2)
+    // {
+    //     auto &r = shortString(const_cast<const string&>(s1), const_cast<const string&>(s2));
+    //     return const_cast<string&>(r);
+    // }
+    string strVal1 = "123";
+    string strVal2 = "1234";
+    cout << shorterString(strVal1, strVal2) << endl;
+
+    // 默认实参
+    // 例：string screen(size_type ht = 24, size_type wid = 80, char backgrnd = ' ');
+    // 一旦某个形参赋予默认值之后，其后的所有形参都必须有默认值
+    // 调用时不写实参的会自动使用默认实参值，但只能省略尾部开始的实参。
+    // 设计时尽量把不怎么使用默认实参的参数放前面。
+    // 函数声明时，可以先声明尾部开始的一部分默认实参，之后再次声明此函数但只能声明之前已经声明过的默认实参。应该在头文件里的函数声明中指定默认实参。
+    // 局部变量之外的对象都能作为默认实参。
+    defaultParValTest();
+    defaultParValTest(123);
+    defaultParValTest(234, '0');
+    defaultParValTest(345, '9', 123.456);
+
+    //// 内联函数：编译器可以忽略内联的声明
+    inlineTest();
+
+    //// constexpr函数
+    // 指能用于常量表达式的函数，在返回类型前面加constexpr，须遵守如下规定
+    //     返回类型和形参都必须是字面量
+    //     函数体中有且只有一条return
+    // 在编译期把函数替换为结果值，所以函数隐式地为内联函数
+    cout << "constexpr function: " << constexprFuncTest(2) << endl;
+
+    //// 函数指针
+    // 如：bool(*pf)(const string &, const string &);
+    // 函数名作为值使用时，自动转换为指针
+    // 函数指针赋值：
+    //     pf = lengthCompare;
+    //     pf = &lengthCompare; //与上一句等价，&可选
+    // 可以直接用函数指针调用函数而不解引用，如：
+    //     bool b1 = pf("hello", "world");
+    //     bool b2 = (*pf)("hello", "world"); //等价于上一句
+    string (*fp)(int iVal);
+    fp = funcToBePointed;
+    cout << fp(1) << endl;
+    fp = &funcToBePointed;
+    cout << (*fp)(0) << endl;
+    // 函数指针作为返回类型时：
+    //     用别名
+    //         using F = int(int *, int);//函数别名
+    //         using PF = int(*)(int *, int); //函数指针别名
+    //         PF f1(int); //返回指向函数的指针
+    //         F *f1(int); //返回指向函数的指针
+    //     直接声明int(*f1(int))(int*, int);
+    //     尾置返回类型auto f1(int) -> int(*)(int *, int);
+    //     可以用decltype同类函数来获取函数指针的类型，但必须加*
+    //         size_type sumLength(const string &, const string &);
+    //         decltype(sumLength) *getFcn(const string &);
+
 }
 
