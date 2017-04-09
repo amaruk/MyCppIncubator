@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 	//cppPrimerIns.iteratorTest();
 	//cppPrimerIns.arrayTest();
     //cppPrimerIns.exceptionTest();
-    cppPrimerIns.functionTest();
+    //cppPrimerIns.functionTest();
+    cppPrimerIns.assertTest();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

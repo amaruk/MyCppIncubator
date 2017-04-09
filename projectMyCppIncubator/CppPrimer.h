@@ -50,7 +50,10 @@ public:
     void defaultParValTest(int intVal = 1, char charVal = '2', double doubleVal = 3.0);
     // 内联函数
     inline void inlineTest(void);
+    // constexpr函数
     constexpr int constexprFuncTest(int x) { return 123 * x; }
+    // 断言
+    void assertTest(void);
 
 private:
 	////////算数类型变量

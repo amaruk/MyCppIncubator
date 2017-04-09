@@ -5,8 +5,10 @@
 #include <vector>
 #include <stdexcept>
 #include <initializer_list>
+#include <cassert>
 using std::cout;
 using std::endl;
+using std::cerr;
 using std::string;
 using std::vector;
 using std::begin;
@@ -744,6 +746,36 @@ void CppPrimer::functionTest(void)
     //     可以用decltype同类函数来获取函数指针的类型，但必须加*
     //         size_type sumLength(const string &, const string &);
     //         decltype(sumLength) *getFcn(const string &);
+
+}
+
+void CppPrimer::assertTest(void)
+{
+    // assert预处理宏，用于检查“不能发生”的条件 : assert(expr);
+    // 如果expr为假，assert输出信息并中止程序的执行；如为真，assert什么都不做
+    // 定义在cassert头文件中
+    // 预处理名字由预处理器而不是编译器管理，所以可以直接使用预处理名字而无需提供using声明
+    // 不定义NDEBUG时，assert才执行运行时检查
+    // 可以在#include <cassert>之前#define NDEBUG来关闭assert；或在编译命令中添加NDEBUG宏定义
+    // 可以用NDEBUG定义自己的调试语句，如：
+    // #ifndef NDEBUG
+    //     cerr << __func__ << endl;
+    // #endif
+    assert(true); // 断言成功
+    //assert(false); // 断言失败
+    cerr << "This is an error message." << endl;
+
+    // 预处理器定义的其他调试用名字:
+    //    __func__	当前函数名字
+    //    __FILE__	文件名
+    //    __LINE__	当前行号
+    //    __TIME__	文件编译时间
+    //    __DATE__	文件编译日期
+    cout << "__func__: " << __func__ << endl;
+    cout << "__FILE__: " << __FILE__ << endl;
+    cout << "__LINE__: " << __LINE__ << endl;
+    cout << "__TIME__: " << __TIME__ << endl;
+    cout << "__DATE__: " << __DATE__ << endl;
 
 }
 
