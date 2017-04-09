@@ -100,10 +100,18 @@ using std::initializer_list;
 
 */
 
-CppPrimer::CppPrimer()
-{
-}
 
+// 构造函数的函数名和类名相同，没有返回类型
+// 构造函数不能被声明为const，创建类的一个const对象时，
+// 要到构造函数完成初始化过程（构造函数可以向对象写值），对象才得到常量属性。
+// 不显式创建构造函数时，由编译器生成的隐式默认构造函数对成员进行初始化
+// （默认初始化或用定义类成员时的初值初始化）。一旦定义了一个构造函数，
+// 就不存在默认构造函数了。
+
+CppPrimer::CppPrimer(string initStr)
+{
+    cout << "Constructor: " << initStr << endl;
+}
 
 CppPrimer::~CppPrimer()
 {
@@ -777,5 +785,28 @@ void CppPrimer::assertTest(void)
     cout << "__TIME__: " << __TIME__ << endl;
     cout << "__DATE__: " << __DATE__ << endl;
 
+}
+
+string CppPrimer::constMemFunction(int iVal) const
+{
+    // 常量成员函数：在成员函数的形参列表后加const，
+    // 表示此函数里的this是一个指向常量的指针（不能改变this的成员）。
+    // 常量对象，以及指向常量对象的引用或指针都只能调用常量成员函数。
+    //arithType_bool = true; // 不能改变常量this的成员
+    cout << "arithType_bool: " << arithType_bool << endl; // 可以读取成员
+    return std::string("string CppPrimer::constMemFunction() const");
+}
+
+void outsideClassFunc(CppPrimer cppPrimerIns)
+{
+    cppPrimerIns.showInfo();
+}
+
+void friendFunc(CppPrimer cppPrimerIns)
+{
+    cout << "In friend function." << endl;
+    cout << "Before changing, arithType_bool: " << cppPrimerIns.arithType_bool << endl;
+    cppPrimerIns.arithType_bool = true;
+    cout << "After changing, arithType_bool: " << cppPrimerIns.arithType_bool << endl;
 }
 

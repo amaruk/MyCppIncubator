@@ -3,15 +3,31 @@
 #include <string>
 #include <vector>
 #include <initializer_list>
+#include <iostream>
 
 typedef int intAry3[3];
 using intAry3Using = int[3];
 
+// struct和class的区别：可以用任意一个定义类。
+// 区别在于，struct定义的类，在第一个访问说明符之前的成员是public的；
+// class定义的类，在第一个访问说明符之前的成员是private的。
+
 class CppPrimer
 {
+    // 友元声明
+    friend void friendFunc(CppPrimer cppPrimerIns);
+
 public:
-	CppPrimer();
+
+    CppPrimer() = default; //显式声明默认构造函数
+    CppPrimer(bool boolInitVal) : arithType_bool(boolInitVal) { } //冒号后为构造函数初始值列表，列表忽略的成员用类内初始值初始化或者默认值初始化
+    CppPrimer(bool boolInitVal, char charInitVal, wchar_t wcharInitVal) : arithType_bool(boolInitVal), arithType_char(charInitVal), arithType_wchar(wcharInitVal) {}
+    CppPrimer(std::string initStr);
 	~CppPrimer();
+
+    // 只打印消息的函数
+    void showInfo(void)
+    { std::cout << "/!\\showInfo()." << std::endl; } // 定义在类内部的函数是隐式的inline
 	// 显示私有成员中算数类型变量的值
 	void displayArithTypes(void);
 	// 测试各种初始化的方式
@@ -54,6 +70,9 @@ public:
     constexpr int constexprFuncTest(int x) { return 123 * x; }
     // 断言
     void assertTest(void);
+    // 常量成员函数
+    std::string constMemFunction(int iVal) const;
+
 
 private:
 	////////算数类型变量
@@ -103,3 +122,6 @@ private:
     decltype(intAry3Var) *funcReturnIntAry3Decltype(void);
 };
 
+// 非成员接口函数
+void outsideClassFunc(CppPrimer cppPrimerIns);
+void friendFunc(CppPrimer cppPrimerIns);
