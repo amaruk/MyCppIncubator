@@ -108,7 +108,7 @@ using std::initializer_list;
 // （默认初始化或用定义类成员时的初值初始化）。一旦定义了一个构造函数，
 // 就不存在默认构造函数了。
 
-CppPrimer::CppPrimer(string initStr)
+CppPrimer::CppPrimer(CppPrimerStr initStr)
 {
     cout << "Constructor: " << initStr << endl;
 }
@@ -507,9 +507,15 @@ void CppPrimer::arrayTest(void)
 
 }
 
-void CppPrimer::exceptionThrower(void)
+// 在函数的定义处指定inline
+inline void CppPrimer::exceptionThrower(void)
 {
     throw runtime_error("Incubator's exception!");
+}
+
+void CppPrimer::exceptionThrower(int intVal)
+{
+    throw runtime_error("Incubator's overload exception!");
 }
 
 void CppPrimer::exceptionTest(void)
@@ -518,9 +524,14 @@ void CppPrimer::exceptionTest(void)
     // try语句块：以try开始，一个或多个catch结束
     // 异常类：用于在throw表达式和相关的catch子句之间传递异常的具体信息
     // 如果一直没有找到适当类型的catch，则程序转给terminate标准库函数处理
-
+    
+    static bool exceptFlag = false;
 	try {
-        exceptionThrower();
+        exceptFlag = !exceptFlag;
+        if (exceptFlag)
+        { exceptionThrower(); }
+        else
+        { exceptionThrower(1); }
 	}
 	catch (runtime_error e) {
 		cout << "Exception caught: " << e.what() << endl;
@@ -618,7 +629,8 @@ void CppPrimer::defaultParValTest(int intVal, char charVal, double doubleVal) //
     cout << "intVal: " << intVal << " charVal: " << charVal << " doubelval: " << doubleVal << endl;
 }
 
-inline void CppPrimer::inlineTest(void)
+// 在类的内部声明为inline
+void CppPrimer::inlineTest(void)
 {
     cout << "This is an inline function." << endl;
 }
@@ -800,6 +812,11 @@ string CppPrimer::constMemFunction(int iVal) const
 void outsideClassFunc(CppPrimer cppPrimerIns)
 {
     cppPrimerIns.showInfo();
+}
+
+void outsideClassFunc(int iVal)
+{
+    cout << "This is an overload outsideClassFunc." << endl;
 }
 
 void friendFunc(CppPrimer cppPrimerIns)

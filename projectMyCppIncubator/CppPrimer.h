@@ -14,15 +14,21 @@ using intAry3Using = int[3];
 
 class CppPrimer
 {
+
     // 友元声明
     friend void friendFunc(CppPrimer cppPrimerIns);
 
 public:
 
+    // 类型成员
+    typedef std::string CppPrimerStr;
+    using CppPrimerStrUsing = std::string;
+
+    // 构造、析构
     CppPrimer() = default; //显式声明默认构造函数
     CppPrimer(bool boolInitVal) : arithType_bool(boolInitVal) { } //冒号后为构造函数初始值列表，列表忽略的成员用类内初始值初始化或者默认值初始化
     CppPrimer(bool boolInitVal, char charInitVal, wchar_t wcharInitVal) : arithType_bool(boolInitVal), arithType_char(charInitVal), arithType_wchar(wcharInitVal) {}
-    CppPrimer(std::string initStr);
+    CppPrimer(CppPrimerStr initStr);
 	~CppPrimer();
 
     // 只打印消息的函数
@@ -66,8 +72,7 @@ public:
     void defaultParValTest(int intVal = 1, char charVal = '2', double doubleVal = 3.0);
     // 内联函数
     inline void inlineTest(void);
-    // constexpr函数
-    constexpr int constexprFuncTest(int x) { return 123 * x; }
+    // 内联函数和constexpr函数可以多次定义，但定义必须完全一致，所以通常定义在头文件中。
     // 断言
     void assertTest(void);
     // 常量成员函数
@@ -110,6 +115,7 @@ private:
     void CppPrimer::printIntAry(int intAry[], int size);
     // 抛出异常用
     void exceptionThrower(void);
+    void exceptionThrower(int intVal); // 重载成员函数
     // 可变数量形参
     void initializerListTest(std::initializer_list<std::string> args, std::string extVal);
     // 列表返回值
@@ -124,4 +130,8 @@ private:
 
 // 非成员接口函数
 void outsideClassFunc(CppPrimer cppPrimerIns);
+void outsideClassFunc(int iVal); // 非成员函数重载
 void friendFunc(CppPrimer cppPrimerIns);
+
+// constexpr函数
+constexpr int constexprFuncTest(int x) { return 123 * x; }

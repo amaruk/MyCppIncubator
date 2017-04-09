@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 
 	CppPrimer cppPrimerIns = CppPrimer();
     //outsideClassFunc(cppPrimerIns);
+    //outsideClassFunc(123);
 	//cppPrimerIns.displayArithTypes();
 	//cppPrimerIns.varInitTest();
 	//cppPrimerIns.ptrRefTest();
@@ -27,10 +28,11 @@ int main(int argc, char *argv[])
 	//cppPrimerIns.iteratorTest();
 	//cppPrimerIns.arrayTest();
     //cppPrimerIns.exceptionTest();
+    //cppPrimerIns.exceptionTest();
     //cppPrimerIns.functionTest();
     //cppPrimerIns.assertTest();
     //cppPrimerIns.constMemFunction(0);
-    CppPrimer cppPrimerStrIns = CppPrimer(string("Hello, constructor!"));
+    CppPrimer cppPrimerStrIns = CppPrimer(CppPrimer::CppPrimerStrUsing("Hello, constructor!"));
     friendFunc(cppPrimerStrIns);
 
 	// 系统调用 "Press any key to continue..."
