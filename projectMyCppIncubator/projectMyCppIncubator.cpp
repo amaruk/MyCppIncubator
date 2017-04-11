@@ -31,9 +31,11 @@ int main(int argc, char *argv[])
     //cppPrimerIns.exceptionTest();
     //cppPrimerIns.functionTest();
     //cppPrimerIns.assertTest();
-    //cppPrimerIns.constMemFunction(0);
+    cppPrimerIns.constMemFunction(1).constMemFunction(2); // 非常量对象调用非常量版本
+    const CppPrimer cppPrimerConstIns = CppPrimer();
+    cppPrimerConstIns.constMemFunction(3).constMemFunction(4); // 常量对象调用常量版本
     CppPrimer cppPrimerStrIns = CppPrimer(CppPrimer::CppPrimerStrUsing("Hello, constructor!"));
-    friendFunc(cppPrimerStrIns);
+    //friendFunc(cppPrimerStrIns);
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

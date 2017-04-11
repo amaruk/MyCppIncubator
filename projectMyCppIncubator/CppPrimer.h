@@ -76,7 +76,8 @@ public:
     // 断言
     void assertTest(void);
     // 常量成员函数
-    std::string constMemFunction(int iVal) const;
+    const CppPrimer &constMemFunction(int iVal) const; // 返回对象引用，以便级联调用
+    CppPrimer &constMemFunction(int iVal); //非const重载
 
 
 private:
@@ -109,7 +110,9 @@ private:
 	// 指针
 	short *arithType_ptr = nullptr;
     // 数组
-    intAry3 intAry3Var = { 1, 2, 3 };
+    intAry3 intAry3Var{ 1, 2, 3 }; // 类内初始值必须使用=做初始化或试用{}直接初始化
+    // 可变数据成员
+    mutable int mutableVar = 0; // 类内初始值必须使用=做初始化或试用{}直接初始化
 
     // 打印数组
     void CppPrimer::printIntAry(int intAry[], int size);

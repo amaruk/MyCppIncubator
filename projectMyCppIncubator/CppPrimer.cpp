@@ -799,14 +799,25 @@ void CppPrimer::assertTest(void)
 
 }
 
-string CppPrimer::constMemFunction(int iVal) const
+const CppPrimer & CppPrimer::constMemFunction(int iVal) const
 {
-    // 常量成员函数：在成员函数的形参列表后加const，
+    // const成员函数：在成员函数的形参列表后加const，
     // 表示此函数里的this是一个指向常量的指针（不能改变this的成员）。
     // 常量对象，以及指向常量对象的引用或指针都只能调用常量成员函数。
     //arithType_bool = true; // 不能改变常量this的成员
     cout << "arithType_bool: " << arithType_bool << endl; // 可以读取成员
-    return std::string("string CppPrimer::constMemFunction() const");
+    mutableVar += iVal;
+    cout << "in const, mutableVar: " << mutableVar << endl; // const成员函数可以改变mutable成员
+    return *this;
+}
+
+CppPrimer & CppPrimer::constMemFunction(int iVal)
+{
+    arithType_bool = true; // 可以改变非常量this的成员
+    cout << "arithType_bool: " << arithType_bool << endl; // 可以读取成员
+    mutableVar += iVal;
+    cout << "in non-const, mutableVar: " << mutableVar << endl;
+    return *this;
 }
 
 void outsideClassFunc(CppPrimer cppPrimerIns)
