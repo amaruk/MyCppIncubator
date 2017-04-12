@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CppPrimer.h"
+#include "CppPrimerFriend.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -126,6 +127,10 @@ void CppPrimer::printIntAry(int intAry[], int size)
 
 void CppPrimer::displayArithTypes(void)
 {
+    // 如果成员函数内部有变量和类成员变量和类外部变量同名
+    // 直接使用变量名是指成员函数内部的变量
+    // 要调用类成员变量，可用this->varName或className.varName
+    // 要调用类外部变量，可用::varNmae
 	cout << "==== Display all arithmetic types ====" << endl;
 	cout << "bool[" << (sizeof arithType_bool) << " byte]: " << arithType_bool << endl;
 	cout << "char[" << (sizeof(arithType_char)) << " byte]: " << arithType_char << endl;
@@ -818,6 +823,16 @@ CppPrimer & CppPrimer::constMemFunction(int iVal)
     mutableVar += iVal;
     cout << "in non-const, mutableVar: " << mutableVar << endl;
     return *this;
+}
+
+void CppPrimer::classRefPtrTest(CppPrimer & classRef, CppPrimer * classPtr)
+{
+
+}
+
+void CppPrimer::toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend)
+{
+    cout << "CppPrimer.toBeFriendOfCppPrimerFriend(): " << insCppPrimerFriend.privateStr << endl;
 }
 
 void outsideClassFunc(CppPrimer cppPrimerIns)

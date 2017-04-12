@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "CppPrimer.h"
+#include "CppPrimerFriend.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -17,7 +18,7 @@ int main(int argc, char *argv[])
     { cout << argv[i] << " "; }
     cout << endl;
 
-	CppPrimer cppPrimerIns = CppPrimer();
+	class CppPrimer cppPrimerIns = CppPrimer(); // 声明类对象时，类名前可不加class或struct关键字
     //outsideClassFunc(cppPrimerIns);
     //outsideClassFunc(123);
 	//cppPrimerIns.displayArithTypes();
@@ -31,11 +32,15 @@ int main(int argc, char *argv[])
     //cppPrimerIns.exceptionTest();
     //cppPrimerIns.functionTest();
     //cppPrimerIns.assertTest();
-    cppPrimerIns.constMemFunction(1).constMemFunction(2); // 非常量对象调用非常量版本
+    //cppPrimerIns.constMemFunction(1).constMemFunction(2); // 非常量对象调用非常量版本
     const CppPrimer cppPrimerConstIns = CppPrimer();
-    cppPrimerConstIns.constMemFunction(3).constMemFunction(4); // 常量对象调用常量版本
+    //cppPrimerConstIns.constMemFunction(3).constMemFunction(4); // 常量对象调用常量版本
     CppPrimer cppPrimerStrIns = CppPrimer(CppPrimer::CppPrimerStrUsing("Hello, constructor!"));
     //friendFunc(cppPrimerStrIns);
+
+    CppPrimerFriend cppPrimerFriendIns = CppPrimerFriend();
+    cppPrimerFriendIns.useCppPrimerPrivate(cppPrimerIns);
+    cppPrimerIns.toBeFriendOfCppPrimerFriend(cppPrimerFriendIns);
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

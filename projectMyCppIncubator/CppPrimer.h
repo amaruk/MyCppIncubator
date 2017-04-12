@@ -14,9 +14,13 @@ using intAry3Using = int[3];
 
 class CppPrimer
 {
-
-    // 友元声明
+    // 友元函数声明
+    // 如果要把多个重载函数作为友元函数，必须对每一个重载函数进行友元声明，因为重载函数是不同的函数
     friend void friendFunc(CppPrimer cppPrimerIns);
+    // 友元类声明
+    // 友元关系不存在传递性，CppPrimerFriend的友元不会自动成为CppPrimer的友元
+    // 每个类负责控制自己的友元
+    friend class CppPrimerFriend;
 
 public:
 
@@ -79,6 +83,12 @@ public:
     const CppPrimer &constMemFunction(int iVal) const; // 返回对象引用，以便级联调用
     CppPrimer &constMemFunction(int iVal); //非const重载
 
+    // 类不能包含类型为自己的成员，因为编译器需要知道类占多少存储空间。
+    // 但类只要出现明再看之后，就视为被声明，因此类允许包含指向自己类型的引用或指针
+    void classRefPtrTest(CppPrimer &classRef, CppPrimer *classPtr);
+
+    // 函数作为CppPrimerFriend类的友元
+    void toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend);
 
 private:
 	////////算数类型变量
@@ -134,7 +144,7 @@ private:
 // 非成员接口函数
 void outsideClassFunc(CppPrimer cppPrimerIns);
 void outsideClassFunc(int iVal); // 非成员函数重载
-void friendFunc(CppPrimer cppPrimerIns);
+void friendFunc(CppPrimer cppPrimerIns); // 友元函数
 
 // constexpr函数
 constexpr int constexprFuncTest(int x) { return 123 * x; }
