@@ -849,6 +849,16 @@ void CppPrimer::convertingConstructorTest(CppPrimer insCppPrimer)
 {
 }
 
+// 外部定义静态成员
+std::string CppPrimer::staticStrVar = "init";
+// 外部定义静态成员函数时不能加static关键字
+void CppPrimer::staticFuncTest(std::string newStaticStrVar)
+{
+    cout << "Old static string: " << CppPrimer::staticStrVar << endl;
+    staticStrVar = newStaticStrVar;
+    cout << "New static string: " << CppPrimer::staticStrVar << endl;
+}
+
 void outsideClassFunc(CppPrimer cppPrimerIns)
 {
     cppPrimerIns.showInfo();

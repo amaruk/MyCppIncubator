@@ -138,8 +138,25 @@ public:
     //// 测试隐式类类型转换
     void convertingConstructorTest(CppPrimer insCppPrimer);
 
+    //// 静态成员函数
+    // 不能声明为const，也不能包含this指针
+    static void staticFuncTest(std::string newStaticStrVar);
+
 private:
-	////算数类型变量
+
+    //// 静态成员
+    // 静态成员与类本身直接相关，而不与对象保持关联
+    // 所有对象共享静态成员对象
+    // 可以是常量、引用、指针、类类型，可以是public或private
+    // 静态成员不能在创建类对象时被定义，不是构造函数初始化的，不能在类内部初始化
+    // 必须在类外部定义和初始化静态成员
+    static std::string staticStrVar;
+    // 静态成员可以但非静态成员不可以的操作
+    static CppPrimer staticCppPrimerInt; // 类型可以是所属的类类型
+    void staticParameterTest(std::string strVar = staticStrVar) {} // 静态成员作为默认实参
+
+
+	//// 算数类型变量
 	// 最小尺寸规范未定义
 	bool arithType_bool = false;
 	// 最小尺寸8-bit. 有三种类型：char/unsigned char/signed char，

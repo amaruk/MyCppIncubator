@@ -51,6 +51,14 @@ int main(int argc, char *argv[])
     //cppPrimerCharIns.convertingConstructorTest(false);
     // 去掉CppPrimer(CppPrimerStr initStr)构造的explicit关键字，才能用如下语句做隐式类类型转换
     //cppPrimerCharIns.convertingConstructorTest(string("test"));
+    CppPrimer cppPrimerDefaultIns = CppPrimer();
+    CppPrimer &cppPrimerRef = cppPrimerDefaultIns;
+    CppPrimer *cppPrimerPtr = &cppPrimerDefaultIns;
+    cppPrimerDefaultIns.staticFuncTest(string("Zero")); // 类对象访问静态成员函数
+    cppPrimerRef.staticFuncTest(string("First")); // 类对象引用访问静态成员函数
+    cppPrimerPtr->staticFuncTest(string("Second")); // 类对象指针访问静态成员函数
+    // 作用域运算符直接访问静态成员函数
+    CppPrimer::staticFuncTest(string("Thrid"));
 
     CppPrimerFriend cppPrimerFriendIns = CppPrimerFriend();
     //cppPrimerFriendIns.useCppPrimerPrivate(cppPrimerIns);
