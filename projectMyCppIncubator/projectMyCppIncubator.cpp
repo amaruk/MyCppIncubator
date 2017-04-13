@@ -5,6 +5,7 @@
 #include "CppPrimer.h"
 #include "CppPrimerFriend.h"
 #include "CppPrimerAggregate.h"
+#include "CppPrimerLiteral.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -14,10 +15,17 @@ using std::string;
 
 int main(int argc, char *argv[])
 {
+    // main命令行参数
     // argv[0]是程序自身的名字
     for (int i = 0; i != argc; i++)
     { cout << argv[i] << " "; }
     cout << endl;
+
+    // 常量表达式
+    const int constIntVar1 = 20; // constIntVar1是常量表达式
+    const int constIntVar2 = constIntVar1 + 1; // constIntVar2是常量表达式
+    int nonConstIntVar = 27; // nonConstIntVar不是常量表达式，虽然初始值为常量，但类型为普通int
+    //const int constIntVar3 = get_size(); // constIntVar3不是常量表达式，因为其值到运算时才得到
 
 	class CppPrimer cppPrimerIns = CppPrimer(); // 声明类对象时，类名前可不加class或struct关键字
     //outsideClassFunc(cppPrimerIns);
@@ -53,6 +61,8 @@ int main(int argc, char *argv[])
     // 用声明顺序的实参列表初始化聚合类
     CppPrimerAggregate cppPrimerAggregateInsInit = { string("Hello"), 123 };
 
+    // 创建字面值常量类实例
+    CppPrimerLiteral cppPrimerLiteralIns = CppPrimerLiteral(false);
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

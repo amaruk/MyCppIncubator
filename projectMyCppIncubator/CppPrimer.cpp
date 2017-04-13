@@ -101,6 +101,16 @@ using std::initializer_list;
 
 */
 
+/*
+字面值常量(literal)
+* 十进制（默认有符号，依序int、long、long long用尽可能小的类型）：20
+* 八进制(默认不确定，依序int、unsigned int、long、unsigned long、long long、unsigned long long用尽可能小的类型)：024
+* 十六进制(同八进制)：0x14
+* short没有字面量
+* 浮点默认为double
+* 多个字符串如果位置相邻，且仅由空格、缩进、换行符分隔，则作为一个整体。
+* nullptr是指针字面量
+*/
 
 // 构造函数的函数名和类名相同，没有返回类型
 // 构造函数不能被声明为const，创建类的一个const对象时，
