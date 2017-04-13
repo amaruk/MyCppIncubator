@@ -14,49 +14,85 @@ using intAry3Using = int[3];
 
 class CppPrimer
 {
-    // 友元函数声明
+    //// 友元函数声明
     // 如果要把多个重载函数作为友元函数，必须对每一个重载函数进行友元声明，因为重载函数是不同的函数
     friend void friendFunc(CppPrimer cppPrimerIns);
-    // 友元类声明
+    
+    //// 友元类声明
     // 友元关系不存在传递性，CppPrimerFriend的友元不会自动成为CppPrimer的友元
     // 每个类负责控制自己的友元
     friend class CppPrimerFriend;
 
 public:
 
-    // 类型成员
+    //// 类型成员
     typedef std::string CppPrimerStr;
     using CppPrimerStrUsing = std::string;
 
-    // 构造、析构
-    CppPrimer() = default; //显式声明默认构造函数
-    CppPrimer(bool boolInitVal) : arithType_bool(boolInitVal) { } //冒号后为构造函数初始值列表，列表忽略的成员用类内初始值初始化或者默认值初始化
-    CppPrimer(bool boolInitVal, char charInitVal, wchar_t wcharInitVal) : arithType_bool(boolInitVal), arithType_char(charInitVal), arithType_wchar(wcharInitVal) {}
+    //// 构造、析构
+    // 显式声明默认构造函数
+    CppPrimer() = default;
+
+    // 冒号后为构造函数初始值列表，列表忽略的成员用类内初始值初始化或者默认值初始化
+    CppPrimer(bool boolInitVal) 
+        : arithType_bool(boolInitVal)
+    { }
+
+    CppPrimer(bool boolInitVal, char charInitVal, wchar_t wcharInitVal)
+        : arithType_bool(boolInitVal), arithType_char(charInitVal), arithType_wchar(wcharInitVal) 
+    { }
+
     CppPrimer(CppPrimerStr initStr);
+    
+    // C++11引入委托构造函数，一个构造函数使用其所属类的其他构造函数执行部分或全部初始化工作。
+    // 调用其他构造函数，传入一个参数，无其他操作
+    CppPrimer(int iInitVal)
+        : CppPrimer(true) 
+    { }
+
+    // 调用其他构造函数，传递自己的实参，无其他操作
+    CppPrimer(int iInitVal, bool bInitVal) : CppPrimer(bInitVal) 
+    { }
+
+    // 先执行被委托的构造函数，在执行委托构造函数
+    CppPrimer(char cInitVal)
+        : CppPrimer(std::string("Delegated constructor")) 
+    { std::cout << "Delegating constructor" << std::endl; }
+
 	~CppPrimer();
 
-    // 只打印消息的函数
+    //// 只打印消息的函数
     void showInfo(void)
     { std::cout << "/!\\showInfo()." << std::endl; } // 定义在类内部的函数是隐式的inline
-	// 显示私有成员中算数类型变量的值
+
+	//// 显示私有成员中算数类型变量的值
 	void displayArithTypes(void);
-	// 测试各种初始化的方式
+	
+    //// 测试各种初始化的方式
 	void varInitTest(void);
-	// 指针/引用/const相关
+	
+    //// 指针/引用/const相关
 	void ptrRefTest(void);
-	// 字符串
+	
+    //// 字符串
 	void stringTest(void);
-	// 向量
+	
+    //// 向量
 	void vectorTest(void);
-	// 迭代器
+	
+    //// 迭代器
 	void iteratorTest(void);
-	// 数组
+	
+    //// 数组
 	void arrayTest(void);
-    // 异常
+    
+    //// 异常
     void exceptionTest(void);
-    // 函数相关
+    
+    //// 函数相关
     void functionTest(void);
-    // 重载
+    
+    //// 重载
     // 同一作用域内的几个函数名字相同但形参列表不同（形参数量或类型）
     // 编译器根据实参类型判断调用的是哪个函数。编译期决定！
     // 不允许只有返回值不同的多个函数存在
@@ -69,29 +105,34 @@ public:
     void overloadTest(const int* intPtrArg); // 底层const，const指针，重载
     void overloadTest(int &intRefArg); // 普通引用
     void overloadTest(const int &intRefArg); // 底层const，const引用，重载
+
     // const_cast用于重载
     const std::string &shorterString(const std::string &s1, const std::string &s2);
     std::string &shorterString(std::string &s1, std::string &s2);
-    // 默认实参
+    
+    //// 默认实参
     void defaultParValTest(int intVal = 1, char charVal = '2', double doubleVal = 3.0);
-    // 内联函数
+    
+    //// 内联函数
     inline void inlineTest(void);
     // 内联函数和constexpr函数可以多次定义，但定义必须完全一致，所以通常定义在头文件中。
-    // 断言
+    
+    //// 断言
     void assertTest(void);
-    // 常量成员函数
+    
+    //// const成员函数
     const CppPrimer &constMemFunction(int iVal) const; // 返回对象引用，以便级联调用
-    CppPrimer &constMemFunction(int iVal); //非const重载
+    CppPrimer &constMemFunction(int iVal); //非const成员函数重载const成员函数
 
     // 类不能包含类型为自己的成员，因为编译器需要知道类占多少存储空间。
     // 但类只要出现明再看之后，就视为被声明，因此类允许包含指向自己类型的引用或指针
     void classRefPtrTest(CppPrimer &classRef, CppPrimer *classPtr);
 
-    // 函数作为CppPrimerFriend类的友元
+    //// 函数作为CppPrimerFriend类的友元
     void toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend);
 
 private:
-	////////算数类型变量
+	////算数类型变量
 	// 最小尺寸规范未定义
 	bool arithType_bool = false;
 	// 最小尺寸8-bit. 有三种类型：char/unsigned char/signed char，
@@ -124,16 +165,20 @@ private:
     // 可变数据成员
     mutable int mutableVar = 0; // 类内初始值必须使用=做初始化或试用{}直接初始化
 
-    // 打印数组
+    //// 打印数组
     void CppPrimer::printIntAry(int intAry[], int size);
-    // 抛出异常用
+    
+    //// 抛出异常用
     void exceptionThrower(void);
     void exceptionThrower(int intVal); // 重载成员函数
-    // 可变数量形参
+    
+    //// 可变数量形参
     void initializerListTest(std::initializer_list<std::string> args, std::string extVal);
-    // 列表返回值
+    
+    //// 列表返回值
     std::vector<std::string> listReturnTest(void);
-    // 返回数组指针
+    
+    //// 返回数组指针
     intAry3* funcReturnIntAry3(void);
     intAry3Using* funcReturnIntAry3Using(void);
     int(*funcReturnIntAry3Plain(void))[3];
@@ -141,10 +186,10 @@ private:
     decltype(intAry3Var) *funcReturnIntAry3Decltype(void);
 };
 
-// 非成员接口函数
+//// 非成员接口函数
 void outsideClassFunc(CppPrimer cppPrimerIns);
 void outsideClassFunc(int iVal); // 非成员函数重载
 void friendFunc(CppPrimer cppPrimerIns); // 友元函数
 
-// constexpr函数
+//// constexpr函数
 constexpr int constexprFuncTest(int x) { return 123 * x; }

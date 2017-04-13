@@ -37,10 +37,11 @@ int main(int argc, char *argv[])
     //cppPrimerConstIns.constMemFunction(3).constMemFunction(4); // 常量对象调用常量版本
     CppPrimer cppPrimerStrIns = CppPrimer(CppPrimer::CppPrimerStrUsing("Hello, constructor!"));
     //friendFunc(cppPrimerStrIns);
+    CppPrimer cppPrimerCharIns = CppPrimer('F');
 
     CppPrimerFriend cppPrimerFriendIns = CppPrimerFriend();
-    cppPrimerFriendIns.useCppPrimerPrivate(cppPrimerIns);
-    cppPrimerIns.toBeFriendOfCppPrimerFriend(cppPrimerFriendIns);
+    //cppPrimerFriendIns.useCppPrimerPrivate(cppPrimerIns);
+    //cppPrimerIns.toBeFriendOfCppPrimerFriend(cppPrimerFriendIns);
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
