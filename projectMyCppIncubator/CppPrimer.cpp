@@ -111,7 +111,7 @@ using std::initializer_list;
 
 CppPrimer::CppPrimer(CppPrimerStr initStr)
 {
-    cout << "Constructor: " << initStr << endl;
+    cout << "Constructor(string): " << initStr << endl;
 }
 
 CppPrimer::~CppPrimer()
@@ -833,6 +833,10 @@ void CppPrimer::classRefPtrTest(CppPrimer & classRef, CppPrimer * classPtr)
 void CppPrimer::toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend)
 {
     cout << "CppPrimer.toBeFriendOfCppPrimerFriend(): " << insCppPrimerFriend.privateStr << endl;
+}
+
+void CppPrimer::convertingConstructorTest(CppPrimer insCppPrimer)
+{
 }
 
 void outsideClassFunc(CppPrimer cppPrimerIns)

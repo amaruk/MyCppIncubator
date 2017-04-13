@@ -138,12 +138,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppPrimer.h" />
+    <ClInclude Include="CppPrimerAggregate.h" />
     <ClInclude Include="CppPrimerFriend.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppPrimer.cpp" />
+    <ClCompile Include="CppPrimerAggregate.cpp" />
     <ClCompile Include="CppPrimerFriend.cpp" />
     <ClCompile Include="projectMyCppIncubator.cpp" />
     <ClCompile Include="stdafx.cpp">

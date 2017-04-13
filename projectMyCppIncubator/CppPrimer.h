@@ -36,13 +36,17 @@ public:
     // 冒号后为构造函数初始值列表，列表忽略的成员用类内初始值初始化或者默认值初始化
     CppPrimer(bool boolInitVal) 
         : arithType_bool(boolInitVal)
-    { }
+    { std::cout << "Constructor(bool)" << std::endl; }
 
     CppPrimer(bool boolInitVal, char charInitVal, wchar_t wcharInitVal)
         : arithType_bool(boolInitVal), arithType_char(charInitVal), arithType_wchar(wcharInitVal) 
-    { }
+    { std::cout << "Constructor(bool, char, wchar_t)" << std::endl; }
 
-    CppPrimer(CppPrimerStr initStr);
+    // 参数为string
+    // explicit关键字阻止此构造函数的参数做隐式类类型转换
+    // 多个参数的构造函数不能隐式类类型转换，所以explicit只对单参数构造函数有效
+    // explicit关键字只允许出现在类内部的构造函数声明出，类外部的定义不能加explicit
+    explicit CppPrimer(CppPrimerStr initStr);
     
     // C++11引入委托构造函数，一个构造函数使用其所属类的其他构造函数执行部分或全部初始化工作。
     // 调用其他构造函数，传入一个参数，无其他操作
@@ -130,6 +134,9 @@ public:
 
     //// 函数作为CppPrimerFriend类的友元
     void toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend);
+
+    //// 测试隐式类类型转换
+    void convertingConstructorTest(CppPrimer insCppPrimer);
 
 private:
 	////算数类型变量
