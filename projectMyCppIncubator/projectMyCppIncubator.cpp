@@ -13,30 +13,25 @@ using std::endl;
 using std::cin;
 using std::string;
 
-int main(int argc, char *argv[])
+// Part one: C++基础
+void partOne(void)
 {
-    // main命令行参数
-    // argv[0]是程序自身的名字
-    for (int i = 0; i != argc; i++)
-    { cout << argv[i] << " "; }
-    cout << endl;
-
     // 常量表达式
     const int constIntVar1 = 20; // constIntVar1是常量表达式
     const int constIntVar2 = constIntVar1 + 1; // constIntVar2是常量表达式
     int nonConstIntVar = 27; // nonConstIntVar不是常量表达式，虽然初始值为常量，但类型为普通int
-    //const int constIntVar3 = get_size(); // constIntVar3不是常量表达式，因为其值到运算时才得到
+                             //const int constIntVar3 = get_size(); // constIntVar3不是常量表达式，因为其值到运算时才得到
 
-	class CppPrimer cppPrimerIns = CppPrimer(); // 声明类对象时，类名前可不加class或struct关键字
+    class CppPrimer cppPrimerIns = CppPrimer(); // 声明类对象时，类名前可不加class或struct关键字
     //outsideClassFunc(cppPrimerIns);
     //outsideClassFunc(123);
-	//cppPrimerIns.displayArithTypes();
-	//cppPrimerIns.varInitTest();
-	//cppPrimerIns.ptrRefTest();
-	//cppPrimerIns.stringTest();
-	//cppPrimerIns.vectorTest();
-	//cppPrimerIns.iteratorTest();
-	//cppPrimerIns.arrayTest();
+    //cppPrimerIns.displayArithTypes();
+    //cppPrimerIns.varInitTest();
+    //cppPrimerIns.ptrRefTest();
+    //cppPrimerIns.stringTest();
+    //cppPrimerIns.vectorTest();
+    //cppPrimerIns.iteratorTest();
+    //cppPrimerIns.arrayTest();
     //cppPrimerIns.exceptionTest();
     //cppPrimerIns.exceptionTest();
     //cppPrimerIns.functionTest();
@@ -57,7 +52,7 @@ int main(int argc, char *argv[])
     cppPrimerDefaultIns.staticFuncTest(string("Zero")); // 类对象访问静态成员函数
     cppPrimerRef.staticFuncTest(string("First")); // 类对象引用访问静态成员函数
     cppPrimerPtr->staticFuncTest(string("Second")); // 类对象指针访问静态成员函数
-    // 作用域运算符直接访问静态成员函数
+                                                    // 作用域运算符直接访问静态成员函数
     CppPrimer::staticFuncTest(string("Thrid"));
 
     CppPrimerFriend cppPrimerFriendIns = CppPrimerFriend();
@@ -71,6 +66,21 @@ int main(int argc, char *argv[])
 
     // 创建字面值常量类实例
     CppPrimerLiteral cppPrimerLiteralIns = CppPrimerLiteral(false);
+}
+
+// Part two: C++标准库
+void partTwo(void)
+{
+
+}
+
+int main(int argc, char *argv[])
+{
+    // main命令行参数
+    // argv[0]是程序自身的名字
+    for (int i = 0; i != argc; i++)
+    { cout << argv[i] << " "; }
+    cout << endl;
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
