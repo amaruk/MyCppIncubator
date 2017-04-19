@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "CppPrimer.h"
 #include <iostream>
@@ -9,7 +9,7 @@ using std::endl;
 
 class CppPrimerFriend
 {
-    // ÆäËûÀàµÄ³ÉÔ±º¯Êı×÷ÎªÓÑÔª
+    // å…¶ä»–ç±»çš„æˆå‘˜å‡½æ•°ä½œä¸ºå‹å…ƒ
     friend void CppPrimer::toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend);
 
 public:

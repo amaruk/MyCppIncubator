@@ -19,6 +19,12 @@
     <Filter Include="Header Files\PartOne">
       <UniqueIdentifier>{08ae90c6-5c2f-403e-85ec-290629d648db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PartTwo">
+      <UniqueIdentifier>{d157c8c9-d80d-49e5-b8d7-d86ef6230b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PartTwo">
+      <UniqueIdentifier>{903a352d-0301-4b77-9917-88d89fbe6213}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -42,6 +48,9 @@
     <ClInclude Include="CppPrimerLiteral.h">
       <Filter>Header Files\PartOne</Filter>
     </ClInclude>
+    <ClInclude Include="StdLibIO.h">
+      <Filter>Header Files\PartTwo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -58,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="CppPrimerLiteral.cpp">
       <Filter>Source Files\PartOne</Filter>
+    </ClCompile>
+    <ClCompile Include="StdLibIO.cpp">
+      <Filter>Source Files\PartTwo</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

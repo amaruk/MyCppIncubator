@@ -1,4 +1,4 @@
-// projectMyCppIncubator.cpp : Defines the entry point for the console application.
+ï»¿// projectMyCppIncubator.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -13,16 +13,16 @@ using std::endl;
 using std::cin;
 using std::string;
 
-// Part one: C++»ù´¡
+// Part one: C++åŸºç¡€
 void partOne(void)
 {
-    // ³£Á¿±í´ïÊ½
-    const int constIntVar1 = 20; // constIntVar1ÊÇ³£Á¿±í´ïÊ½
-    const int constIntVar2 = constIntVar1 + 1; // constIntVar2ÊÇ³£Á¿±í´ïÊ½
-    int nonConstIntVar = 27; // nonConstIntVar²»ÊÇ³£Á¿±í´ïÊ½£¬ËäÈ»³õÊ¼ÖµÎª³£Á¿£¬µ«ÀàĞÍÎªÆÕÍ¨int
-                             //const int constIntVar3 = get_size(); // constIntVar3²»ÊÇ³£Á¿±í´ïÊ½£¬ÒòÎªÆäÖµµ½ÔËËãÊ±²ÅµÃµ½
+    // å¸¸é‡è¡¨è¾¾å¼
+    const int constIntVar1 = 20; // constIntVar1æ˜¯å¸¸é‡è¡¨è¾¾å¼
+    const int constIntVar2 = constIntVar1 + 1; // constIntVar2æ˜¯å¸¸é‡è¡¨è¾¾å¼
+    int nonConstIntVar = 27; // nonConstIntVarä¸æ˜¯å¸¸é‡è¡¨è¾¾å¼ï¼Œè™½ç„¶åˆå§‹å€¼ä¸ºå¸¸é‡ï¼Œä½†ç±»å‹ä¸ºæ™®é€šint
+                             //const int constIntVar3 = get_size(); // constIntVar3ä¸æ˜¯å¸¸é‡è¡¨è¾¾å¼ï¼Œå› ä¸ºå…¶å€¼åˆ°è¿ç®—æ—¶æ‰å¾—åˆ°
 
-    class CppPrimer cppPrimerIns = CppPrimer(); // ÉùÃ÷Àà¶ÔÏóÊ±£¬ÀàÃûÇ°¿É²»¼Óclass»òstruct¹Ø¼ü×Ö
+    class CppPrimer cppPrimerIns = CppPrimer(); // å£°æ˜ç±»å¯¹è±¡æ—¶ï¼Œç±»åå‰å¯ä¸åŠ classæˆ–structå…³é”®å­—
     //outsideClassFunc(cppPrimerIns);
     //outsideClassFunc(123);
     //cppPrimerIns.displayArithTypes();
@@ -36,39 +36,39 @@ void partOne(void)
     //cppPrimerIns.exceptionTest();
     //cppPrimerIns.functionTest();
     //cppPrimerIns.assertTest();
-    //cppPrimerIns.constMemFunction(1).constMemFunction(2); // ·Ç³£Á¿¶ÔÏóµ÷ÓÃ·Ç³£Á¿°æ±¾
+    //cppPrimerIns.constMemFunction(1).constMemFunction(2); // éå¸¸é‡å¯¹è±¡è°ƒç”¨éå¸¸é‡ç‰ˆæœ¬
     const CppPrimer cppPrimerConstIns = CppPrimer();
-    //cppPrimerConstIns.constMemFunction(3).constMemFunction(4); // ³£Á¿¶ÔÏóµ÷ÓÃ³£Á¿°æ±¾
+    //cppPrimerConstIns.constMemFunction(3).constMemFunction(4); // å¸¸é‡å¯¹è±¡è°ƒç”¨å¸¸é‡ç‰ˆæœ¬
     CppPrimer cppPrimerStrIns = CppPrimer(CppPrimer::CppPrimerStrUsing("Hello, constructor!"));
     //friendFunc(cppPrimerStrIns);
     CppPrimer cppPrimerCharIns = CppPrimer('F');
-    // ÒşÊ½ÀàÀàĞÍ×ª»»£¬bool²ÎÊı±»ÒşÊ½×ª»»Îªµ÷ÓÃCppPrimer(bool boolInitVal)¹¹ÔìµÄ¶ÔÏó
+    // éšå¼ç±»ç±»å‹è½¬æ¢ï¼Œboolå‚æ•°è¢«éšå¼è½¬æ¢ä¸ºè°ƒç”¨CppPrimer(bool boolInitVal)æ„é€ çš„å¯¹è±¡
     //cppPrimerCharIns.convertingConstructorTest(false);
-    // È¥µôCppPrimer(CppPrimerStr initStr)¹¹ÔìµÄexplicit¹Ø¼ü×Ö£¬²ÅÄÜÓÃÈçÏÂÓï¾ä×öÒşÊ½ÀàÀàĞÍ×ª»»
+    // å»æ‰CppPrimer(CppPrimerStr initStr)æ„é€ çš„explicitå…³é”®å­—ï¼Œæ‰èƒ½ç”¨å¦‚ä¸‹è¯­å¥åšéšå¼ç±»ç±»å‹è½¬æ¢
     //cppPrimerCharIns.convertingConstructorTest(string("test"));
     CppPrimer cppPrimerDefaultIns = CppPrimer();
     CppPrimer &cppPrimerRef = cppPrimerDefaultIns;
     CppPrimer *cppPrimerPtr = &cppPrimerDefaultIns;
-    cppPrimerDefaultIns.staticFuncTest(string("Zero")); // Àà¶ÔÏó·ÃÎÊ¾²Ì¬³ÉÔ±º¯Êı
-    cppPrimerRef.staticFuncTest(string("First")); // Àà¶ÔÏóÒıÓÃ·ÃÎÊ¾²Ì¬³ÉÔ±º¯Êı
-    cppPrimerPtr->staticFuncTest(string("Second")); // Àà¶ÔÏóÖ¸Õë·ÃÎÊ¾²Ì¬³ÉÔ±º¯Êı
-                                                    // ×÷ÓÃÓòÔËËã·ûÖ±½Ó·ÃÎÊ¾²Ì¬³ÉÔ±º¯Êı
+    cppPrimerDefaultIns.staticFuncTest(string("Zero")); // ç±»å¯¹è±¡è®¿é—®é™æ€æˆå‘˜å‡½æ•°
+    cppPrimerRef.staticFuncTest(string("First")); // ç±»å¯¹è±¡å¼•ç”¨è®¿é—®é™æ€æˆå‘˜å‡½æ•°
+    cppPrimerPtr->staticFuncTest(string("Second")); // ç±»å¯¹è±¡æŒ‡é’ˆè®¿é—®é™æ€æˆå‘˜å‡½æ•°
+                                                    // ä½œç”¨åŸŸè¿ç®—ç¬¦ç›´æ¥è®¿é—®é™æ€æˆå‘˜å‡½æ•°
     CppPrimer::staticFuncTest(string("Thrid"));
 
     CppPrimerFriend cppPrimerFriendIns = CppPrimerFriend();
     //cppPrimerFriendIns.useCppPrimerPrivate(cppPrimerIns);
     //cppPrimerIns.toBeFriendOfCppPrimerFriend(cppPrimerFriendIns);
 
-    // ´´½¨¾ÛºÏÀàµÄÊµÀı
+    // åˆ›å»ºèšåˆç±»çš„å®ä¾‹
     CppPrimerAggregate cppPrimerAggregateIns = CppPrimerAggregate();
-    // ÓÃÉùÃ÷Ë³ĞòµÄÊµ²ÎÁĞ±í³õÊ¼»¯¾ÛºÏÀà
+    // ç”¨å£°æ˜é¡ºåºçš„å®å‚åˆ—è¡¨åˆå§‹åŒ–èšåˆç±»
     CppPrimerAggregate cppPrimerAggregateInsInit = { string("Hello"), 123 };
 
-    // ´´½¨×ÖÃæÖµ³£Á¿ÀàÊµÀı
+    // åˆ›å»ºå­—é¢å€¼å¸¸é‡ç±»å®ä¾‹
     CppPrimerLiteral cppPrimerLiteralIns = CppPrimerLiteral(false);
 }
 
-// Part two: C++±ê×¼¿â
+// Part two: C++æ ‡å‡†åº“
 void partTwo(void)
 {
 
@@ -76,16 +76,16 @@ void partTwo(void)
 
 int main(int argc, char *argv[])
 {
-    // mainÃüÁîĞĞ²ÎÊı
-    // argv[0]ÊÇ³ÌĞò×ÔÉíµÄÃû×Ö
+    // mainå‘½ä»¤è¡Œå‚æ•°
+    // argv[0]æ˜¯ç¨‹åºè‡ªèº«çš„åå­—
     for (int i = 0; i != argc; i++)
     { cout << argv[i] << " "; }
     cout << endl;
 
-	// ÏµÍ³µ÷ÓÃ "Press any key to continue..."
+	// ç³»ç»Ÿè°ƒç”¨ "Press any key to continue..."
 	//system("pause");
 
-    // ÔÊĞímainÃ»ÓĞreturnÓï¾äÖ±½Ó½áÊø£¬±àÒëÆ÷²åÈë·µ»Ø0µÄreturnÓï¾ä±íÊ¾Ö´ĞĞ³É¹¦
+    // å…è®¸mainæ²¡æœ‰returnè¯­å¥ç›´æ¥ç»“æŸï¼Œç¼–è¯‘å™¨æ’å…¥è¿”å›0çš„returnè¯­å¥è¡¨ç¤ºæ‰§è¡ŒæˆåŠŸ
     return 0;
 }
 

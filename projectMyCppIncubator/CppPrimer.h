@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <string>
 #include <vector>
@@ -8,32 +8,32 @@
 typedef int intAry3[3];
 using intAry3Using = int[3];
 
-// structºÍclassµÄÇø±ğ£º¿ÉÒÔÓÃÈÎÒâÒ»¸ö¶¨ÒåÀà¡£
-// Çø±ğÔÚÓÚ£¬struct¶¨ÒåµÄÀà£¬ÔÚµÚÒ»¸ö·ÃÎÊËµÃ÷·ûÖ®Ç°µÄ³ÉÔ±ÊÇpublicµÄ£»
-// class¶¨ÒåµÄÀà£¬ÔÚµÚÒ»¸ö·ÃÎÊËµÃ÷·ûÖ®Ç°µÄ³ÉÔ±ÊÇprivateµÄ¡£
+// structå’Œclassçš„åŒºåˆ«ï¼šå¯ä»¥ç”¨ä»»æ„ä¸€ä¸ªå®šä¹‰ç±»ã€‚
+// åŒºåˆ«åœ¨äºï¼Œstructå®šä¹‰çš„ç±»ï¼Œåœ¨ç¬¬ä¸€ä¸ªè®¿é—®è¯´æ˜ç¬¦ä¹‹å‰çš„æˆå‘˜æ˜¯publicçš„ï¼›
+// classå®šä¹‰çš„ç±»ï¼Œåœ¨ç¬¬ä¸€ä¸ªè®¿é—®è¯´æ˜ç¬¦ä¹‹å‰çš„æˆå‘˜æ˜¯privateçš„ã€‚
 
 class CppPrimer
 {
-    //// ÓÑÔªº¯ÊıÉùÃ÷
-    // Èç¹ûÒª°Ñ¶à¸öÖØÔØº¯Êı×÷ÎªÓÑÔªº¯Êı£¬±ØĞë¶ÔÃ¿Ò»¸öÖØÔØº¯Êı½øĞĞÓÑÔªÉùÃ÷£¬ÒòÎªÖØÔØº¯ÊıÊÇ²»Í¬µÄº¯Êı
+    //// å‹å…ƒå‡½æ•°å£°æ˜
+    // å¦‚æœè¦æŠŠå¤šä¸ªé‡è½½å‡½æ•°ä½œä¸ºå‹å…ƒå‡½æ•°ï¼Œå¿…é¡»å¯¹æ¯ä¸€ä¸ªé‡è½½å‡½æ•°è¿›è¡Œå‹å…ƒå£°æ˜ï¼Œå› ä¸ºé‡è½½å‡½æ•°æ˜¯ä¸åŒçš„å‡½æ•°
     friend void friendFunc(CppPrimer cppPrimerIns);
     
-    //// ÓÑÔªÀàÉùÃ÷
-    // ÓÑÔª¹ØÏµ²»´æÔÚ´«µİĞÔ£¬CppPrimerFriendµÄÓÑÔª²»»á×Ô¶¯³ÉÎªCppPrimerµÄÓÑÔª
-    // Ã¿¸öÀà¸ºÔğ¿ØÖÆ×Ô¼ºµÄÓÑÔª
+    //// å‹å…ƒç±»å£°æ˜
+    // å‹å…ƒå…³ç³»ä¸å­˜åœ¨ä¼ é€’æ€§ï¼ŒCppPrimerFriendçš„å‹å…ƒä¸ä¼šè‡ªåŠ¨æˆä¸ºCppPrimerçš„å‹å…ƒ
+    // æ¯ä¸ªç±»è´Ÿè´£æ§åˆ¶è‡ªå·±çš„å‹å…ƒ
     friend class CppPrimerFriend;
 
 public:
 
-    //// ÀàĞÍ³ÉÔ±
+    //// ç±»å‹æˆå‘˜
     typedef std::string CppPrimerStr;
     using CppPrimerStrUsing = std::string;
 
-    //// ¹¹Ôì¡¢Îö¹¹
-    // ÏÔÊ½ÉùÃ÷Ä¬ÈÏ¹¹Ôìº¯Êı
+    //// æ„é€ ã€ææ„
+    // æ˜¾å¼å£°æ˜é»˜è®¤æ„é€ å‡½æ•°
     CppPrimer() = default;
 
-    // Ã°ºÅºóÎª¹¹Ôìº¯Êı³õÊ¼ÖµÁĞ±í£¬ÁĞ±íºöÂÔµÄ³ÉÔ±ÓÃÀàÄÚ³õÊ¼Öµ³õÊ¼»¯»òÕßÄ¬ÈÏÖµ³õÊ¼»¯
+    // å†’å·åä¸ºæ„é€ å‡½æ•°åˆå§‹å€¼åˆ—è¡¨ï¼Œåˆ—è¡¨å¿½ç•¥çš„æˆå‘˜ç”¨ç±»å†…åˆå§‹å€¼åˆå§‹åŒ–æˆ–è€…é»˜è®¤å€¼åˆå§‹åŒ–
     CppPrimer(bool boolInitVal) 
         : arithType_bool(boolInitVal)
     { std::cout << "Constructor(bool)" << std::endl; }
@@ -42,167 +42,167 @@ public:
         : arithType_bool(boolInitVal), arithType_char(charInitVal), arithType_wchar(wcharInitVal) 
     { std::cout << "Constructor(bool, char, wchar_t)" << std::endl; }
 
-    // ²ÎÊıÎªstring
-    // explicit¹Ø¼ü×Ö×èÖ¹´Ë¹¹Ôìº¯ÊıµÄ²ÎÊı×öÒşÊ½ÀàÀàĞÍ×ª»»
-    // ¶à¸ö²ÎÊıµÄ¹¹Ôìº¯Êı²»ÄÜÒşÊ½ÀàÀàĞÍ×ª»»£¬ËùÒÔexplicitÖ»¶Ôµ¥²ÎÊı¹¹Ôìº¯ÊıÓĞĞ§
-    // explicit¹Ø¼ü×ÖÖ»ÔÊĞí³öÏÖÔÚÀàÄÚ²¿µÄ¹¹Ôìº¯ÊıÉùÃ÷³ö£¬ÀàÍâ²¿µÄ¶¨Òå²»ÄÜ¼Óexplicit
+    // å‚æ•°ä¸ºstring
+    // explicitå…³é”®å­—é˜»æ­¢æ­¤æ„é€ å‡½æ•°çš„å‚æ•°åšéšå¼ç±»ç±»å‹è½¬æ¢
+    // å¤šä¸ªå‚æ•°çš„æ„é€ å‡½æ•°ä¸èƒ½éšå¼ç±»ç±»å‹è½¬æ¢ï¼Œæ‰€ä»¥explicitåªå¯¹å•å‚æ•°æ„é€ å‡½æ•°æœ‰æ•ˆ
+    // explicitå…³é”®å­—åªå…è®¸å‡ºç°åœ¨ç±»å†…éƒ¨çš„æ„é€ å‡½æ•°å£°æ˜å‡ºï¼Œç±»å¤–éƒ¨çš„å®šä¹‰ä¸èƒ½åŠ explicit
     explicit CppPrimer(CppPrimerStr initStr);
     
-    // C++11ÒıÈëÎ¯ÍĞ¹¹Ôìº¯Êı£¬Ò»¸ö¹¹Ôìº¯ÊıÊ¹ÓÃÆäËùÊôÀàµÄÆäËû¹¹Ôìº¯ÊıÖ´ĞĞ²¿·Ö»òÈ«²¿³õÊ¼»¯¹¤×÷¡£
-    // µ÷ÓÃÆäËû¹¹Ôìº¯Êı£¬´«ÈëÒ»¸ö²ÎÊı£¬ÎŞÆäËû²Ù×÷
+    // C++11å¼•å…¥å§”æ‰˜æ„é€ å‡½æ•°ï¼Œä¸€ä¸ªæ„é€ å‡½æ•°ä½¿ç”¨å…¶æ‰€å±ç±»çš„å…¶ä»–æ„é€ å‡½æ•°æ‰§è¡Œéƒ¨åˆ†æˆ–å…¨éƒ¨åˆå§‹åŒ–å·¥ä½œã€‚
+    // è°ƒç”¨å…¶ä»–æ„é€ å‡½æ•°ï¼Œä¼ å…¥ä¸€ä¸ªå‚æ•°ï¼Œæ— å…¶ä»–æ“ä½œ
     CppPrimer(int iInitVal)
         : CppPrimer(true) 
     { }
 
-    // µ÷ÓÃÆäËû¹¹Ôìº¯Êı£¬´«µİ×Ô¼ºµÄÊµ²Î£¬ÎŞÆäËû²Ù×÷
+    // è°ƒç”¨å…¶ä»–æ„é€ å‡½æ•°ï¼Œä¼ é€’è‡ªå·±çš„å®å‚ï¼Œæ— å…¶ä»–æ“ä½œ
     CppPrimer(int iInitVal, bool bInitVal) : CppPrimer(bInitVal) 
     { }
 
-    // ÏÈÖ´ĞĞ±»Î¯ÍĞµÄ¹¹Ôìº¯Êı£¬ÔÚÖ´ĞĞÎ¯ÍĞ¹¹Ôìº¯Êı
+    // å…ˆæ‰§è¡Œè¢«å§”æ‰˜çš„æ„é€ å‡½æ•°ï¼Œåœ¨æ‰§è¡Œå§”æ‰˜æ„é€ å‡½æ•°
     CppPrimer(char cInitVal)
         : CppPrimer(std::string("Delegated constructor")) 
     { std::cout << "Delegating constructor" << std::endl; }
 
 	~CppPrimer();
 
-    //// Ö»´òÓ¡ÏûÏ¢µÄº¯Êı
+    //// åªæ‰“å°æ¶ˆæ¯çš„å‡½æ•°
     void showInfo(void)
-    { std::cout << "/!\\showInfo()." << std::endl; } // ¶¨ÒåÔÚÀàÄÚ²¿µÄº¯ÊıÊÇÒşÊ½µÄinline
+    { std::cout << "/!\\showInfo()." << std::endl; } // å®šä¹‰åœ¨ç±»å†…éƒ¨çš„å‡½æ•°æ˜¯éšå¼çš„inline
 
-	//// ÏÔÊ¾Ë½ÓĞ³ÉÔ±ÖĞËãÊıÀàĞÍ±äÁ¿µÄÖµ
+	//// æ˜¾ç¤ºç§æœ‰æˆå‘˜ä¸­ç®—æ•°ç±»å‹å˜é‡çš„å€¼
 	void displayArithTypes(void);
 	
-    //// ²âÊÔ¸÷ÖÖ³õÊ¼»¯µÄ·½Ê½
+    //// æµ‹è¯•å„ç§åˆå§‹åŒ–çš„æ–¹å¼
 	void varInitTest(void);
 	
-    //// Ö¸Õë/ÒıÓÃ/constÏà¹Ø
+    //// æŒ‡é’ˆ/å¼•ç”¨/constç›¸å…³
 	void ptrRefTest(void);
 	
-    //// ×Ö·û´®
+    //// å­—ç¬¦ä¸²
 	void stringTest(void);
 	
-    //// ÏòÁ¿
+    //// å‘é‡
 	void vectorTest(void);
 	
-    //// µü´úÆ÷
+    //// è¿­ä»£å™¨
 	void iteratorTest(void);
 	
-    //// Êı×é
+    //// æ•°ç»„
 	void arrayTest(void);
     
-    //// Òì³£
+    //// å¼‚å¸¸
     void exceptionTest(void);
     
-    //// º¯ÊıÏà¹Ø
+    //// å‡½æ•°ç›¸å…³
     void functionTest(void);
     
-    //// ÖØÔØ
-    // Í¬Ò»×÷ÓÃÓòÄÚµÄ¼¸¸öº¯ÊıÃû×ÖÏàÍ¬µ«ĞÎ²ÎÁĞ±í²»Í¬£¨ĞÎ²ÎÊıÁ¿»òÀàĞÍ£©
-    // ±àÒëÆ÷¸ù¾İÊµ²ÎÀàĞÍÅĞ¶Ïµ÷ÓÃµÄÊÇÄÄ¸öº¯Êı¡£±àÒëÆÚ¾ö¶¨£¡
-    // ²»ÔÊĞíÖ»ÓĞ·µ»ØÖµ²»Í¬µÄ¶à¸öº¯Êı´æÔÚ
-    // main²»ÄÜÖØÔØ
-    // ĞÎ²ÎÓĞ¶¥²ãconstºÍÃ»ÓĞ¶¥²ãconstÊÇÒ»ÑùµÄ£¬ÖØÔØÊ±Òª×¢Òâ£»µ×²ãconstÄÜÊµÏÖÖØÔØ
+    //// é‡è½½
+    // åŒä¸€ä½œç”¨åŸŸå†…çš„å‡ ä¸ªå‡½æ•°åå­—ç›¸åŒä½†å½¢å‚åˆ—è¡¨ä¸åŒï¼ˆå½¢å‚æ•°é‡æˆ–ç±»å‹ï¼‰
+    // ç¼–è¯‘å™¨æ ¹æ®å®å‚ç±»å‹åˆ¤æ–­è°ƒç”¨çš„æ˜¯å“ªä¸ªå‡½æ•°ã€‚ç¼–è¯‘æœŸå†³å®šï¼
+    // ä¸å…è®¸åªæœ‰è¿”å›å€¼ä¸åŒçš„å¤šä¸ªå‡½æ•°å­˜åœ¨
+    // mainä¸èƒ½é‡è½½
+    // å½¢å‚æœ‰é¡¶å±‚constå’Œæ²¡æœ‰é¡¶å±‚constæ˜¯ä¸€æ ·çš„ï¼Œé‡è½½æ—¶è¦æ³¨æ„ï¼›åº•å±‚constèƒ½å®ç°é‡è½½
     void overloadTest(int intArg);
-    //void overloadTest(const int intArg); // ¶¥²ãconst£¬ÖØ¸´ÉùÃ÷
+    //void overloadTest(const int intArg); // é¡¶å±‚constï¼Œé‡å¤å£°æ˜
     void overloadTest(int *intPtrArg);
-    //void overloadTest(int * const intPtrArg); // ¶¥²ãconst£¬ÖØ¸´ÉùÃ÷
-    void overloadTest(const int* intPtrArg); // µ×²ãconst£¬constÖ¸Õë£¬ÖØÔØ
-    void overloadTest(int &intRefArg); // ÆÕÍ¨ÒıÓÃ
-    void overloadTest(const int &intRefArg); // µ×²ãconst£¬constÒıÓÃ£¬ÖØÔØ
+    //void overloadTest(int * const intPtrArg); // é¡¶å±‚constï¼Œé‡å¤å£°æ˜
+    void overloadTest(const int* intPtrArg); // åº•å±‚constï¼ŒconstæŒ‡é’ˆï¼Œé‡è½½
+    void overloadTest(int &intRefArg); // æ™®é€šå¼•ç”¨
+    void overloadTest(const int &intRefArg); // åº•å±‚constï¼Œconstå¼•ç”¨ï¼Œé‡è½½
 
-    // const_castÓÃÓÚÖØÔØ
+    // const_castç”¨äºé‡è½½
     const std::string &shorterString(const std::string &s1, const std::string &s2);
     std::string &shorterString(std::string &s1, std::string &s2);
     
-    //// Ä¬ÈÏÊµ²Î
+    //// é»˜è®¤å®å‚
     void defaultParValTest(int intVal = 1, char charVal = '2', double doubleVal = 3.0);
     
-    //// ÄÚÁªº¯Êı
+    //// å†…è”å‡½æ•°
     inline void inlineTest(void);
-    // ÄÚÁªº¯ÊıºÍconstexprº¯Êı¿ÉÒÔ¶à´Î¶¨Òå£¬µ«¶¨Òå±ØĞëÍêÈ«Ò»ÖÂ£¬ËùÒÔÍ¨³£¶¨ÒåÔÚÍ·ÎÄ¼şÖĞ¡£
+    // å†…è”å‡½æ•°å’Œconstexprå‡½æ•°å¯ä»¥å¤šæ¬¡å®šä¹‰ï¼Œä½†å®šä¹‰å¿…é¡»å®Œå…¨ä¸€è‡´ï¼Œæ‰€ä»¥é€šå¸¸å®šä¹‰åœ¨å¤´æ–‡ä»¶ä¸­ã€‚
     
-    //// ¶ÏÑÔ
+    //// æ–­è¨€
     void assertTest(void);
     
-    //// const³ÉÔ±º¯Êı
-    const CppPrimer &constMemFunction(int iVal) const; // ·µ»Ø¶ÔÏóÒıÓÃ£¬ÒÔ±ã¼¶Áªµ÷ÓÃ
-    CppPrimer &constMemFunction(int iVal); //·Çconst³ÉÔ±º¯ÊıÖØÔØconst³ÉÔ±º¯Êı
+    //// constæˆå‘˜å‡½æ•°
+    const CppPrimer &constMemFunction(int iVal) const; // è¿”å›å¯¹è±¡å¼•ç”¨ï¼Œä»¥ä¾¿çº§è”è°ƒç”¨
+    CppPrimer &constMemFunction(int iVal); //éconstæˆå‘˜å‡½æ•°é‡è½½constæˆå‘˜å‡½æ•°
 
-    // Àà²»ÄÜ°üº¬ÀàĞÍÎª×Ô¼ºµÄ³ÉÔ±£¬ÒòÎª±àÒëÆ÷ĞèÒªÖªµÀÀàÕ¼¶àÉÙ´æ´¢¿Õ¼ä¡£
-    // µ«ÀàÖ»Òª³öÏÖÃ÷ÔÙ¿´Ö®ºó£¬¾ÍÊÓÎª±»ÉùÃ÷£¬Òò´ËÀàÔÊĞí°üº¬Ö¸Ïò×Ô¼ºÀàĞÍµÄÒıÓÃ»òÖ¸Õë
+    // ç±»ä¸èƒ½åŒ…å«ç±»å‹ä¸ºè‡ªå·±çš„æˆå‘˜ï¼Œå› ä¸ºç¼–è¯‘å™¨éœ€è¦çŸ¥é“ç±»å å¤šå°‘å­˜å‚¨ç©ºé—´ã€‚
+    // ä½†ç±»åªè¦å‡ºç°æ˜å†çœ‹ä¹‹åï¼Œå°±è§†ä¸ºè¢«å£°æ˜ï¼Œå› æ­¤ç±»å…è®¸åŒ…å«æŒ‡å‘è‡ªå·±ç±»å‹çš„å¼•ç”¨æˆ–æŒ‡é’ˆ
     void classRefPtrTest(CppPrimer &classRef, CppPrimer *classPtr);
 
-    //// º¯Êı×÷ÎªCppPrimerFriendÀàµÄÓÑÔª
+    //// å‡½æ•°ä½œä¸ºCppPrimerFriendç±»çš„å‹å…ƒ
     void toBeFriendOfCppPrimerFriend(CppPrimerFriend insCppPrimerFriend);
 
-    //// ²âÊÔÒşÊ½ÀàÀàĞÍ×ª»»
+    //// æµ‹è¯•éšå¼ç±»ç±»å‹è½¬æ¢
     void convertingConstructorTest(CppPrimer insCppPrimer);
 
-    //// ¾²Ì¬³ÉÔ±º¯Êı
-    // ²»ÄÜÉùÃ÷Îªconst£¬Ò²²»ÄÜ°üº¬thisÖ¸Õë
+    //// é™æ€æˆå‘˜å‡½æ•°
+    // ä¸èƒ½å£°æ˜ä¸ºconstï¼Œä¹Ÿä¸èƒ½åŒ…å«thisæŒ‡é’ˆ
     static void staticFuncTest(std::string newStaticStrVar);
 
 private:
 
-    //// ¾²Ì¬³ÉÔ±
-    // ¾²Ì¬³ÉÔ±ÓëÀà±¾ÉíÖ±½ÓÏà¹Ø£¬¶ø²»Óë¶ÔÏó±£³Ö¹ØÁª
-    // ËùÓĞ¶ÔÏó¹²Ïí¾²Ì¬³ÉÔ±¶ÔÏó
-    // ¿ÉÒÔÊÇ³£Á¿¡¢ÒıÓÃ¡¢Ö¸Õë¡¢ÀàÀàĞÍ£¬¿ÉÒÔÊÇpublic»òprivate
-    // ¾²Ì¬³ÉÔ±²»ÄÜÔÚ´´½¨Àà¶ÔÏóÊ±±»¶¨Òå£¬²»ÊÇ¹¹Ôìº¯Êı³õÊ¼»¯µÄ£¬²»ÄÜÔÚÀàÄÚ²¿³õÊ¼»¯
-    // ±ØĞëÔÚÀàÍâ²¿¶¨ÒåºÍ³õÊ¼»¯¾²Ì¬³ÉÔ±
+    //// é™æ€æˆå‘˜
+    // é™æ€æˆå‘˜ä¸ç±»æœ¬èº«ç›´æ¥ç›¸å…³ï¼Œè€Œä¸ä¸å¯¹è±¡ä¿æŒå…³è”
+    // æ‰€æœ‰å¯¹è±¡å…±äº«é™æ€æˆå‘˜å¯¹è±¡
+    // å¯ä»¥æ˜¯å¸¸é‡ã€å¼•ç”¨ã€æŒ‡é’ˆã€ç±»ç±»å‹ï¼Œå¯ä»¥æ˜¯publicæˆ–private
+    // é™æ€æˆå‘˜ä¸èƒ½åœ¨åˆ›å»ºç±»å¯¹è±¡æ—¶è¢«å®šä¹‰ï¼Œä¸æ˜¯æ„é€ å‡½æ•°åˆå§‹åŒ–çš„ï¼Œä¸èƒ½åœ¨ç±»å†…éƒ¨åˆå§‹åŒ–
+    // å¿…é¡»åœ¨ç±»å¤–éƒ¨å®šä¹‰å’Œåˆå§‹åŒ–é™æ€æˆå‘˜
     static std::string staticStrVar;
-    // ¾²Ì¬³ÉÔ±¿ÉÒÔµ«·Ç¾²Ì¬³ÉÔ±²»¿ÉÒÔµÄ²Ù×÷
-    static CppPrimer staticCppPrimerInt; // ÀàĞÍ¿ÉÒÔÊÇËùÊôµÄÀàÀàĞÍ
-    void staticParameterTest(std::string strVar = staticStrVar) {} // ¾²Ì¬³ÉÔ±×÷ÎªÄ¬ÈÏÊµ²Î
+    // é™æ€æˆå‘˜å¯ä»¥ä½†éé™æ€æˆå‘˜ä¸å¯ä»¥çš„æ“ä½œ
+    static CppPrimer staticCppPrimerInt; // ç±»å‹å¯ä»¥æ˜¯æ‰€å±çš„ç±»ç±»å‹
+    void staticParameterTest(std::string strVar = staticStrVar) {} // é™æ€æˆå‘˜ä½œä¸ºé»˜è®¤å®å‚
 
 
-	//// ËãÊıÀàĞÍ±äÁ¿
-	// ×îĞ¡³ß´ç¹æ·¶Î´¶¨Òå
+	//// ç®—æ•°ç±»å‹å˜é‡
+	// æœ€å°å°ºå¯¸è§„èŒƒæœªå®šä¹‰
 	bool arithType_bool = false;
-	// ×îĞ¡³ß´ç8-bit. ÓĞÈıÖÖÀàĞÍ£ºchar/unsigned char/signed char£¬
-	// char²»Ò»¶¨ÊÇsigned£¬ÓÉ±àÒëÆ÷¾ö¶¨
+	// æœ€å°å°ºå¯¸8-bit. æœ‰ä¸‰ç§ç±»å‹ï¼šchar/unsigned char/signed charï¼Œ
+	// charä¸ä¸€å®šæ˜¯signedï¼Œç”±ç¼–è¯‘å™¨å†³å®š
 	char arithType_char = u8'A'; 
-	// ×îĞ¡³ß´ç16-bit
+	// æœ€å°å°ºå¯¸16-bit
 	wchar_t arithType_wchar = L'B';
-	// ×îĞ¡³ß´ç16-bit Unicode
-	char16_t arithType_char16 = u'²â';
-	// ×îĞ¡³ß´ç32-bit Unicode
-	char32_t arithType_char32 = U'ÊÔ';
-	// ×îĞ¡³ß´ç16-bit
+	// æœ€å°å°ºå¯¸16-bit Unicode
+	char16_t arithType_char16 = u'æµ‹';
+	// æœ€å°å°ºå¯¸32-bit Unicode
+	char32_t arithType_char32 = U'è¯•';
+	// æœ€å°å°ºå¯¸16-bit
 	short arithType_short = 32767;
-	// ×îĞ¡³ß´ç16-bit, VSÏÂ32-bit
+	// æœ€å°å°ºå¯¸16-bit, VSä¸‹32-bit
 	unsigned int arithType_int = 65535u;
-	// ×îĞ¡³ß´ç32-bit
+	// æœ€å°å°ºå¯¸32-bit
 	long arithType_long = 2147483647L;
-	// ×îĞ¡³ß´ç64-bit
+	// æœ€å°å°ºå¯¸64-bit
 	long long arithType_longlong = 9223372036854775807LL;
-	// 6Î»ÓĞĞ§Êı×Ö
+	// 6ä½æœ‰æ•ˆæ•°å­—
 	float arithType_float = 0.123456F;
-	// 10Î»ÓĞĞ§Êı×Ö
+	// 10ä½æœ‰æ•ˆæ•°å­—
 	double arithType_double = 0.0123456789;
-	// 10Î»ÓĞĞ§Êı×Ö
+	// 10ä½æœ‰æ•ˆæ•°å­—
 	long double arithType_longdouble = 0.0987654321L;
-	// Ö¸Õë
+	// æŒ‡é’ˆ
 	short *arithType_ptr = nullptr;
-    // Êı×é
-    intAry3 intAry3Var{ 1, 2, 3 }; // ÀàÄÚ³õÊ¼Öµ±ØĞëÊ¹ÓÃ=×ö³õÊ¼»¯»òÊÔÓÃ{}Ö±½Ó³õÊ¼»¯
-    // ¿É±äÊı¾İ³ÉÔ±
-    mutable int mutableVar = 0; // ÀàÄÚ³õÊ¼Öµ±ØĞëÊ¹ÓÃ=×ö³õÊ¼»¯»òÊÔÓÃ{}Ö±½Ó³õÊ¼»¯
+    // æ•°ç»„
+    intAry3 intAry3Var{ 1, 2, 3 }; // ç±»å†…åˆå§‹å€¼å¿…é¡»ä½¿ç”¨=åšåˆå§‹åŒ–æˆ–è¯•ç”¨{}ç›´æ¥åˆå§‹åŒ–
+    // å¯å˜æ•°æ®æˆå‘˜
+    mutable int mutableVar = 0; // ç±»å†…åˆå§‹å€¼å¿…é¡»ä½¿ç”¨=åšåˆå§‹åŒ–æˆ–è¯•ç”¨{}ç›´æ¥åˆå§‹åŒ–
 
-    //// ´òÓ¡Êı×é
+    //// æ‰“å°æ•°ç»„
     void CppPrimer::printIntAry(int intAry[], int size);
     
-    //// Å×³öÒì³£ÓÃ
+    //// æŠ›å‡ºå¼‚å¸¸ç”¨
     void exceptionThrower(void);
-    void exceptionThrower(int intVal); // ÖØÔØ³ÉÔ±º¯Êı
+    void exceptionThrower(int intVal); // é‡è½½æˆå‘˜å‡½æ•°
     
-    //// ¿É±äÊıÁ¿ĞÎ²Î
+    //// å¯å˜æ•°é‡å½¢å‚
     void initializerListTest(std::initializer_list<std::string> args, std::string extVal);
     
-    //// ÁĞ±í·µ»ØÖµ
+    //// åˆ—è¡¨è¿”å›å€¼
     std::vector<std::string> listReturnTest(void);
     
-    //// ·µ»ØÊı×éÖ¸Õë
+    //// è¿”å›æ•°ç»„æŒ‡é’ˆ
     intAry3* funcReturnIntAry3(void);
     intAry3Using* funcReturnIntAry3Using(void);
     int(*funcReturnIntAry3Plain(void))[3];
@@ -210,10 +210,10 @@ private:
     decltype(intAry3Var) *funcReturnIntAry3Decltype(void);
 };
 
-//// ·Ç³ÉÔ±½Ó¿Úº¯Êı
+//// éæˆå‘˜æ¥å£å‡½æ•°
 void outsideClassFunc(CppPrimer cppPrimerIns);
-void outsideClassFunc(int iVal); // ·Ç³ÉÔ±º¯ÊıÖØÔØ
-void friendFunc(CppPrimer cppPrimerIns); // ÓÑÔªº¯Êı
+void outsideClassFunc(int iVal); // éæˆå‘˜å‡½æ•°é‡è½½
+void friendFunc(CppPrimer cppPrimerIns); // å‹å…ƒå‡½æ•°
 
-//// constexprº¯Êı
+//// constexprå‡½æ•°
 constexpr int constexprFuncTest(int x) { return 123 * x; }

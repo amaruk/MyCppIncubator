@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "CppPrimerFriend.h"
 
 
@@ -13,6 +13,6 @@ CppPrimerFriend::~CppPrimerFriend()
 
 void CppPrimerFriend::useCppPrimerPrivate(const CppPrimer &insCppPrimer)
 {
-    // CppPrimerFriendÊÇCppPrimerµÄÓÑÔªÀà£¬ËùÒÔ¿ÉÒÔ·ÃÎÊÆäprivate³ÉÔ±
+    // CppPrimerFriendæ˜¯CppPrimerçš„å‹å…ƒç±»ï¼Œæ‰€ä»¥å¯ä»¥è®¿é—®å…¶privateæˆå‘˜
     cout << "In CppPrimerFriend, CppPrimer.arithType_bool: " << insCppPrimer.arithType_bool << endl;
 }

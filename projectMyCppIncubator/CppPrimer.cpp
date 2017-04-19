@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "CppPrimer.h"
 #include "CppPrimerFriend.h"
 #include <iostream>
@@ -18,106 +18,106 @@ using std::runtime_error;
 using std::initializer_list;
 
 /*
-******************** ÔËËã·ûÓÅÏÈ¼¶ ********************
-½áºÏÂÉ	ÔËËã·û	        ¹¦ÄÜ	                ÓÃ·¨
+******************** è¿ç®—ç¬¦ä¼˜å…ˆçº§ ********************
+ç»“åˆå¾‹	è¿ç®—ç¬¦	        åŠŸèƒ½	                ç”¨æ³•
 *****************************************************
-×ó	::	            È«¾Ö×÷ÓÃÓò	        ::name
-×ó	::	            Àà×÷ÓÃÓò	            class:name
-×ó	::	            ÃüÃû¿Õ¼ä×÷ÓÃÓò	    namespace::name
+å·¦	::	            å…¨å±€ä½œç”¨åŸŸ	        ::name
+å·¦	::	            ç±»ä½œç”¨åŸŸ	            class:name
+å·¦	::	            å‘½åç©ºé—´ä½œç”¨åŸŸ	    namespace::name
 *****************************************************
-×ó	.	            ³ÉÔ±Ñ¡Ôñ	            object.member
-×ó	->	            ³ÉÔ±Ñ¡Ôñ	            pointer->member
-×ó	[]	            ÏÂ±ê	                expr[expr]
-×ó	()	            º¯Êıµ÷ÓÃ	            name(expr_list)
-×ó	()	            ÀàĞÍ¹¹Ôì	            type(expr_list)
+å·¦	.	            æˆå‘˜é€‰æ‹©	            object.member
+å·¦	->	            æˆå‘˜é€‰æ‹©	            pointer->member
+å·¦	[]	            ä¸‹æ ‡	                expr[expr]
+å·¦	()	            å‡½æ•°è°ƒç”¨	            name(expr_list)
+å·¦	()	            ç±»å‹æ„é€ 	            type(expr_list)
 *****************************************************
-ÓÒ	++	            ºóÖÃµİÔöÔËËã	        lvalue++
-ÓÒ	--	            ºóÖÃµİ¼õÔËËã	        lvalue--
-ÓÒ	typeid	        ÀàĞÍID	            typeid(type)
-ÓÒ	typeid	        ÔËĞĞÊ±ÀàĞÍID	        typeid(expr)
-ÓÒ	Explicit cast	ÀàĞÍ×ª»»	            cast_name<type>(expr)
+å³	++	            åç½®é€’å¢è¿ç®—	        lvalue++
+å³	--	            åç½®é€’å‡è¿ç®—	        lvalue--
+å³	typeid	        ç±»å‹ID	            typeid(type)
+å³	typeid	        è¿è¡Œæ—¶ç±»å‹ID	        typeid(expr)
+å³	Explicit cast	ç±»å‹è½¬æ¢	            cast_name<type>(expr)
 *****************************************************
-ÓÒ	++	            Ç°ÖÃµİÔöÔËËã	        ++lvalue
-ÓÒ	--	            Ç°ÖÃµİ¼õÔËËã	        --lvalue
-ÓÒ	~	            Î»Çó·´	            expr
-ÓÒ	!	            Âß¼­·Ç	            !expr
-ÓÒ		            Ò»Ôª¸ººÅ	            -expr
-ÓÒ	+	            Ò»ÔªÕıºÅ	            +expr
-ÓÒ	*	            ½âÒıÓÃ	            *expr
-ÓÒ	&	            È¡µØÖ·	            &lvalue
-ÓÒ	()	            ÀàĞÍ×ª»»	            (type)expr
-ÓÒ	sizeof	        ¶ÔÏóµÄ´óĞ¡	        sizeof expr
-ÓÒ	sizeof	        ÀàĞÍµÄ´óĞ¡	        sizeof(type)
-ÓÒ	sizeof¡­	        ²ÎÊı°üµÄ´óĞ¡	        sizeof¡­(name)
-ÓÒ	new	            ´´½¨¶ÔÏó	            new type
-ÓÒ	new[]	        ´´½¨Êı×é	            new type[size]
-ÓÒ	delete	        ÊÍ·Å¶ÔÏó	            delete expr
-ÓÒ	delete[]	    ÊÍ·ÅÊı×é	            delete[] expr
-ÓÒ	noexcept	    ÄÜ·ñÅ×³öÒì³£	        noexcept(expr)
+å³	++	            å‰ç½®é€’å¢è¿ç®—	        ++lvalue
+å³	--	            å‰ç½®é€’å‡è¿ç®—	        --lvalue
+å³	~	            ä½æ±‚å	            expr
+å³	!	            é€»è¾‘é	            !expr
+å³		            ä¸€å…ƒè´Ÿå·	            -expr
+å³	+	            ä¸€å…ƒæ­£å·	            +expr
+å³	*	            è§£å¼•ç”¨	            *expr
+å³	&	            å–åœ°å€	            &lvalue
+å³	()	            ç±»å‹è½¬æ¢	            (type)expr
+å³	sizeof	        å¯¹è±¡çš„å¤§å°	        sizeof expr
+å³	sizeof	        ç±»å‹çš„å¤§å°	        sizeof(type)
+å³	sizeofâ€¦	        å‚æ•°åŒ…çš„å¤§å°	        sizeofâ€¦(name)
+å³	new	            åˆ›å»ºå¯¹è±¡	            new type
+å³	new[]	        åˆ›å»ºæ•°ç»„	            new type[size]
+å³	delete	        é‡Šæ”¾å¯¹è±¡	            delete expr
+å³	delete[]	    é‡Šæ”¾æ•°ç»„	            delete[] expr
+å³	noexcept	    èƒ½å¦æŠ›å‡ºå¼‚å¸¸	        noexcept(expr)
 *****************************************************
-×ó	->*	            Ö¸Ïò³ÉÔ±Ñ¡ÔñµÄÖ¸Õë	ptr->*ptr_to_member
-×ó	.*	            Ö¸Ïò³ÉÔ±Ñ¡ÔñµÄÖ¸Õë	obj.*ptr_to_member
+å·¦	->*	            æŒ‡å‘æˆå‘˜é€‰æ‹©çš„æŒ‡é’ˆ	ptr->*ptr_to_member
+å·¦	.*	            æŒ‡å‘æˆå‘˜é€‰æ‹©çš„æŒ‡é’ˆ	obj.*ptr_to_member
 *****************************************************
-×ó	*	            ³Ë·¨	                expr * expr
-×ó	/	            ³ı·¨	                expr / expr
-×ó	%	            È¡Ä££¨ÇóÓà£©	        expr % expr
+å·¦	*	            ä¹˜æ³•	                expr * expr
+å·¦	/	            é™¤æ³•	                expr / expr
+å·¦	%	            å–æ¨¡ï¼ˆæ±‚ä½™ï¼‰	        expr % expr
 *****************************************************
-×ó	+	            ¼Ó·¨              	expr + expr
-×ó		            ¼õ·¨	                expr - expr
+å·¦	+	            åŠ æ³•              	expr + expr
+å·¦		            å‡æ³•	                expr - expr
 *****************************************************
-×ó	<<	            Ïò×óÒÆÎ»	            expr << expr
-×ó	>>	            ÏòÓÒÒÆÎ»	            expr >> expr
+å·¦	<<	            å‘å·¦ç§»ä½	            expr << expr
+å·¦	>>	            å‘å³ç§»ä½	            expr >> expr
 *****************************************************
-×ó	<	            Ğ¡ÓÚ	                expr < expr
-×ó	<=	            Ğ¡ÓÚµÈÓÚ	            expr <= expr
-×ó	>	            ´óÓÚ	                expr > expr
-×ó	>=	            ´óÓÚµÈÓÚ	            expr >= expr
+å·¦	<	            å°äº	                expr < expr
+å·¦	<=	            å°äºç­‰äº	            expr <= expr
+å·¦	>	            å¤§äº	                expr > expr
+å·¦	>=	            å¤§äºç­‰äº	            expr >= expr
 *****************************************************
-×ó	==	            ÏàµÈ	                expr == expr
-×ó	!=	            ²»ÏàµÈ	            expr != expr
+å·¦	==	            ç›¸ç­‰	                expr == expr
+å·¦	!=	            ä¸ç›¸ç­‰	            expr != expr
 *****************************************************
-×ó	&	            Î»Óë                expr & expr
+å·¦	&	            ä½ä¸                expr & expr
 *****************************************************
-×ó	^	            Î»Òà»ò	            expr ^ expr
+å·¦	^	            ä½äº¦æˆ–	            expr ^ expr
 *****************************************************
-×ó	|	            Î»»ò	                expr | expr
+å·¦	|	            ä½æˆ–	                expr | expr
 *****************************************************
-×ó	&&	            Âß¼­Óë	            expr && expr
+å·¦	&&	            é€»è¾‘ä¸	            expr && expr
 *****************************************************
-×ó	||	            Âß¼­»ò	            expr || expr
+å·¦	||	            é€»è¾‘æˆ–	            expr || expr
 *****************************************************
-ÓÒ	?:	            Ìõ¼ş                expr ? expr : expr
+å³	?:	            æ¡ä»¶                expr ? expr : expr
 *****************************************************
-ÓÒ	=	            ¸³Öµ	                lvalue = rvalue
-ÓÒ	"*=, /=, %="	¸´ºÏ¸³Öµ	            lvalue += rvalue
-ÓÒ	"+=, -="
-ÓÒ	"<<=, >>="
-ÓÒ	"&=, |=, ^="
+å³	=	            èµ‹å€¼	                lvalue = rvalue
+å³	"*=, /=, %="	å¤åˆèµ‹å€¼	            lvalue += rvalue
+å³	"+=, -="
+å³	"<<=, >>="
+å³	"&=, |=, ^="
 *****************************************************
-ÓÒ	throw	        Å×³öÒì³£	            throw expr
+å³	throw	        æŠ›å‡ºå¼‚å¸¸	            throw expr
 *****************************************************
-×ó	","	            ¶ººÅ                "expr, expr"
+å·¦	","	            é€—å·                "expr, expr"
 *****************************************************
 
 */
 
 /*
-×ÖÃæÖµ³£Á¿(literal)
-* Ê®½øÖÆ£¨Ä¬ÈÏÓĞ·ûºÅ£¬ÒÀĞòint¡¢long¡¢long longÓÃ¾¡¿ÉÄÜĞ¡µÄÀàĞÍ£©£º20
-* °Ë½øÖÆ(Ä¬ÈÏ²»È·¶¨£¬ÒÀĞòint¡¢unsigned int¡¢long¡¢unsigned long¡¢long long¡¢unsigned long longÓÃ¾¡¿ÉÄÜĞ¡µÄÀàĞÍ)£º024
-* Ê®Áù½øÖÆ(Í¬°Ë½øÖÆ)£º0x14
-* shortÃ»ÓĞ×ÖÃæÁ¿
-* ¸¡µãÄ¬ÈÏÎªdouble
-* ¶à¸ö×Ö·û´®Èç¹ûÎ»ÖÃÏàÁÚ£¬ÇÒ½öÓÉ¿Õ¸ñ¡¢Ëõ½ø¡¢»»ĞĞ·û·Ö¸ô£¬Ôò×÷ÎªÒ»¸öÕûÌå¡£
-* nullptrÊÇÖ¸Õë×ÖÃæÁ¿
+å­—é¢å€¼å¸¸é‡(literal)
+* åè¿›åˆ¶ï¼ˆé»˜è®¤æœ‰ç¬¦å·ï¼Œä¾åºintã€longã€long longç”¨å°½å¯èƒ½å°çš„ç±»å‹ï¼‰ï¼š20
+* å…«è¿›åˆ¶(é»˜è®¤ä¸ç¡®å®šï¼Œä¾åºintã€unsigned intã€longã€unsigned longã€long longã€unsigned long longç”¨å°½å¯èƒ½å°çš„ç±»å‹)ï¼š024
+* åå…­è¿›åˆ¶(åŒå…«è¿›åˆ¶)ï¼š0x14
+* shortæ²¡æœ‰å­—é¢é‡
+* æµ®ç‚¹é»˜è®¤ä¸ºdouble
+* å¤šä¸ªå­—ç¬¦ä¸²å¦‚æœä½ç½®ç›¸é‚»ï¼Œä¸”ä»…ç”±ç©ºæ ¼ã€ç¼©è¿›ã€æ¢è¡Œç¬¦åˆ†éš”ï¼Œåˆ™ä½œä¸ºä¸€ä¸ªæ•´ä½“ã€‚
+* nullptræ˜¯æŒ‡é’ˆå­—é¢é‡
 */
 
-// ¹¹Ôìº¯ÊıµÄº¯ÊıÃûºÍÀàÃûÏàÍ¬£¬Ã»ÓĞ·µ»ØÀàĞÍ
-// ¹¹Ôìº¯Êı²»ÄÜ±»ÉùÃ÷Îªconst£¬´´½¨ÀàµÄÒ»¸öconst¶ÔÏóÊ±£¬
-// Òªµ½¹¹Ôìº¯ÊıÍê³É³õÊ¼»¯¹ı³Ì£¨¹¹Ôìº¯Êı¿ÉÒÔÏò¶ÔÏóĞ´Öµ£©£¬¶ÔÏó²ÅµÃµ½³£Á¿ÊôĞÔ¡£
-// ²»ÏÔÊ½´´½¨¹¹Ôìº¯ÊıÊ±£¬ÓÉ±àÒëÆ÷Éú³ÉµÄÒşÊ½Ä¬ÈÏ¹¹Ôìº¯Êı¶Ô³ÉÔ±½øĞĞ³õÊ¼»¯
-// £¨Ä¬ÈÏ³õÊ¼»¯»òÓÃ¶¨ÒåÀà³ÉÔ±Ê±µÄ³õÖµ³õÊ¼»¯£©¡£Ò»µ©¶¨ÒåÁËÒ»¸ö¹¹Ôìº¯Êı£¬
-// ¾Í²»´æÔÚÄ¬ÈÏ¹¹Ôìº¯ÊıÁË¡£
+// æ„é€ å‡½æ•°çš„å‡½æ•°åå’Œç±»åç›¸åŒï¼Œæ²¡æœ‰è¿”å›ç±»å‹
+// æ„é€ å‡½æ•°ä¸èƒ½è¢«å£°æ˜ä¸ºconstï¼Œåˆ›å»ºç±»çš„ä¸€ä¸ªconstå¯¹è±¡æ—¶ï¼Œ
+// è¦åˆ°æ„é€ å‡½æ•°å®Œæˆåˆå§‹åŒ–è¿‡ç¨‹ï¼ˆæ„é€ å‡½æ•°å¯ä»¥å‘å¯¹è±¡å†™å€¼ï¼‰ï¼Œå¯¹è±¡æ‰å¾—åˆ°å¸¸é‡å±æ€§ã€‚
+// ä¸æ˜¾å¼åˆ›å»ºæ„é€ å‡½æ•°æ—¶ï¼Œç”±ç¼–è¯‘å™¨ç”Ÿæˆçš„éšå¼é»˜è®¤æ„é€ å‡½æ•°å¯¹æˆå‘˜è¿›è¡Œåˆå§‹åŒ–
+// ï¼ˆé»˜è®¤åˆå§‹åŒ–æˆ–ç”¨å®šä¹‰ç±»æˆå‘˜æ—¶çš„åˆå€¼åˆå§‹åŒ–ï¼‰ã€‚ä¸€æ—¦å®šä¹‰äº†ä¸€ä¸ªæ„é€ å‡½æ•°ï¼Œ
+// å°±ä¸å­˜åœ¨é»˜è®¤æ„é€ å‡½æ•°äº†ã€‚
 
 CppPrimer::CppPrimer(CppPrimerStr initStr)
 {
@@ -137,10 +137,10 @@ void CppPrimer::printIntAry(int intAry[], int size)
 
 void CppPrimer::displayArithTypes(void)
 {
-    // Èç¹û³ÉÔ±º¯ÊıÄÚ²¿ÓĞ±äÁ¿ºÍÀà³ÉÔ±±äÁ¿ºÍÀàÍâ²¿±äÁ¿Í¬Ãû
-    // Ö±½ÓÊ¹ÓÃ±äÁ¿ÃûÊÇÖ¸³ÉÔ±º¯ÊıÄÚ²¿µÄ±äÁ¿
-    // Òªµ÷ÓÃÀà³ÉÔ±±äÁ¿£¬¿ÉÓÃthis->varName»òclassName.varName
-    // Òªµ÷ÓÃÀàÍâ²¿±äÁ¿£¬¿ÉÓÃ::varNmae
+    // å¦‚æœæˆå‘˜å‡½æ•°å†…éƒ¨æœ‰å˜é‡å’Œç±»æˆå‘˜å˜é‡å’Œç±»å¤–éƒ¨å˜é‡åŒå
+    // ç›´æ¥ä½¿ç”¨å˜é‡åæ˜¯æŒ‡æˆå‘˜å‡½æ•°å†…éƒ¨çš„å˜é‡
+    // è¦è°ƒç”¨ç±»æˆå‘˜å˜é‡ï¼Œå¯ç”¨this->varNameæˆ–className.varName
+    // è¦è°ƒç”¨ç±»å¤–éƒ¨å˜é‡ï¼Œå¯ç”¨::varNmae
 	cout << "==== Display all arithmetic types ====" << endl;
 	cout << "bool[" << (sizeof arithType_bool) << " byte]: " << arithType_bool << endl;
 	cout << "char[" << (sizeof(arithType_char)) << " byte]: " << arithType_char << endl;
@@ -156,47 +156,47 @@ void CppPrimer::displayArithTypes(void)
 	cout << "long double[" << (sizeof arithType_longdouble) << " byte]: " << arithType_longdouble << endl;
 	cout << "pointer[" << (sizeof arithType_ptr) << " byte]: " << arithType_ptr << endl;
 
-	//// sizeof¹æÔò£º
-	//  ¶Ôchar»òÀàĞÍÎªcharµÄ±í´ïÊ½Ö´ĞĞsizeof£¬½á¹ûÎª1
-	//  ¶ÔÒıÓÃÀàĞÍÖ´ĞĞsizeofµÃµ½±»ÒıÓÃ¶ÔÏóËùÕ¼¿Õ¼ä´óĞ¡
-	//  ¶ÔÖ¸ÕëÖ´ĞĞsizeofµÃµ½Ö¸Õë±¾ÉíËùÕ¼¿Õ¼ä´óĞ¡
-	//  ¶Ô½âÒıÓÃÖ¸ÕëÖ´ĞĞsizeofµÃµ½Ö¸ÕëÖ¸ÏòµÄ¶ÔÏóËùÕ¼¿Õ¼ä´óĞ¡£¬Ö¸Õë²»ĞèÓĞĞ§
-	//  ¶ÔÊı×éÖ´ĞĞsizeofµÃµ½Õû¸öÊı×éËùÕ¼¿Õ¼ä´óĞ¡¡£¿ÉÓÃconstexpr size_t sz = sizeof(ia) / sizeof(*ia)À´»ñµÃÊı×éÔªËØ¸öÊı
-	//  ¶Ôstring¶ÔÏó»òvector¶ÔÏóÖ´ĞĞsizeofÖ»·µ»Ø¹Ì¶¨²¿·ÖµÄ´óĞ¡£¬¶ø²»¼ÆËã¶ÔÏóÖĞµÄÔªËØÕ¼ÓÃ¶àÉÙ¿Õ¼ä¡£
+	//// sizeofè§„åˆ™ï¼š
+	//  å¯¹charæˆ–ç±»å‹ä¸ºcharçš„è¡¨è¾¾å¼æ‰§è¡Œsizeofï¼Œç»“æœä¸º1
+	//  å¯¹å¼•ç”¨ç±»å‹æ‰§è¡Œsizeofå¾—åˆ°è¢«å¼•ç”¨å¯¹è±¡æ‰€å ç©ºé—´å¤§å°
+	//  å¯¹æŒ‡é’ˆæ‰§è¡Œsizeofå¾—åˆ°æŒ‡é’ˆæœ¬èº«æ‰€å ç©ºé—´å¤§å°
+	//  å¯¹è§£å¼•ç”¨æŒ‡é’ˆæ‰§è¡Œsizeofå¾—åˆ°æŒ‡é’ˆæŒ‡å‘çš„å¯¹è±¡æ‰€å ç©ºé—´å¤§å°ï¼ŒæŒ‡é’ˆä¸éœ€æœ‰æ•ˆ
+	//  å¯¹æ•°ç»„æ‰§è¡Œsizeofå¾—åˆ°æ•´ä¸ªæ•°ç»„æ‰€å ç©ºé—´å¤§å°ã€‚å¯ç”¨constexpr size_t sz = sizeof(ia) / sizeof(*ia)æ¥è·å¾—æ•°ç»„å…ƒç´ ä¸ªæ•°
+	//  å¯¹stringå¯¹è±¡æˆ–vectorå¯¹è±¡æ‰§è¡Œsizeofåªè¿”å›å›ºå®šéƒ¨åˆ†çš„å¤§å°ï¼Œè€Œä¸è®¡ç®—å¯¹è±¡ä¸­çš„å…ƒç´ å ç”¨å¤šå°‘ç©ºé—´ã€‚
 
-	//// ÃüÃûµÄÇ¿ÖÆÀàĞÍ×ª»»
+	//// å‘½åçš„å¼ºåˆ¶ç±»å‹è½¬æ¢
 	// cast name<type>(expression);
-	//     typeÊÇÄ¿±êÀàĞÍ
-	//     expressionÊÇÒª×ª»»µÄÖµ
-	//     case-nameÎª£º
-	//       static_cast²»°üº¬µ×²ãconst£¬ÓĞÃ÷È·¶¨ÒåµÄÀàĞÍ×ª»»¡£Èç°Ñint×ª³Échar£¬±íÃ÷Ğ´´úÂëµÄÊ±ºòÖªµÀ²¢ÇÒ²»ÔÚÒâ¾«¶ÈµÄËğÊ§
-	//       dynamic_castÖ§³ÖÔËĞĞÊ±ÀàĞÍÊ¶±ğ
-	//       const_castÖ»ÄÜ¸Ä±äµ×²ãconst¡£È¥µôconstĞÔÖÊ¡£ÓÃÓÚº¯ÊıÖØÔØ¡£
-	//       reinterpret_castÎªÔËËã¶ÔÏóµÄÎ»Ä£Ê½Ìá¹©½ÏµÍ²ã´ÎÉÏµÄÖØĞÂ½âÊÍ£¬±ÈÈç°ÑintÖ¸Õë×ª»»³ÉcharÖ¸Õë
-	// ¾ÉÊ½µÄÇ¿ÖÆÀàĞÍ×ª»»
+	//     typeæ˜¯ç›®æ ‡ç±»å‹
+	//     expressionæ˜¯è¦è½¬æ¢çš„å€¼
+	//     case-nameä¸ºï¼š
+	//       static_castä¸åŒ…å«åº•å±‚constï¼Œæœ‰æ˜ç¡®å®šä¹‰çš„ç±»å‹è½¬æ¢ã€‚å¦‚æŠŠintè½¬æˆcharï¼Œè¡¨æ˜å†™ä»£ç çš„æ—¶å€™çŸ¥é“å¹¶ä¸”ä¸åœ¨æ„ç²¾åº¦çš„æŸå¤±
+	//       dynamic_castæ”¯æŒè¿è¡Œæ—¶ç±»å‹è¯†åˆ«
+	//       const_caståªèƒ½æ”¹å˜åº•å±‚constã€‚å»æ‰constæ€§è´¨ã€‚ç”¨äºå‡½æ•°é‡è½½ã€‚
+	//       reinterpret_castä¸ºè¿ç®—å¯¹è±¡çš„ä½æ¨¡å¼æä¾›è¾ƒä½å±‚æ¬¡ä¸Šçš„é‡æ–°è§£é‡Šï¼Œæ¯”å¦‚æŠŠintæŒ‡é’ˆè½¬æ¢æˆcharæŒ‡é’ˆ
+	// æ—§å¼çš„å¼ºåˆ¶ç±»å‹è½¬æ¢
 	//    type(expr);
 	//    (type)expr;
 
-    // static_cast: double×ªint
+    // static_cast: doubleè½¬int
     double dblVar = 123.456;
     int intVar = static_cast<int>(dblVar);
     cout << "double: " << dblVar << " int: " << intVar << endl;
-    // static_cast: voidÖ¸Õë×ªdoubleÖ¸Õë
+    // static_cast: voidæŒ‡é’ˆè½¬doubleæŒ‡é’ˆ
     void *ptrVoid = &dblVar;
     double *ptrDouble = static_cast<double *>(ptrVoid);
     cout << "*ptrDouble: " << (*ptrDouble) << endl;
 
     // dynamic_cast: TODO
 
-    // const_cast: È¥µôµ×²ãconst£¬²»ÊÇº¯ÊıÖØÔØµÄÓÃ·¨Ò»°ãÔ¤Ê¾Éè¼ÆÓÃÎÊÌâ
+    // const_cast: å»æ‰åº•å±‚constï¼Œä¸æ˜¯å‡½æ•°é‡è½½çš„ç”¨æ³•ä¸€èˆ¬é¢„ç¤ºè®¾è®¡ç”¨é—®é¢˜
     const int cIntVal = 123;
     const int *ptrConstInt = &cIntVal;
-    int *ptrInt = const_cast<int *>(ptrConstInt); // ÕıÈ·£¬È¥µôÁËµ×²ãconst£¬µ«Í¨¹ıÖ¸ÕëĞ´ÖµÊÇÎ´¶¨ÒåĞĞÎª
-    //*ptrInt = 456; // ²»Ò»¶¨»á±ÀÀ££¬¿ÉÄÜ²Ù×÷ÎŞĞ§
-    //int ptrIntImpossible = const_cast<int>(cIntVal); // ´íÎó£¬ÎŞ·¨È¥µô¶¥²ãconst
-    // ÓÃÓÚº¯ÊıÖØÔØ
+    int *ptrInt = const_cast<int *>(ptrConstInt); // æ­£ç¡®ï¼Œå»æ‰äº†åº•å±‚constï¼Œä½†é€šè¿‡æŒ‡é’ˆå†™å€¼æ˜¯æœªå®šä¹‰è¡Œä¸º
+    //*ptrInt = 456; // ä¸ä¸€å®šä¼šå´©æºƒï¼Œå¯èƒ½æ“ä½œæ— æ•ˆ
+    //int ptrIntImpossible = const_cast<int>(cIntVal); // é”™è¯¯ï¼Œæ— æ³•å»æ‰é¡¶å±‚const
+    // ç”¨äºå‡½æ•°é‡è½½
 
-    // reinterpret_cast: intÖ¸Õë×ªshortÖ¸ÕëºóÊ¹ÓÃ
+    // reinterpret_cast: intæŒ‡é’ˆè½¬shortæŒ‡é’ˆåä½¿ç”¨
     int intValTarget = 0x12345678;
     int *ptrIntTarget = &intValTarget;
     short *ptrCharTarget = reinterpret_cast<short *>(ptrIntTarget);
@@ -204,42 +204,42 @@ void CppPrimer::displayArithTypes(void)
     cout << "*ptrCharTarget" << *ptrCharTarget << endl;
 }
 
-// º¯ÊıÌåÍâµÄ±äÁ¿Î´³õÊ¼»¯»á±»³õÊ¼»¯Îª0
+// å‡½æ•°ä½“å¤–çš„å˜é‡æœªåˆå§‹åŒ–ä¼šè¢«åˆå§‹åŒ–ä¸º0
 int intOutsideUninited;
 void CppPrimer::varInitTest(void)
 {
 	cout << "==== Variable initialization test ====" << endl;
 
-	// ÆÕÍ¨¸³Öµ²»¼ì²é³õÖµÊÇ·ñ³¬·¶Î§
+	// æ™®é€šèµ‹å€¼ä¸æ£€æŸ¥åˆå€¼æ˜¯å¦è¶…èŒƒå›´
 	int intAssign = 2147483648;
 	cout << "int intAssign = 2147483648: " << intAssign << endl;
 
-	// ÁĞ±í¸³Öµ¼ì²é³õÖµÊÇ·ñ³¬·¶Î§£¬³¬·¶Î§±àÒëERROR
+	// åˆ—è¡¨èµ‹å€¼æ£€æŸ¥åˆå€¼æ˜¯å¦è¶…èŒƒå›´ï¼Œè¶…èŒƒå›´ç¼–è¯‘ERROR
 	int intAssignList = { 2147483647 };
 	cout << "int intAssignList = { 2147483647 }: " << intAssignList << endl;
 
-	// ÆÕÍ¨¸³Öµ²»¼ì²é³õÖµÊÇ·ñ³¬·¶Î§
+	// æ™®é€šèµ‹å€¼ä¸æ£€æŸ¥åˆå€¼æ˜¯å¦è¶…èŒƒå›´
 	int intDirect(2147483648);
 	cout << "int intDirect(2147483648): " << intDirect << endl;
 
-	// ÁĞ±í¸³Öµ¼ì²é³õÖµÊÇ·ñ³¬·¶Î§£¬³¬·¶Î§±àÒëERROR
+	// åˆ—è¡¨èµ‹å€¼æ£€æŸ¥åˆå€¼æ˜¯å¦è¶…èŒƒå›´ï¼Œè¶…èŒƒå›´ç¼–è¯‘ERROR
 	int intDirectList{ 2147483647 };
 	cout << "int intDirectList = { 2147483647 }: " << intDirectList << endl;
 
-	// º¯ÊıÌåÄÚµÄÄÚÖÃÀàĞÍ±äÁ¿Î´³õÊ¼»¯ ²»»á±»³õÊ¼»¯
+	// å‡½æ•°ä½“å†…çš„å†…ç½®ç±»å‹å˜é‡æœªåˆå§‹åŒ– ä¸ä¼šè¢«åˆå§‹åŒ–
 	int intInsideUninited;
-	// ÈçÏÂÓï¾äµ¼ÖÂ±àÒë¸æ¾¯£ºwarning C4700: uninitialized local variable 'intUinited' used
-	// ÔËĞĞ¿ÉÄÜ±ÀÀ£
+	// å¦‚ä¸‹è¯­å¥å¯¼è‡´ç¼–è¯‘å‘Šè­¦ï¼šwarning C4700: uninitialized local variable 'intUinited' used
+	// è¿è¡Œå¯èƒ½å´©æºƒ
 	//cout << "int intInsideUninited: " << intInsideUninited << endl;
 
-	// º¯ÊıÌåÍâµÄÄÚÖÃÀàĞÍ±äÁ¿Îª³õÊ¼»¯
+	// å‡½æ•°ä½“å¤–çš„å†…ç½®ç±»å‹å˜é‡ä¸ºåˆå§‹åŒ–
 	cout << "int intOutsideUninited: " << intOutsideUninited << endl;
 
-	// ÖØÃûÊ±µ÷ÓÃÈ«¾Ö±äÁ¿
+	// é‡åæ—¶è°ƒç”¨å…¨å±€å˜é‡
 	int intOutsideUninited = 123;
-	// ´òÓ¡¾Ö²¿±äÁ¿
+	// æ‰“å°å±€éƒ¨å˜é‡
 	cout << "intOutsideUninited: " << intOutsideUninited << endl;
-	// ´òÓ¡È«¾Ö±äÁ¿
+	// æ‰“å°å…¨å±€å˜é‡
 	cout << "::intOutsideUninited:  " << ::intOutsideUninited << endl;
 
 }
@@ -248,9 +248,9 @@ void CppPrimer::ptrRefTest(void)
 {
 	int intI{ 123 };
 	int intJ{ 456 };
-	// nullPtrÎª¿ÕÖ¸Õë×ÖÃæÁ¿£»NULL¶¨ÒåÓëcstdlib£¬Ê¹ÓÃÊ±²»Ğèstd::
-	int *ptrInt = nullptr; // ÆÕÍ¨Ö¸Õë
-	int *&refPtrInt = ptrInt; // ÆÕÍ¨Ö¸ÕëµÄÒıÓÃ
+	// nullPträ¸ºç©ºæŒ‡é’ˆå­—é¢é‡ï¼›NULLå®šä¹‰ä¸cstdlibï¼Œä½¿ç”¨æ—¶ä¸éœ€std::
+	int *ptrInt = nullptr; // æ™®é€šæŒ‡é’ˆ
+	int *&refPtrInt = ptrInt; // æ™®é€šæŒ‡é’ˆçš„å¼•ç”¨
 
 	cout << "==== Point to I ====" << endl;
 
@@ -260,7 +260,7 @@ void CppPrimer::ptrRefTest(void)
 	
 	cout << "==== Change to J ====" << endl;
 
-	refPtrInt = &intJ; // Ïàµ±ÓÚ¸Ä±äptrInt
+	refPtrInt = &intJ; // ç›¸å½“äºæ”¹å˜ptrInt
 	cout << "*ptrInt: " << *ptrInt << endl;
 	cout << "*refPtrInt: " << *refPtrInt << endl;
 
@@ -268,72 +268,72 @@ void CppPrimer::ptrRefTest(void)
 
 	int iVal = 135;
 
-	//// ÆÕÍ¨³£Á¿
-	// ¶¥²ã£¨top-level£©const
-	// ±ØĞë³õÊ¼»¯£¬¿ÉÓÃ×ÖÃæÁ¿¡¢±äÁ¿¡¢·µ»ØÖµ³õÊ¼»¯
+	//// æ™®é€šå¸¸é‡
+	// é¡¶å±‚ï¼ˆtop-levelï¼‰const
+	// å¿…é¡»åˆå§‹åŒ–ï¼Œå¯ç”¨å­—é¢é‡ã€å˜é‡ã€è¿”å›å€¼åˆå§‹åŒ–
 	const int iConst = 123;
 
-	//// ÆÕÍ¨ÒıÓÃ
-	// ÒıÓÃ±ØĞë³õÊ¼»¯£¬³õÊ¼»¯Ö®ºóÎŞ·¨½â³ı°ó¶¨
-	// Ö»ÄÜ°ó¶¨µ½¶ÔÏó£¨¿ÉÒÔ¶¨ÒåÖ¸ÕëµÄÒıÓÃ£©£¬²»ÄÜ°ó¶¨µ½×ÖÃæÁ¿»ò±í´ïÊ½½á¹û
-	// ¸³ÖµµÄ¶ÔÏóÀàĞÍ±ØĞëºÍÒıÓÃÀàĞÍÒ»ÖÂ
+	//// æ™®é€šå¼•ç”¨
+	// å¼•ç”¨å¿…é¡»åˆå§‹åŒ–ï¼Œåˆå§‹åŒ–ä¹‹åæ— æ³•è§£é™¤ç»‘å®š
+	// åªèƒ½ç»‘å®šåˆ°å¯¹è±¡ï¼ˆå¯ä»¥å®šä¹‰æŒ‡é’ˆçš„å¼•ç”¨ï¼‰ï¼Œä¸èƒ½ç»‘å®šåˆ°å­—é¢é‡æˆ–è¡¨è¾¾å¼ç»“æœ
+	// èµ‹å€¼çš„å¯¹è±¡ç±»å‹å¿…é¡»å’Œå¼•ç”¨ç±»å‹ä¸€è‡´
 	int &refVal = iVal;
 
-	//// ¶Ô³£Á¿µÄÒıÓÃ£¨reference to const£©
-	// ÒÔÎª×Ô¼ºÒıÓÃÁË³£Á¿£¬ËùÒÔ²»ÄÜ¸Ä±äÒıÓÃµÄ³£Á¿µÄÖµ
-	// µ×²ã£¨low-level£© const
-	// ÒıÓÃµÄ¶ÔÏó²»Ò»¶¨Òªconst£¬¿ÉÒÔ°ó¶¨µ½¶ÔÏó¡¢×ÖÃæÁ¿¡¢±í´ïÊ½
-	// ²»ÂÛÒıÓÃµÄ¶ÔÏóÊÇ²»ÊÇconstÀàĞÍ£¬¶¼²»ÄÜÍ¨¹ı¶Ô³£Á¿µÄÒıÓÃ²Ù×÷À´¸Ä±ä±»ÒıÓÃµÄ¶ÔÏóµÄÖµ£¨Èç£ºrefCInt = 123; ´íÎó£©
+	//// å¯¹å¸¸é‡çš„å¼•ç”¨ï¼ˆreference to constï¼‰
+	// ä»¥ä¸ºè‡ªå·±å¼•ç”¨äº†å¸¸é‡ï¼Œæ‰€ä»¥ä¸èƒ½æ”¹å˜å¼•ç”¨çš„å¸¸é‡çš„å€¼
+	// åº•å±‚ï¼ˆlow-levelï¼‰ const
+	// å¼•ç”¨çš„å¯¹è±¡ä¸ä¸€å®šè¦constï¼Œå¯ä»¥ç»‘å®šåˆ°å¯¹è±¡ã€å­—é¢é‡ã€è¡¨è¾¾å¼
+	// ä¸è®ºå¼•ç”¨çš„å¯¹è±¡æ˜¯ä¸æ˜¯constç±»å‹ï¼Œéƒ½ä¸èƒ½é€šè¿‡å¯¹å¸¸é‡çš„å¼•ç”¨æ“ä½œæ¥æ”¹å˜è¢«å¼•ç”¨çš„å¯¹è±¡çš„å€¼ï¼ˆå¦‚ï¼šrefCInt = 123; é”™è¯¯ï¼‰
 	const int &refCInt = iConst;
 
-	//// ÆÕÍ¨Ö¸Õë
-	// ²»ÄÜÖ¸Ïòconst³£Á¿£¬²»ÄÜÖ¸ÏòÒıÓÃ£¨ÒòÎª²»ÊÇ¶ÔÏó£©
+	//// æ™®é€šæŒ‡é’ˆ
+	// ä¸èƒ½æŒ‡å‘constå¸¸é‡ï¼Œä¸èƒ½æŒ‡å‘å¼•ç”¨ï¼ˆå› ä¸ºä¸æ˜¯å¯¹è±¡ï¼‰
 	int *pInt = &iVal;
 
-	//// Ö¸Ïò³£Á¿µÄÖ¸Õë£¨pointer to const£©
-	// ÒÔÎª×Ô¼ºÖ¸ÏòÁË³£Á¿£¬ËùÒÔ²»ÄÜ¸Ä±äÖ¸ÏòµÄ³£Á¿µÄÖµ
-	// µ×²ã£¨low-level£© const
-	// Ö¸ÏòµÄ¶ÔÏó²»Ò»¶¨Òªconst
-	// ²»ÂÛÖ¸ÏòµÄ¶ÔÏóÊÇ²»ÊÇconstÀàĞÍ£¬¶¼²»ÄÜÍ¨¹ıÖ¸Ïò³£Á¿µÄÖ¸Õë²Ù×÷À´¸Ä±ä±»Ö¸ÏòµÄ¶ÔÏóµÄÖµ£¨Èç£º*ptrCInt = 123; ´íÎó£©
+	//// æŒ‡å‘å¸¸é‡çš„æŒ‡é’ˆï¼ˆpointer to constï¼‰
+	// ä»¥ä¸ºè‡ªå·±æŒ‡å‘äº†å¸¸é‡ï¼Œæ‰€ä»¥ä¸èƒ½æ”¹å˜æŒ‡å‘çš„å¸¸é‡çš„å€¼
+	// åº•å±‚ï¼ˆlow-levelï¼‰ const
+	// æŒ‡å‘çš„å¯¹è±¡ä¸ä¸€å®šè¦const
+	// ä¸è®ºæŒ‡å‘çš„å¯¹è±¡æ˜¯ä¸æ˜¯constç±»å‹ï¼Œéƒ½ä¸èƒ½é€šè¿‡æŒ‡å‘å¸¸é‡çš„æŒ‡é’ˆæ“ä½œæ¥æ”¹å˜è¢«æŒ‡å‘çš„å¯¹è±¡çš„å€¼ï¼ˆå¦‚ï¼š*ptrCInt = 123; é”™è¯¯ï¼‰
 	const int *ptrCInt = &iConst;
 
-	//// ³£Á¿Ö¸Õë£¨const pointer£©
-	// ×Ô¼ºÊÇ³£Á¿£¬ËùÒÔ²»ÄÜ¸Ä±ä×Ô¼ºµÄÖµ
-	// ¶¥²ã£¨top-level£© const
-	// ³õÊ¼»¯¹æÔòÍ¬³£Á¿£¬²»ÄÜ¸Ä±äÖ¸Õë³£Á¿µÄÖµ
+	//// å¸¸é‡æŒ‡é’ˆï¼ˆconst pointerï¼‰
+	// è‡ªå·±æ˜¯å¸¸é‡ï¼Œæ‰€ä»¥ä¸èƒ½æ”¹å˜è‡ªå·±çš„å€¼
+	// é¡¶å±‚ï¼ˆtop-levelï¼‰ const
+	// åˆå§‹åŒ–è§„åˆ™åŒå¸¸é‡ï¼Œä¸èƒ½æ”¹å˜æŒ‡é’ˆå¸¸é‡çš„å€¼
 	int * const cPtrInt = &iVal;
 	
-	// constexpr: ³£Á¿±í´ïÊ½ÊÇÖ¸Öµ²»»á¸Ä±ä£¬ÇÒÔÚ±àÒë¹ı³Ì¾ÍÄÜµÃµ½¼ÆËã½á¹ûµÄ±í´ïÊ½¡£
-	// C++11¹æ¶¨£¬±äÁ¿ÉùÃ÷ÎªconstexprÀàĞÍºó£¬ÓÉ±àÒëÆ÷ÑéÖ¤±äÁ¿µÄÖµÊÇ·ñÎª³£Á¿±í´ïÊ½£¬´Ë±äÁ¿±ØĞëÓÃ³£Á¿±í´ïÊ½³õÊ¼»¯¡£
+	// constexpr: å¸¸é‡è¡¨è¾¾å¼æ˜¯æŒ‡å€¼ä¸ä¼šæ”¹å˜ï¼Œä¸”åœ¨ç¼–è¯‘è¿‡ç¨‹å°±èƒ½å¾—åˆ°è®¡ç®—ç»“æœçš„è¡¨è¾¾å¼ã€‚
+	// C++11è§„å®šï¼Œå˜é‡å£°æ˜ä¸ºconstexprç±»å‹åï¼Œç”±ç¼–è¯‘å™¨éªŒè¯å˜é‡çš„å€¼æ˜¯å¦ä¸ºå¸¸é‡è¡¨è¾¾å¼ï¼Œæ­¤å˜é‡å¿…é¡»ç”¨å¸¸é‡è¡¨è¾¾å¼åˆå§‹åŒ–ã€‚
 
 	cout << "==== Alias ====" << endl;
-	typedef int aliasInt; //aliasIntÊÇintµÄÍ¬Òå´Ê
-	typedef aliasInt neoInt, *neoIntP; //neoIntÊÇintµÄÍ¬Òå´Ê£¬neoIntPÊÇint *µÄÍ¬Òå´Ê
+	typedef int aliasInt; //aliasIntæ˜¯intçš„åŒä¹‰è¯
+	typedef aliasInt neoInt, *neoIntP; //neoIntæ˜¯intçš„åŒä¹‰è¯ï¼ŒneoIntPæ˜¯int *çš„åŒä¹‰è¯
 
 	aliasInt aliasIntVal = 123;
 	neoInt neoIntVal = 123;
 	neoIntP neoIntPtr = &neoIntVal;
 
-	using usingInt = int; // C++11¹æ¶¨±ğÃûÉùÃ÷alias declaration¡£usingIntÊÇdoubleµÄÍ¬Òå´Ê
+	using usingInt = int; // C++11è§„å®šåˆ«åå£°æ˜alias declarationã€‚usingIntæ˜¯doubleçš„åŒä¹‰è¯
 	usingInt usingIntVal = 123;
 
-	//// ×¢ÒâÈçÏÂÏİÚå
+	//// æ³¨æ„å¦‚ä¸‹é™·é˜±
 	char charVar = 'a';
 	typedef char *pstring;
-	const pstring cstr = &charVar; // cstrÊÇ¡°Ö¸ÏòcharµÄ³£Á¿Ö¸Õë¡±
-	const pstring *cstrptr; // cstrptrÊÇÒ»¸öÖ¸Õë£¬ËûµÄ¶ÔÏóÊÇ¡°Ö¸ÏòcharµÄ³£Á¿Ö¸Õë¡±
-	// ´íÎóµÄÀí½âÎªÖ±½Ó°ÑtypedefÌæ»»½øÈ¥£ºconst char *cstr = 0;
-	//    ÕâÖÖÀí½âÖĞ£¬Êı¾İÀàĞÍÎªchar£¬*ÊÇÉùÃ÷·ûµÄÒ»²¿·Ö£¬Õû¸ö¶¨Òå±íÊ¾¡°Ö¸Ïòchar³£Á¿µÄÖ¸Õë¡±
-	// ÕıÈ·µÄÀí½âÎª£ºpstringÊÇÊı¾İÀàĞÍµÄ±ğÃû£¬±íÊ¾char*Êı¾İÀàĞÍ
-	//    Õû¸ö¶¨Òå±íÊ¾¡°Ö¸ÏòcharµÄ³£Á¿Ö¸Õë¡±£¬¼´char * const cstr = 0;
-	//    ¿ÉÒÔÀà±Èconst int i±íÊ¾intÀàĞÍµÄ³£Á¿£¬const pstring i±íÊ¾pstringÀàĞÍµÄ³£Á¿¡£
-	// ÓÃÏÂÃæµÄÓï¾äÊµ²âÀàĞÍ
-	//cstr = nullptr; // ´íÎó£¬×óÖµÎªconst²»¿É¸Ä±ä
-	*cstr = 'b'; // ÕıÈ·
+	const pstring cstr = &charVar; // cstræ˜¯â€œæŒ‡å‘charçš„å¸¸é‡æŒ‡é’ˆâ€
+	const pstring *cstrptr; // cstrptræ˜¯ä¸€ä¸ªæŒ‡é’ˆï¼Œä»–çš„å¯¹è±¡æ˜¯â€œæŒ‡å‘charçš„å¸¸é‡æŒ‡é’ˆâ€
+	// é”™è¯¯çš„ç†è§£ä¸ºç›´æ¥æŠŠtypedefæ›¿æ¢è¿›å»ï¼šconst char *cstr = 0;
+	//    è¿™ç§ç†è§£ä¸­ï¼Œæ•°æ®ç±»å‹ä¸ºcharï¼Œ*æ˜¯å£°æ˜ç¬¦çš„ä¸€éƒ¨åˆ†ï¼Œæ•´ä¸ªå®šä¹‰è¡¨ç¤ºâ€œæŒ‡å‘charå¸¸é‡çš„æŒ‡é’ˆâ€
+	// æ­£ç¡®çš„ç†è§£ä¸ºï¼špstringæ˜¯æ•°æ®ç±»å‹çš„åˆ«åï¼Œè¡¨ç¤ºchar*æ•°æ®ç±»å‹
+	//    æ•´ä¸ªå®šä¹‰è¡¨ç¤ºâ€œæŒ‡å‘charçš„å¸¸é‡æŒ‡é’ˆâ€ï¼Œå³char * const cstr = 0;
+	//    å¯ä»¥ç±»æ¯”const int iè¡¨ç¤ºintç±»å‹çš„å¸¸é‡ï¼Œconst pstring iè¡¨ç¤ºpstringç±»å‹çš„å¸¸é‡ã€‚
+	// ç”¨ä¸‹é¢çš„è¯­å¥å®æµ‹ç±»å‹
+	//cstr = nullptr; // é”™è¯¯ï¼Œå·¦å€¼ä¸ºconstä¸å¯æ”¹å˜
+	*cstr = 'b'; // æ­£ç¡®
 	cout << "charVar: " << charVar << endl;
 
-	// autoÀàĞÍ: C++11ÒıÈëauto£¬ÉùÃ÷µÄ±äÁ¿ÀàĞÍÓÉ±àÒëÆ÷¸ù¾İ±í´ïÊ½µÄ½á¹ûÈ·¶¨¡£
-	// decltypeÀàĞÍ C++11ÒıÈëdecltypeÑ¡Ôñ²¢·µ»Ø²Ù×÷ÊıµÄÊı¾İÀàĞÍ
+	// autoç±»å‹: C++11å¼•å…¥autoï¼Œå£°æ˜çš„å˜é‡ç±»å‹ç”±ç¼–è¯‘å™¨æ ¹æ®è¡¨è¾¾å¼çš„ç»“æœç¡®å®šã€‚
+	// decltypeç±»å‹ C++11å¼•å…¥decltypeé€‰æ‹©å¹¶è¿”å›æ“ä½œæ•°çš„æ•°æ®ç±»å‹
 	
 }
 
@@ -341,23 +341,23 @@ void CppPrimer::stringTest(void)
 {
 	cout << "==== String Initialization ====" << endl;
 
-	// Ä¬ÈÏ³õÊ¼»¯£¬¿Õ×Ö·û´®
+	// é»˜è®¤åˆå§‹åŒ–ï¼Œç©ºå­—ç¬¦ä¸²
 	string initStr_default;
 	cout << "string initStr_default: " << initStr_default << endl;
 
-	// copy initialization¡£initStr_assignÊÇinitStr_defaultµÄ¸±±¾
+	// copy initializationã€‚initStr_assignæ˜¯initStr_defaultçš„å‰¯æœ¬
 	string initStr_copy = initStr_default;
 	cout << "string initStr_copy = initStr_default: " << initStr_copy << endl;
 
-	// direct initialization¡£´´½¨¸±±¾
+	// direct initializationã€‚åˆ›å»ºå‰¯æœ¬
 	string initStr_direct(initStr_default);
 	cout << "string initStr_direct(initStr_default): " << initStr_default << endl;
 
-	// ×ÖÃæÁ¿µÄ¸±±¾
+	// å­—é¢é‡çš„å‰¯æœ¬
 	string initStr_literalAssign = "hiya";
 	cout << "string initStr_literalAssign = \"hiya\": " << initStr_literalAssign << endl;
 
-	// Ğ§¹ûÍ¬ÉÏ
+	// æ•ˆæœåŒä¸Š
 	string initStr_literalDirect("hiya");
 	cout << "string initStr_literalDirect(\"hiya\"): " << initStr_literalDirect << endl;
 	
@@ -367,13 +367,13 @@ void CppPrimer::stringTest(void)
 
 	cout << "==== Range for ====" << endl;
 	string strRangeFor("This is a string to be ranged for...");
-	// range forµÄstatement²»ÄÜ¸Ä±äĞòÁĞµÄ´óĞ¡
-	// Èç¹ûdeclarationÎª±äÁ¿£¬ÔòstatementÀï²Ù×÷µÄÊÇĞòÁĞÔªËØµÄ¿½±´¡£for(char c : str)
+	// range forçš„statementä¸èƒ½æ”¹å˜åºåˆ—çš„å¤§å°
+	// å¦‚æœdeclarationä¸ºå˜é‡ï¼Œåˆ™statementé‡Œæ“ä½œçš„æ˜¯åºåˆ—å…ƒç´ çš„æ‹·è´ã€‚for(char c : str)
 	cout << "Range for: ";
 	for (char c : strRangeFor)
 	{ cout << c; }
 	cout << endl;
-	// Èç¹ûdeclarationÎªÒıÓÃ£¬ÔòstatementÀïÖ±½Ó²Ù×÷ĞòÁĞÔªËØ¡£for(char &c:str)
+	// å¦‚æœdeclarationä¸ºå¼•ç”¨ï¼Œåˆ™statementé‡Œç›´æ¥æ“ä½œåºåˆ—å…ƒç´ ã€‚for(char &c:str)
 	for (char &c : strRangeFor)
 	{ c = toupper(c); }
 	cout << "Range for toupper: " << strRangeFor << endl;
@@ -381,50 +381,50 @@ void CppPrimer::stringTest(void)
 
 void CppPrimer::vectorTest(void)
 {
-	// ±íÊ¾¶ÔÏóµÄ¼¯ºÏ£¬ÆäÖĞËùÓĞ¶ÔÏóµÄÀàĞÍ¶¼ÏàÍ¬¡£ÒıÓÃ²»ÊÇ¶ÔÏó£¬ËùÒÔ²»´æÔÚ°üº¬ÒıÓÃµÄvector¡£
-	// vectorÊÇÄ£°å£¬vector<T>ÊÇÀàĞÍ¡£
+	// è¡¨ç¤ºå¯¹è±¡çš„é›†åˆï¼Œå…¶ä¸­æ‰€æœ‰å¯¹è±¡çš„ç±»å‹éƒ½ç›¸åŒã€‚å¼•ç”¨ä¸æ˜¯å¯¹è±¡ï¼Œæ‰€ä»¥ä¸å­˜åœ¨åŒ…å«å¼•ç”¨çš„vectorã€‚
+	// vectoræ˜¯æ¨¡æ¿ï¼Œvector<T>æ˜¯ç±»å‹ã€‚
 
-	//vector<T> v1; //¿Õvector£¬ÔªËØÀàĞÍÎªT£¬Ä¬ÈÏ³õÊ¼»¯
+	//vector<T> v1; //ç©ºvectorï¼Œå…ƒç´ ç±»å‹ä¸ºTï¼Œé»˜è®¤åˆå§‹åŒ–
 	vector<int> vInt_default;
-	// vInt_directÖĞ°üº¬vInt_defaultËùÓĞÔªËØµÄ¸±±¾
+	// vInt_directä¸­åŒ…å«vInt_defaultæ‰€æœ‰å…ƒç´ çš„å‰¯æœ¬
 	vector<int> vInt_direct(vInt_default);
-	// Ğ§¹ûÍ¬ÉÏ
+	// æ•ˆæœåŒä¸Š
 	vector<int> vInt_assign = vInt_default;
-	// vInt_repeat°üº¬ÁË5¸öÖØ¸´µÄÔªËØ£¬Ã¿¸öÔªËØ¶¼ÊÇ123
+	// vInt_repeatåŒ…å«äº†5ä¸ªé‡å¤çš„å…ƒç´ ï¼Œæ¯ä¸ªå…ƒç´ éƒ½æ˜¯123
 	vector<int> vInt_repeat(5, 123);
-	//vInt_repeatDefault°üº¬ÁË5¸öÖØ¸´µÄÔªËØ£¬Ã¿¸öÔªËØÖµÎªÄ¬ÈÏ³õÊ¼»¯Öµ
+	//vInt_repeatDefaultåŒ…å«äº†5ä¸ªé‡å¤çš„å…ƒç´ ï¼Œæ¯ä¸ªå…ƒç´ å€¼ä¸ºé»˜è®¤åˆå§‹åŒ–å€¼
 	vector<int> vInt_repeatDefault(5); 
 
-	// ÒÔÏÂc++11ÒıÈë
-	// vInt_listDirect°üº¬ÁË³õÖµÎª1,2,3,...µÄÔªËØ
+	// ä»¥ä¸‹c++11å¼•å…¥
+	// vInt_listDirectåŒ…å«äº†åˆå€¼ä¸º1,2,3,...çš„å…ƒç´ 
 	vector<int> vInt_listDirect{ 1, 2, 3 };
-	// Ğ§¹ûÍ¬ÉÏ
+	// æ•ˆæœåŒä¸Š
 	vector<int> vInt_listAssign = { 1, 2, 3 };
 
-	// ÏòÁ¿½Ó¿Ú
+	// å‘é‡æ¥å£
 	vector<int> vIntA;
 	vector<int> vIntB = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 
-	// vectorÖĞ²»º¬ÔªËØÊ±·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
+	// vectorä¸­ä¸å«å…ƒç´ æ—¶è¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡
 	cout << "Is vIntA empty: " << vIntA.empty() << endl;
 	cout << "Is vIntB empty: " << vIntB.empty() << endl;
 
-	// vectorµÄÔªËØ¸öÊı
+	// vectorçš„å…ƒç´ ä¸ªæ•°
 	cout << "vIntA size: " << vIntA.size() << endl;
 	cout << "vIntB size: " << vIntB.size() << endl;
 
-	// ÏòÄ©Î²Ìí¼ÓÔªËØ
+	// å‘æœ«å°¾æ·»åŠ å…ƒç´ 
 	vIntA.push_back(2);
-	// ·µ»ØµÚn¸öÎ»ÖÃÉÏµÄÒıÓÃ
+	// è¿”å›ç¬¬nä¸ªä½ç½®ä¸Šçš„å¼•ç”¨
 	cout << "vIntA[0]: " << vIntA[0] << endl;
-	// <, <= , >, >= ÒÔ×ÖµäĞò±È½Ï
+	// <, <= , >, >= ä»¥å­—å…¸åºæ¯”è¾ƒ
 	cout << "vIntA > vIntB: " << (vIntA > vIntB) << endl;
-	// µ±ÇÒ½öµ±ÔªËØÊıÁ¿ÏàÍ¬ÇÒ¶ÔÓ¦Î»ÖÃÔªËØ¶¼ÏàÍ¬
+	// å½“ä¸”ä»…å½“å…ƒç´ æ•°é‡ç›¸åŒä¸”å¯¹åº”ä½ç½®å…ƒç´ éƒ½ç›¸åŒ
 	cout << "v1 == v2: " << (vIntA == vIntB) << endl;
-	// ÓÃvIntBÖĞÔªËØ¿½±´Ìæ»»vIntAÖĞÔªËØ
+	// ç”¨vIntBä¸­å…ƒç´ æ‹·è´æ›¿æ¢vIntAä¸­å…ƒç´ 
 	vIntA = vIntB;
 	cout << "v1 == v2: " << (vIntA == vIntB) << endl;
-	// ÓÃÁĞ±íÖĞÔªËØÌæ»»v1ÖĞÔªËØ
+	// ç”¨åˆ—è¡¨ä¸­å…ƒç´ æ›¿æ¢v1ä¸­å…ƒç´ 
 	vIntA = { 1, 2, 3, 4 };
 	cout << "vIntA > vIntB: " << (vIntA > vIntB) << endl;
 
@@ -432,10 +432,10 @@ void CppPrimer::vectorTest(void)
 
 void CppPrimer::iteratorTest(void)
 {
-	// ËùÓĞ±ê×¼¿âÈİÆ÷¶¼¿ÉÒÔÊ¹ÓÃµü´úÆ÷¡£string²»ÊÇÈİÆ÷£¬µ«¿ÉÊ¹ÓÃµü´úÆ÷¡£
-	// »ñÈ¡µü´úÆ÷²»ÊÇÀàËÆÖ¸ÕëµÄÈ¡µØÖ·£¬ÓĞµü´úÆ÷µÄÀàĞÍÓµÓĞ¿ÉÒÔ·µ»Øµü´úÆ÷µÄ³ÉÔ±£¬ÈçbeginºÍend¡£
-	// begin()·µ»ØÖ¸ÏòµÚÒ»¸öÔªËØµÄµü´úÆ÷£¬end()·µ»ØÈİÆ÷ÀïÎ²ÔªËØµÄÏÂÒ»¸öÎ»ÖÃµÄµü´úÆ÷£¨ÊÇ³¬¹ıÄ©Î²µÄ²»´æÔÚµÄÔªËØ£©
-	// ¿ÉÒÔÓÃ++À´´ÓÒ»¸öÔªËØÒÆ¶¯µ½ÏÂÒ»¸öÔªËØ
+	// æ‰€æœ‰æ ‡å‡†åº“å®¹å™¨éƒ½å¯ä»¥ä½¿ç”¨è¿­ä»£å™¨ã€‚stringä¸æ˜¯å®¹å™¨ï¼Œä½†å¯ä½¿ç”¨è¿­ä»£å™¨ã€‚
+	// è·å–è¿­ä»£å™¨ä¸æ˜¯ç±»ä¼¼æŒ‡é’ˆçš„å–åœ°å€ï¼Œæœ‰è¿­ä»£å™¨çš„ç±»å‹æ‹¥æœ‰å¯ä»¥è¿”å›è¿­ä»£å™¨çš„æˆå‘˜ï¼Œå¦‚beginå’Œendã€‚
+	// begin()è¿”å›æŒ‡å‘ç¬¬ä¸€ä¸ªå…ƒç´ çš„è¿­ä»£å™¨ï¼Œend()è¿”å›å®¹å™¨é‡Œå°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®çš„è¿­ä»£å™¨ï¼ˆæ˜¯è¶…è¿‡æœ«å°¾çš„ä¸å­˜åœ¨çš„å…ƒç´ ï¼‰
+	// å¯ä»¥ç”¨++æ¥ä»ä¸€ä¸ªå…ƒç´ ç§»åŠ¨åˆ°ä¸‹ä¸€ä¸ªå…ƒç´ 
 	string strToBeIterator = "Hello, iterator!";
 	cout << "Iterator: ";
 	for (auto cur = strToBeIterator.begin(), end = strToBeIterator.end(); cur != end; ++cur)
@@ -443,47 +443,47 @@ void CppPrimer::iteratorTest(void)
 		cout << *cur;
 	}
 	cout << endl;
-	// ×¢Òâ£¬C++Ê¹ÓÃ != À´ÅĞ¶ÏÄ©Î²Ìõ¼ş¶ø²»ÊÇÓÃ<£¬ÒòÎªÓĞĞ©µü´úÆ÷Ã»ÓĞ¶¨Òå<ÔËËã·û¡£
-	// µü´úÆ÷µÄÀàĞÍÎªiterator»òconst_iterator£¬Èç£º
-	vector<int>::iterator iteratorVar; //iteratorVarÄÜ¶ÁĞ´vector<int>µÄÔªËØ
-	vector<int>::const_iterator iteratorConstVar; //iteratorConstVarÖ»ÄÜ¶ÁÈ¡vector<int>µÄÔªËØ
-	// Èç¹ûvector¶ÔÏóÎª³£Á¿£¨Èç£¬const vector<int>£©£¬ÔòÖ»ÄÜÓÃconst_iterator
-	// beginºÍend·µ»ØµÄµü´úÆ÷ÀàĞÍÒÀÕÕ¶ÔÏóÊÇ·ñ³£Á¿¾ö¶¨
-	// cbeginºÍcend·µ»ØµÄµü´úÆ÷ÎŞÊÓÔªËØÊÇ·ñ³£Á¿£¬Ö±½Ó·µ»Øconst_iterator¡£
-	// ÓÃ*À´½âÒıÓÃµü´úÆ÷µÃµ½µü´úÆ÷ËùÖ¸¶ÔÏóÊ±£¬ĞèÒª¼ÓÀ¨ºÅÀ´·ÃÎÊ³ÉÔ±º¯Êı£¬Èç(*itr).empty()
-	// ¿ÉÓÃ->À´½âÒıÓÃÍ¬Ê±·ÃÎÊ³ÉÔ±º¯Êı£¬Èçitr->empty()
-	// Ê¹ÓÃµü´úÆ÷µÄÑ­»·Àï£¬ÀàËÆrange for£¬Ò²²»ÄÜ¸Ä±äÈİÆ÷µÄ´óĞ¡¡£
-	// difference_typeÊÇÁ½¸öµü´úÆ÷Ö®¼äµÄ¾àÀë£¬ÎªÓĞ·ûºÅÕûÊı
+	// æ³¨æ„ï¼ŒC++ä½¿ç”¨ != æ¥åˆ¤æ–­æœ«å°¾æ¡ä»¶è€Œä¸æ˜¯ç”¨<ï¼Œå› ä¸ºæœ‰äº›è¿­ä»£å™¨æ²¡æœ‰å®šä¹‰<è¿ç®—ç¬¦ã€‚
+	// è¿­ä»£å™¨çš„ç±»å‹ä¸ºiteratoræˆ–const_iteratorï¼Œå¦‚ï¼š
+	vector<int>::iterator iteratorVar; //iteratorVarèƒ½è¯»å†™vector<int>çš„å…ƒç´ 
+	vector<int>::const_iterator iteratorConstVar; //iteratorConstVaråªèƒ½è¯»å–vector<int>çš„å…ƒç´ 
+	// å¦‚æœvectorå¯¹è±¡ä¸ºå¸¸é‡ï¼ˆå¦‚ï¼Œconst vector<int>ï¼‰ï¼Œåˆ™åªèƒ½ç”¨const_iterator
+	// beginå’Œendè¿”å›çš„è¿­ä»£å™¨ç±»å‹ä¾ç…§å¯¹è±¡æ˜¯å¦å¸¸é‡å†³å®š
+	// cbeginå’Œcendè¿”å›çš„è¿­ä»£å™¨æ— è§†å…ƒç´ æ˜¯å¦å¸¸é‡ï¼Œç›´æ¥è¿”å›const_iteratorã€‚
+	// ç”¨*æ¥è§£å¼•ç”¨è¿­ä»£å™¨å¾—åˆ°è¿­ä»£å™¨æ‰€æŒ‡å¯¹è±¡æ—¶ï¼Œéœ€è¦åŠ æ‹¬å·æ¥è®¿é—®æˆå‘˜å‡½æ•°ï¼Œå¦‚(*itr).empty()
+	// å¯ç”¨->æ¥è§£å¼•ç”¨åŒæ—¶è®¿é—®æˆå‘˜å‡½æ•°ï¼Œå¦‚itr->empty()
+	// ä½¿ç”¨è¿­ä»£å™¨çš„å¾ªç¯é‡Œï¼Œç±»ä¼¼range forï¼Œä¹Ÿä¸èƒ½æ”¹å˜å®¹å™¨çš„å¤§å°ã€‚
+	// difference_typeæ˜¯ä¸¤ä¸ªè¿­ä»£å™¨ä¹‹é—´çš„è·ç¦»ï¼Œä¸ºæœ‰ç¬¦å·æ•´æ•°
 }
 
 void CppPrimer::arrayTest(void)
 {
-	// Êı×éµÄÔªËØÒ²ÊÇ¶ÔÏó£¬ËùÒÔ²»´æÔÚÒıÓÃÊı×é
+	// æ•°ç»„çš„å…ƒç´ ä¹Ÿæ˜¯å¯¹è±¡ï¼Œæ‰€ä»¥ä¸å­˜åœ¨å¼•ç”¨æ•°ç»„
 
-	// ³õÊ¼»¯
+	// åˆå§‹åŒ–
 	const unsigned sz = 3;
-	int intAry_sizeAssign[sz] = { 0, 1, 2 }; // º¬ÓĞÈı¸öÔªËØ0,1,2µÄÊı×é
-	int intAry_OnlyAssign[] = { 0, 1, 2 }; // Î¬¶ÈÊÇ3µÄÊı×é
-	int intAry_sizePartAssign[5] = { 0, 1, 2 }; // µÈ¼ÛÓÚintAry_sizePartAssign[]={0,1,2,0,0};
-	string strAry[3] = { "hi", "bye" }; // µÈ¼ÛÓÚstrAry[] = {"hi","bye",""}
-	char charArray[] = "C++"; //×Ö·ûÊı×éµÄÌØÊâ³õÊ¼»¯£¬×Ô¶¯Ìí¼Ó\0×Ö·û
-	// ²»ÄÜÓÃÒ»¸öÊı×é³õÊ¼»¯ÁíÒ»¸öÊı×é£¬Ò²²»ÄÜÖ±½Ó¿½±´Êı×é
+	int intAry_sizeAssign[sz] = { 0, 1, 2 }; // å«æœ‰ä¸‰ä¸ªå…ƒç´ 0,1,2çš„æ•°ç»„
+	int intAry_OnlyAssign[] = { 0, 1, 2 }; // ç»´åº¦æ˜¯3çš„æ•°ç»„
+	int intAry_sizePartAssign[5] = { 0, 1, 2 }; // ç­‰ä»·äºintAry_sizePartAssign[]={0,1,2,0,0};
+	string strAry[3] = { "hi", "bye" }; // ç­‰ä»·äºstrAry[] = {"hi","bye",""}
+	char charArray[] = "C++"; //å­—ç¬¦æ•°ç»„çš„ç‰¹æ®Šåˆå§‹åŒ–ï¼Œè‡ªåŠ¨æ·»åŠ \0å­—ç¬¦
+	// ä¸èƒ½ç”¨ä¸€ä¸ªæ•°ç»„åˆå§‹åŒ–å¦ä¸€ä¸ªæ•°ç»„ï¼Œä¹Ÿä¸èƒ½ç›´æ¥æ‹·è´æ•°ç»„
 
-	// ¸´ÔÓµÄÊı×éÉùÃ÷
+	// å¤æ‚çš„æ•°ç»„å£°æ˜
 	int intAry[10];
-	int *intPtrAry[10]; // 10¸öÕûĞÍÖ¸ÕëµÄÊı×é
-	//int &refs[10]; // ´íÎó£¬Êı×é´æ·Å¶ÔÏó£¬ÒıÓÃ²»ÊÇ¶ÔÏó
-	int(*intAryPtr)[10] = &intAry; // intAryPtrÊÇÖ¸Õë£¬Ö¸ÏòÒ»¸öº¬ÓĞ10¸öÕûĞÍµÄÊı×é
-	int(&intAryRef)[10] = intAry; // intAryRefÊÇÒıÓÃ£¬ÒıÓÃÒ»¸öº¬ÓĞ10¸öÕûĞÍµÄÊı×é
-	int *(&refIntPtrAry)[10] = intPtrAry; // arryÊÇÊı×éµÄÒıÓÃ£¬ÒıÓÃÒ»¸öº¬ÓĞ10¸öÖ¸ÕëµÄÊı×é
+	int *intPtrAry[10]; // 10ä¸ªæ•´å‹æŒ‡é’ˆçš„æ•°ç»„
+	//int &refs[10]; // é”™è¯¯ï¼Œæ•°ç»„å­˜æ”¾å¯¹è±¡ï¼Œå¼•ç”¨ä¸æ˜¯å¯¹è±¡
+	int(*intAryPtr)[10] = &intAry; // intAryPtræ˜¯æŒ‡é’ˆï¼ŒæŒ‡å‘ä¸€ä¸ªå«æœ‰10ä¸ªæ•´å‹çš„æ•°ç»„
+	int(&intAryRef)[10] = intAry; // intAryRefæ˜¯å¼•ç”¨ï¼Œå¼•ç”¨ä¸€ä¸ªå«æœ‰10ä¸ªæ•´å‹çš„æ•°ç»„
+	int *(&refIntPtrAry)[10] = intPtrAry; // arryæ˜¯æ•°ç»„çš„å¼•ç”¨ï¼Œå¼•ç”¨ä¸€ä¸ªå«æœ‰10ä¸ªæŒ‡é’ˆçš„æ•°ç»„
 
-	// Êı×éÓëÖ¸Õë
+	// æ•°ç»„ä¸æŒ‡é’ˆ
 	string strNum[] = { "one", "two", "three" };
-	string *pStrAryEle = &strNum[0]; //Ö¸ÏòµÚÒ»¸öÔªËØ
-	string *pStrAryName = strNum; //µÈ¼ÛÓÚpStrAryEle
+	string *pStrAryEle = &strNum[0]; //æŒ‡å‘ç¬¬ä¸€ä¸ªå…ƒç´ 
+	string *pStrAryName = strNum; //ç­‰ä»·äºpStrAryEle
 
-	// C++11ÎªÊı×éÒıÈëbeginºÍend£¬µ«ÒòÎªÊı×é²¢²»ÊÇÀà£¬ËùÒÔÕâÁ½¸öº¯Êı²»ÒÔÀà³ÉÔ±µÄĞÎÊ½³öÏÖ,
-	// ¶øÊÇÒÔº¯ÊıĞÎÊ½³öÏÖ£¬Ê¹ÓÃÈçÏÂ£º
+	// C++11ä¸ºæ•°ç»„å¼•å…¥beginå’Œendï¼Œä½†å› ä¸ºæ•°ç»„å¹¶ä¸æ˜¯ç±»ï¼Œæ‰€ä»¥è¿™ä¸¤ä¸ªå‡½æ•°ä¸ä»¥ç±»æˆå‘˜çš„å½¢å¼å‡ºç°,
+	// è€Œæ˜¯ä»¥å‡½æ•°å½¢å¼å‡ºç°ï¼Œä½¿ç”¨å¦‚ä¸‹ï¼š
 	char charAry[10] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
 	char *charAryBeg = begin(charAry);
 	char *charAryEnd = end(charAry);
@@ -492,37 +492,37 @@ void CppPrimer::arrayTest(void)
 	{ cout << *c; }
 	cout << endl;
 
-	// Ö¸ÕëÏà¼õµÄ½á¹ûÎª´ø·ûºÅµÄptrdiff_tÀàĞÍ
-	// Êı×éµÄÏÂ±êÎªÄÚÖÃÏÂ±êÔËËã£¬¿ÉÒÔÊ¹ÓÃ¸ºÊıË÷Òı£»¶ø±ê×¼¿âÀàĞÍµÄÏÂ±êÊÇ±ê×¼¿âÊµÏÖµÄ£¬ÏÂ±ê±ØĞëÎªÎŞ·ûºÅÀàĞÍ¡£
+	// æŒ‡é’ˆç›¸å‡çš„ç»“æœä¸ºå¸¦ç¬¦å·çš„ptrdiff_tç±»å‹
+	// æ•°ç»„çš„ä¸‹æ ‡ä¸ºå†…ç½®ä¸‹æ ‡è¿ç®—ï¼Œå¯ä»¥ä½¿ç”¨è´Ÿæ•°ç´¢å¼•ï¼›è€Œæ ‡å‡†åº“ç±»å‹çš„ä¸‹æ ‡æ˜¯æ ‡å‡†åº“å®ç°çš„ï¼Œä¸‹æ ‡å¿…é¡»ä¸ºæ— ç¬¦å·ç±»å‹ã€‚
 
-	// Êı×éÀàĞÍ±ğÃû
+	// æ•°ç»„ç±»å‹åˆ«å
 	using int_array = int[4]; //C++11
 	typedef int int_array[4];
-	// ¿ÉÒÔÊ¹ÓÃint_array*±íÊ¾Ö¸Ïò4¸øÔªËØµÄintÊı×éµÄÖ¸Õë
+	// å¯ä»¥ä½¿ç”¨int_array*è¡¨ç¤ºæŒ‡å‘4ç»™å…ƒç´ çš„intæ•°ç»„çš„æŒ‡é’ˆ
 
-	// ÓÃrange for´¦Àí¶şÎ¬Êı×é
+	// ç”¨range forå¤„ç†äºŒç»´æ•°ç»„
 	int intAryAry[2][3] = { {1, 2, 3}, { 4, 5, 6} };
 #if 0
 	for (auto row : intAryAry)
-		for (auto col : row) // ERROR row±»±àÒëÆ÷×ª³Éint*£¬²»ÄÜ¶Ôint*½øĞĞrange for
+		for (auto col : row) // ERROR rowè¢«ç¼–è¯‘å™¨è½¬æˆint*ï¼Œä¸èƒ½å¯¹int*è¿›è¡Œrange for
 			cout << col << endl;
 #endif
 
 	for (auto &row : intAryAry)
-		for (auto col : row) // rowÊÇ4¸öÔªËØÊı×éµÄÒıÓÃ
+		for (auto col : row) // rowæ˜¯4ä¸ªå…ƒç´ æ•°ç»„çš„å¼•ç”¨
 			cout << col << endl;
 
 	for (auto &row : intAryAry)
 		for (auto col : row)
-			col = 123; // col²»ÊÇÒıÓÃ£¬ËùÒÔÃ»ÓĞĞŞ¸Äµ½iaµÄÔªËØ
+			col = 123; // colä¸æ˜¯å¼•ç”¨ï¼Œæ‰€ä»¥æ²¡æœ‰ä¿®æ”¹åˆ°iaçš„å…ƒç´ 
 
 	for (auto &row : intAryAry)
 		for (auto &col : row)
-			col = 123; // colÊÇÒıÓÃ£¬Ö±½ÓĞŞ¸Äµ½iaµÄÔªËØ
+			col = 123; // colæ˜¯å¼•ç”¨ï¼Œç›´æ¥ä¿®æ”¹åˆ°iaçš„å…ƒç´ 
 
 }
 
-// ÔÚº¯ÊıµÄ¶¨Òå´¦Ö¸¶¨inline
+// åœ¨å‡½æ•°çš„å®šä¹‰å¤„æŒ‡å®šinline
 inline void CppPrimer::exceptionThrower(void)
 {
     throw runtime_error("Incubator's exception!");
@@ -535,10 +535,10 @@ void CppPrimer::exceptionThrower(int intVal)
 
 void CppPrimer::exceptionTest(void)
 {
-    // throw±í´ïÊ½£ºÓÃthrow±íÊ¾Óöµ½ÁËÎŞ·¨´¦ÀíµÄÎÊÌâ
-    // tryÓï¾ä¿é£ºÒÔtry¿ªÊ¼£¬Ò»¸ö»ò¶à¸öcatch½áÊø
-    // Òì³£Àà£ºÓÃÓÚÔÚthrow±í´ïÊ½ºÍÏà¹ØµÄcatch×Ó¾äÖ®¼ä´«µİÒì³£µÄ¾ßÌåĞÅÏ¢
-    // Èç¹ûÒ»Ö±Ã»ÓĞÕÒµ½ÊÊµ±ÀàĞÍµÄcatch£¬Ôò³ÌĞò×ª¸øterminate±ê×¼¿âº¯Êı´¦Àí
+    // throwè¡¨è¾¾å¼ï¼šç”¨throwè¡¨ç¤ºé‡åˆ°äº†æ— æ³•å¤„ç†çš„é—®é¢˜
+    // tryè¯­å¥å—ï¼šä»¥tryå¼€å§‹ï¼Œä¸€ä¸ªæˆ–å¤šä¸ªcatchç»“æŸ
+    // å¼‚å¸¸ç±»ï¼šç”¨äºåœ¨throwè¡¨è¾¾å¼å’Œç›¸å…³çš„catchå­å¥ä¹‹é—´ä¼ é€’å¼‚å¸¸çš„å…·ä½“ä¿¡æ¯
+    // å¦‚æœä¸€ç›´æ²¡æœ‰æ‰¾åˆ°é€‚å½“ç±»å‹çš„catchï¼Œåˆ™ç¨‹åºè½¬ç»™terminateæ ‡å‡†åº“å‡½æ•°å¤„ç†
     
     static bool exceptFlag = false;
 	try {
@@ -552,21 +552,21 @@ void CppPrimer::exceptionTest(void)
 		cout << "Exception caught: " << e.what() << endl;
 	}
 
-    //// ±ê×¼Òì³£
-    //  exceptionÍ·ÎÄ¼ş¶¨ÒåÁË×îÍ¨ÓÃµÄÒì³£Ààexception£¬Ö»±¨¸æÒì³£·¢Éú£¬²»Ìá¹©ÈÎºÎ¶îÍâĞÅÏ¢
-    //  stdexceptÍ·ÎÄ¼ş¶¨ÒåÈçÏÂÒì³£Àà£º
-    //      exception£º×î³£¼ûµÄÎÊÌâ
-    //      runtime_error£ºÖ»ÓĞÔÚÔËĞĞÊ±²ÅÄÜ¼ì²â³öµÄÎÊÌâ
-    //      range_error£ºÔËĞĞÊ±´íÎó£¬Éú³ÉµÄ½á¹û³¬³öÁËÓĞÒâÒåµÄÖµÓò·¶Î§
-    //      overflow_error£ºÔËĞĞÊ±´íÎó£¬¼ÆËãÉÏÒç
-    //      underflow_error£ºÔËĞĞÊ±´íÎó£¬¼ÆËãÏÂÒç
-    //      logic_error£º³ÌĞòÂß¼­´íÎó
-    //      domain_error£ºÂß¼­´íÎó£¬²ÎÊı¶ÔÓ¦µÄ½á¹ûÖµ²»´æÔÚ
-    //      invalid_argument£ºÂß¼­´íÎó£¬ÎŞĞ§²ÎÊı
-    //      length_error£ºÂß¼­´íÎó£¬ÊÔÍ¼´´½¨Ò»¸ö³¬³ö¸ÃÀàĞÍ×î´ó³¤¶ÈµÄ¶ÔÏó
-    //      out_of_range£ºÂß¼­´íÎó£¬Ê¹ÓÃÒ»¸ö³¬³öÓĞĞ§·¶Î§µÄÖµ
-    //  newÍ·ÎÄ¼ş¶¨ÒåÁËbad_allocÒì³£ÀàĞÍ
-    //  type_infoÍ·ÎÄ¼ş¶¨ÒåÁËbad_castÒì³£ÀàĞÍ
+    //// æ ‡å‡†å¼‚å¸¸
+    //  exceptionå¤´æ–‡ä»¶å®šä¹‰äº†æœ€é€šç”¨çš„å¼‚å¸¸ç±»exceptionï¼ŒåªæŠ¥å‘Šå¼‚å¸¸å‘ç”Ÿï¼Œä¸æä¾›ä»»ä½•é¢å¤–ä¿¡æ¯
+    //  stdexceptå¤´æ–‡ä»¶å®šä¹‰å¦‚ä¸‹å¼‚å¸¸ç±»ï¼š
+    //      exceptionï¼šæœ€å¸¸è§çš„é—®é¢˜
+    //      runtime_errorï¼šåªæœ‰åœ¨è¿è¡Œæ—¶æ‰èƒ½æ£€æµ‹å‡ºçš„é—®é¢˜
+    //      range_errorï¼šè¿è¡Œæ—¶é”™è¯¯ï¼Œç”Ÿæˆçš„ç»“æœè¶…å‡ºäº†æœ‰æ„ä¹‰çš„å€¼åŸŸèŒƒå›´
+    //      overflow_errorï¼šè¿è¡Œæ—¶é”™è¯¯ï¼Œè®¡ç®—ä¸Šæº¢
+    //      underflow_errorï¼šè¿è¡Œæ—¶é”™è¯¯ï¼Œè®¡ç®—ä¸‹æº¢
+    //      logic_errorï¼šç¨‹åºé€»è¾‘é”™è¯¯
+    //      domain_errorï¼šé€»è¾‘é”™è¯¯ï¼Œå‚æ•°å¯¹åº”çš„ç»“æœå€¼ä¸å­˜åœ¨
+    //      invalid_argumentï¼šé€»è¾‘é”™è¯¯ï¼Œæ— æ•ˆå‚æ•°
+    //      length_errorï¼šé€»è¾‘é”™è¯¯ï¼Œè¯•å›¾åˆ›å»ºä¸€ä¸ªè¶…å‡ºè¯¥ç±»å‹æœ€å¤§é•¿åº¦çš„å¯¹è±¡
+    //      out_of_rangeï¼šé€»è¾‘é”™è¯¯ï¼Œä½¿ç”¨ä¸€ä¸ªè¶…å‡ºæœ‰æ•ˆèŒƒå›´çš„å€¼
+    //  newå¤´æ–‡ä»¶å®šä¹‰äº†bad_allocå¼‚å¸¸ç±»å‹
+    //  type_infoå¤´æ–‡ä»¶å®šä¹‰äº†bad_castå¼‚å¸¸ç±»å‹
 
 }
 
@@ -638,13 +638,13 @@ string & CppPrimer::shorterString(string &s1, string &s2)
     return const_cast<string&>(r);
 }
 
-void CppPrimer::defaultParValTest(int intVal, char charVal, double doubleVal) // Êµ¼ÊÄ¬ÈÏÖµÒÀÀµÓÚÍ·ÎÄ¼şÀïµÄÉùÃ÷£¬¶¨ÒåµÄÊ±ºò²»ÄÜÔÙ¼ÓÄ¬ÈÏÖµ
+void CppPrimer::defaultParValTest(int intVal, char charVal, double doubleVal) // å®é™…é»˜è®¤å€¼ä¾èµ–äºå¤´æ–‡ä»¶é‡Œçš„å£°æ˜ï¼Œå®šä¹‰çš„æ—¶å€™ä¸èƒ½å†åŠ é»˜è®¤å€¼
 {
     cout << "defaultParValTest: ";
     cout << "intVal: " << intVal << " charVal: " << charVal << " doubelval: " << doubleVal << endl;
 }
 
-// ÔÚÀàµÄÄÚ²¿ÉùÃ÷Îªinline
+// åœ¨ç±»çš„å†…éƒ¨å£°æ˜ä¸ºinline
 void CppPrimer::inlineTest(void)
 {
     cout << "This is an inline function." << endl;
@@ -664,38 +664,38 @@ string funcToBePointed(int iVal)
 
 void CppPrimer::functionTest(void)
 {
-    // void fcn(const int i) { ¡­ }
-    // ºÍ
-    // void fcn(int i) { ¡­ }
-    // ÊÇÖØ¸´¶¨Òå¡£ÒòÎªĞÎ²ÎµÄ¶¥²ãconst±»ºöÂÔ£¬´«³£Á¿»ò·Ç³£Á¿µÄÊµ²Î¶¼¿ÉÒÔ¡£
+    // void fcn(const int i) { â€¦ }
+    // å’Œ
+    // void fcn(int i) { â€¦ }
+    // æ˜¯é‡å¤å®šä¹‰ã€‚å› ä¸ºå½¢å‚çš„é¡¶å±‚constè¢«å¿½ç•¥ï¼Œä¼ å¸¸é‡æˆ–éå¸¸é‡çš„å®å‚éƒ½å¯ä»¥ã€‚
 
-    //// Êı×éĞÎ²Î
-    // void print(const int*); //ÒÔÏÂÁ½ÖÖºÍ±¾Óï¾äµÈ¼Û
-    // void print(const int[]); //º¯Êı×÷ÓÃÓÚÊı×é
-    // void print(const int[10]); //Î¬¶È±íÊ¾ÆÚÍûµÄÊı×éÔªËØ¸öÊı£¬Êµ¼Ê²»Ò»¶¨
-    // ´«¸øº¯ÊıÊı×é×÷Îª²ÎÊıÊ±£¬Êµ²Î×Ô¶¯×ª»»ÎªÖ¸ÏòÊı×éÊ×ÔªËØµÄÖ¸Õë¡£Êı×éµÄ´óĞ¡¶Ôº¯ÊıµÄµ÷ÓÃÃ»ÓĞÓ°Ïì¡£
+    //// æ•°ç»„å½¢å‚
+    // void print(const int*); //ä»¥ä¸‹ä¸¤ç§å’Œæœ¬è¯­å¥ç­‰ä»·
+    // void print(const int[]); //å‡½æ•°ä½œç”¨äºæ•°ç»„
+    // void print(const int[10]); //ç»´åº¦è¡¨ç¤ºæœŸæœ›çš„æ•°ç»„å…ƒç´ ä¸ªæ•°ï¼Œå®é™…ä¸ä¸€å®š
+    // ä¼ ç»™å‡½æ•°æ•°ç»„ä½œä¸ºå‚æ•°æ—¶ï¼Œå®å‚è‡ªåŠ¨è½¬æ¢ä¸ºæŒ‡å‘æ•°ç»„é¦–å…ƒç´ çš„æŒ‡é’ˆã€‚æ•°ç»„çš„å¤§å°å¯¹å‡½æ•°çš„è°ƒç”¨æ²¡æœ‰å½±å“ã€‚
 
-    //// ¿É±äĞÎ²Î
-    // ¶ÔÓÚC++ÓëCµÄ½»»¥µÄ½Ó¿Ú£¬ÓÃvarargsµÄc±ê×¼¿â¹¦¶¨ÒåµÄÊ¡ÂÔ·ûĞÎ²Î
-    // Êµ²ÎĞëÎªCºÍC++Í¨ÓÃµÄÀàĞÍ£¬Ê¡ÂÔ·ûĞÎ²ÎÖ»ÄÜ³öÏÖÔÚĞÎ²ÎÁĞ±íµÄ×îºó£º
-    // void foo(parm_list, ¡­); //¶ººÅ¿ÉÑ¡
-    // void foo(¡­);
+    //// å¯å˜å½¢å‚
+    // å¯¹äºC++ä¸Cçš„äº¤äº’çš„æ¥å£ï¼Œç”¨varargsçš„cæ ‡å‡†åº“åŠŸå®šä¹‰çš„çœç•¥ç¬¦å½¢å‚
+    // å®å‚é¡»ä¸ºCå’ŒC++é€šç”¨çš„ç±»å‹ï¼Œçœç•¥ç¬¦å½¢å‚åªèƒ½å‡ºç°åœ¨å½¢å‚åˆ—è¡¨çš„æœ€åï¼š
+    // void foo(parm_list, â€¦); //é€—å·å¯é€‰
+    // void foo(â€¦);
 
-    // C++11Ìá¹©Á½ÖÖ·½·¨
-    // ·½·¨Ò»£ºÈç¹ûËùÓĞÊµ²ÎÀàĞÍÏàÍ¬£¬¿ÉÒÔ´«µİinitializer_listµÄ±ê×¼¿âÀàĞÍ¡£
+    // C++11æä¾›ä¸¤ç§æ–¹æ³•
+    // æ–¹æ³•ä¸€ï¼šå¦‚æœæ‰€æœ‰å®å‚ç±»å‹ç›¸åŒï¼Œå¯ä»¥ä¼ é€’initializer_listçš„æ ‡å‡†åº“ç±»å‹ã€‚
     initializerListTest(initializer_list<string>{"one", "two", "three"}, "hundred");
     initializerListTest(initializer_list<string>{"1", "2", "3", "4", "5"}, "100");
-    // ·½·¨¶ş£ºÈç¹ûÊµ²ÎÀàĞÍ²»Í¬£¬±àĞ´¿É±ä²ÎÊıÄ£°å TODO
+    // æ–¹æ³•äºŒï¼šå¦‚æœå®å‚ç±»å‹ä¸åŒï¼Œç¼–å†™å¯å˜å‚æ•°æ¨¡æ¿ TODO
 
-    //// ÁĞ±í³õÊ¼»¯·µ»ØÖµ
-    // C++11¹æ¶¨£¬º¯Êı¿ÉÒÔ·µ»Ø{}°üÎ§µÄÖµµÄÁĞ±í£¬Èç
+    //// åˆ—è¡¨åˆå§‹åŒ–è¿”å›å€¼
+    // C++11è§„å®šï¼Œå‡½æ•°å¯ä»¥è¿”å›{}åŒ…å›´çš„å€¼çš„åˆ—è¡¨ï¼Œå¦‚
     for (string curStr : listReturnTest())
     { cout << curStr << " "; }
     cout << endl;
 
-    //// ·µ»ØÊı×éÖ¸ÕëµÄº¯Êı
-    // ·½·¨Ò»£º ÓÃÀàĞÍ±ğÃû£¬ÈçÏÂ£º
-    // typedef int arrT[10]; »ò using arrT = int[10];
+    //// è¿”å›æ•°ç»„æŒ‡é’ˆçš„å‡½æ•°
+    // æ–¹æ³•ä¸€ï¼š ç”¨ç±»å‹åˆ«åï¼Œå¦‚ä¸‹ï¼š
+    // typedef int arrT[10]; æˆ– using arrT = int[10];
     // arrT* func(int i);
     intAry3 *aryPtr = nullptr;
     aryPtr = funcReturnIntAry3();
@@ -704,27 +704,27 @@ void CppPrimer::functionTest(void)
     aryPtr = funcReturnIntAry3Using();
     printIntAry(*aryPtr, 3);
 
-    // ·½·¨¶ş£ºÖ±½ÓÉùÃ÷£¬ÈçÏÂ£º
+    // æ–¹æ³•äºŒï¼šç›´æ¥å£°æ˜ï¼Œå¦‚ä¸‹ï¼š
     // type(*function(parameter_list))[dimension]
     aryPtr = funcReturnIntAry3Plain();
     printIntAry(*aryPtr, 3);
 
-    // ·½·¨Èı£ºC++11Î²ÖÃÀàĞÍtrailing return type
-    // ±¾¸Ã³öÏÖ·µ»ØÀàĞÍµÄµØ·½·Åauto£¬ĞÎ²ÎÁĞ±íÖ®ºó·Å->ºÍÕæÕıĞèÒªµÄ·µ»ØÀàĞÍ
+    // æ–¹æ³•ä¸‰ï¼šC++11å°¾ç½®ç±»å‹trailing return type
+    // æœ¬è¯¥å‡ºç°è¿”å›ç±»å‹çš„åœ°æ–¹æ”¾autoï¼Œå½¢å‚åˆ—è¡¨ä¹‹åæ”¾->å’ŒçœŸæ­£éœ€è¦çš„è¿”å›ç±»å‹
     //  auto func(int i) -> int(*)[10];
     aryPtr = funcReturnIntAry3Tail();
     printIntAry(*aryPtr, 3);
 
-    // ·½·¨ËÄ£ºÊ¹ÓÃdecltype£¬´ÓÍ¬ÀàÊı×é·µ»ØÀàĞÍ
+    // æ–¹æ³•å››ï¼šä½¿ç”¨decltypeï¼Œä»åŒç±»æ•°ç»„è¿”å›ç±»å‹
     // int odd[] = { 1,2,3,4,5 };
     // decltype(odd) *attrPtr(int i);
     aryPtr = funcReturnIntAry3Decltype();
     printIntAry(*aryPtr, 3);
 
-    //// ÖØÔØÖĞµÄconst_cast
-    // ÈçÓĞÈçÏÂº¯Êı£º
+    //// é‡è½½ä¸­çš„const_cast
+    // å¦‚æœ‰å¦‚ä¸‹å‡½æ•°ï¼š
     // const string &shorterString(const string &s1, const string &s2)
-    // ²ÎÊıºÍ·µ»ØÀàĞÍ¶¼ÊÇconst string£¬¿ÉÒÔÓÃÁ½¸ö·Ç³£Á¿µÄstringÊµ²Îµ÷ÓÃÕâ¸öº¯Êı£¬µ«·µ»ØµÄÈÎÈ»ÊÇconst string¡£¿ÉÒÔÊ¹ÓÃconst_castÊµÏÖ£º
+    // å‚æ•°å’Œè¿”å›ç±»å‹éƒ½æ˜¯const stringï¼Œå¯ä»¥ç”¨ä¸¤ä¸ªéå¸¸é‡çš„stringå®å‚è°ƒç”¨è¿™ä¸ªå‡½æ•°ï¼Œä½†è¿”å›çš„ä»»ç„¶æ˜¯const stringã€‚å¯ä»¥ä½¿ç”¨const_castå®ç°ï¼š
     // string &shorterString(string &s1, string &s2)
     // {
     //     auto &r = shortString(const_cast<const string&>(s1), const_cast<const string&>(s2));
@@ -734,51 +734,51 @@ void CppPrimer::functionTest(void)
     string strVal2 = "1234";
     cout << shorterString(strVal1, strVal2) << endl;
 
-    // Ä¬ÈÏÊµ²Î
-    // Àı£ºstring screen(size_type ht = 24, size_type wid = 80, char backgrnd = ' ');
-    // Ò»µ©Ä³¸öĞÎ²Î¸³ÓèÄ¬ÈÏÖµÖ®ºó£¬ÆäºóµÄËùÓĞĞÎ²Î¶¼±ØĞëÓĞÄ¬ÈÏÖµ
-    // µ÷ÓÃÊ±²»Ğ´Êµ²ÎµÄ»á×Ô¶¯Ê¹ÓÃÄ¬ÈÏÊµ²ÎÖµ£¬µ«Ö»ÄÜÊ¡ÂÔÎ²²¿¿ªÊ¼µÄÊµ²Î¡£
-    // Éè¼ÆÊ±¾¡Á¿°Ñ²»ÔõÃ´Ê¹ÓÃÄ¬ÈÏÊµ²ÎµÄ²ÎÊı·ÅÇ°Ãæ¡£
-    // º¯ÊıÉùÃ÷Ê±£¬¿ÉÒÔÏÈÉùÃ÷Î²²¿¿ªÊ¼µÄÒ»²¿·ÖÄ¬ÈÏÊµ²Î£¬Ö®ºóÔÙ´ÎÉùÃ÷´Ëº¯Êıµ«Ö»ÄÜÉùÃ÷Ö®Ç°ÒÑ¾­ÉùÃ÷¹ıµÄÄ¬ÈÏÊµ²Î¡£Ó¦¸ÃÔÚÍ·ÎÄ¼şÀïµÄº¯ÊıÉùÃ÷ÖĞÖ¸¶¨Ä¬ÈÏÊµ²Î¡£
-    // ¾Ö²¿±äÁ¿Ö®ÍâµÄ¶ÔÏó¶¼ÄÜ×÷ÎªÄ¬ÈÏÊµ²Î¡£
+    // é»˜è®¤å®å‚
+    // ä¾‹ï¼šstring screen(size_type ht = 24, size_type wid = 80, char backgrnd = ' ');
+    // ä¸€æ—¦æŸä¸ªå½¢å‚èµ‹äºˆé»˜è®¤å€¼ä¹‹åï¼Œå…¶åçš„æ‰€æœ‰å½¢å‚éƒ½å¿…é¡»æœ‰é»˜è®¤å€¼
+    // è°ƒç”¨æ—¶ä¸å†™å®å‚çš„ä¼šè‡ªåŠ¨ä½¿ç”¨é»˜è®¤å®å‚å€¼ï¼Œä½†åªèƒ½çœç•¥å°¾éƒ¨å¼€å§‹çš„å®å‚ã€‚
+    // è®¾è®¡æ—¶å°½é‡æŠŠä¸æ€ä¹ˆä½¿ç”¨é»˜è®¤å®å‚çš„å‚æ•°æ”¾å‰é¢ã€‚
+    // å‡½æ•°å£°æ˜æ—¶ï¼Œå¯ä»¥å…ˆå£°æ˜å°¾éƒ¨å¼€å§‹çš„ä¸€éƒ¨åˆ†é»˜è®¤å®å‚ï¼Œä¹‹åå†æ¬¡å£°æ˜æ­¤å‡½æ•°ä½†åªèƒ½å£°æ˜ä¹‹å‰å·²ç»å£°æ˜è¿‡çš„é»˜è®¤å®å‚ã€‚åº”è¯¥åœ¨å¤´æ–‡ä»¶é‡Œçš„å‡½æ•°å£°æ˜ä¸­æŒ‡å®šé»˜è®¤å®å‚ã€‚
+    // å±€éƒ¨å˜é‡ä¹‹å¤–çš„å¯¹è±¡éƒ½èƒ½ä½œä¸ºé»˜è®¤å®å‚ã€‚
     defaultParValTest();
     defaultParValTest(123);
     defaultParValTest(234, '0');
     defaultParValTest(345, '9', 123.456);
 
-    //// ÄÚÁªº¯Êı£º±àÒëÆ÷¿ÉÒÔºöÂÔÄÚÁªµÄÉùÃ÷
+    //// å†…è”å‡½æ•°ï¼šç¼–è¯‘å™¨å¯ä»¥å¿½ç•¥å†…è”çš„å£°æ˜
     inlineTest();
 
-    //// constexprº¯Êı
-    // Ö¸ÄÜÓÃÓÚ³£Á¿±í´ïÊ½µÄº¯Êı£¬ÔÚ·µ»ØÀàĞÍÇ°Ãæ¼Óconstexpr£¬Ğë×ñÊØÈçÏÂ¹æ¶¨
-    //     ·µ»ØÀàĞÍºÍĞÎ²Î¶¼±ØĞëÊÇ×ÖÃæÁ¿
-    //     º¯ÊıÌåÖĞÓĞÇÒÖ»ÓĞÒ»Ìõreturn
-    // ÔÚ±àÒëÆÚ°Ñº¯ÊıÌæ»»Îª½á¹ûÖµ£¬ËùÒÔº¯ÊıÒşÊ½µØÎªÄÚÁªº¯Êı
+    //// constexprå‡½æ•°
+    // æŒ‡èƒ½ç”¨äºå¸¸é‡è¡¨è¾¾å¼çš„å‡½æ•°ï¼Œåœ¨è¿”å›ç±»å‹å‰é¢åŠ constexprï¼Œé¡»éµå®ˆå¦‚ä¸‹è§„å®š
+    //     è¿”å›ç±»å‹å’Œå½¢å‚éƒ½å¿…é¡»æ˜¯å­—é¢é‡
+    //     å‡½æ•°ä½“ä¸­æœ‰ä¸”åªæœ‰ä¸€æ¡return
+    // åœ¨ç¼–è¯‘æœŸæŠŠå‡½æ•°æ›¿æ¢ä¸ºç»“æœå€¼ï¼Œæ‰€ä»¥å‡½æ•°éšå¼åœ°ä¸ºå†…è”å‡½æ•°
     cout << "constexpr function: " << constexprFuncTest(2) << endl;
 
-    //// º¯ÊıÖ¸Õë
-    // Èç£ºbool(*pf)(const string &, const string &);
-    // º¯ÊıÃû×÷ÎªÖµÊ¹ÓÃÊ±£¬×Ô¶¯×ª»»ÎªÖ¸Õë
-    // º¯ÊıÖ¸Õë¸³Öµ£º
+    //// å‡½æ•°æŒ‡é’ˆ
+    // å¦‚ï¼šbool(*pf)(const string &, const string &);
+    // å‡½æ•°åä½œä¸ºå€¼ä½¿ç”¨æ—¶ï¼Œè‡ªåŠ¨è½¬æ¢ä¸ºæŒ‡é’ˆ
+    // å‡½æ•°æŒ‡é’ˆèµ‹å€¼ï¼š
     //     pf = lengthCompare;
-    //     pf = &lengthCompare; //ÓëÉÏÒ»¾äµÈ¼Û£¬&¿ÉÑ¡
-    // ¿ÉÒÔÖ±½ÓÓÃº¯ÊıÖ¸Õëµ÷ÓÃº¯Êı¶ø²»½âÒıÓÃ£¬Èç£º
+    //     pf = &lengthCompare; //ä¸ä¸Šä¸€å¥ç­‰ä»·ï¼Œ&å¯é€‰
+    // å¯ä»¥ç›´æ¥ç”¨å‡½æ•°æŒ‡é’ˆè°ƒç”¨å‡½æ•°è€Œä¸è§£å¼•ç”¨ï¼Œå¦‚ï¼š
     //     bool b1 = pf("hello", "world");
-    //     bool b2 = (*pf)("hello", "world"); //µÈ¼ÛÓÚÉÏÒ»¾ä
+    //     bool b2 = (*pf)("hello", "world"); //ç­‰ä»·äºä¸Šä¸€å¥
     string (*fp)(int iVal);
     fp = funcToBePointed;
     cout << fp(1) << endl;
     fp = &funcToBePointed;
     cout << (*fp)(0) << endl;
-    // º¯ÊıÖ¸Õë×÷Îª·µ»ØÀàĞÍÊ±£º
-    //     ÓÃ±ğÃû
-    //         using F = int(int *, int);//º¯Êı±ğÃû
-    //         using PF = int(*)(int *, int); //º¯ÊıÖ¸Õë±ğÃû
-    //         PF f1(int); //·µ»ØÖ¸Ïòº¯ÊıµÄÖ¸Õë
-    //         F *f1(int); //·µ»ØÖ¸Ïòº¯ÊıµÄÖ¸Õë
-    //     Ö±½ÓÉùÃ÷int(*f1(int))(int*, int);
-    //     Î²ÖÃ·µ»ØÀàĞÍauto f1(int) -> int(*)(int *, int);
-    //     ¿ÉÒÔÓÃdecltypeÍ¬Ààº¯ÊıÀ´»ñÈ¡º¯ÊıÖ¸ÕëµÄÀàĞÍ£¬µ«±ØĞë¼Ó*
+    // å‡½æ•°æŒ‡é’ˆä½œä¸ºè¿”å›ç±»å‹æ—¶ï¼š
+    //     ç”¨åˆ«å
+    //         using F = int(int *, int);//å‡½æ•°åˆ«å
+    //         using PF = int(*)(int *, int); //å‡½æ•°æŒ‡é’ˆåˆ«å
+    //         PF f1(int); //è¿”å›æŒ‡å‘å‡½æ•°çš„æŒ‡é’ˆ
+    //         F *f1(int); //è¿”å›æŒ‡å‘å‡½æ•°çš„æŒ‡é’ˆ
+    //     ç›´æ¥å£°æ˜int(*f1(int))(int*, int);
+    //     å°¾ç½®è¿”å›ç±»å‹auto f1(int) -> int(*)(int *, int);
+    //     å¯ä»¥ç”¨decltypeåŒç±»å‡½æ•°æ¥è·å–å‡½æ•°æŒ‡é’ˆçš„ç±»å‹ï¼Œä½†å¿…é¡»åŠ *
     //         size_type sumLength(const string &, const string &);
     //         decltype(sumLength) *getFcn(const string &);
 
@@ -786,26 +786,26 @@ void CppPrimer::functionTest(void)
 
 void CppPrimer::assertTest(void)
 {
-    // assertÔ¤´¦Àíºê£¬ÓÃÓÚ¼ì²é¡°²»ÄÜ·¢Éú¡±µÄÌõ¼ş : assert(expr);
-    // Èç¹ûexprÎª¼Ù£¬assertÊä³öĞÅÏ¢²¢ÖĞÖ¹³ÌĞòµÄÖ´ĞĞ£»ÈçÎªÕæ£¬assertÊ²Ã´¶¼²»×ö
-    // ¶¨ÒåÔÚcassertÍ·ÎÄ¼şÖĞ
-    // Ô¤´¦ÀíÃû×ÖÓÉÔ¤´¦ÀíÆ÷¶ø²»ÊÇ±àÒëÆ÷¹ÜÀí£¬ËùÒÔ¿ÉÒÔÖ±½ÓÊ¹ÓÃÔ¤´¦ÀíÃû×Ö¶øÎŞĞèÌá¹©usingÉùÃ÷
-    // ²»¶¨ÒåNDEBUGÊ±£¬assert²ÅÖ´ĞĞÔËĞĞÊ±¼ì²é
-    // ¿ÉÒÔÔÚ#include <cassert>Ö®Ç°#define NDEBUGÀ´¹Ø±Õassert£»»òÔÚ±àÒëÃüÁîÖĞÌí¼ÓNDEBUGºê¶¨Òå
-    // ¿ÉÒÔÓÃNDEBUG¶¨Òå×Ô¼ºµÄµ÷ÊÔÓï¾ä£¬Èç£º
+    // asserté¢„å¤„ç†å®ï¼Œç”¨äºæ£€æŸ¥â€œä¸èƒ½å‘ç”Ÿâ€çš„æ¡ä»¶ : assert(expr);
+    // å¦‚æœexprä¸ºå‡ï¼Œassertè¾“å‡ºä¿¡æ¯å¹¶ä¸­æ­¢ç¨‹åºçš„æ‰§è¡Œï¼›å¦‚ä¸ºçœŸï¼Œassertä»€ä¹ˆéƒ½ä¸åš
+    // å®šä¹‰åœ¨cassertå¤´æ–‡ä»¶ä¸­
+    // é¢„å¤„ç†åå­—ç”±é¢„å¤„ç†å™¨è€Œä¸æ˜¯ç¼–è¯‘å™¨ç®¡ç†ï¼Œæ‰€ä»¥å¯ä»¥ç›´æ¥ä½¿ç”¨é¢„å¤„ç†åå­—è€Œæ— éœ€æä¾›usingå£°æ˜
+    // ä¸å®šä¹‰NDEBUGæ—¶ï¼Œassertæ‰æ‰§è¡Œè¿è¡Œæ—¶æ£€æŸ¥
+    // å¯ä»¥åœ¨#include <cassert>ä¹‹å‰#define NDEBUGæ¥å…³é—­assertï¼›æˆ–åœ¨ç¼–è¯‘å‘½ä»¤ä¸­æ·»åŠ NDEBUGå®å®šä¹‰
+    // å¯ä»¥ç”¨NDEBUGå®šä¹‰è‡ªå·±çš„è°ƒè¯•è¯­å¥ï¼Œå¦‚ï¼š
     // #ifndef NDEBUG
     //     cerr << __func__ << endl;
     // #endif
-    assert(true); // ¶ÏÑÔ³É¹¦
-    //assert(false); // ¶ÏÑÔÊ§°Ü
+    assert(true); // æ–­è¨€æˆåŠŸ
+    //assert(false); // æ–­è¨€å¤±è´¥
     cerr << "This is an error message." << endl;
 
-    // Ô¤´¦ÀíÆ÷¶¨ÒåµÄÆäËûµ÷ÊÔÓÃÃû×Ö:
-    //    __func__	µ±Ç°º¯ÊıÃû×Ö
-    //    __FILE__	ÎÄ¼şÃû
-    //    __LINE__	µ±Ç°ĞĞºÅ
-    //    __TIME__	ÎÄ¼ş±àÒëÊ±¼ä
-    //    __DATE__	ÎÄ¼ş±àÒëÈÕÆÚ
+    // é¢„å¤„ç†å™¨å®šä¹‰çš„å…¶ä»–è°ƒè¯•ç”¨åå­—:
+    //    __func__	å½“å‰å‡½æ•°åå­—
+    //    __FILE__	æ–‡ä»¶å
+    //    __LINE__	å½“å‰è¡Œå·
+    //    __TIME__	æ–‡ä»¶ç¼–è¯‘æ—¶é—´
+    //    __DATE__	æ–‡ä»¶ç¼–è¯‘æ—¥æœŸ
     cout << "__func__: " << __func__ << endl;
     cout << "__FILE__: " << __FILE__ << endl;
     cout << "__LINE__: " << __LINE__ << endl;
@@ -816,20 +816,20 @@ void CppPrimer::assertTest(void)
 
 const CppPrimer & CppPrimer::constMemFunction(int iVal) const
 {
-    // const³ÉÔ±º¯Êı£ºÔÚ³ÉÔ±º¯ÊıµÄĞÎ²ÎÁĞ±íºó¼Óconst£¬
-    // ±íÊ¾´Ëº¯ÊıÀïµÄthisÊÇÒ»¸öÖ¸Ïò³£Á¿µÄÖ¸Õë£¨²»ÄÜ¸Ä±äthisµÄ³ÉÔ±£©¡£
-    // ³£Á¿¶ÔÏó£¬ÒÔ¼°Ö¸Ïò³£Á¿¶ÔÏóµÄÒıÓÃ»òÖ¸Õë¶¼Ö»ÄÜµ÷ÓÃ³£Á¿³ÉÔ±º¯Êı¡£
-    //arithType_bool = true; // ²»ÄÜ¸Ä±ä³£Á¿thisµÄ³ÉÔ±
-    cout << "arithType_bool: " << arithType_bool << endl; // ¿ÉÒÔ¶ÁÈ¡³ÉÔ±
+    // constæˆå‘˜å‡½æ•°ï¼šåœ¨æˆå‘˜å‡½æ•°çš„å½¢å‚åˆ—è¡¨ååŠ constï¼Œ
+    // è¡¨ç¤ºæ­¤å‡½æ•°é‡Œçš„thisæ˜¯ä¸€ä¸ªæŒ‡å‘å¸¸é‡çš„æŒ‡é’ˆï¼ˆä¸èƒ½æ”¹å˜thisçš„æˆå‘˜ï¼‰ã€‚
+    // å¸¸é‡å¯¹è±¡ï¼Œä»¥åŠæŒ‡å‘å¸¸é‡å¯¹è±¡çš„å¼•ç”¨æˆ–æŒ‡é’ˆéƒ½åªèƒ½è°ƒç”¨å¸¸é‡æˆå‘˜å‡½æ•°ã€‚
+    //arithType_bool = true; // ä¸èƒ½æ”¹å˜å¸¸é‡thisçš„æˆå‘˜
+    cout << "arithType_bool: " << arithType_bool << endl; // å¯ä»¥è¯»å–æˆå‘˜
     mutableVar += iVal;
-    cout << "in const, mutableVar: " << mutableVar << endl; // const³ÉÔ±º¯Êı¿ÉÒÔ¸Ä±ämutable³ÉÔ±
+    cout << "in const, mutableVar: " << mutableVar << endl; // constæˆå‘˜å‡½æ•°å¯ä»¥æ”¹å˜mutableæˆå‘˜
     return *this;
 }
 
 CppPrimer & CppPrimer::constMemFunction(int iVal)
 {
-    arithType_bool = true; // ¿ÉÒÔ¸Ä±ä·Ç³£Á¿thisµÄ³ÉÔ±
-    cout << "arithType_bool: " << arithType_bool << endl; // ¿ÉÒÔ¶ÁÈ¡³ÉÔ±
+    arithType_bool = true; // å¯ä»¥æ”¹å˜éå¸¸é‡thisçš„æˆå‘˜
+    cout << "arithType_bool: " << arithType_bool << endl; // å¯ä»¥è¯»å–æˆå‘˜
     mutableVar += iVal;
     cout << "in non-const, mutableVar: " << mutableVar << endl;
     return *this;
@@ -849,9 +849,9 @@ void CppPrimer::convertingConstructorTest(CppPrimer insCppPrimer)
 {
 }
 
-// Íâ²¿¶¨Òå¾²Ì¬³ÉÔ±
+// å¤–éƒ¨å®šä¹‰é™æ€æˆå‘˜
 std::string CppPrimer::staticStrVar = "init";
-// Íâ²¿¶¨Òå¾²Ì¬³ÉÔ±º¯ÊıÊ±²»ÄÜ¼Óstatic¹Ø¼ü×Ö
+// å¤–éƒ¨å®šä¹‰é™æ€æˆå‘˜å‡½æ•°æ—¶ä¸èƒ½åŠ staticå…³é”®å­—
 void CppPrimer::staticFuncTest(std::string newStaticStrVar)
 {
     cout << "Old static string: " << CppPrimer::staticStrVar << endl;
