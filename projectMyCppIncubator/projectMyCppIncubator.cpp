@@ -6,6 +6,7 @@
 #include "CppPrimerFriend.h"
 #include "CppPrimerAggregate.h"
 #include "CppPrimerLiteral.h"
+#include "StdLibIO.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -71,7 +72,8 @@ void partOne(void)
 // Part two: C++标准库
 void partTwo(void)
 {
-
+    StdLibIO stdLibIOIns = StdLibIO();
+    stdLibIOIns.conditionState();
 }
 
 int main(int argc, char *argv[])
@@ -80,7 +82,10 @@ int main(int argc, char *argv[])
     // argv[0]是程序自身的名字
     for (int i = 0; i != argc; i++)
     { cout << argv[i] << " "; }
-    cout << endl;
+    cout << endl << endl;
+
+    //partOne();
+    partTwo();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
