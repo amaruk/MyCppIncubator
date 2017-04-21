@@ -11,6 +11,14 @@ using std::cout;
 using std::cerr;
 using std::istream;
 using std::string;
+using std::flush;
+using std::ends;
+using std::unitbuf;
+using std::nounitbuf;
+using std::ostream;
+using std::ifstream;
+using std::ofstream;
+using std::fstream;
 
 StdLibIO::StdLibIO()
 {
@@ -66,8 +74,57 @@ void StdLibIO::conditionState(void)
     cin >> charAryInput;
     getCinStateFunc();
 
-    // 需要清除错误状态，才能继续使用
+    // 用位操作清除错误状态
     cout << "---Bit clear cin.---" << endl;
-    cin.clear(cin.rdstate() & ~cin.failbit & ~cin.eofbit); // 用位操作清除fail和eof位
+    cin.clear(cin.rdstate() & ~cin.failbit & ~cin.eofbit); // 清除fail和eof位
     getCinStateFunc();
+}
+
+void StdLibIO::outputBuffer(void)
+{
+    // 导致缓冲刷新的原因：
+    // - 程序正常结束，缓冲刷新作为main函数return操作的一部分
+    // - 缓冲区满
+    // - endl显式刷新
+    // - 输出操作之后用操纵符unitbuf设置流内部状态来清空缓冲区。cerr默认设置unitbuf，写到ceer的内容立即刷新
+    // - 当输出流被关联到其他流时，读写被关联的流导致刷新。默认cin和cerr关联到cout，故读cin或写cerr会刷新cout缓冲区
+    // * 程序崩溃时不会刷新缓冲区
+    
+    cout << "flush" << flush; // 输出后刷新缓冲区，不附加额外字符
+    cout << "ends" << ends; // 输出内容和一个空字符，刷新缓冲区
+    cout << "endl" << endl; // 输出内容和一个换行，刷新缓冲区
+
+    cout << unitbuf; // 此后的输出操作都立即刷新缓冲区
+    cout << "unitbufed";
+    cout << nounitbuf; // 此后的输出操作恢复正常缓冲方式
+    cout << endl;
+
+    // 交互式系统一般关联输入流和输出流，这样在读操作之前保证要输出的用户提示信息都已经被打印出来
+    // 可以将istream对象关联到ostream，也可以将ostream对象关联到ostream
+    if (&cout == cin.tie()) // 如果已经关联则返回关联的流指针，否则返回空指针
+    { cout << "cin already tied to cout." << endl; }
+
+    ostream *oldTieOstream = cin.tie(nullptr); // cin不关联其他流
+    cin.tie(oldTieOstream); // cin关联cout
+    cout << "End of tie testing" << endl;
+}
+
+void StdLibIO::fileStream(void)
+{
+    // ifstream 从给定文件读取数据
+    // ofstream 向给定文件写入数据
+    // fstream  读写给定文件
+
+    // 创建文件流，绑定文件
+    ifstream iFileStream; // 创建文件流但不绑定文件
+    cout << "Is iFileStream open: " << iFileStream.is_open() << endl;
+    iFileStream.open(".\\Resources\iFile.txt"); // 以默认模式绑定文件
+    cout << "Is iFileStream open: " << iFileStream.is_open() << endl;
+    ofstream oFileStream(string(".\\Resources\\oFile.txt")); // 创建文件流并用默认模式绑定文件
+    fstream fileStream(string{ ".\\Resources\\file.txt" }, fstream::in | fstream::out); // 创建文件流并以指定模式绑定
+
+    // 关闭绑定的文件
+    iFileStream.close();
+    oFileStream.close();
+    fileStream.close();
 }

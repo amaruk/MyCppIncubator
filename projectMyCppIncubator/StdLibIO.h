@@ -39,5 +39,9 @@ public:
 
     // 流的条件状态 condition state
     void conditionState(void);
+    // 输出缓冲
+    void outputBuffer(void);
+    // 文件输入输出
+    void fileStream(void);
 };
 

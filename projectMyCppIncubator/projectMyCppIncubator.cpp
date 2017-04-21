@@ -73,15 +73,23 @@ void partOne(void)
 void partTwo(void)
 {
     StdLibIO stdLibIOIns = StdLibIO();
-    stdLibIOIns.conditionState();
+    //stdLibIOIns.conditionState();
+    //stdLibIOIns.outputBuffer();
+    stdLibIOIns.fileStream();
 }
 
 int main(int argc, char *argv[])
 {
     // main命令行参数
     // argv[0]是程序自身的名字
+    // 打印整条命令
     for (int i = 0; i != argc; i++)
     { cout << argv[i] << " "; }
+    cout << endl;
+    // 打印参数
+    for (auto argvP = argv + 1; argvP != argv + argc; ++argvP)
+    //for (char **argvP = argv + 1; argvP != argv + argc; ++argvP)
+    { cout << *argvP << " "; }
     cout << endl << endl;
 
     //partOne();
@@ -89,6 +97,7 @@ int main(int argc, char *argv[])
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
+	system("pwd");
 
     // 允许main没有return语句直接结束，编译器插入返回0的return语句表示执行成功
     return 0;
