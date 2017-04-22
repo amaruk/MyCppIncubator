@@ -111,20 +111,46 @@ void StdLibIO::outputBuffer(void)
 
 void StdLibIO::fileStream(void)
 {
-    // ifstream 从给定文件读取数据
-    // ofstream 向给定文件写入数据
-    // fstream  读写给定文件
+    // 文件模式
+    // in       以读方式打开              只能针对陈stream或fstream
+    // out      以写方式打开              只能针对ofstream或fstream；默认trunc，要追加必须指定app或者in
+    // app      写操作追加到文件末尾      没指定trunc时才可app；设定为app后默认out
+    // ate      打开文件后定位到文件末尾  可用于任何类型的文件流对象，可与任何模式组合使用
+    // trunc    截断文件，即覆盖文件      只有out才能指定trunc
+    // binary   以二进制方式进行IO        可用于任何类型的文件流对象，可与任何模式组合使用
+    //
+    // ifstream 从给定文件读取数据 默认in模式
+    // ofstream 向给定文件写入数据 默认out模式
+    // fstream  读写给定文件       默认in和out模式
 
-    // 创建文件流，绑定文件
+    // 用ifstream对象读取文件内容
     ifstream iFileStream; // 创建文件流但不绑定文件
+    cout << "Is iFileStream open: " << iFileStream.is_open() << endl; // 测试文件流是否打开了文件
+    iFileStream.open(".\\Resources\\file.txt"); // 以默认模式绑定文件
     cout << "Is iFileStream open: " << iFileStream.is_open() << endl;
-    iFileStream.open(".\\Resources\iFile.txt"); // 以默认模式绑定文件
-    cout << "Is iFileStream open: " << iFileStream.is_open() << endl;
-    ofstream oFileStream(string(".\\Resources\\oFile.txt")); // 创建文件流并用默认模式绑定文件
-    fstream fileStream(string{ ".\\Resources\\file.txt" }, fstream::in | fstream::out); // 创建文件流并以指定模式绑定
-
+    // 读取一行
+    char fileContent[1024];
+    iFileStream.getline(fileContent, sizeof fileContent);
+    cout << "Original file.txt: " << fileContent << endl;
     // 关闭绑定的文件
     iFileStream.close();
+
+    // 用ofstream对象写入文件内容
+    ofstream oFileStream(string(".\\Resources\\file.txt")); // 隐式out+隐式trunc
+    //ofstream oFileStream(string(".\\Resources\\file.txt"), ofstream::out); // 显式out+默认trunc
+    //ofstream oFileStream(string(".\\Resources\\file.txt"), ofstream::out | ofstream::trunc); // 显式out+显式trunc
+    //ofstream oFileStream(string(".\\Resources\\file.txt"), ofstream::app); // 隐式out+显示app
+    //ofstream oFileStream(string(".\\Resources\\file.txt"), ofstream::out | ofstream::app); // 显式out+显式app
+    oFileStream << "This is a new line from oFileStream. " << __DATE__ << " " << __TIME__; // TODO 使用日期时间函数
     oFileStream.close();
+
+    // 用fstream写入和读取文件内容
+    fstream fileStream(string{ ".\\Resources\\file.txt" }, fstream::out | fstream::app);
+    fileStream << " With fileStream content." ;
+    fileStream.close();
+    fileStream.open(string{ ".\\Resources\\file.txt" }, fstream::in);
+    fileStream.getline(fileContent, sizeof fileContent);
+    cout << "Final    file.txt: " << fileContent << endl;
+
     fileStream.close();
 }

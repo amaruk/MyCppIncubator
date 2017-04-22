@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
-	system("pwd");
+	//system("pwd");
 
     // 允许main没有return语句直接结束，编译器插入返回0的return语句表示执行成功
     return 0;
