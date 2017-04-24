@@ -19,6 +19,9 @@ using std::ostream;
 using std::ifstream;
 using std::ofstream;
 using std::fstream;
+using std::istringstream;
+using std::ostringstream;
+using std::stringstream;
 
 StdLibIO::StdLibIO()
 {
@@ -153,4 +156,34 @@ void StdLibIO::fileStream(void)
     cout << "Final    file.txt: " << fileContent << endl;
 
     fileStream.close();
+}
+
+void StdLibIO::stringStream(void)
+{
+    // istringstream 从string读取数据
+    // ostringstream 向string写入数据
+    // stringstream  string读写数据
+
+    string strSentence("Hello string stream.");
+    string word;
+    istringstream istrStreamInsNoInit; // 未绑定string的istringstream对象
+    istringstream istrStreamInsInit(strSentence); // 保存了strSentence拷贝的istringstream对象
+    ostringstream ostrStreamInsNoInit; // 未绑定string的ostringstream对象
+
+    cout << "istrSteamInsInit: " << istrStreamInsInit.str() << endl; // 获取保存的string的拷贝
+
+    istrStreamInsNoInit.str(string("This is a new sentence.")); // 将string拷贝到对象中
+    while (istrStreamInsNoInit >> word) // 获取内部string
+    {
+        cout << "istrStreamInsNoInit word: " << word << endl;
+
+        // 转大写后输出到ostringStream对象
+        for (char &c : word)
+        { c = toupper(c); }
+        ostrStreamInsNoInit << word << " ";
+    }
+    cout << "ostrStreamInsNoInit: " << ostrStreamInsNoInit.str() << endl;
+
+    
+
 }

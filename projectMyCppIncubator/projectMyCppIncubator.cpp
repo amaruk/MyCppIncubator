@@ -72,10 +72,15 @@ void partOne(void)
 // Part two: C++标准库
 void partTwo(void)
 {
+    // iostream处理控制台IO
+    // fstream处理文件IO
+    // stringstream处理内存string的IO
+
     StdLibIO stdLibIOIns = StdLibIO();
     //stdLibIOIns.conditionState();
     //stdLibIOIns.outputBuffer();
-    stdLibIOIns.fileStream();
+    //stdLibIOIns.fileStream();
+    stdLibIOIns.stringStream();
 }
 
 int main(int argc, char *argv[])

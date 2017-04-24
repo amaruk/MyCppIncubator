@@ -43,5 +43,7 @@ public:
     void outputBuffer(void);
     // 文件输入输出
     void fileStream(void);
+    // string流
+    void stringStream(void);
 };
 
