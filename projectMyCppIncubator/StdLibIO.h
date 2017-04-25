@@ -45,5 +45,7 @@ public:
     void fileStream(void);
     // string流
     void stringStream(void);
+    // 顺序容器
+    void sequenceContainer(void);
 };
 

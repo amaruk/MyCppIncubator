@@ -80,7 +80,8 @@ void partTwo(void)
     //stdLibIOIns.conditionState();
     //stdLibIOIns.outputBuffer();
     //stdLibIOIns.fileStream();
-    stdLibIOIns.stringStream();
+    //stdLibIOIns.stringStream();
+    stdLibIOIns.sequenceContainer();
 }
 
 int main(int argc, char *argv[])
