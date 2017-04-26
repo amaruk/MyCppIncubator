@@ -7,6 +7,7 @@
 #include "CppPrimerAggregate.h"
 #include "CppPrimerLiteral.h"
 #include "StdLibIO.h"
+#include "StdLibContainer.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -81,7 +82,9 @@ void partTwo(void)
     //stdLibIOIns.outputBuffer();
     //stdLibIOIns.fileStream();
     //stdLibIOIns.stringStream();
-    stdLibIOIns.sequenceContainer();
+
+    StdLibContainer stdLibContainer = StdLibContainer();
+    stdLibContainer.sequenceContainer();
 }
 
 int main(int argc, char *argv[])
