@@ -101,13 +101,13 @@ void StdLibContainer::sequenceContainer(void)
         ==, !=                  所有容器都支持等于、不等于运算符
         <, <=, >, >=            关系运算符，无序关联容器不支持
         ****获取迭代器****
-        c.begin(); c.end();     返回指向c的首元素和尾元素之后位置的迭代器
+        c.begin(); c.end();     返回指向c的首元素和尾元素之后位置的迭代器iterator
         c.cbegin(); c.cend();   返回const_iterator
         ****反向容器的额外成员（不支持forward_list）****
-        reverse_iterator        按逆序寻址元素的迭代器
+        reverse_iterator        按逆序寻址元素的迭代器，++得到上一个元素
         const_reverse_iterator  不能修改元素的逆序迭代器
-        c.rbegin(); c.rend();   返回指向c的尾元素和首元素之前为止的迭代器
-        c.crbegin(); c.crend(); fjhv const_reverse_iterator
+        c.rbegin(); c.rend();   返回指向c的尾元素和首元素之前为止的迭代器reverse_iterator
+        c.crbegin(); c.crend(); 返回const_reverse_iterator
     */
 }
 
