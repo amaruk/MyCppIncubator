@@ -66,7 +66,7 @@ void StdLibContainer::sequenceContainer(void)
     deque<char> charDeque = { '7', '8', '9' };
     list<char> charList{ '0', 'a', 'b' };
     forward_list<char> charFarwardList = { 'c', 'd', 'e' };
-    array<char, 3> charArray{ 'f', 'g', 'h' };
+    array<char, 3> charArray{ 'f', 'g', 'h' }; // array除了指定类型外，还要指定容器大小
 
     //// 容器操作
     /*
@@ -80,9 +80,13 @@ void StdLibContainer::sequenceContainer(void)
         const_reference         元素的const左值类型，即const value_type&
         ****构造函数****
         C c;                    默认构造函数，构造空容器
-        C c1(c2);               构造c2的拷贝c1
-        C c(b, e);              构造c，将迭代器b和e指定范围的元素拷贝到c（array不支持）
-        C c{a, b, c...};        列表初始化c
+        C c1(c2);               构造c2的拷贝c1。array可拷贝，但内置数组类型不能拷贝。
+        C c1 = c2;              同上
+        C c(b, e);              构造c，将迭代器b（第一个拷贝的元素位置）和e（拷贝的最后一个元素之后的位置）指定范围的元素拷贝到c，类型相容即可，不需相同（array不支持）
+        C c{a, b, c...};        C++11列表初始化c
+        C c = {a, b, c...};     C++11同上
+        C c(n);                 顺序容器（array除外）包含n个元素，进行值初始化。此构造函数是explicit的。
+        C c(n, t);              同上，但初始化为t
         ****赋值与swap****
         c1 = c2;                z将c1中的元素替换为c2
         c1 = {a, b, c...};      z将c1中的元素替换为列表中元素（array不支持）
