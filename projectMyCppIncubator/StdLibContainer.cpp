@@ -26,7 +26,7 @@ StdLibContainer::~StdLibContainer()
 {
 }
 
-void StdLibContainer::sequenceContainer(void)
+void StdLibContainer::testContainer(void)
 {
     // 容器：特定类型对象的集合
     // 顺序容器：提供控制元素存储和访问顺序的能力顺序与元素加入容器时的位置对应
@@ -141,20 +141,79 @@ void StdLibContainer::sequenceContainer(void)
     cout << "vector1 < vector3: " << ((vector1 < vector3) ? "true" : "false") << endl; // 元素都相等，vector3元素数量少
     cout << "vector1 == vector4: " << ((vector1 == vector4) ? "true" : "false") << endl; //大小相同，元素相等
     cout << "vector1 == vector2: " << ((vector1 == vector2) ? "true" : "fasle") << endl; // vector2元素数量少
+
     /*
-        ****添加删除元素（不适用array）****
+    ****获取迭代器****
+    c.begin(); c.end();     返回指向c的首元素和尾元素之后位置的迭代器iterator
+    c.cbegin(); c.cend();   返回const_iterator
+    ****反向容器的额外成员（不支持forward_list）****
+    reverse_iterator        按逆序寻址元素的迭代器，++得到上一个元素
+    const_reverse_iterator  不能修改元素的逆序迭代器
+    c.rbegin(); c.rend();   返回指向c的尾元素和首元素之前为止的迭代器reverse_iterator
+    c.crbegin(); c.crend(); 返回const_reverse_iterator
+    ****顺序容器特有****
+    顺序容器都有front()成员函数，返回首元素的引用
+    顺序容器除了forward_list外都有back()成员函数，返回尾元素的引用
+    at和下标操作只使用于string、vector、deque和array，返回引用
+    编译器不检查下标越界，at()越界会抛出out_of_range异常
+    */
+    vector<string> strVector = { string("first"),string("second"),string("third") };
+    cout << "begin(): " << *strVector.begin() << " end(): " << *(strVector.end()-1) << endl; // end()返回末尾元素后一位置
+    cout << "front(): " << strVector.front() << " back(): " << strVector.back() << endl;
+    cout << "at(1): " << strVector.at(1) << endl;
+    strVector[1] = "2nd";
+    cout << "[1]: " << strVector[1] << endl;
+    cout << "rangefor: ";
+    for (string str : strVector)
+    {
+        cout << str << " ";
+    }
+    cout << endl;
+    /*
+        ****所有容器都支持的添加删除元素（不适用不能改变大小的array）****
         c.insert(args);         将args中元素拷贝进c
         c.emplace(inits);       使用inits构造c中的一个元素
         c.erase(args);          删除args指定的元素
         c.clear();              删除c中所有元素，返回void
-        ****获取迭代器****
-        c.begin(); c.end();     返回指向c的首元素和尾元素之后位置的迭代器iterator
-        c.cbegin(); c.cend();   返回const_iterator
-        ****反向容器的额外成员（不支持forward_list）****
-        reverse_iterator        按逆序寻址元素的迭代器，++得到上一个元素
-        const_reverse_iterator  不能修改元素的逆序迭代器
-        c.rbegin(); c.rend();   返回指向c的尾元素和首元素之前为止的迭代器reverse_iterator
-        c.crbegin(); c.crend(); 返回const_reverse_iterator
+        ****顺序容器特有的添加删除操作****
+        *插入是拷贝操作，插入的是副本
+        *向vector，string或deque插入元素会使所有迭代器、引用和指针失效
+        *forward_list有自己的insert、emplace和erase
+        *forward_list不支持push_back、emplace_back和pop_back
+        *vector和string不支持push_front、emplace_front和pop_front
+        *在vector或string尾部之外的任何位置，或deque首尾之外的任何位置添加元素，都需要移动元素
+        *向vector或string添加元素可能引起整个对象存储空间的重新分配
+        *删除deque除首尾元素之外的任何元素都会使所有迭代器、引用和指针失效
+        *指向vector或string中删除点之后位置的迭代器、引用和指针都会失效
+        c.push_back(t);         在c的尾部创建值为t或由args创建的元素，返回void，t为元素类型的对象
+        c.emplace_back(args);   C++11，args为元素构造函数的参数
+        c.push_front(t);        在c的头部创建值为t或由args创建的元素，返回void
+        c.emplace_front(args);  C++11
+        c.insert(p,t);          在c的迭代器p指向的元素之前添加至为t或由args创建的元素，返回指向新添加元素的迭代器
+        c.emplace(p,args);      C++11
+        c.insert(p,n,t);        在c的迭代器p指向的元素之前添加n个值为t的元素，返回指向新添加的第一个元素的迭代器。若n为0，返回p
+        c.insert(p,b,e);        将b和e迭代器指定范围内的元素插入到迭代器p指向的元素之前，b和e不能指向c。返回指向新添加的第一个元素的迭代器。若范围为空，返回p
+        c.insert(p,il);         il是花括号包围的元素值列表，插入到迭代器p指向的元素之前，返回指向新添加的第一个元素的迭代器。若il为空，返回p
+        c.pop_back();           删除c的尾元素，返回void
+        c.pop_front();          删除c的首元素，返回void
+        c.erase(p);             删除p迭代器指定的元素，返回被删元素之后的元素迭代器
+        c.erase(b,e);           删除b和e所指范围内的元素，返回指向最后一个被删元素之后的元素迭代器
+        c.clear();              删除c中所有元素，返回void
     */
+    deque<char> cList = { '1', '2', '3' };
+    for (char c : cList) { cout << c << " "; } cout << endl;
+    cList.pop_back();
+    for (char c : cList) { cout << c << " "; } cout << endl;
+    cList.pop_front();
+    for (char c : cList) { cout << c << " "; } cout << endl;
+    deque<char>::iterator itr = cList.end() - 2;
+    cList.erase(itr);
+    for (char c : cList) { cout << c << " "; } cout << endl;
+    cList.push_back('C');
+    for (char c : cList) { cout << c << " "; } cout << endl;
+    cList.emplace_front('A');
+    for (char c : cList) { cout << c << " "; } cout << endl;
+
+    // 特殊的forward_list操作
 }
 

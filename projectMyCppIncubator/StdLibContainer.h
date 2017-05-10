@@ -6,6 +6,6 @@ public:
     ~StdLibContainer();
 
     // Ë³ÐòÈÝÆ÷
-    void sequenceContainer(void);
+    void testContainer(void);
 };
 
