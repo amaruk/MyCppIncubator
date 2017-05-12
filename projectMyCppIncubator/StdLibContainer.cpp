@@ -200,19 +200,38 @@ void StdLibContainer::testContainer(void)
         c.erase(b,e);           删除b和e所指范围内的元素，返回指向最后一个被删元素之后的元素迭代器
         c.clear();              删除c中所有元素，返回void
     */
-    deque<char> cList = { '1', '2', '3' };
-    for (char c : cList) { cout << c << " "; } cout << endl;
-    cList.pop_back();
-    for (char c : cList) { cout << c << " "; } cout << endl;
-    cList.pop_front();
-    for (char c : cList) { cout << c << " "; } cout << endl;
-    deque<char>::iterator itr = cList.end() - 2;
-    cList.erase(itr);
-    for (char c : cList) { cout << c << " "; } cout << endl;
-    cList.push_back('C');
-    for (char c : cList) { cout << c << " "; } cout << endl;
-    cList.emplace_front('A');
-    for (char c : cList) { cout << c << " "; } cout << endl;
+    deque<char> cDeque = { '1', '2', '3' };
+    cout << "Initial deque: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
+
+    cDeque.pop_back();
+    cout << "pop_back: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl; 
+
+    cDeque.pop_front();
+    cout << "pop_front: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
+
+    cDeque.push_back('C');
+    cout << "push_back: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
+
+    cDeque.emplace_front('A');
+    cout << "emplace_front: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
+
+    deque<char>::iterator itr = cDeque.end() - 2;
+    itr = cDeque.erase(itr);
+    cout << "erase: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
+
+    cDeque.insert(itr, 'B');
+    cout << "insert: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
+
+    cDeque.clear();
+    cout << "clear: ";
+    for (char c : cDeque) { cout << c << " "; } cout << endl;
 
     // 特殊的forward_list操作
 }
