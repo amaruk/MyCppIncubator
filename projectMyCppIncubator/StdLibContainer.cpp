@@ -123,6 +123,8 @@ void StdLibContainer::testContainer(void)
     aryInt5 = { 1,2 };
     cout << "after " << aryInt5[0] << aryInt5[1] << aryInt5[2] << aryInt5[3] << aryInt5[4] << endl;
 
+    cout << endl;
+
     /*
         ****关系运算符****
         *运算符两边的容器必须类型相同，元素类型相同
@@ -141,6 +143,8 @@ void StdLibContainer::testContainer(void)
     cout << "vector1 < vector3: " << ((vector1 < vector3) ? "true" : "false") << endl; // 元素都相等，vector3元素数量少
     cout << "vector1 == vector4: " << ((vector1 == vector4) ? "true" : "false") << endl; //大小相同，元素相等
     cout << "vector1 == vector2: " << ((vector1 == vector2) ? "true" : "fasle") << endl; // vector2元素数量少
+
+    cout << endl;
 
     /*
     ****获取迭代器****
@@ -169,6 +173,8 @@ void StdLibContainer::testContainer(void)
         cout << str << " ";
     }
     cout << endl;
+
+    cout << endl;
     /*
         ****所有容器都支持的添加删除元素（不适用不能改变大小的array）****
         c.insert(args);         将args中元素拷贝进c
@@ -177,14 +183,16 @@ void StdLibContainer::testContainer(void)
         c.clear();              删除c中所有元素，返回void
         ****顺序容器特有的添加删除操作****
         *插入是拷贝操作，插入的是副本
-        *向vector，string或deque插入元素会使所有迭代器、引用和指针失效
-        *forward_list有自己的insert、emplace和erase
-        *forward_list不支持push_back、emplace_back和pop_back
-        *vector和string不支持push_front、emplace_front和pop_front
+        *vector和string的元素连续存储
         *在vector或string尾部之外的任何位置，或deque首尾之外的任何位置添加元素，都需要移动元素
         *向vector或string添加元素可能引起整个对象存储空间的重新分配
-        *删除deque除首尾元素之外的任何元素都会使所有迭代器、引用和指针失效
-        *指向vector或string中删除点之后位置的迭代器、引用和指针都会失效
+        *插入操作vector，string之后，如重新分配空间则迭代器、引用、指针全部失效；如未重新分配，则插入位置之后的会失效
+        *插入操作deque之后，插入到首尾之外的位置会使所有迭代器、引用和指针失效；插入到首尾位置，迭代器会失效，引用和指针不会失效
+        *插入操作list，forward_list之后，迭代器、指针、引用都有效
+        *删除操作deque之后，删除首尾元素之外的任何元素都会使所有迭代器、引用和指针失效；删除尾元素则尾后迭代器失效；删除首元素不会失效
+        *删除操作vector，string之后，删除点之后位置的迭代器、引用和指针都会失效
+        *删除操作list，forward_list之后，迭代器、引用、指针都有效
+        *vector和string不支持push_front、emplace_front和pop_front
         c.push_back(t);         在c的尾部创建值为t或由args创建的元素，返回void，t为元素类型的对象
         c.emplace_back(args);   C++11，args为元素构造函数的参数
         c.push_front(t);        在c的头部创建值为t或由args创建的元素，返回void
@@ -199,6 +207,18 @@ void StdLibContainer::testContainer(void)
         c.erase(p);             删除p迭代器指定的元素，返回被删元素之后的元素迭代器
         c.erase(b,e);           删除b和e所指范围内的元素，返回指向最后一个被删元素之后的元素迭代器
         c.clear();              删除c中所有元素，返回void
+        *forward_list有自己的insert、emplace和erase
+        *forward_list不支持push_back、emplace_back和pop_back
+        *forward_list的特殊操作: forward_list是单向链表，其添加删除是在给定迭代器之后操作
+        lst.before_begin();     返回指向链表首元素之前不存在的元素的迭代器，此迭代器不能解引用
+        lst.cbefore_begin();    返回const_iterator
+        lst.insert_after(p,t);  在迭代器p之后插入元素，返回指向插入元素的迭代器
+        lst.insert_after(p,n,t);在迭代器p之后插入n个t对象，返回指向最后一个插入元素的迭代器
+        lst.insert_after(p,b,e);把b和e指定范围的对象插入到迭代器p之后，b和e不能指向lst，如果范围为空，返回p
+        lst.insert_after(p,il); 把花括号列表对象插入到迭代器p之后
+        lst.emplace_after(p, args); 使用args在p指定的位置之后创建一个元素，返回指向新元素的迭代器
+        lst.erase_after(p);     删除p指向的位置之后的元素，返回被删元素之后元素的迭代器
+        lst.erase_after(b,e);   删除b和e指定范围内的元素
     */
     deque<char> cDeque = { '1', '2', '3' };
     cout << "Initial deque: ";
@@ -233,6 +253,51 @@ void StdLibContainer::testContainer(void)
     cout << "clear: ";
     for (char c : cDeque) { cout << c << " "; } cout << endl;
 
-    // 特殊的forward_list操作
+    cout << endl;
+
+    /*
+        ****改变容器大小（不适用不能改变大小的array）****
+        *缩小容器会删除尾部元素，扩大容器在尾部添加元素
+        *resize只删除元素改变size()，不改变capacity()对应的内存空间
+        c.resize(n);    改变c大小为n
+        c.resize(n, t); 改变c大小为n，扩大时添加的元素初始化为t
+        *shrink_to_fit只适用于vector、string、deque
+        *capacity和reserve只适用于vector和string
+        c.shrink_to_fit();  将capacity()减少为与sizeof()同样大小，依赖于具体实现，不保证释放内存
+        c.capacity();       不重新分配内存空间的话，c可以保存多少元素
+        c.reserve(n);       分配至少能容纳n个元素的内存空间
+    */
+    vector<char> cVector = { '1','2','3' };
+    cout << "Initial: ";
+    for (char c : cVector) { cout << c << " "; } cout << endl;
+    cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
+
+    cVector.resize(1);
+    cout << "resize small: ";
+    for (char c : cVector) { cout << c << " "; } cout << endl;
+    cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
+
+    cVector.resize(3);
+    cout << "resize large: ";
+    for (char c : cVector) { cout << c << " "; } cout << endl;
+    cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
+
+    cVector.resize(5, 'L');
+    cout << "resize large init: ";
+    for (char c : cVector) { cout << c << " "; } cout << endl;
+    cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
+
+    cVector.reserve(10);
+    cout << "reserve: ";
+    for (char c : cVector) { cout << c << " "; } cout << endl;
+    cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
+
+    cVector.shrink_to_fit();
+    cout << "shrink: ";
+    for (char c : cVector) { cout << c << " "; } cout << endl;
+    cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
+
+    cout << endl;
+
 }
 
