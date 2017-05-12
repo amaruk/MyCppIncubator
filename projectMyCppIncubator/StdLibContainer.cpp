@@ -299,5 +299,46 @@ void StdLibContainer::testContainer(void)
 
     cout << endl;
 
+    /*
+        ****string相关****
+    */
+    // 构造函数
+    string s1; //默认构造函数
+    cout << "s1: " << s1 << endl;
+    string s2 = s1; //S2是S1的副本
+    cout << "s2: " << s2 << endl;
+    string s3 = "hello"; //s3是字面值的副本
+    cout << "s3: " << s3 << endl;
+    string s4(5, 'c'); //s4的内容是ccccc
+    cout << "s4: " << s4 << endl;
+    char charAry[] = "test";
+    string s5(charAry, 2);   //s5是s3前2个字符的拷贝
+    cout << "s5: " << s5 << endl;
+    string s6(s3, 2); //s6是s3从下标2开始的字符的拷贝
+    cout << "s6: " << s6 << endl;
+    string s7(s3, 1, 3); //s7是s3从下标1开始的长度位3的字符拷贝
+    cout << "s7: " << s7 << endl;
+    /*
+        substr(pos, n);         返回string，包含从pos开始的n个字符的拷贝
+        *string支持容器的assign、insert、erase操作，还提供基于下标的insert和erase
+        s.insert(pos, args);    在pos之前插入args指定的字符。pos可以是下标（返回指向s的引用）或迭代器（返回指向第一个插入字符的迭代器）。
+        s.erase(pos, len);      删除从位置pos开始的len个字符。如省略len则删到末尾。返回指向s的引用
+        s.assign(args);         将s的字符替换为args指定的字符，返回指向s的引用
+        s.append(args);         将args追加到s，返回指向s的引用
+        s.replace(range, args); 删除range内的字符，替换为args指定的字符。range是一个下标和一个长度，或一对指向s的迭代器。返回指向s的引用。
+        *搜索string
+        s.find(args);           查找第一次出现的位置
+        s.rfind(args);          查找最后一次出现的位置
+        s.find_first_of(args);  查找args中任何一个字符第一次出现的位置
+        s.find_last_of(args);   查找args中任何一个字符最后一次出现的位置
+        s.find_first_not_of(args);  查找第一个不在args中的字符
+        s.find_last_not_of(args);   查找最后一个不在args中的字符
+        *比较string
+        s.compare();            有六个版本
+        ################数值转换
+    */
+
+    cout << endl;
+
 }
 
