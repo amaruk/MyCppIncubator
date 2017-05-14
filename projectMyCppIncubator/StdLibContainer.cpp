@@ -7,6 +7,8 @@
 #include <forward_list>
 #include <array>
 #include <iostream>
+#include <stack>
+#include <queue>
 
 using std::cout;
 using std::endl;
@@ -25,6 +27,9 @@ using std::stoull;
 using std::stof;
 using std::stod;
 using std::stold;
+using std::stack;
+using std::queue;
+using std::priority_queue;
 
 StdLibContainer::StdLibContainer()
 {
@@ -364,6 +369,79 @@ void StdLibContainer::testContainer(void)
     cout << "stoi(\"010\"): " << stoi(string("010"), 0, 8) << endl;
     cout << "stoi(\"0x10\"): " << stoi(string("0x10"), 0, 16) << endl;
     cout << "stof(\"3.14\"): " << stof(string("3.14")) << endl;
+
+    cout << endl;
+
+    /* 适配器adapter：一种机制，使某种事物的行为看起来像另一种事。
+       顺序容器适配器：接受一种已有的容器类型，使其行为看起来像一种不同的类型，如stack适配器接受一个顺序容器，使其操作起来像stack一样
+       标准库定义顺序容器的适配器：stack、queue、priority_queue
+       *所有容器适配器都支持的操作和类型：
+       size_type        一种类型，足以保存当前类型最大对象的大小
+       value_type       元素类型
+       container_type   实现适配器的底层容器类型
+       A a;             创建空适配器
+       A a(c);          用容器c的拷贝创建适配器
+       关系运算符        每个适配器都支持关系运算符 == != < <= > >=，返回底层容器的比较结果
+       a.empty();       a包含元素则返回false
+       a.size();        返回a中元素数目
+       swap(a,b);       交互a和b的内容，a和b必须类型相同，底层容器类型相同
+       a.swap(b);       同上
+       *重载适配器的默认容器类型
+       *给定的适配器只能使用特定的类型，规则如下
+       - 所有适配器都要求容器具有添加和删除元素的能力，所以适配器不能构造在array之上
+       - 所有适配器还要求容器具有访问尾元素的能力，所以不能构造在forward_list之上
+       - stack只要求push_back、pop_back和back操作，因此可以使用除array和forward_list之外的任何容器类型
+         默认基于deque，可以在list和vector上实现
+         s.pop();       删除栈顶元素但不返回该元素值
+         s.push(item);  创建一个新元素压入栈顶，通过复制或移动item创建，或由args构造
+         s.emplace(args);
+         s.top();       返回栈顶元素，但不将元素弹出栈
+       - queue要求back、push_back、front、push_front，因此可以构造与list和deque之上，但不能基于vector构造
+         默认基于deque实现
+         FIFO存储和访问
+       - priority_queue除了front、push_back和pop_back之外还要求随机访问能力，因此可以构造与vector和queue之上，但不能基于list构造
+         默认基于vector实现，也可用deque实现
+         元素优先级高的排列在前面
+         q.pop();       删除queue的首元素或priority_queue的最高优先级元素，但不返回此元素
+         q.front();     返回首元素，但不删除此元素，只适用于queue
+         q.back();      返回尾元素，但不删除此元素，只适用于queue
+         q.top();       返回最高优先级元素，但不删除此元素，只适用于priority_queue
+         q.push(item);  在queue的末尾或priority_queue中恰当的位置创建一个元素，其值为item或由args构造
+         q.emplace(args);
+    */
+    /* Stack 测试 */
+    // 第二个类型参数重载适配器的默认容器类型
+    stack<string, vector<string>> strStack;
+    strStack.push(string("No.1"));
+    strStack.emplace("No.2");
+    while (!strStack.empty())
+    {
+        cout << strStack.top() << " ";
+        strStack.pop();
+    }
+    cout << endl;
+
+    cout << endl;
+
+    /* Queue 测试 */
+    queue<int> intQueue;
+    intQueue.push(1);
+    intQueue.emplace(2);
+    intQueue.push(3);
+    cout << "before pop(), front(): " << intQueue.front() << " back(): " << intQueue.back() << endl;
+    intQueue.pop();
+    cout << "after  pop(), front(): " << intQueue.front() << " back(): " << intQueue.back() << endl;
+
+    cout << endl;
+
+    /* Priority Queue 测试 TBD:目前使用的是默认的比较优先级函数 */
+    priority_queue<int> intPrioQueue;
+    intPrioQueue.push(1);
+    intPrioQueue.emplace(5);
+    intPrioQueue.emplace(3);
+    cout << "before pop(), top(): " << intPrioQueue.top() << endl;
+    intPrioQueue.pop();
+    cout << "after  pop(), top(): " << intPrioQueue.top() << endl;
 
     cout << endl;
 
