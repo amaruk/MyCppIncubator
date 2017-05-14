@@ -16,6 +16,15 @@ using std::deque;
 using std::list;
 using std::forward_list;
 using std::array;
+using std::to_string;
+using std::stoi;
+using std::stol;
+using std::stoul;
+using std::stoll;
+using std::stoull;
+using std::stof;
+using std::stod;
+using std::stold;
 
 StdLibContainer::StdLibContainer()
 {
@@ -318,6 +327,9 @@ void StdLibContainer::testContainer(void)
     cout << "s6: " << s6 << endl;
     string s7(s3, 1, 3); //s7是s3从下标1开始的长度位3的字符拷贝
     cout << "s7: " << s7 << endl;
+
+    cout << endl;
+
     /*
         substr(pos, n);         返回string，包含从pos开始的n个字符的拷贝
         *string支持容器的assign、insert、erase操作，还提供基于下标的insert和erase
@@ -335,8 +347,23 @@ void StdLibContainer::testContainer(void)
         s.find_last_not_of(args);   查找最后一个不在args中的字符
         *比较string
         s.compare();            有六个版本
-        ################数值转换
+        *数值转换
+        to_string(val);         返回任意算数类型val的string表示。
+        *sto_(s,p,b);           返回s起始子串的数值；b为转换基数默认10；p是size_t指针保存s第一个非数组字符下标，默认为0表示不保存下标
+        stoi(s,p,b);            返回int
+        stol(s,p,b);            返回long
+        stoul(s,p,b);           返回unsigned long
+        stoll(s,p,b);           返回long long
+        stoull(s,p,b);          返回unsigned long long
+        stof(s,p);              返回float
+        stod(s,p);              返回double
+        stold(s,p);             返回long double
     */
+    cout << "to_string(12345): " << to_string(12345) << endl;
+    cout << "stoi(\"12345\"): " << stoi(string("12345")) << endl;
+    cout << "stoi(\"010\"): " << stoi(string("010"), 0, 8) << endl;
+    cout << "stoi(\"0x10\"): " << stoi(string("0x10"), 0, 16) << endl;
+    cout << "stof(\"3.14\"): " << stof(string("3.14")) << endl;
 
     cout << endl;
 
