@@ -36,7 +36,7 @@ void partOne(void)
     //cppPrimerIns.arrayTest();
     //cppPrimerIns.exceptionTest();
     //cppPrimerIns.exceptionTest();
-    //cppPrimerIns.functionTest();
+    cppPrimerIns.functionTest();
     //cppPrimerIns.assertTest();
     //cppPrimerIns.constMemFunction(1).constMemFunction(2); // 非常量对象调用非常量版本
     const CppPrimer cppPrimerConstIns = CppPrimer();
@@ -84,7 +84,8 @@ void partTwo(void)
     //stdLibIOIns.stringStream();
 
     StdLibContainer stdLibContainer = StdLibContainer();
-    stdLibContainer.testContainer();
+    //stdLibContainer.testContainer();
+    stdLibContainer.testGeneric();
 }
 
 int main(int argc, char *argv[])

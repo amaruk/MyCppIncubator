@@ -5,7 +5,9 @@ public:
     StdLibContainer();
     ~StdLibContainer();
 
-    // Ë³ÐòÈÝÆ÷
+    // ÈÝÆ÷
     void testContainer(void);
+    // ·ºÐÍ
+    void testGeneric(void);
 };
 

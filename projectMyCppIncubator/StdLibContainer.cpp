@@ -447,3 +447,59 @@ void StdLibContainer::testContainer(void)
 
 }
 
+void StdLibContainer::testGeneric(void)
+{
+    /*
+        标准库提供独立于特定容器的泛型算法（generic algorithm），提供一些经典算法的公共接口，如排序和搜索。
+        泛型算法用于不同类型容器和不同类型元素。
+        算法只操作迭代器，不会执行容器操作改变容器大小
+        TBD 指针就像内置数组的迭代器
+
+        只读算法：count/find/accumulate/equal
+        对于只读算法，建议使用cbegin和cend。
+
+        写容器元素的算法：fill/fill_n/copy/replace
+
+        重排容器元素的算法：sort/unique/stable_sort
+
+        谓词predicate：可调用的表达式，返回结果是能用作条件的值。
+        一元谓词unary predicate：值接受单一参数
+        二元谓词binary predicate：两个参数
+        接受谓词的算法对序列中的元素调用谓词，元素类型必须能转换为谓词的参数类型。
+        比如sort默认依靠<比较元素大小，可以自定义比较大小的函数，作为谓词在第三个参数传给sort，此时sort使用该函数比较大小
+        可用lambda表达式作为谓词，用其capture list突破谓词参数个数限制
+
+        可调用对象（callable object）：可以对其使用调用运算符()的对象或表达式
+        - 函数
+        - 函数指针
+        - 重载了函数调用运算符的类 TBD
+        - lambda表达式
+
+        C++11:
+        lambda expression：表示可调用的代码单元，相当于未命名的内联函数
+        具有一个返回类型，一个参数列表，一个函数体
+        lambda可定义在函数内部
+        形式：[capture list](parameter list) -> return type {function body}
+        capture list：lambda所在函数中定义的局部变量列表，通常为空
+        必须使用尾置返回类型
+        不能有默认参数
+        可以忽略parameter list和return type（根据body代码推断返回类型），但capture list和function body必须存在，如
+        auto f = [] { return 123; }; // 定义对象f，不接受参数，返回123
+        f(); // 调用f
+        定义lambda时，编译器生成对应的未命名类类型。
+        lambda的capture list支持值捕获和引用捕获，捕获发生在lambda创建时而不是调用时。可混合使用显式捕获和隐式捕获。
+        []              空捕获列表
+        [name,name]     name为lambda所在函数的局部变量，默认值拷贝，如果&name则引用捕获
+        [&]             隐式捕获列表，lambda中用到的函数局部变量都为引用捕获
+        [=]             隐式捕获列表，lambda中用到的函数局部变量都为拷贝捕获
+        [&, identifier_list]    identifier_list里为显式拷贝捕获，不能用&
+        [=, identifier_list]    identifier_list里为显式引用捕获，不能包括this，必须使用&
+    */
+
+    int intForLambda = 123;
+    auto testLambdaExp = [intForLambda](float fltForLambda) -> string { return to_string(intForLambda * fltForLambda); };
+    cout << "lambda expression: " << testLambdaExp(2.5) << endl;
+
+    ////可变lamdba 352
+}
+
