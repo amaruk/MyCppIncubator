@@ -12,6 +12,7 @@
 #include <functional>
 #include <iterator>
 
+using std::cin;
 using std::cout;
 using std::endl;
 using std::vector;
@@ -35,6 +36,8 @@ using std::priority_queue;
 using std::back_inserter;
 using std::front_inserter;
 using std::inserter;
+using std::istream_iterator;
+using std::ostream_iterator;
 using namespace std::placeholders;
 
 StdLibContainer::StdLibContainer()
@@ -576,10 +579,30 @@ void StdLibContainer::testIterator(void)
     cout << "After inserter: ";
     for (int i : intDeque) { cout << i << " "; } cout << endl;
 
+    cout << endl;
+
     /*
         流迭代器stream iterator：绑定到输入或输出流上，遍历关联的IO流
+        虽然iostream不是容器，但标准库为IO类型对象定义了迭代器，将流当作一个特定类型的元素序列来处理
+        istream_iterator读取输入流
+        ostream_iterator向输出流写数据
+    */
+    cout << "Please enter numbers end with CTRL+Z." << endl;
+    istream_iterator<int> intIstreamItr(cin); // 初始化时绑定流
+    istream_iterator<int> intIstreamItrEof; // 默认初始化，当作尾后值使用
+    //ostream_iterator<int> intOstreamItr(cout); // 把int类型的值写到输出流中
+    ostream_iterator<int> intOstreamItr(cout, "_"); // 每个输出之后输出一个_
+    while (intIstreamItr != intIstreamItrEof)
+    {
+        *intOstreamItr++ = *intIstreamItr++;
+    }
+    cout << endl;
+
+    cout << endl;
+
+    /*
         反向迭代器reverse iterator：向后而不是向前移动，除了forward_list之外的容器都有
         移动迭代器move iterator：只移动元素，不拷贝
     */
-
+    //////363
 }
