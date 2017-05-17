@@ -9,5 +9,7 @@ public:
     void testContainer(void);
     // ·ºÐÍ
     void testGeneric(void);
+    // µü´úÆ÷
+    void testIterator(void);
 };
 

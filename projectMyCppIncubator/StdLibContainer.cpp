@@ -9,6 +9,8 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <functional>
+#include <iterator>
 
 using std::cout;
 using std::endl;
@@ -30,6 +32,10 @@ using std::stold;
 using std::stack;
 using std::queue;
 using std::priority_queue;
+using std::back_inserter;
+using std::front_inserter;
+using std::inserter;
+using namespace std::placeholders;
 
 StdLibContainer::StdLibContainer()
 {
@@ -447,6 +453,12 @@ void StdLibContainer::testContainer(void)
 
 }
 
+bool toBeBind(int intArg, char charArg, string strArg)
+{
+    cout << "toBeBind: intArg: " << intArg << " charArg: " << charArg << " strArg: " << strArg << endl;
+    return true;
+}
+
 void StdLibContainer::testGeneric(void)
 {
     /*
@@ -455,11 +467,8 @@ void StdLibContainer::testGeneric(void)
         算法只操作迭代器，不会执行容器操作改变容器大小
         TBD 指针就像内置数组的迭代器
 
-        只读算法：count/find/accumulate/equal
-        对于只读算法，建议使用cbegin和cend。
-
+        只读算法：count/find/accumulate/equal。对于只读算法，建议使用cbegin和cend。
         写容器元素的算法：fill/fill_n/copy/replace
-
         重排容器元素的算法：sort/unique/stable_sort
 
         谓词predicate：可调用的表达式，返回结果是能用作条件的值。
@@ -467,7 +476,9 @@ void StdLibContainer::testGeneric(void)
         二元谓词binary predicate：两个参数
         接受谓词的算法对序列中的元素调用谓词，元素类型必须能转换为谓词的参数类型。
         比如sort默认依靠<比较元素大小，可以自定义比较大小的函数，作为谓词在第三个参数传给sort，此时sort使用该函数比较大小
-        可用lambda表达式作为谓词，用其capture list突破谓词参数个数限制
+        突破谓词参数个数限制：
+        - 用lambda表达式作为谓词，用其capture list
+        - C++11的标准库bind函数
 
         可调用对象（callable object）：可以对其使用调用运算符()的对象或表达式
         - 函数
@@ -475,13 +486,16 @@ void StdLibContainer::testGeneric(void)
         - 重载了函数调用运算符的类 TBD
         - lambda表达式
 
+    */
+    /*
         C++11:
         lambda expression：表示可调用的代码单元，相当于未命名的内联函数
         具有一个返回类型，一个参数列表，一个函数体
         lambda可定义在函数内部
-        形式：[capture list](parameter list) -> return type {function body}
+        形式：[capture list](parameter list) mutable -> return type {function body}
         capture list：lambda所在函数中定义的局部变量列表，通常为空
-        必须使用尾置返回类型
+        mutable表示lambda可改变捕获的变量值，也可以靠捕获引用来改变值
+        如果lambda体包含return之外的任何语句，则编译器假定lambda返回void，不能返回值。此时必须使用尾置返回类型
         不能有默认参数
         可以忽略parameter list和return type（根据body代码推断返回类型），但capture list和function body必须存在，如
         auto f = [] { return 123; }; // 定义对象f，不接受参数，返回123
@@ -494,12 +508,78 @@ void StdLibContainer::testGeneric(void)
         [=]             隐式捕获列表，lambda中用到的函数局部变量都为拷贝捕获
         [&, identifier_list]    identifier_list里为显式拷贝捕获，不能用&
         [=, identifier_list]    identifier_list里为显式引用捕获，不能包括this，必须使用&
+
     */
 
     int intForLambda = 123;
     auto testLambdaExp = [intForLambda](float fltForLambda) -> string { return to_string(intForLambda * fltForLambda); };
     cout << "lambda expression: " << testLambdaExp(2.5) << endl;
 
-    ////可变lamdba 352
+    /*
+        C++11:
+        bind函数相当于一个通用对象适配器，接受可调用对象，生成新的可调用对象来适应原对象的参数列表
+        一般形式：
+        auto newCallable = bind(callable, arg_list);
+        newCallable是可调用对象
+        arg_list是逗号分隔的参数列表，对应callable的参数。arg_list可能包含_n这样的名字，如_1, _2，作为占位符
+        调用newCallable时，newCallable会调用callable，把arg_list中的参数传递给callable
+        希望传递给bind对象而不拷贝时，用标准库的ref或cref函数，如：bind(print, ref(os), _1, ' ');
+    */
+
+    //bool toBeBind(int intArg, char charArg, string strArg)
+    auto bindObj = bind(toBeBind, _2, 'c', _1);
+    bindObj("test", 123); // 相当于bind(123, 'c', "test")
+    bindObj("again", 890);
+
+    /*
+        lambda和泛型算法的配合使用，lambda作为谓词：
+        auto wc = find_if(words.begin(), words.end(),
+                        [sz] (const string &a) { return a.size() >= sz; });
+        bind和泛型算法的配合使用，find_if调用bind的时候，check_size被调用，string作为第一个参数，sz作为第二个参数：
+        auto wc = find_if(words.begin(), words.end(),
+                        bind(check_size, _1, sz));
+    */
 }
 
+void StdLibContainer::testIterator(void)
+{
+    /*
+        插入迭代器insert iterator：绑定到容器上，向容器插入元素
+        - back_inserter，使用push_back()的迭代器
+        - front_inserter，使用push_front()的迭代器
+        - inserter，使用insert()的迭代器，第二个参数为指定insert位置的迭代器，插入到此迭代器之前
+    */
+    deque<int> intDeque;
+
+    cout << "Original vector: ";
+    for (int i : intDeque) { cout << i << " "; } cout << endl;
+
+    // 总是在末尾插入
+    auto backItr = back_inserter(intDeque);
+    *backItr = 1;
+    cout << "After back_inserter: ";
+    for (int i : intDeque) { cout << i << " "; } cout << endl;
+
+    // 总是在开头插入
+    auto frontItr = front_inserter(intDeque);
+    *frontItr = 0;
+    cout << "After front_inserter: ";
+    for (int i : intDeque) { cout << i << " "; } cout << endl;
+
+    // 总是插入到固定迭代器之前
+    auto midItr = intDeque.begin() + 1;
+    auto insertItr = inserter(intDeque, midItr);
+    *insertItr = 2;
+    cout << "After inserter: ";
+    for (int i : intDeque) { cout << i << " "; } cout << endl;
+    *insertItr = 3;
+    cout << "After inserter: ";
+    for (int i : intDeque) { cout << i << " "; } cout << endl;
+
+    /*
+        流迭代器stream iterator：绑定到输入或输出流上，遍历关联的IO流
+        反向迭代器reverse iterator：向后而不是向前移动，除了forward_list之外的容器都有
+        移动迭代器move iterator：只移动元素，不拷贝
+    */
+
+}
