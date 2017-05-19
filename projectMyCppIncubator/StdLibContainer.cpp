@@ -15,6 +15,7 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 using std::cin;
 using std::cout;
@@ -43,13 +44,20 @@ using std::inserter;
 using std::istream_iterator;
 using std::ostream_iterator;
 using namespace std::placeholders;
-using std::set;
 using std::map;
+using std::set;
+using std::multimap;
+using std::multiset;
+using std::pair;
 
 StdLibContainer::StdLibContainer()
 {
 }
 
+StdLibContainer::StdLibContainer(int initData)
+{
+    data = initData;
+}
 
 StdLibContainer::~StdLibContainer()
 {
@@ -463,26 +471,43 @@ void StdLibContainer::testContainer(void)
     /*
         关联容器associative container：元素按关键字来保存和访问。
         map和set是最基本的关联容器，其他关联容器不是基于map就是基于set
+        关联容器的迭代器都是双向的
 
-        有序保存元素的关联容器
-        map：元素是关键字-值对（key-value）
-        set：元素是关键字。支持高效关键字查询（关键字是否在set内）
+        有序保存元素的关联容器，关键字类型必须提供元素比较的方法以便排序，默认使用<运算符
+        map：元素是关键字-值对（key-value），关键字唯一
+        set：元素是关键字。支持高效关键字查询（关键字是否在set内），关键字唯一
         multimap：关键字可重复出现的map
         multiset：关键字可重复出现的set
 
-        无序的关联容器
-        unordered_map：用哈希函数组织的map
-        unordered_set：用哈希函数组织的set
-        unordered_multimap：哈希组织的map，关键字可重复
-        unordered_multiset：哈希组织的set，关键字可重复
+        无序的关联容器，用哈希函数组织
+        unordered_map：
+        unordered_set：
+        unordered_multimap：
+        unordered_multiset：
     */
+
+    /* 标准库的pair类型
+        pair的数据成员first和second为public
+
+        pair<T1, T2> p;
+        pair<T1, T2> p(v1, v2);         first和second分别用v1和v2初始化
+        pair<T1, T2> p = {v1, v2};      同上
+        make_pair(v1, v2);              返回用v1和v2初始化的pair，pair的类型从v1和v2的类型推断出来
+        p.first;
+        p.second;
+        < <= > >= == !=                 按字典序定义
+    */
+    pair<string, int> strIntPair{ "hi", 123 };
+    cout << "first: " << strIntPair.first << " second: " << strIntPair.second << endl;
     
     // 使用map
-    map<string, size_t> wordCounter;
+    map<string, size_t> wordCounter = { {"init", 123} }; // key-value初始化
     wordCounter["hello"]++; // 如果"hello"还不在map里，则创建一个新元素，关键字为"hello"，值为0。
     wordCounter["world"] += 2;
     for (const auto &word : wordCounter)
     { cout << word.first << ":" << word.second << endl; }
+
+    cout << endl;
 
     // 使用set
     set<string> vocabulary = { "one", "two", "three" };
@@ -492,6 +517,30 @@ void StdLibContainer::testContainer(void)
     cout << "\"four\" is ";
     (vocabulary.find("four") != vocabulary.end()) ? cout << "in " : cout << "NOT in ";
     cout << "the set" << endl;
+
+    cout << endl;
+
+    // 用vector来初始化set和multiset
+    vector<string> strInitVector = { "hello", "hello", "world" }; // 包含重复的元素
+    set<string> strSet(strInitVector.cbegin(), strInitVector.cend());
+    multiset<string> strMulSet(strInitVector.cbegin(), strInitVector.cend());
+    cout << "vector size: " << strInitVector.size() << endl;
+    cout << "set size: " << strSet.size() << endl;
+    cout << "multiset size: " << strMulSet.size() << endl;
+
+    // 严格弱序strict weak ordering：相当于“小于等于”
+    // 可用严格弱序的函数作为map和set排序的方法，以替代<运算符
+    // 第二个类型为函数指针
+    set<StdLibContainer, decltype(compareStdLibContainer)*>
+        containerSet(compareStdLibContainer); // 用比较函数来初始化set，表示添加元素时用此函数来排序元素
+        //{ StdLibContainer(123), StdLibContainer(789), StdLibContainer(456) };
+    cout << "All objects in the set: ";
+    for (auto cont : containerSet)
+    { cout << cont.data << " "; }
+    cout << endl;
+
+    cout << endl;
+
 }
 
 bool toBeBind(int intArg, char charArg, string strArg)
@@ -707,4 +756,9 @@ void StdLibContainer::testIterator(void)
         lst.splice_after(p, lst2, b, e);
         *链表算法会改变底层的容器
     */
+}
+
+bool compareStdLibContainer(StdLibContainer insA, StdLibContainer insB)
+{
+    return (insA.data < insB.data);
 }
