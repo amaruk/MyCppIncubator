@@ -174,9 +174,9 @@ void StdLibContainer::testContainer(void)
     c.begin(); c.end();     返回指向c的首元素和尾元素之后位置的迭代器iterator
     c.cbegin(); c.cend();   返回const_iterator
     ****反向容器的额外成员（不支持forward_list）****
-    reverse_iterator        按逆序寻址元素的迭代器，++得到上一个元素
-    const_reverse_iterator  不能修改元素的逆序迭代器
-    c.rbegin(); c.rend();   返回指向c的尾元素和首元素之前为止的迭代器reverse_iterator
+    reverse_iterator        按逆序寻址元素的反向迭代器，++得到上一个元素
+    const_reverse_iterator  不能修改元素的反向迭代器
+    c.rbegin(); c.rend();   返回指向c的尾元素和首元素之前为止的反向迭代器reverse_iterator
     c.crbegin(); c.crend(); 返回const_reverse_iterator
     ****顺序容器特有****
     顺序容器都有front()成员函数，返回首元素的引用
@@ -601,8 +601,42 @@ void StdLibContainer::testIterator(void)
     cout << endl;
 
     /*
-        反向迭代器reverse iterator：向后而不是向前移动，除了forward_list之外的容器都有
+        反向迭代器reverse iterator：在容器中从尾元素向首元素移动的迭代器
+        除了forward_list之外的容器都有
+        不能从流迭代器创建反向迭代器
+        递增移动到前一个元素，递减移动到后一个元素
+    */
+    vector<string> strVector = { string("one"), string("two"), string("three") };
+
+    cout << "Use standard iterator: ";
+    for (auto sIter = strVector.cbegin();
+        sIter != strVector.cend();
+        sIter++)
+    { cout << *sIter << " "; }
+    cout << endl;
+
+    cout << "Use reverse iterator: ";
+    for (auto rIter = strVector.crbegin();
+        rIter != strVector.crend();
+        rIter++)
+    { cout << *rIter << " "; }
+    cout << endl;
+
+    auto rTobIterator = strVector.crbegin();
+    cout << "rTobIterator = crbegin(): " << *rTobIterator << endl;
+    rTobIterator++;
+    cout << "rTobIterator++: " << *rTobIterator << endl;
+    rTobIterator++;
+    auto bIterator = rTobIterator.base(); // base成员函数返回正向迭代器，但指向反向迭代器后一个元素
+    cout << "bIterator: " << *bIterator << endl;
+    bIterator++;
+    cout << "bIterator++: " << *bIterator << endl;
+
+    cout << endl;
+
+    /*
+        
         移动迭代器move iterator：只移动元素，不拷贝
     */
-    //////363
+
 }
