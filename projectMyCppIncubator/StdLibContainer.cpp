@@ -11,6 +11,10 @@
 #include <queue>
 #include <functional>
 #include <iterator>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
 
 using std::cin;
 using std::cout;
@@ -39,6 +43,8 @@ using std::inserter;
 using std::istream_iterator;
 using std::ostream_iterator;
 using namespace std::placeholders;
+using std::set;
+using std::map;
 
 StdLibContainer::StdLibContainer()
 {
@@ -454,6 +460,38 @@ void StdLibContainer::testContainer(void)
 
     cout << endl;
 
+    /*
+        关联容器associative container：元素按关键字来保存和访问。
+        map和set是最基本的关联容器，其他关联容器不是基于map就是基于set
+
+        有序保存元素的关联容器
+        map：元素是关键字-值对（key-value）
+        set：元素是关键字。支持高效关键字查询（关键字是否在set内）
+        multimap：关键字可重复出现的map
+        multiset：关键字可重复出现的set
+
+        无序的关联容器
+        unordered_map：用哈希函数组织的map
+        unordered_set：用哈希函数组织的set
+        unordered_multimap：哈希组织的map，关键字可重复
+        unordered_multiset：哈希组织的set，关键字可重复
+    */
+    
+    // 使用map
+    map<string, size_t> wordCounter;
+    wordCounter["hello"]++; // 如果"hello"还不在map里，则创建一个新元素，关键字为"hello"，值为0。
+    wordCounter["world"] += 2;
+    for (const auto &word : wordCounter)
+    { cout << word.first << ":" << word.second << endl; }
+
+    // 使用set
+    set<string> vocabulary = { "one", "two", "three" };
+    cout << "\"one\" is ";
+    (vocabulary.find("one") != vocabulary.end()) ? cout << "in " : cout << "NOT in ";
+    cout << "the set" << endl;
+    cout << "\"four\" is ";
+    (vocabulary.find("four") != vocabulary.end()) ? cout << "in " : cout << "NOT in ";
+    cout << "the set" << endl;
 }
 
 bool toBeBind(int intArg, char charArg, string strArg)
@@ -635,8 +673,38 @@ void StdLibContainer::testIterator(void)
     cout << endl;
 
     /*
-        
-        移动迭代器move iterator：只移动元素，不拷贝
+        移动迭代器move iterator：只移动元素，不拷贝 TBD Page 480
     */
 
+
+    /*
+        五类迭代器，不同泛型算法要求不同的迭代器类型：
+        - 输入迭代器：只读不写，单遍扫描，只能递增
+        - 输出迭代器：只写不读，单遍扫描，只能递减
+        - 前向迭代器：可读写，多遍扫描，只能递增
+        - 双向迭代器：可读写，多遍扫描，可递增递减
+        - 随机访问迭代器：可读写，多遍扫描，支持全部迭代器运算
+    */
+
+    /*
+        链表list和forward_list的特有算法：
+        lst.merge(lst2);            将lst2的元素合并入lst，lst和lst2必须都是排过序的。
+                                    合并后lst2的元素全部被删除，lst2为空。
+                                    此算法使用<运算符比较大小
+        lst.merge(lst2, comp);      此算法使用comp比较大小
+        lst.remove(val);            调用erase删除与val相等（用==判断）的元素
+        lst.remove_if(pred);        删除令pred谓词为真的元素
+        lst.reverse();              反转lst中元素的顺序
+        lst.sort();                 用<排序
+        lst.sort(comp);             用comp排序
+        lst.unique();               调用erase删除同一个值（用==判断）的连续拷贝
+        lst.unique(pred);           删除同一个值（令pred谓词为真）的连续拷贝
+        lst.splice(p, lst2);        p是指向lst中元素的迭代器，把lst2的所有元素移动到p之前的位置。lst2必须和lst类型相同，不能是同一个链表。
+        lst.splice_after(p, lst2);  p是指向lst首前位置的迭代器，把lst2的所有元素移动到p之后的位置
+        lst.splice(p, lst2, p2);    p2指向lst2中的位置，将p2指向的元素移动到lst中，lst2可以和lst为相同链表
+        lst.splice_after(p, lst2, p2); 将p2之后的元素移动到lst中
+        lst.splice(p, lst2, b, e);  b和e表示lst2中的合法范围，将范围内的元素从lst2移动到lst。lst2和lst可以是相同的链表，但p不能指向b和e的范围内
+        lst.splice_after(p, lst2, b, e);
+        *链表算法会改变底层的容器
+    */
 }

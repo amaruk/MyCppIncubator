@@ -84,9 +84,9 @@ void partTwo(void)
     //stdLibIOIns.stringStream();
 
     StdLibContainer stdLibContainer = StdLibContainer();
-    //stdLibContainer.testContainer();
+    stdLibContainer.testContainer();
     //stdLibContainer.testGeneric();
-    stdLibContainer.testIterator();
+    //stdLibContainer.testIterator();
 }
 
 int main(int argc, char *argv[])
