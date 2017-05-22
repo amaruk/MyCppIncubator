@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <initializer_list>
 #include <cassert>
+#include <stdexcept>
 using std::cout;
 using std::endl;
 using std::cerr;

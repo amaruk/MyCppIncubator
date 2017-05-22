@@ -4,6 +4,7 @@
 #include <vector>
 #include <initializer_list>
 #include <iostream>
+#include "CommonUtils.h"
 
 typedef int intAry3[3];
 using intAry3Using = int[3];
@@ -129,7 +130,7 @@ public:
     CppPrimer &constMemFunction(int iVal); //非const成员函数重载const成员函数
 
     // 类不能包含类型为自己的成员，因为编译器需要知道类占多少存储空间。
-    // 但类只要出现明再看之后，就视为被声明，因此类允许包含指向自己类型的引用或指针
+    // 但类只要出现名称之后，就视为被声明，因此类允许包含指向自己类型的引用或指针
     void classRefPtrTest(CppPrimer &classRef, CppPrimer *classPtr);
 
     //// 函数作为CppPrimerFriend类的友元

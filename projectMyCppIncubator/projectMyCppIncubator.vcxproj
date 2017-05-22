@@ -137,6 +137,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommonUtils.h" />
     <ClInclude Include="CppPrimer.h" />
     <ClInclude Include="CppPrimerAggregate.h" />
     <ClInclude Include="CppPrimerFriend.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommonUtils.cpp" />
     <ClCompile Include="CppPrimer.cpp" />
     <ClCompile Include="CppPrimerFriend.cpp" />
     <ClCompile Include="CppPrimerLiteral.cpp" />

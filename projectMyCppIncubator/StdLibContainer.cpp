@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "StdLibContainer.h"
+#include "CommonUtils.h"
 #include <string>
 #include <vector>
 #include <deque>
@@ -49,6 +50,7 @@ using std::set;
 using std::multimap;
 using std::multiset;
 using std::pair;
+using std::make_pair;
 
 StdLibContainer::StdLibContainer()
 {
@@ -160,7 +162,7 @@ void StdLibContainer::testContainer(void)
     aryInt5 = { 1,2 };
     cout << "after " << aryInt5[0] << aryInt5[1] << aryInt5[2] << aryInt5[3] << aryInt5[4] << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         ****关系运算符****
@@ -181,7 +183,7 @@ void StdLibContainer::testContainer(void)
     cout << "vector1 == vector4: " << ((vector1 == vector4) ? "true" : "false") << endl; //大小相同，元素相等
     cout << "vector1 == vector2: " << ((vector1 == vector2) ? "true" : "fasle") << endl; // vector2元素数量少
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
     ****获取迭代器****
@@ -211,7 +213,8 @@ void StdLibContainer::testContainer(void)
     }
     cout << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
+
     /*
         ****所有容器都支持的添加删除元素（不适用不能改变大小的array）****
         c.insert(args);         将args中元素拷贝进c
@@ -290,7 +293,7 @@ void StdLibContainer::testContainer(void)
     cout << "clear: ";
     for (char c : cDeque) { cout << c << " "; } cout << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         ****改变容器大小（不适用不能改变大小的array）****
@@ -334,7 +337,7 @@ void StdLibContainer::testContainer(void)
     for (char c : cVector) { cout << c << " "; } cout << endl;
     cout << "Size: " << cVector.size() << " Capacity: " << cVector.capacity() << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         ****string相关****
@@ -356,7 +359,7 @@ void StdLibContainer::testContainer(void)
     string s7(s3, 1, 3); //s7是s3从下标1开始的长度位3的字符拷贝
     cout << "s7: " << s7 << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         substr(pos, n);         返回string，包含从pos开始的n个字符的拷贝
@@ -393,7 +396,7 @@ void StdLibContainer::testContainer(void)
     cout << "stoi(\"0x10\"): " << stoi(string("0x10"), 0, 16) << endl;
     cout << "stof(\"3.14\"): " << stof(string("3.14")) << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /* 适配器adapter：一种机制，使某种事物的行为看起来像另一种事。
        顺序容器适配器：接受一种已有的容器类型，使其行为看起来像一种不同的类型，如stack适配器接受一个顺序容器，使其操作起来像stack一样
@@ -444,7 +447,7 @@ void StdLibContainer::testContainer(void)
     }
     cout << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /* Queue 测试 */
     queue<int> intQueue;
@@ -455,7 +458,7 @@ void StdLibContainer::testContainer(void)
     intQueue.pop();
     cout << "after  pop(), front(): " << intQueue.front() << " back(): " << intQueue.back() << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /* Priority Queue 测试 TBD:目前使用的是默认的比较优先级函数 */
     priority_queue<int> intPrioQueue;
@@ -466,7 +469,7 @@ void StdLibContainer::testContainer(void)
     intPrioQueue.pop();
     cout << "after  pop(), top(): " << intPrioQueue.top() << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         关联容器associative container：元素按关键字来保存和访问。
@@ -504,10 +507,10 @@ void StdLibContainer::testContainer(void)
     map<string, size_t> wordCounter = { {"init", 123} }; // key-value初始化
     wordCounter["hello"]++; // 如果"hello"还不在map里，则创建一个新元素，关键字为"hello"，值为0。
     wordCounter["world"] += 2;
-    for (const auto &word : wordCounter)
+    for (const auto word : wordCounter)
     { cout << word.first << ":" << word.second << endl; }
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     // 使用set
     set<string> vocabulary = { "one", "two", "three" };
@@ -518,7 +521,7 @@ void StdLibContainer::testContainer(void)
     (vocabulary.find("four") != vocabulary.end()) ? cout << "in " : cout << "NOT in ";
     cout << "the set" << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     // 用vector来初始化set和multiset
     vector<string> strInitVector = { "hello", "hello", "world" }; // 包含重复的元素
@@ -528,19 +531,149 @@ void StdLibContainer::testContainer(void)
     cout << "set size: " << strSet.size() << endl;
     cout << "multiset size: " << strMulSet.size() << endl;
 
+    CommonUtils::showSeperator();
+
+    /*
+        关联容器特有的类型别名
+        key_type        关键字类型
+        mapped_type     值类型，仅适用于map
+        value_type      容器的类型
+                        对于set，与key_type相同
+                        对于map，为pair<const key_type, mapped_type>。关键字不能改变，所以是const
+    */
+    set<string>::key_type setKeyType;
+    set<string>::value_type setType;
+    map<string, int>::key_type mapKeyType;
+    map<string, int>::mapped_type mapValType;
+    map<string, int>::value_type mapType;
+
+    /*
+        关联容器操作
+        set的迭代器有iterator和const_iterator两种类型，但都是const的，因为不能改变key
+        map的迭代器不能改变key，但可以改变value
+
+        插入操作：
+        c.insert(v);        v是value_type类型的对象。当关键字不在c中进行插入
+                            返回pair，包含一个迭代器，指向插入关键字的元素，和一个表示插入是否成功的bool
+                            对于multimap和multiset，总是插入，返回迭代器
+        c.emplace(args);    用args来构造元素
+        c.insert(b, e);     b和e是c::valye_type类型的迭代器
+                            函数返回void。map和set只插入不在c中的元素，multimap和multiset插入所有的元素
+        c.insert(il);       il是花括号的列表
+        c.insert(p, v);     类似insert(v)和emplace(args)，但将迭代器p作为新元素存储的位置，返回指向插入元素的迭代器
+
+        删除操作：
+        c.erase(k);         从c中删除所有关键字为k的元素，返回size_type，表示删除的元素数量
+        c.erase(p);         从c中删除迭代器p指向的元素，返回指向p之后元素的迭代器
+        c.erase(b, e);      删除迭代器b和e范围中的元素，返回e
+    */
+
+    map<string, int> strIntMapInsert;
+    pair<map<string, int>::iterator, bool> rtn;
+    cout << "Empty map: ";
+    for (const auto word : strIntMapInsert)
+    { cout << word.first << ":" << word.second << " "; }
+    cout << endl;
+    cout << "Insert \"one\":1 ";
+    rtn = strIntMapInsert.insert({ "one", 1 }); // 花括号初始化
+    for (const auto word : strIntMapInsert)
+    { cout << word.first << ":" << word.second << " " << "result " << rtn.second << " "; }
+    cout << endl;
+    cout << "Insert \"two\":2 ";
+    rtn = strIntMapInsert.insert(make_pair("two", 2)); // make_pair构造pair对象
+    for (const auto word : strIntMapInsert)
+    { cout << word.first << ":" << word.second << " " << "result " << rtn.second << " "; }
+    cout << endl;
+    cout << "Insert \"two\":12 ";
+    rtn = strIntMapInsert.insert(pair<string, int>("two", 12)); // 显式构造pair。相同的关键字插入，只有第一次插入的元素在容器里
+    for (const auto word : strIntMapInsert)
+    { cout << word.first << ":" << word.second << " " << "result " << rtn.second << " "; }
+    cout << endl;
+    cout << "Insert \"three\":3 ";
+    rtn = strIntMapInsert.insert(map<string, int>::value_type( "three", 3 )); // 用value_type创建pair对象
+    for (const auto word : strIntMapInsert)
+    { cout << word.first << ":" << word.second << " " << "result " << rtn.second << " "; }
+    cout << endl;
+
+    CommonUtils::showSeperator();
+
+    multimap<string, int> strIntMulMapDel = { {"one", 1}, {"one", 123}, {"two", 2} };
+    cout << "Delete \"one\": ";
+    cout << "deleted: " << strIntMulMapDel.erase("one") << endl;
+    cout << "Delete \"one\" again: ";
+    cout << "deleted: " << strIntMulMapDel.erase("one") << endl;
+    
+    CommonUtils::showSeperator();
+
+    /*
+    下标运算和at函数：
+    map和unordered_map支持下标运算和at函数
+    set不支持，因为用下表获得下标无意义
+    multimap和unordered_multimap不能进行下标操作，因为可能有相同的下标
+
+    c[k];           返回关键字为k的元素，如果k不在c中，则添加k并进行值初始化
+    c.at[k];        返回关键字为k的元素，如果k不在c中，则抛出out_of_range异常
+    */
+    map<string, int> strIntMapAt = { {"one", 1}, {"two", 2} };
+    cout << "Before at: ";
+    for (const auto word : strIntMapAt)
+    { cout << word.first << ":" << word.second << " "; }
+    cout << endl;
+
+    cout << "[\"two\"] " << strIntMapAt["two"] << ": ";
+    for (const auto word : strIntMapAt)
+    { cout << word.first << ":" << word.second << " "; }
+    cout << endl;
+    cout << "[\"three\"] " << strIntMapAt["three"] << ": ";
+    for (const auto word : strIntMapAt)
+    { cout << word.first << ":" << word.second << " "; }
+    cout << endl;
+
+    cout << "at(\"two\"): " << strIntMapAt.at("two") << ": ";
+    for (const auto word : strIntMapAt)
+    { cout << word.first << ":" << word.second << " "; }
+    cout << endl;
+    cout << "at(\"four\"): ";
+    try {
+        cout << strIntMapAt.at("four") << ": " << endl;
+    }
+    catch (std::out_of_range e) {
+        cout << "Exception caught: " << e.what() << endl;
+    }
+    for (const auto word : strIntMapAt)
+    { cout << word.first << ":" << word.second << " "; }
+    cout << endl;
+
+    CommonUtils::showSeperator();
+
+    /*
+        访问元素：
+        c.find(k);          返回指向第一个关键字为k的元素的迭代器，若k不在容器中，返回尾后迭代器
+        c.count(k);         返回关键字等于k的元素数量
+        c.lower_bound(k);   返回指向第一个关键字不小于k的元素的迭代器
+        c.upper_bound(k);   返回指向第一个关键字大于k的元素的迭代器
+        c.equal_range(k);   返回关键字等于k的元素范围的迭代器pair，若k不存在则pair的两个成员都等于c.end()
+    */
+    map<string, int> strIntMapFind = { { "one", 123 },{ "two", 321 } };
+    cout << "find(\"two\"): " << strIntMapFind.find("two")->second << endl;
+
+    CommonUtils::showSeperator();
+
     // 严格弱序strict weak ordering：相当于“小于等于”
     // 可用严格弱序的函数作为map和set排序的方法，以替代<运算符
     // 第二个类型为函数指针
     set<StdLibContainer, decltype(compareStdLibContainer)*>
         containerSet(compareStdLibContainer); // 用比较函数来初始化set，表示添加元素时用此函数来排序元素
-        //{ StdLibContainer(123), StdLibContainer(789), StdLibContainer(456) };
+    containerSet.insert(StdLibContainer(123));
+    containerSet.insert(StdLibContainer(789));
+    containerSet.insert(StdLibContainer(456));
     cout << "All objects in the set: ";
     for (auto cont : containerSet)
     { cout << cont.data << " "; }
     cout << endl;
 
-    cout << endl;
-
+    CommonUtils::showSeperator();
+    
 }
 
 bool toBeBind(int intArg, char charArg, string strArg)
@@ -666,7 +799,7 @@ void StdLibContainer::testIterator(void)
     cout << "After inserter: ";
     for (int i : intDeque) { cout << i << " "; } cout << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         流迭代器stream iterator：绑定到输入或输出流上，遍历关联的IO流
@@ -685,7 +818,7 @@ void StdLibContainer::testIterator(void)
     }
     cout << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         反向迭代器reverse iterator：在容器中从尾元素向首元素移动的迭代器
@@ -719,7 +852,7 @@ void StdLibContainer::testIterator(void)
     bIterator++;
     cout << "bIterator++: " << *bIterator << endl;
 
-    cout << endl;
+    CommonUtils::showSeperator();
 
     /*
         移动迭代器move iterator：只移动元素，不拷贝 TBD Page 480
