@@ -482,7 +482,7 @@ void StdLibContainer::testContainer(void)
         multimap：关键字可重复出现的map
         multiset：关键字可重复出现的set
 
-        无序的关联容器，用哈希函数组织
+        C++ 11: 无序的关联容器，用哈希函数组织而不是比较运算符
         unordered_map：
         unordered_set：
         unordered_multimap：
@@ -673,6 +673,28 @@ void StdLibContainer::testContainer(void)
     cout << endl;
 
     CommonUtils::showSeperator();
+
+    /*
+        无序容器在存储组织上为一组桶，每个桶保存0个或多个元素，元素用哈希函数映射到桶。
+        桶接口：
+        c.bucket_count();       正在使用的桶的数目
+        c.max_bucket_count();   容器能容纳的最多桶的数量
+        c.bucket_size(n);       第n个桶中有多少个元素
+        c.bucket(k);            关键字为k的元素在哪个桶中
+        桶迭代：
+        local_iterator;         用来访问桶中元素的迭代器类型
+        const_local_iterator;   桶迭代器的const版本
+        c.begin(n); c.end(n);   桶n的首元素迭代器和尾后迭代器
+        c.cbegin(n); c.cend(n); 同上，返回const_local_iterator
+        哈希策略：
+        c.load_factor();        每个桶的平均元素数量，返回float值
+        c.max_load_factor();    c试图维护的平均桶的大小，返回float值。必要时会添加新桶，使得load_factor<=max_load_factor
+        c.rehash(n);            重组存储，使得bucket_count >= n，且bucket_count > size/max_load_factor
+        c.reserve(n);           重组存储，使得c可以保存n个元素且不必refresh
+        默认情况下，无序容器使用关键字类型的==来比较元素，使用hash<key_type>类型的对象来生成元素的哈希值。
+        标准库为内置类型提供了hash模板，也为一些标准库类型定义了hash，所以可以直接定义关键字是内置类型、string、只能指针的无序容器。
+        但不能直接定义关键字类型为自定义类类型的无序容器，必须提供自定义的hash模板版本。
+    */
     
 }
 
