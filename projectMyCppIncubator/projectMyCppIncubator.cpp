@@ -8,6 +8,7 @@
 #include "CppPrimerLiteral.h"
 #include "StdLibIO.h"
 #include "StdLibContainer.h"
+#include "DynamicMem.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -84,9 +85,12 @@ void partTwo(void)
     //stdLibIOIns.stringStream();
 
     StdLibContainer stdLibContainer = StdLibContainer();
-    stdLibContainer.testContainer();
+    //stdLibContainer.testContainer();
     //stdLibContainer.testGeneric();
     //stdLibContainer.testIterator();
+
+    DynamicMem dynamicMem = DynamicMem();
+    dynamicMem.DynamicMemTest();
 }
 
 int main(int argc, char *argv[])

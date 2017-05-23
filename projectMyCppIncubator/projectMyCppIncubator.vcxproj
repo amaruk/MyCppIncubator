@@ -142,6 +142,7 @@
     <ClInclude Include="CppPrimerAggregate.h" />
     <ClInclude Include="CppPrimerFriend.h" />
     <ClInclude Include="CppPrimerLiteral.h" />
+    <ClInclude Include="DynamicMem.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StdLibContainer.h" />
     <ClInclude Include="StdLibIO.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="CppPrimer.cpp" />
     <ClCompile Include="CppPrimerFriend.cpp" />
     <ClCompile Include="CppPrimerLiteral.cpp" />
+    <ClCompile Include="DynamicMem.cpp" />
     <ClCompile Include="projectMyCppIncubator.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
