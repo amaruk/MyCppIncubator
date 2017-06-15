@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 class StdLibContainer
 {
 public:
@@ -6,19 +6,19 @@ public:
     StdLibContainer(int initData);
     ~StdLibContainer();
 
-    // ÓÃÓÚ±È½Ï´óĞ¡µÄÊı¾İ
+    // ç”¨äºæ¯”è¾ƒå¤§å°çš„æ•°æ®
     int data;
 
-    // ÈİÆ÷
+    // å®¹å™¨
     void testContainer(void);
-    // ·ºĞÍ
+    // æ³›å‹
     void testGeneric(void);
-    // µü´úÆ÷
+    // è¿­ä»£å™¨
     void testIterator(void);
 
 };
 
 
-//// ·Ç³ÉÔ±½Ó¿Úº¯Êı
-// ÓÃÓÚ±È½Ï´óĞ¡µÄÑÏ¸ñÈõĞòº¯Êı
+//// éæˆå‘˜æ¥å£å‡½æ•°
+// ç”¨äºæ¯”è¾ƒå¤§å°çš„ä¸¥æ ¼å¼±åºå‡½æ•°
 bool compareStdLibContainer(StdLibContainer insA, StdLibContainer insB);
