@@ -57,8 +57,9 @@ void DynamicMem::DynamicMemTest(void)
     /*
         C++ 11：智能指针（smart pointer）负责自动释放所指向的对象
         shared_ptr允许多个指针指向同一个对象
-        unique_ptr独占指向的对象
-        weak_ptr是弱引用，指向shared_ptr所管理的对象
+        unique_ptr独占指向的对象，同一时刻只能有一个unique_ptr指向给定对象
+        weak_ptr是弱引用，指向shared_ptr所管理的对象，但不控制此对象的生存周期，绑定到shared_ptr不会改变shared_ptr的引用计数
+        auto_ptr标准库早期智能指针，留作向后兼容用
 
         注意点：
         - 不要混合使用普通指针和智能指针
@@ -95,10 +96,33 @@ void DynamicMem::DynamicMemTest(void)
         p.use_count();          返回与p共享对象的智能指针数量。执行速度可能会很慢，主要用于调试
 
         unique_ptr独有的操作：
+        unique_ptr<T> p;                    空unique_ptr，指向类型为T的对象，使用delete释放其指针
+        unique_ptr<T, D> p;                 使用D释放指针
+        unique_ptr<T, D> p(d);              用类型为D的对象d代替delete
+        p = nullptr;                        释放u指向的对象，u置空
+        u.release()                         u放弃对指针的控制权，返回指针，将u置空
+        u.reset()                           释放u指向的对象
+        u.reset(q)；                        令u指向内置指针q的对象
+        u.reset(nullptr);                   将u置空
 
+        unique_ptr<int> p(new int(42));     定义unique_ptr时绑定new返回的指针
+        错误：unique_ptr<int> q(p);          unique_ptr不支持拷贝
+        错误：unique_ptr<int> r; r = p;      unique_ptr不支持赋值
+        unique_ptr<int> q(p.release());     把p指向的对象所有权转移给q，把p置空
+
+        weak_ptr独有的操作：
+        weak_ptr<T> w;          空weak_ptr，指向类型为T的对象
+        weak_ptr<T> w(sp);      与shared_ptr sp指向相同对象的weak_ptr。T必须能转换为sp指向的类型。
+        w = p;                  p可以为shared_ptr或weak_ptr
+        w.reset();              w置为空
+        w.use_count();          返回与w共享对象的shared_ptr数量
+        w.expired();            若w.use_count()返回为0，返回true，否则返回false
+        w.lock();               如果w.expired()返回为true，返回空shared_ptr，否则返回指向w的shared_ptr
     */
     shared_ptr<string> strShPtr = make_shared<string>(string("sharedPtr"));
     shared_ptr<int> intShPtr(new int(1)); // 用new得到的对象直接初始化，因为shared_ptr默认用delete释放其关联的对象，推荐用make_shared代替
     //shared_ptr<int> illIntShPtr = new int(0); // 不能把int*转换为shared_ptr<int>
     
+
+    Page 422: 指针操作
 }
