@@ -2,6 +2,7 @@
 #include "DynamicMem.h"
 #include <memory>
 #include <string>
+#include <iostream>
 
 using std::shared_ptr;
 using std::unique_ptr;
@@ -9,6 +10,9 @@ using std::weak_ptr;
 using std::make_shared;
 using std::nothrow;
 using std::string;
+using std::allocator;
+using std::cout;
+using std::endl;
 
 DynamicMem::DynamicMem()
 {
@@ -53,6 +57,26 @@ void DynamicMem::DynamicMemTest(void)
     int *memFailIntP = new (nothrow) int; // 如果分配失败，new返回一个空指针
     delete memOkIntP;
     delete memFailIntP;
+
+    /* 
+     * 动态数组
+     * 实际上并不是得到数组，而是分配一片连续空间。不能调用数组的begin和end，或调用fangefor
+     * delete时按逆序销毁
+     */
+    int *intAryP = new int[5]; // 数组大小必须是整数，但不必是常量，可以为0返回类似为后指针的非空指针但不能解引用
+    delete[] intAryP;
+    typedef int intAry[3]; // 用自定义类型别名来分配数组
+    int *myIntAryP = new intAry;
+    delete[] myIntAryP;
+
+    int *intAryP1 = new int[5]; // 未初始化
+    int *intAryP2 = new int[5](); // 值初始化为0
+    int *intAryP3 = new int[5]{ 1,2,3,4,5 }; // 列表初始化
+    int *intAryP4 = new int[5]{ 1,2,3 }; // 列表中未给定初值的进行值初始化
+    delete[] intAryP1;
+    delete[] intAryP2;
+    delete[] intAryP3;
+    delete[] intAryP4;
     
     /*
         C++ 11：智能指针（smart pointer）负责自动释放所指向的对象
@@ -123,6 +147,41 @@ void DynamicMem::DynamicMemTest(void)
     shared_ptr<int> intShPtr(new int(1)); // 用new得到的对象直接初始化，因为shared_ptr默认用delete释放其关联的对象，推荐用make_shared代替
     //shared_ptr<int> illIntShPtr = new int(0); // 不能把int*转换为shared_ptr<int>
     
+    // 用unique_ptr管理动态数组
+    unique_ptr<int[]> uniPtrIntAry(new int[5]);
+    // 不能使用.和->操作
+    uniPtrIntAry[0] = 123; //用下标运算符访问元素
+    uniPtrIntAry.release(); // 自动用delete[]销毁
+    
+    // 用shared_ptr管理动态数组必须提供自定义删除器
+    shared_ptr<int> shdPtrIntAry(new int[5], [](int *p) {delete[] p; }); // lambda释放数组
+    shdPtrIntAry.reset();
 
-    Page 422: 指针操作
+    /*
+       allocator类
+       new同时进行对象分配和构造，delete同时进行对象析构和内存释放。allocator只分配内存，不创建对象。
+       未construct时不能解引用
+
+       allocator<T> a;      定义allocator对象，可以为类型T的对象分配内存
+       a.allocate(n);       分配原始的未构造内存，保持n个类型为T的对象
+       a.deallocate(p,n);   释放从p指针开始的，n个类型为T的对象，p必须是allocator返回的指针，n必须是p创建时的大小。
+                            调用之前，必须对每个在这块内存中创建的对象调用destory
+       a.construct(p, args);    p是类型为T*的指针，指向原始内存，args传递给类型为T的构造函数，用来在p指向的内存中构造一个对象
+       a.destory(p);        对p指向的对象执行析构函数
+
+       伴随算法：
+       uninitialized_copy(b,e,b2);      从迭代器b和e指定的范围拷贝元素到迭代器b2指定的未构造原始内存中
+       uninitialized_copy_n(b,n,b2);    从迭代器b开始，拷贝n个元素到b2开始的内存中
+       uninitialized_fill(b,e,t);       在迭代器b和e指定的原始内存范围中创建对象，对象值均为t的拷贝
+       uninitialized_fill_n(b,n,t);     在迭代器b指向的内存地址开始创建n个对象，值均为t的拷贝
+     */
+    allocator<string> allocStr; // allocator是模板，要指明对象类型。可以分配string的allocator对象。
+    auto allocP = allocStr.allocate(3); // 分配3个为初始化的string
+    auto allocHead = allocP;
+    allocStr.construct(allocP++, "hello");
+    allocStr.construct(allocP++, 10, 'c');
+    cout << "first: " << *allocHead << " second: " << *(allocHead+1) << endl;
+    while (allocHead != allocP)
+    { allocStr.destroy(--allocP); } // 释放构造的string，只能对构造过的对象destory
+    allocStr.deallocate(allocHead, 3);
 }
