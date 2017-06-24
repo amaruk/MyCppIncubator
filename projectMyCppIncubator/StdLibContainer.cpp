@@ -112,7 +112,7 @@ void StdLibContainer::testContainer(void)
         ****类型别名****
         iterator                某容器类型的迭代器类型
         const_iterator          可以读取元素但不能修改元素的迭代器类型
-        size_type               无符号整数，足够保存某容器类型最大的容量大小
+        size_type               无符号整数，足够保存某容器类型最大的容量大小，是容器的伴随类型，使得容器容量类型与机器无关
         difference_type         有符号整数，足够保存两个迭代器之间的距离
         value_type              元素类型
         reference               元素的左值类型，与value_type&含义相同

@@ -30,6 +30,9 @@
     <ClInclude Include="TextQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QueryResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextQuery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

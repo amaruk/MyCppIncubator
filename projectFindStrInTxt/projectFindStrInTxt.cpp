@@ -3,16 +3,30 @@
 
 #include "stdafx.h"
 #include <fstream>
+#include <iostream>
+#include "TextQuery.h"
+#include <string>
 
 using std::ifstream;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
 
 void runQuery(ifstream &inFile)
 {
     // 创建查询类实例
-
+    TextQuery newQuery(inFile);
 
     // 提示用户输入查询的单词
-
+    while (true)
+    {
+        cout << "Enter your query word. Type \"q\" to quit." << endl;
+        string queryWord;
+        if (!(cin >> queryWord) || queryWord == "q")
+        { break; }
+        cout << "Output TBD" << endl; // newQuery.query(queryWord) << endl;
+    }
 }
 
 int main()
