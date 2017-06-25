@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Common">
       <UniqueIdentifier>{27ff4430-19bf-4a66-ba1e-479ffa385b2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\PartThree">
+      <UniqueIdentifier>{c5bcd79e-30af-45e5-8467-16e21d92dc16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PartThree">
+      <UniqueIdentifier>{5f3f0b1a-3f60-4aa4-beec-7b1c211171f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -66,6 +72,9 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PartThree\ClassFeatures.h">
+      <Filter>Header Files\PartThree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="projectMyCppIncubator.cpp">
@@ -94,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PartThree\ClassFeatures.cpp">
+      <Filter>Source Files\PartThree</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

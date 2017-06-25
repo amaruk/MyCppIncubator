@@ -93,6 +93,11 @@ void partTwo(void)
     dynamicMem.DynamicMemTest();
 }
 
+// Part three: 类设计者的工具
+void partThree(void)
+{
+}
+
 int main(int argc, char *argv[])
 {
     // main命令行参数
@@ -108,7 +113,8 @@ int main(int argc, char *argv[])
     cout << endl << endl;
 
     //partOne();
-    partTwo();
+    //partTwo();
+    partThree();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

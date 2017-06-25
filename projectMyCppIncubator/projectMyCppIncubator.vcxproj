@@ -146,6 +146,7 @@
     <ClInclude Include="PartOne\CppPrimerAggregate.h" />
     <ClInclude Include="PartOne\CppPrimerFriend.h" />
     <ClInclude Include="PartOne\CppPrimerLiteral.h" />
+    <ClInclude Include="PartThree\ClassFeatures.h" />
     <ClInclude Include="PartTwo\DynamicMem.h" />
     <ClInclude Include="PartTwo\StdLibContainer.h" />
     <ClInclude Include="PartTwo\StdLibIO.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="PartOne\CppPrimer.cpp" />
     <ClCompile Include="PartOne\CppPrimerFriend.cpp" />
     <ClCompile Include="PartOne\CppPrimerLiteral.cpp" />
+    <ClCompile Include="PartThree\ClassFeatures.cpp" />
     <ClCompile Include="PartTwo\DynamicMem.cpp" />
     <ClCompile Include="PartTwo\StdLibContainer.cpp" />
     <ClCompile Include="PartTwo\StdLibIO.cpp" />
