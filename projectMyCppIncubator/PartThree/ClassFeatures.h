@@ -2,19 +2,23 @@
 
 #include <string>
 
+/*
+五种特殊的成员函数（拷贝控制操作 copy control）：
+- copy constructor拷贝构造函数：当用同类型的另一个对象初始化本对象时的行为
+- move constructor移动构造函数：同上
+- copy-assignment operator拷贝赋值运算符：将一个对象赋予给同类型的另一个对象时的行为
+- move-assignment operator移动赋值运算符：同上
+- destructor析构函数：对象销毁时的行为
+
+如果类没有定义拷贝操作成员，编译器自动定义缺省操作。
+可以在拷贝控制成员的参数列表之后之后添加“= default"来要求编译器生成合成的版本。
+可以用参数列表之后的“=delete”定义拷贝构造函数和拷贝赋值运算，表示不能以任何方式使用他们
+= delete必须出现在函数第一次声明处，以便编译器检查是否有试图调用的操作
+= default在编译器生成代码时才生效。
+*/
+
 class ClassFeatures
 {
-    /*
-        五种特殊的成员函数（拷贝控制操作 copy control）：
-        - copy constructor拷贝构造函数：当用同类型的另一个对象初始化本对象时的行为
-        - move constructor移动构造函数：同上
-        - copy-assignment operator拷贝赋值运算符：将一个对象赋予给同类型的另一个对象时的行为
-        - move-assignment operator移动赋值运算符：同上
-        - destructor析构函数：对象销毁时的行为
-
-        如果类没有定义拷贝操作成员，编译器自动定义缺省操作。
-        可以在拷贝控制成员之后添加“= default"来要求编译器生成合成的版本。
-    */
 public:
     // 默认构造函数
     // 构造函数初始化对象的非static数据成员
@@ -29,12 +33,15 @@ public:
 
     ClassFeatures(const ClassFeatures &cfIns); // 参数可以非const，但一般都是。通常不是explicit。
     // 合成拷贝构造函数相当于 ClassFeatures(const ClassFeatures &cfIns) : mem1(cfIns.mem1), mem2(cfIns.mem2){}
+    // 使能下面代码，阻止拷贝构造函数
+    //ClassFeatures(const ClassFeatures &cfIns) = delete;
 
     // 析构函数
     // 释放对象使用的资源，销毁对象的非static数据成员(此操作在析构函数执行完后，隐含的析构阶段执行）
     // 没有返回值，不接受参数
     // 没有参数所以不能被重载
     // 如不定义，编译器会生成合成析构函数(synthesized destructor)
+    // 析构函数可以= delete，但不能再定义该类型的变量或释放指向该类型动态分配对象的指针
     ~ClassFeatures();
 
     // 重载赋值运算符，实现拷贝赋值运算符
