@@ -2,13 +2,13 @@
 //
 
 #include "stdafx.h"
-#include "CppPrimer.h"
-#include "CppPrimerFriend.h"
-#include "CppPrimerAggregate.h"
-#include "CppPrimerLiteral.h"
-#include "StdLibIO.h"
-#include "StdLibContainer.h"
-#include "DynamicMem.h"
+#include "PartOne/CppPrimer.h"
+#include "PartOne/CppPrimerFriend.h"
+#include "PartOne/CppPrimerAggregate.h"
+#include "PartOne/CppPrimerLiteral.h"
+#include "PartTwo/StdLibIO.h"
+#include "PartTwo/StdLibContainer.h"
+#include "PartTwo/DynamicMem.h"
 #include <iostream>
 #include <string>
 using std::cout;

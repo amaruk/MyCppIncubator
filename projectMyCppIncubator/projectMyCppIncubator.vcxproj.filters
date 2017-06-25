@@ -25,69 +25,75 @@
     <Filter Include="Header Files\PartTwo">
       <UniqueIdentifier>{903a352d-0301-4b77-9917-88d89fbe6213}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{591197fe-41d4-40d4-8cb6-934470b7af25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{27ff4430-19bf-4a66-ba1e-479ffa385b2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PartOne\CppPrimer.h">
+      <Filter>Header Files\PartOne</Filter>
+    </ClInclude>
+    <ClInclude Include="PartOne\CppPrimerAggregate.h">
+      <Filter>Header Files\PartOne</Filter>
+    </ClInclude>
+    <ClInclude Include="PartOne\CppPrimerFriend.h">
+      <Filter>Header Files\PartOne</Filter>
+    </ClInclude>
+    <ClInclude Include="PartOne\CppPrimerLiteral.h">
+      <Filter>Header Files\PartOne</Filter>
+    </ClInclude>
+    <ClInclude Include="PartTwo\DynamicMem.h">
+      <Filter>Header Files\PartTwo</Filter>
+    </ClInclude>
+    <ClInclude Include="PartTwo\StdLibContainer.h">
+      <Filter>Header Files\PartTwo</Filter>
+    </ClInclude>
+    <ClInclude Include="PartTwo\StdLibIO.h">
+      <Filter>Header Files\PartTwo</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CommonUtils.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CppPrimer.h">
-      <Filter>Header Files\PartOne</Filter>
-    </ClInclude>
-    <ClInclude Include="CppPrimerAggregate.h">
-      <Filter>Header Files\PartOne</Filter>
-    </ClInclude>
-    <ClInclude Include="CppPrimerFriend.h">
-      <Filter>Header Files\PartOne</Filter>
-    </ClInclude>
-    <ClInclude Include="CppPrimerLiteral.h">
-      <Filter>Header Files\PartOne</Filter>
-    </ClInclude>
-    <ClInclude Include="StdLibIO.h">
-      <Filter>Header Files\PartTwo</Filter>
-    </ClInclude>
-    <ClInclude Include="StdLibContainer.h">
-      <Filter>Header Files\PartTwo</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicMem.h">
-      <Filter>Header Files\PartTwo</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="projectMyCppIncubator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CppPrimer.cpp">
+    <ClCompile Include="PartOne\CppPrimer.cpp">
       <Filter>Source Files\PartOne</Filter>
     </ClCompile>
-    <ClCompile Include="CppPrimerFriend.cpp">
+    <ClCompile Include="PartOne\CppPrimerFriend.cpp">
       <Filter>Source Files\PartOne</Filter>
     </ClCompile>
-    <ClCompile Include="CppPrimerLiteral.cpp">
+    <ClCompile Include="PartOne\CppPrimerLiteral.cpp">
       <Filter>Source Files\PartOne</Filter>
     </ClCompile>
-    <ClCompile Include="StdLibIO.cpp">
+    <ClCompile Include="PartTwo\DynamicMem.cpp">
       <Filter>Source Files\PartTwo</Filter>
     </ClCompile>
-    <ClCompile Include="StdLibContainer.cpp">
+    <ClCompile Include="PartTwo\StdLibContainer.cpp">
       <Filter>Source Files\PartTwo</Filter>
     </ClCompile>
-    <ClCompile Include="CommonUtils.cpp">
+    <ClCompile Include="PartTwo\StdLibIO.cpp">
+      <Filter>Source Files\PartTwo</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CommonUtils.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicMem.cpp">
-      <Filter>Source Files\PartTwo</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
