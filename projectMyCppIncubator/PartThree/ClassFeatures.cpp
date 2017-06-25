@@ -35,7 +35,6 @@ ClassFeatures::ClassFeatures(ClassFeatures && cfIns) noexcept
 {
     cout << "/!\\ move constructor" << endl;
     this->memStr = cfIns.memStr;
-    cfIns.memStr = nullptr;
 }
 
 ClassFeatures & ClassFeatures::operator=(ClassFeatures && rgtIns) noexcept
@@ -45,7 +44,6 @@ ClassFeatures & ClassFeatures::operator=(ClassFeatures && rgtIns) noexcept
     if (this != &rgtIns) // 检查this和rgtIns的地址是否相同
     {
         this->memStr = rgtIns.memStr;
-        rgtIns.memStr = nullptr;
     }
     return *this; // 返回此对象的引用
 }
@@ -127,5 +125,12 @@ void testClassFeatures(void)
     int &&rvalRef4 = std::move(rvalRef2); // 正确，用move把左值当右值处理。用std::move而不是using避免潜在的名字冲突
     //调用move之后，可以对此对象赋值或销毁，但不能再使用其值
     
-
+    // 移动赋值操作
+    ClassFeatures cfInsCopy = ClassFeatures();
+    cout << "6. " << endl;
+    ClassFeatures cfInsMoveOper;
+    cfInsMoveOper = cfInsCopy.getSelf();
+    // 移动构造函数
+    cout << "7. " << endl;
+    ClassFeatures cfInsMove2 = ClassFeatures(cfInsCopy.getSelf());
 }

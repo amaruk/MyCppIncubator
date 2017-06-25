@@ -3,18 +3,25 @@
 #include <string>
 
 /*
-五种特殊的成员函数（拷贝控制操作 copy control）：
-- copy constructor拷贝构造函数：当用同类型的另一个对象初始化本对象时的行为
-- move constructor移动构造函数：同上
-- copy-assignment operator拷贝赋值运算符：将一个对象赋予给同类型的另一个对象时的行为
-- move-assignment operator移动赋值运算符：同上
-- destructor析构函数：对象销毁时的行为
+    五种特殊的成员函数（拷贝控制操作 copy control）：
+    - copy constructor拷贝构造函数：当用同类型的另一个对象初始化本对象时的行为
+    - move constructor移动构造函数：同上
+    - copy-assignment operator拷贝赋值运算符：将一个对象赋予给同类型的另一个对象时的行为
+    - move-assignment operator移动赋值运算符：同上
+    - destructor析构函数：对象销毁时的行为
 
-如果类没有定义拷贝操作成员，编译器自动定义缺省操作。
-可以在拷贝控制成员的参数列表之后之后添加“= default"来要求编译器生成合成的版本。
-可以用参数列表之后的“=delete”定义拷贝构造函数和拷贝赋值运算，表示不能以任何方式使用他们
-= delete必须出现在函数第一次声明处，以便编译器检查是否有试图调用的操作
-= default在编译器生成代码时才生效。
+    如果类没有定义拷贝操作成员，编译器自动定义缺省操作。
+    可以在拷贝控制成员的参数列表之后之后添加“= default"来要求编译器生成合成的版本。
+    可以用参数列表之后的“=delete”定义拷贝构造函数和拷贝赋值运算，表示不能以任何方式使用他们
+    = delete必须出现在函数第一次声明处，以便编译器检查是否有试图调用的操作
+    = default在编译器生成代码时才生效。
+
+    如果一个类定义了自己的拷贝构造函数/拷贝赋值运算符或者析构函数，编译器就不会为其
+    合成移动构造函数和移动赋值运算符，类会使用对应的拷贝操作来替代移动操作。
+    只有当一个类没有定义自己的拷贝控制成员，且每个非static数据成员都可以移动，编译器才会为其
+    合成移动构造函数或移动赋值运算符。
+    移动操作不能定义为= delete，但如果用= default显式要求编译器合成移动操作，但不能移动所有成员
+    则编译器会将移动操作定义为= delete。
 */
 
 class ClassFeatures
@@ -53,14 +60,24 @@ public:
 
     // 移动赋值运算符
     ClassFeatures & operator=(ClassFeatures &&rgtIns) noexcept;
+
+    // 普通成员函数也可以同时提供拷贝和移动的版本
+    void funcCopyOrMove(const ClassFeatures &cfIns) {} // 拷贝版本
+    void funcCopyOrMove(ClassFeatures &&cfIns) {} // 移动版本
+
+    // 使用引用限定符reference qualifier声明 左值引用函数 和 右值引用函数
+    // 和const限定符一样，引用限定符只能用于非static成员函数，且必须同时现在声明和定义中
+    // 同时使用const和引用限定符时，引用限定符必须出现在const之后
+    ClassFeatures lvalueFunc(void) & { return *this; }  // 左值引用函数
+    ClassFeatures lvalueFunc(void) && { return *this; } // 右值引用函数
     
     // 辅助函数
     void displayMem(void);
     void setMem(const std::string memStrVal);
+    ClassFeatures getSelf(void) { return *this; };
 
 private:
     std::string memStr;
 };
-
 
 void testClassFeatures(void);
