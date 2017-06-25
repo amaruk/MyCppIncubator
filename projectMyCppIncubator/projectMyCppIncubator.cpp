@@ -9,6 +9,7 @@
 #include "PartTwo/StdLibIO.h"
 #include "PartTwo/StdLibContainer.h"
 #include "PartTwo/DynamicMem.h"
+#include "PartThree/ClassFeatures.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -96,6 +97,7 @@ void partTwo(void)
 // Part three: 类设计者的工具
 void partThree(void)
 {
+    testClassFeatures();
 }
 
 int main(int argc, char *argv[])
