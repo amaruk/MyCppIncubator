@@ -30,7 +30,6 @@ public:
     // 数组的元素逐个拷贝。
     // 参数是引用。因为非引用的形参在实参传递时需要调用拷贝构造函数，
     // 如果拷贝构造函数的形参为非引用，就会无限循环调用自己
-
     ClassFeatures(const ClassFeatures &cfIns); // 参数可以非const，但一般都是。通常不是explicit。
     // 合成拷贝构造函数相当于 ClassFeatures(const ClassFeatures &cfIns) : mem1(cfIns.mem1), mem2(cfIns.mem2){}
     // 使能下面代码，阻止拷贝构造函数
@@ -49,6 +48,11 @@ public:
     ClassFeatures & operator=(const ClassFeatures &rgtIns); // 赋值运算符通常返回指向左侧运算对象的引用
     // 合成拷贝构造函数相当于 ClassFeatures & operator=(const ClassFeatures &rgtIns) { mem1 = rgtIns.mem1; mem2 = rgtIns.mem2; return *this; }
 
+    // 移动构造函数
+    ClassFeatures(ClassFeatures &&cfIns) noexcept; // 移动操作不应抛出任何异常
+
+    // 移动赋值运算符
+    ClassFeatures & operator=(ClassFeatures &&rgtIns) noexcept;
     
     // 辅助函数
     void displayMem(void);
@@ -57,5 +61,6 @@ public:
 private:
     std::string memStr;
 };
+
 
 void testClassFeatures(void);
