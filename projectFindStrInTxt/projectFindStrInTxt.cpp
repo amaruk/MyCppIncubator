@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <fstream>
 #include <iostream>
+#include "QueryResult.h"
 #include "TextQuery.h"
 #include <string>
 
@@ -25,7 +26,7 @@ void runQuery(ifstream &inFile)
         string queryWord;
         if (!(cin >> queryWord) || queryWord == "q")
         { break; }
-        cout << "Output TBD" << endl; // newQuery.query(queryWord) << endl;
+        print(cout, newQuery.query(queryWord));
     }
 }
 
