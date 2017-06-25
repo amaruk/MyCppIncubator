@@ -1,0 +1,5 @@
+1. Hello, world.
+2. May I say hello again?
+3. "hello" shall be different from "Hello".
+4. I create "NOThello" in this line.
+5. Here we have a NOT hello in this line.
