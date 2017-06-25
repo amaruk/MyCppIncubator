@@ -16,6 +16,7 @@ class ClassFeatures
     */
 public:
     // 默认构造函数
+    // 构造函数初始化对象的非static数据成员
     ClassFeatures();
 
     // 拷贝构造函数： 第一个参数是自身类型的引用，且任何额外参数都有默认值
@@ -26,10 +27,20 @@ public:
     // 如果拷贝构造函数的形参为非引用，就会无限循环调用自己
 
     ClassFeatures(const ClassFeatures &cfIns); // 参数可以非const，但一般都是。通常不是explicit。
-    // 相当于 ClassFeatures(const ClassFeatures &cfIns) : mem1(cfIns.mem1), mem2(cfIns.mem2){}
+    // 合成拷贝构造函数相当于 ClassFeatures(const ClassFeatures &cfIns) : mem1(cfIns.mem1), mem2(cfIns.mem2){}
 
+    // 析构函数
+    // 释放对象使用的资源，销毁对象的非static数据成员
+    // 没有返回值，不接受参数
     ~ClassFeatures();
 
+    // 重载赋值运算符，实现拷贝赋值运算符
+    // 如不自定义，编译器会生成合成拷贝赋值运算符(synthesized copy-assignment operator)
+    ClassFeatures & operator=(const ClassFeatures &rgtIns); // 赋值运算符通常返回指向左侧运算对象的引用
+    // 合成拷贝构造函数相当于 ClassFeatures & operator=(const ClassFeatures &rgtIns) { mem1 = rgtIns.mem1; mem2 = rgtIns.mem2; return *this; }
+
+    
+    // 辅助函数
     void displayMem(void);
     void setMem(const std::string memStrVal);
 
