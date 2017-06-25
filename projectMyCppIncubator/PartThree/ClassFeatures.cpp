@@ -8,6 +8,7 @@ using std::string;
 
 ClassFeatures::ClassFeatures()
 {
+    cout << "/!\\ default constructor" << endl;
     this->memStr = string("Default");
 }
 
@@ -20,6 +21,7 @@ ClassFeatures::ClassFeatures(const ClassFeatures & cfIns)
 
 ClassFeatures::~ClassFeatures()
 {
+    cout << "/!\\ destructor" << endl;
 }
 
 ClassFeatures & ClassFeatures::operator=(const ClassFeatures & rgtIns)
@@ -73,4 +75,14 @@ void testClassFeatures(void)
     cfInsCopyConstruct = cfInsDefault;
     cout << "5. ";
     cfInsCopyConstruct.displayMem();
+
+    /*
+        调用析构函数的情况：
+        - 变量离开作用域时被销毁
+        - 当一个对象被销毁时，其成员被销毁
+        - 容器被销毁时，其元素被销毁
+        - 动态分配的对象，当指向其的指针应用delete运算符时被销毁
+        - 创建临时对象的完整表达式结束时，临时对象被销毁
+    */
+
 }
