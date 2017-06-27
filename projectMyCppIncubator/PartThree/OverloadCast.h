@@ -1,9 +1,15 @@
 ﻿#pragma once
+
+#include <iostream>
+
 class OverloadCast
 {
+
+    friend std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
+
 public:
-    OverloadCast();
-    ~OverloadCast();
+    OverloadCast(std::string initStr) : memStr(initStr) {};
+    ~OverloadCast() {};
 
     /*
         重载的运算符是函数，其名字由关键字operator和其后要定义的运算符号组成，
@@ -47,10 +53,19 @@ public:
         string u - "hi" + s;    // 如果+被string重载为成员函数，则错误，相当于"hi".operator+(s)，而“hi“是const char *，内置类型没有成员
                                 // 实际上，+被string重载为非成员函数，两个运算对象至少有一个是string类类型时，相当于operator+("hi",s)，两个实参都可转换为形参类型。
         string t = s + "!";     // 正确，同上
-
-        
     */ 
-    page 494 14.2.1 重载输出运算符<<
 
+private:
+    std::string memStr;
 };
 
+// 重载输出运算符<<
+// 第一个形参为非常量（写入流会改变其状态）ostream对象引用（无法复制ostream对象），
+// 第二个形参为想要打印的类类型的常量（一般不会改变打印对象的内容）引用（避免复制实参）
+// 与其他输出运算符保持一致，返回ostream形参
+// 必须是非成员函数，否则第一个形参必须是对应类的对象
+std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
+
+Page 495 14.2.2 重载输入运算符
+
+void testOverloadCast(void);
