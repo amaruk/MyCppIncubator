@@ -6,6 +6,7 @@ class OverloadCast
 {
 
     friend std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
+    friend std::istream & operator>>(std::istream &is, OverloadCast &ins);
 
 public:
     OverloadCast(std::string initStr) : memStr(initStr) {};
@@ -66,6 +67,12 @@ private:
 // 必须是非成员函数，否则第一个形参必须是对应类的对象
 std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
 
-Page 495 14.2.2 重载输入运算符
+// 重载输入运算符>>
+// 第一个形参为要读取的流的引用
+// 第二个形参为要读入到的非常量对象的引用
+// 返回给定流的引用
+std::istream & operator>>(std::istream &is, OverloadCast &ins);
 
 void testOverloadCast(void);
+
+497 算术和关系运算符
