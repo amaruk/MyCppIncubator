@@ -8,6 +8,8 @@ class OverloadCast
     friend std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
     friend std::istream & operator>>(std::istream &is, OverloadCast &ins);
     friend OverloadCast operator+(const OverloadCast &lhs, const OverloadCast &rhs);
+    friend bool operator==(const OverloadCast &lhs, const OverloadCast &rhs);
+    friend bool operator<(const OverloadCast &lhs, const OverloadCast &rhs);
 
 public:
     OverloadCast(std::string initStr) : memStr(initStr) {};
@@ -63,6 +65,9 @@ public:
     // 返回左侧运算符对象的引用
     OverloadCast & operator+=(const OverloadCast &rhs);
 
+    // 辅助函数
+    void setMemStr(const std::string &newStr);
+
 private:
     std::string memStr;
 };
@@ -84,6 +89,12 @@ std::istream & operator>>(std::istream &is, OverloadCast &ins);
 // 参数为常量的引用，因为不需要改变运算对象的状态
 // 运算后得到新值，操作完后返回该局部变量的副本
 OverloadCast operator+(const OverloadCast &lhs, const OverloadCast &rhs);
+
+// 相等运算符
+bool operator==(const OverloadCast &lhs, const OverloadCast &rhs);
+
+// 关系运算符
+bool operator<(const OverloadCast &lhs, const OverloadCast &rhs);
 
 void testOverloadCast(void);
 

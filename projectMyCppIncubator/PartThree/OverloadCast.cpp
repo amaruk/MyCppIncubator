@@ -12,7 +12,7 @@ using std::string;
 ostream & operator<<(ostream &os, const OverloadCast &ins)
 {
     // 不应打印换行符，让调用者自行换行
-    os << "[Overload] " << ins.memStr;
+    os << "[memStr] " << ins.memStr;
     return os;
 }
 
@@ -33,6 +33,11 @@ OverloadCast & OverloadCast::operator+=(const OverloadCast & rhs)
     return *this;
 }
 
+void OverloadCast::setMemStr(const string & newStr)
+{
+    this->memStr = newStr;
+}
+
 OverloadCast operator+(const OverloadCast & lhs, const OverloadCast & rhs)
 {
     // 如果同时重载了符合赋值运算符+=，一般用复合赋值运算符来实现算术运算符
@@ -42,9 +47,20 @@ OverloadCast operator+(const OverloadCast & lhs, const OverloadCast & rhs)
 }
 
 
+bool operator==(const OverloadCast & lhs, const OverloadCast & rhs)
+{
+    return lhs.memStr == rhs.memStr;
+}
+
+bool operator<(const OverloadCast & lhs, const OverloadCast & rhs)
+{
+    return lhs.memStr < rhs.memStr;
+}
+
 void testOverloadCast(void)
 {
     OverloadCast ocIns = OverloadCast("Initialized.");
+    cout << "Test << and >>" << endl;
     cout << "Original value:";
     cout << ocIns << endl; // 测试输出重载 
     cout << "Enter new value: ";
@@ -57,4 +73,24 @@ void testOverloadCast(void)
     OverloadCast ocRhs = OverloadCast("Right");
     OverloadCast ocRst = ocLhs + ocRhs; // 测试算术运算符重载
     cout << ocRst << endl << endl;
+
+    cout << "Test overload ==" << endl;
+    ocLhs.setMemStr("Left");
+    ocRhs.setMemStr("Right");
+    cout << ocLhs << " == " << ocRhs << " is: " << (ocLhs == ocRhs) << endl;
+    ocLhs.setMemStr("Same");
+    ocRhs.setMemStr("Same");
+    cout << ocLhs << " == " << ocRhs << " is: " << (ocLhs == ocRhs) << endl;
+
+    cout << "Test overload <" << endl;
+    ocLhs.setMemStr("Same");
+    ocRhs.setMemStr("Same");
+    cout << ocLhs << " < " << ocRhs << " is: " << (ocLhs < ocRhs) << endl;
+    ocLhs.setMemStr("Samf");
+    ocRhs.setMemStr("Same");
+    cout << ocLhs << " < " << ocRhs << " is: " << (ocLhs < ocRhs) << endl;
+    ocLhs.setMemStr("Same");
+    ocRhs.setMemStr("Samf");
+    cout << ocLhs << " < " << ocRhs << " is: " << (ocLhs < ocRhs) << endl;
+
 }
