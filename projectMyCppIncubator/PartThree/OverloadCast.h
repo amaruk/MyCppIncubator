@@ -7,6 +7,7 @@ class OverloadCast
 
     friend std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
     friend std::istream & operator>>(std::istream &is, OverloadCast &ins);
+    friend OverloadCast operator+(const OverloadCast &lhs, const OverloadCast &rhs);
 
 public:
     OverloadCast(std::string initStr) : memStr(initStr) {};
@@ -56,6 +57,12 @@ public:
         string t = s + "!";     // 正确，同上
     */ 
 
+    // 复合赋值运算符
+    // 不一定要定义为类成员，但一般定义为类成员
+    // 这样左侧运算符绑定到隐式的this
+    // 返回左侧运算符对象的引用
+    OverloadCast & operator+=(const OverloadCast &rhs);
+
 private:
     std::string memStr;
 };
@@ -73,6 +80,10 @@ std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
 // 返回给定流的引用
 std::istream & operator>>(std::istream &is, OverloadCast &ins);
 
+// 算术运算符
+// 参数为常量的引用，因为不需要改变运算对象的状态
+// 运算后得到新值，操作完后返回该局部变量的副本
+OverloadCast operator+(const OverloadCast &lhs, const OverloadCast &rhs);
+
 void testOverloadCast(void);
 
-497 算术和关系运算符

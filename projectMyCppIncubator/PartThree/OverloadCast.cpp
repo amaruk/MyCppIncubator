@@ -26,10 +26,35 @@ istream & operator>>(istream & is, OverloadCast & ins)
     return is;
 }
 
+OverloadCast & OverloadCast::operator+=(const OverloadCast & rhs)
+{
+    this->memStr += " + ";
+    this->memStr += rhs.memStr;
+    return *this;
+}
+
+OverloadCast operator+(const OverloadCast & lhs, const OverloadCast & rhs)
+{
+    // 如果同时重载了符合赋值运算符+=，一般用复合赋值运算符来实现算术运算符
+    OverloadCast result = lhs;
+    result += rhs;
+    return result;
+}
+
+
 void testOverloadCast(void)
 {
     OverloadCast ocIns = OverloadCast("Initialized.");
-    cout << ocIns << endl; // 测试输出重载
+    cout << "Original value:";
+    cout << ocIns << endl; // 测试输出重载 
+    cout << "Enter new value: ";
     cin >> ocIns; // 测试输入重载
-    cout << ocIns << endl;
+    cout << "New value: ";
+    cout << ocIns << endl << endl;
+
+    cout << "Test overload +" << endl;
+    OverloadCast ocLhs = OverloadCast("Left");
+    OverloadCast ocRhs = OverloadCast("Right");
+    OverloadCast ocRst = ocLhs + ocRhs; // 测试算术运算符重载
+    cout << ocRst << endl << endl;
 }
