@@ -26,6 +26,19 @@ namespace NamespaceAlice
             void dispInfo(void);
         };
     }
+
+    // 未命名的命名空间
+    // 在同一个文件内的不连续未命名命名空间为同一个命名空间
+    // 不同文件的未命名命名空间为不同命名空间
+    // 用来代替c语言的static声明（文件内的全局静态成员）
+    namespace
+    {
+        class NonamespaceClass
+        {
+        public:
+            void dispInfo(void);
+        };
+    }
 }
 
 namespace NamespaceBob
@@ -52,6 +65,24 @@ namespace NamespaceBob
         {
         public:
             void dispInfo(void);
+        };
+    }
+}
+
+namespace NamespaceVeryVeryLong
+{
+    namespace InsideNamespaceAlsoVeryLong
+    {
+        class ShortClass
+        {
+        public:
+            void dispInfo(void);
+        };
+
+        class AnotherShortClass
+        {
+        public:
+            void dispInfo(void) { std::cout << "This is another short class." << std::endl; }
         };
     }
 }

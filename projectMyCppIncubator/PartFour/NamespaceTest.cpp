@@ -19,6 +19,11 @@ void NamespaceAlice::SameNameClass::dispInfo(void)
     cout << "This is Alice's class" << endl;
 }
 
+void NamespaceAlice::NonamespaceClass::dispInfo(void)
+{
+    cout << "This is Noname's class" << endl;
+}
+
 // 在namespace内部定义
 namespace NamespaceBob
 {
@@ -39,6 +44,13 @@ void NamespaceAlice::NamespaceCarol::SameNameClass::dispInfo(void)
     cout << "This is Alice's Carol's class" << endl;
 }
 
+// 命名空间别名namespace alias
+namespace ShortNamespace = NamespaceVeryVeryLong::InsideNamespaceAlsoVeryLong;
+void ShortNamespace::ShortClass::dispInfo(void)
+{
+    cout << "This is a class in very long namespaces" << endl;
+}
+
 void testNamespace(void)
 {
     // 多个库将名字放在全局命名空间会引发命名空间污染 Namespace Pollution
@@ -51,13 +63,38 @@ void testNamespace(void)
 
     ::NamespaceTest globalClass = ::NamespaceTest(); // 全局命名空间Global Namespace隐式声明，没有名字
     NamespaceAlice::SameNameClass aliceClass = NamespaceAlice::SameNameClass();
+    NamespaceAlice::NonamespaceClass aliceNonameClass = NamespaceAlice::NonamespaceClass();
     NamespaceBob::NamespaceOld::SameNameClass oldBobClass = NamespaceBob::NamespaceOld::SameNameClass();
     NamespaceBob::SameNameClass currentBobClass = NamespaceBob::SameNameClass();
     NamespaceAlice::NamespaceCarol::SameNameClass carolClass = NamespaceAlice::NamespaceCarol::SameNameClass();
+    ShortNamespace::ShortClass shortClass = ShortNamespace::ShortClass();
 
     globalClass.dispInfo();
     aliceClass.dispInfo();
+    aliceNonameClass.dispInfo();
     oldBobClass.dispInfo();
     currentBobClass.dispInfo();
     carolClass.dispInfo();
+    shortClass.dispInfo();
+
+    // using声明using declaration: 一次引入命名空间的一个成员，仅在作用域内有效
+    // 可以出现在全局作用域/局部作用域/命名空间作用域/类作用域
+    // 只能声明名字，如using声明函数时，只声明名字，不能带参数。同时所有重载的函数都被引入。
+    {
+        using NamespaceVeryVeryLong::InsideNamespaceAlsoVeryLong::AnotherShortClass;
+
+        AnotherShortClass anoShortClass = AnotherShortClass();
+        anoShortClass.dispInfo();
+    }
+
+    // using指示using directive：一次引入命名空间的所有成员
+    // 可以出现在全局作用域/局部作用域/命名空间作用域
+    // 相当于把namespace展开到此作用域
+    {
+        using namespace NamespaceVeryVeryLong::InsideNamespaceAlsoVeryLong;
+
+        AnotherShortClass anoShortClass = AnotherShortClass();
+        anoShortClass.dispInfo();
+    }
 }
+
