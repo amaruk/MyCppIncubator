@@ -33,6 +33,13 @@ OverloadCast & OverloadCast::operator+=(const OverloadCast & rhs)
     return *this;
 }
 
+OverloadCast & OverloadCast::operator=(std::initializer_list<std::string> initVals)
+{
+    auto data = initVals.begin(); // 只使用列表的第一个元素
+    this->memStr = *data;
+    return *this;
+}
+
 void OverloadCast::setMemStr(const string & newStr)
 {
     this->memStr = newStr;
@@ -92,6 +99,15 @@ void testOverloadCast(void)
     ocLhs.setMemStr("Same");
     ocRhs.setMemStr("Samf");
     cout << ocLhs << " < " << ocRhs << " is: " << (ocLhs < ocRhs) << endl;
+    cout << endl;
 
-    //499 赋值运算符
+    cout << "Test overload ={}" << endl;
+    cout << "Current value: ";
+    cout << ocIns << endl;
+    ocIns = { "val1", "val2", "val3" };
+    cout << "Current value: ";
+    cout << ocIns << endl << endl;
+
+
+    //499 赋值运算符s
 }

@@ -125,8 +125,8 @@ int main(int argc, char *argv[])
 
     //partOne();
     //partTwo();
-    //partThree();
-    partFour();
+    partThree();
+    //partFour();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
