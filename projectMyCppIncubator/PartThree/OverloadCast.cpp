@@ -35,14 +35,44 @@ OverloadCast & OverloadCast::operator+=(const OverloadCast & rhs)
 
 OverloadCast & OverloadCast::operator=(std::initializer_list<std::string> initVals)
 {
-    auto data = initVals.begin(); // 只使用列表的第一个元素
-    this->memStr = *data;
+    int eleNum = 0;
+
+    for (auto itr = initVals.begin(); itr != initVals.end(); itr++, eleNum++)
+    {
+        this->memStrAry[eleNum] = *itr;
+        if (2 == eleNum)
+        {
+            break;
+        }
+    }
+
     return *this;
+}
+
+std::string & OverloadCast::operator[](std::size_t idx)
+{
+    if (idx < 3)
+    { return this->memStrAry[idx]; }
+    else
+    { return this->invalidIndex; }
+}
+
+const std::string & OverloadCast::operator[](std::size_t idx) const
+{
+    if (idx < 3)
+    { return this->memStrAry[idx]; }
+    else
+    { return this->invalidIndex; }
 }
 
 void OverloadCast::setMemStr(const string & newStr)
 {
     this->memStr = newStr;
+}
+
+string OverloadCast::getMemStrAry(void)
+{
+    return this->memStrAry[0] + " " + this->memStrAry[1] + " " + this->memStrAry[2];
 }
 
 OverloadCast operator+(const OverloadCast & lhs, const OverloadCast & rhs)
@@ -103,10 +133,21 @@ void testOverloadCast(void)
 
     cout << "Test overload ={}" << endl;
     cout << "Current value: ";
-    cout << ocIns << endl;
+    cout << ocIns.getMemStrAry() << endl;
     ocIns = { "val1", "val2", "val3" };
     cout << "Current value: ";
-    cout << ocIns << endl << endl;
+    cout << ocIns.getMemStrAry() << endl << endl;
+
+    cout << "Test overload []" << endl;
+    cout << "memStrAry[0]: ";
+    cout << ocIns[0] << endl;
+    cout << "memStrAry[1]: ";
+    cout << ocIns[1] << endl;
+    cout << "memStrAry[2]: ";
+    cout << ocIns[2] << endl;
+    cout << "memStrAry[3]: ";
+    cout << ocIns[3] << endl;
+    cout << endl;
 
 
     //499 赋值运算符s

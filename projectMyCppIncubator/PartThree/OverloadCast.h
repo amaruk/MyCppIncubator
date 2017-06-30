@@ -69,11 +69,20 @@ public:
     // 实现花括号的赋值
     OverloadCast & operator=(std::initializer_list<std::string> initVals);
 
+    // 重载下标运算符
+    // 必须是成员函数
+    // 一般定义两个版本，一个返回普通引用，一个为常量成员并返回常量引用
+    std::string & operator[](std::size_t idx);
+    const std::string & operator[](std::size_t idx) const;
+
     // 辅助函数
     void setMemStr(const std::string &newStr);
+    std::string getMemStrAry(void);
 
 private:
     std::string memStr;
+    std::string memStrAry[3] = { "default", "default", "default" };
+    std::string invalidIndex = std::string("Invalid Index");
 };
 
 // 重载输出运算符<<
