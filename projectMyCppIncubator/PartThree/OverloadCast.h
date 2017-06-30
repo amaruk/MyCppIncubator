@@ -87,6 +87,11 @@ public:
     OverloadCast & operator++(int); // 因为不用这个参数，不用为其命名
     OverloadCast & operator--(int);
 
+    // 重载成员访问运算符
+    // 一般用于迭代器类和智能指针类
+    std::string & operator*(void);
+    std::string* operator->(void);
+
     // 辅助函数
     void setMemStr(const std::string &newStr);
     std::string getMemStrAry(void);

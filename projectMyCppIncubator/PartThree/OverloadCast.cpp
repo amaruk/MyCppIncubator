@@ -95,6 +95,18 @@ OverloadCast & OverloadCast::operator--(int)
     return *this;
 }
 
+std::string & OverloadCast::operator*(void)
+{
+    return this->memStr;
+}
+
+std::string * OverloadCast::operator->(void)
+{
+    // 将实际工作委托给解引用
+    // 因为ptr->member相当于(*ptr).member
+    return & this->operator*();
+}
+
 void OverloadCast::setMemStr(const string & newStr)
 {
     this->memStr = newStr;
@@ -187,5 +199,6 @@ void testOverloadCast(void)
     // 显式调用时，用参数区分前置与后置
     ocIns.operator++();
     ocIns.operator++(0);
+    cout << endl;
 
 }
