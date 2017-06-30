@@ -75,6 +75,18 @@ public:
     std::string & operator[](std::size_t idx);
     const std::string & operator[](std::size_t idx) const;
 
+    // 重载递增递减运算符
+    // 不要求是成员函数，但改变了操作对象的状态，建议设为成员函数
+    // 前置版本
+    OverloadCast & operator++(void);
+    OverloadCast & operator--(void);
+    // 后置版本
+    // 编译器为了与前置版本区分，规定后置版本接收一个int型参数
+    // 调用后置版本时，编译器为其提供值为0的实参
+    // 从语法来说可以使用此实参，但一般不用
+    OverloadCast & operator++(int); // 因为不用这个参数，不用为其命名
+    OverloadCast & operator--(int);
+
     // 辅助函数
     void setMemStr(const std::string &newStr);
     std::string getMemStrAry(void);

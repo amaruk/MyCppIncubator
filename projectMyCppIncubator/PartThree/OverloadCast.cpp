@@ -65,6 +65,36 @@ const std::string & OverloadCast::operator[](std::size_t idx) const
     { return this->invalidIndex; }
 }
 
+OverloadCast & OverloadCast::operator++(void)
+{
+    // 无实际操作，仅打印输出表示执行
+    cout << "++OverloadCast called!" << endl;
+    return *this;
+}
+
+OverloadCast & OverloadCast::operator--(void)
+{
+    // 无实际操作，仅打印输出表示执行
+    cout << "--OverloadCast called!" << endl;
+    return *this;
+}
+
+OverloadCast & OverloadCast::operator++(int)
+{
+    // 一般先拷贝当前值，然后再调用前置版本
+    cout << "OverloadCast++ called by calling ";
+    ++*this;
+    return *this;
+}
+
+OverloadCast & OverloadCast::operator--(int)
+{
+    // 一般先拷贝当前值，然后再调用前置版本
+    cout << "OverloadCast-- called by calling ";
+    --*this;
+    return *this;
+}
+
 void OverloadCast::setMemStr(const string & newStr)
 {
     this->memStr = newStr;
@@ -149,6 +179,13 @@ void testOverloadCast(void)
     cout << ocIns[3] << endl;
     cout << endl;
 
+    cout << "Test overload ++ and --" << endl;
+    ++ocIns;
+    --ocIns;
+    ocIns++;
+    ocIns--;
+    // 显式调用时，用参数区分前置与后置
+    ocIns.operator++();
+    ocIns.operator++(0);
 
-    //499 赋值运算符s
 }
