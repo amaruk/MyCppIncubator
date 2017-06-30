@@ -22,10 +22,21 @@ void NamespaceAlice::SameNameClass::dispInfo(void)
 // 在namespace内部定义
 namespace NamespaceBob
 {
+    void NamespaceBob::NamespaceOld::SameNameClass::dispInfo(void)
+    {
+        cout << "This is old Bob's class" << endl;
+    }
+
+    // inline的namespace实现
     void SameNameClass::dispInfo(void)
     {
-        cout << "This is Bob's class" << endl;
+        cout << "This is current Bob's class" << endl;
     }
+}
+
+void NamespaceAlice::NamespaceCarol::SameNameClass::dispInfo(void)
+{
+    cout << "This is Alice's Carol's class" << endl;
 }
 
 void testNamespace(void)
@@ -38,9 +49,15 @@ void testNamespace(void)
     // 命名空间定义可以不连续
     // 通常不把include放在命名空间内，会造成头文件里的内容定义为此命名空间内
 
+    ::NamespaceTest globalClass = ::NamespaceTest(); // 全局命名空间Global Namespace隐式声明，没有名字
     NamespaceAlice::SameNameClass aliceClass = NamespaceAlice::SameNameClass();
-    NamespaceBob::SameNameClass bobClass = NamespaceBob::SameNameClass();
+    NamespaceBob::NamespaceOld::SameNameClass oldBobClass = NamespaceBob::NamespaceOld::SameNameClass();
+    NamespaceBob::SameNameClass currentBobClass = NamespaceBob::SameNameClass();
+    NamespaceAlice::NamespaceCarol::SameNameClass carolClass = NamespaceAlice::NamespaceCarol::SameNameClass();
 
+    globalClass.dispInfo();
     aliceClass.dispInfo();
-    bobClass.dispInfo();
+    oldBobClass.dispInfo();
+    currentBobClass.dispInfo();
+    carolClass.dispInfo();
 }
