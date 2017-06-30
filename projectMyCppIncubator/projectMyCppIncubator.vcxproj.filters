@@ -37,6 +37,12 @@
     <Filter Include="Source Files\PartThree">
       <UniqueIdentifier>{5f3f0b1a-3f60-4aa4-beec-7b1c211171f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PartFour">
+      <UniqueIdentifier>{4652447a-36d1-4ff5-a021-e59a1bbfb6be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PartFour">
+      <UniqueIdentifier>{a9aace30-6706-414e-a7ca-06566e04447a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -78,6 +84,9 @@
     <ClInclude Include="PartThree\OverloadCast.h">
       <Filter>Header Files\PartThree</Filter>
     </ClInclude>
+    <ClInclude Include="PartFour\NamespaceTest.h">
+      <Filter>Header Files\PartFour</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="projectMyCppIncubator.cpp">
@@ -112,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="PartThree\OverloadCast.cpp">
       <Filter>Source Files\PartThree</Filter>
+    </ClCompile>
+    <ClCompile Include="PartFour\NamespaceTest.cpp">
+      <Filter>Source Files\PartFour</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

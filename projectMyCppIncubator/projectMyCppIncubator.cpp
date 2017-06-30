@@ -11,6 +11,7 @@
 #include "PartTwo/DynamicMem.h"
 #include "PartThree/ClassFeatures.h"
 #include "PartThree/OverloadCast.h"
+#include "PartFour/NamespaceTest.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -102,6 +103,12 @@ void partThree(void)
     testOverloadCast();
 }
 
+// Part four: 高级主题
+void partFour(void)
+{
+    testNamespace();
+}
+
 int main(int argc, char *argv[])
 {
     // main命令行参数
@@ -118,7 +125,8 @@ int main(int argc, char *argv[])
 
     //partOne();
     //partTwo();
-    partThree();
+    //partThree();
+    partFour();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

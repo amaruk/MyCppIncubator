@@ -93,4 +93,5 @@ void testOverloadCast(void)
     ocRhs.setMemStr("Samf");
     cout << ocLhs << " < " << ocRhs << " is: " << (ocLhs < ocRhs) << endl;
 
+    //499 赋值运算符
 }
