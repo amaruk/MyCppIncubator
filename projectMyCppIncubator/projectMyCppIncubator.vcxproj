@@ -148,6 +148,7 @@
     <ClInclude Include="PartOne\CppPrimerFriend.h" />
     <ClInclude Include="PartOne\CppPrimerLiteral.h" />
     <ClInclude Include="PartThree\ClassFeatures.h" />
+    <ClInclude Include="PartThree\OOP.h" />
     <ClInclude Include="PartThree\OverloadCast.h" />
     <ClInclude Include="PartTwo\DynamicMem.h" />
     <ClInclude Include="PartTwo\StdLibContainer.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="PartOne\CppPrimerFriend.cpp" />
     <ClCompile Include="PartOne\CppPrimerLiteral.cpp" />
     <ClCompile Include="PartThree\ClassFeatures.cpp" />
+    <ClCompile Include="PartThree\OOP.cpp" />
     <ClCompile Include="PartThree\OverloadCast.cpp" />
     <ClCompile Include="PartTwo\DynamicMem.cpp" />
     <ClCompile Include="PartTwo\StdLibContainer.cpp" />

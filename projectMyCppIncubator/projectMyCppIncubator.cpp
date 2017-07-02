@@ -11,6 +11,7 @@
 #include "PartTwo/DynamicMem.h"
 #include "PartThree/ClassFeatures.h"
 #include "PartThree/OverloadCast.h"
+#include "PartThree/OOP.h"
 #include "PartFour/NamespaceTest.h"
 #include <iostream>
 #include <string>
@@ -100,7 +101,8 @@ void partTwo(void)
 void partThree(void)
 {
     //testClassFeatures();
-    testOverloadCast();
+    //testOverloadCast();
+    testOOP();
 }
 
 // Part four: 高级主题
