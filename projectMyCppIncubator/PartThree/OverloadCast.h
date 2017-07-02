@@ -146,23 +146,10 @@ bool operator<(const OverloadTest &lhs, const OverloadTest &rhs);
 
 class CallableTest
 {
-    /*
-        可调用对象（callable object）：可以对其使用调用运算符()的对象或表达式
-        - 函数
-        - 函数指针
-        - 重载了函数调用运算符的类
-        - lambda表达式
-        - bind创建的对象
-
-        不同的可调用对象类型不同，但可以用相同的调用形式call signature（类似函数签名）
-        比如接受两给int，返回一个int的调用形式为：
-        int(int, int)
-    */
 
 public:
-    CallableTest();
-    ~CallableTest();
-
+    CallableTest() {};
+    ~CallableTest() {};
 
 
 private:

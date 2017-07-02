@@ -1,6 +1,8 @@
 ﻿#include "stdafx.h"
 #include "OverloadCast.h"
 #include <string>
+#include <functional>
+#include <map>
 
 using std::ostream;
 using std::istream;
@@ -8,6 +10,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::function;
+using std::map;
 
 ostream & operator<<(ostream &os, const OverloadTest &ins)
 {
@@ -211,19 +215,68 @@ void testOverload(void)
     cout << endl;
 }
 
-
-
-CallableTest::CallableTest()
+// 普通函数
+void sigMethod(string strPar) { cout << "In sigMethod(" << strPar << "\")" << endl; }
+// lambda
+auto sigLambda = [](string strPar) { cout << "In sigLambda(" << strPar << "\")" << endl; }; 
+// 函数对象类
+struct SigClass //必须为struct，不能为class
 {
-}
-
-CallableTest::~CallableTest()
-{
-}
+    void operator()(string strPar) { cout << "In sigClass(" << strPar << "\")" << endl; };
+};
+// 重载函数
+void sigOverload(string strPar) { cout << "In sigOverload(" << strPar << "\")" << endl; }
+void sigOverload(int intPar) { cout << "/!\Shall NOT in sigOverload(int)" << endl; }
 
 void testCallSignature(void)
 {
+    /*
+    可调用对象（callable object）：可以对其使用调用运算符()的对象或表达式
+    - 函数
+    - 函数指针
+    - 重载了函数调用运算符的类
+    - lambda表达式
+    - bind创建的对象
 
+    不同的可调用对象类型不同，但可以用相同的调用形式call signature（类似函数签名）
+    比如接受两给int，返回一个int的调用形式为：
+    int(int, int)
+    
+    
+    定义函数表function table（类似中断向量表）
+       可以使用map<string, void(*)(string)>实现，但无法将lambda和重载了函数调用运算符的类添加进map
+       C++11标准库的function模板类型可以解决此问题
+
+       function的操作：
+       function<T> f;           f用来存储函数类型为T的可调用对象
+       function<T> f(nullptr);  显式构造一个空function
+       function<T> f(obj);      在f中存储可调用对象obj的副本
+       f                        直接用f作为条件，f含义可调用对象时为真
+       f(args)                  调用f中的对象，args为参数
+
+       f的成员的类型：
+       result_type              可调用对象返回的类型
+       argument_type            只有一个实参时，表示此实参的类型
+       first_argument_type      有两个实参时，第一个参数的类型
+       second_argument_type     有两个实参时，第二个参数的类型
+    */
+    function<void(string)> funMethod = sigMethod;
+    function<void(string)> funLambda = sigLambda;
+    function<void(string)> funClass = SigClass();
+    void(*fp)(string) = sigOverload;
+    function<void(string)> funOverload = fp; // 由于重载函数的二义性，不能直接写重载的函数名，用函数指针消除二义性
+
+    map<string, function<void(string)>> isrVector = {
+        { "method", funMethod },
+        { "lambda", funLambda },
+        { "class", funClass },
+        { "overload", funOverload }
+    };
+
+    isrVector["method"]("1");
+    isrVector["lambda"]("2");
+    isrVector["class"]("3");
+    isrVector["overload"]("4");
 }
 
 void testOverloadCast(void)
