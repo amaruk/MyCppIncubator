@@ -2,18 +2,18 @@
 
 #include <iostream>
 
-class OverloadCast
+class OverloadTest
 {
 
-    friend std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
-    friend std::istream & operator>>(std::istream &is, OverloadCast &ins);
-    friend OverloadCast operator+(const OverloadCast &lhs, const OverloadCast &rhs);
-    friend bool operator==(const OverloadCast &lhs, const OverloadCast &rhs);
-    friend bool operator<(const OverloadCast &lhs, const OverloadCast &rhs);
+    friend std::ostream & operator<<(std::ostream &os, const OverloadTest &ins);
+    friend std::istream & operator>>(std::istream &is, OverloadTest &ins);
+    friend OverloadTest operator+(const OverloadTest &lhs, const OverloadTest &rhs);
+    friend bool operator==(const OverloadTest &lhs, const OverloadTest &rhs);
+    friend bool operator<(const OverloadTest &lhs, const OverloadTest &rhs);
 
 public:
-    OverloadCast(std::string initStr) : memStr(initStr) {};
-    ~OverloadCast() {};
+    OverloadTest(std::string initStr) : memStr(initStr) {};
+    ~OverloadTest() {};
 
     /*
         重载的运算符是函数，其名字由关键字operator和其后要定义的运算符号组成，
@@ -63,11 +63,11 @@ public:
     // 不一定要定义为类成员，但一般定义为类成员
     // 这样左侧运算符绑定到隐式的this
     // 返回左侧运算符对象的引用
-    OverloadCast & operator+=(const OverloadCast &rhs);
+    OverloadTest & operator+=(const OverloadTest &rhs);
 
     // 重载赋值运算符
     // 实现花括号的赋值
-    OverloadCast & operator=(std::initializer_list<std::string> initVals);
+    OverloadTest & operator=(std::initializer_list<std::string> initVals);
 
     // 重载下标运算符
     // 必须是成员函数
@@ -78,19 +78,36 @@ public:
     // 重载递增递减运算符
     // 不要求是成员函数，但改变了操作对象的状态，建议设为成员函数
     // 前置版本
-    OverloadCast & operator++(void);
-    OverloadCast & operator--(void);
+    OverloadTest & operator++(void);
+    OverloadTest & operator--(void);
     // 后置版本
     // 编译器为了与前置版本区分，规定后置版本接收一个int型参数
     // 调用后置版本时，编译器为其提供值为0的实参
     // 从语法来说可以使用此实参，但一般不用
-    OverloadCast & operator++(int); // 因为不用这个参数，不用为其命名
-    OverloadCast & operator--(int);
+    OverloadTest & operator++(int); // 因为不用这个参数，不用为其命名
+    OverloadTest & operator--(int);
 
     // 重载成员访问运算符
     // 一般用于迭代器类和智能指针类
     std::string & operator*(void);
     std::string* operator->(void);
+
+    // 函数调用运算符
+    // 必须是成员函数，可利用参数数量和类型差别多次重载函数调用运算符
+    // 定义了函数调用运算符的类对象叫函数对象function object
+    // lambda表达式会被编译器翻译为具有重载函数调用运算符的未命名类的未命名对象的调用
+    // 函数对象常用作泛型算法实参
+    // 可直接使用函数对象和()调用
+    std::string operator() (std::string arg) const;
+
+    // 标准库在functional头文件中定义了一组表示算术运算符/关系运算符/逻辑运算符的类
+    // 算术：
+    //      plus<Type>  minus<Type>  multiplies<Type>  divides<Type>  mudulus<Type>  nagate<Type>
+    // 关系：
+    //      equal_to<Type>  not_equal_to<Type>  greater<Type>  greater_equal<Type>
+    //      less<Type>  less_equal<Type>
+    // 逻辑：
+    //      logical_and<Type>  logical_or<Type>  logical_not<Type>
 
     // 辅助函数
     void setMemStr(const std::string &newStr);
@@ -107,24 +124,50 @@ private:
 // 第二个形参为想要打印的类类型的常量（一般不会改变打印对象的内容）引用（避免复制实参）
 // 与其他输出运算符保持一致，返回ostream形参
 // 必须是非成员函数，否则第一个形参必须是对应类的对象
-std::ostream & operator<<(std::ostream &os, const OverloadCast &ins);
+std::ostream & operator<<(std::ostream &os, const OverloadTest &ins);
 
 // 重载输入运算符>>
 // 第一个形参为要读取的流的引用
 // 第二个形参为要读入到的非常量对象的引用
 // 返回给定流的引用
-std::istream & operator>>(std::istream &is, OverloadCast &ins);
+std::istream & operator>>(std::istream &is, OverloadTest &ins);
 
 // 重载算术运算符
 // 参数为常量的引用，因为不需要改变运算对象的状态
 // 运算后得到新值，操作完后返回该局部变量的副本
-OverloadCast operator+(const OverloadCast &lhs, const OverloadCast &rhs);
+OverloadTest operator+(const OverloadTest &lhs, const OverloadTest &rhs);
 
 // 重载相等运算符
-bool operator==(const OverloadCast &lhs, const OverloadCast &rhs);
+bool operator==(const OverloadTest &lhs, const OverloadTest &rhs);
 
 // 重载关系运算符
-bool operator<(const OverloadCast &lhs, const OverloadCast &rhs);
+bool operator<(const OverloadTest &lhs, const OverloadTest &rhs);
+
+
+class CallableTest
+{
+    /*
+        可调用对象（callable object）：可以对其使用调用运算符()的对象或表达式
+        - 函数
+        - 函数指针
+        - 重载了函数调用运算符的类
+        - lambda表达式
+        - bind创建的对象
+
+        不同的可调用对象类型不同，但可以用相同的调用形式call signature（类似函数签名）
+        比如接受两给int，返回一个int的调用形式为：
+        int(int, int)
+    */
+
+public:
+    CallableTest();
+    ~CallableTest();
+
+
+
+private:
+
+};
 
 void testOverloadCast(void);
 

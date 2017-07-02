@@ -9,14 +9,14 @@ using std::cin;
 using std::endl;
 using std::string;
 
-ostream & operator<<(ostream &os, const OverloadCast &ins)
+ostream & operator<<(ostream &os, const OverloadTest &ins)
 {
     // 不应打印换行符，让调用者自行换行
     os << "[memStr] " << ins.memStr;
     return os;
 }
 
-istream & operator>>(istream & is, OverloadCast & ins)
+istream & operator>>(istream & is, OverloadTest & ins)
 {
     is >> ins.memStr;
 
@@ -26,14 +26,14 @@ istream & operator>>(istream & is, OverloadCast & ins)
     return is;
 }
 
-OverloadCast & OverloadCast::operator+=(const OverloadCast & rhs)
+OverloadTest & OverloadTest::operator+=(const OverloadTest & rhs)
 {
     this->memStr += " + ";
     this->memStr += rhs.memStr;
     return *this;
 }
 
-OverloadCast & OverloadCast::operator=(std::initializer_list<std::string> initVals)
+OverloadTest & OverloadTest::operator=(std::initializer_list<std::string> initVals)
 {
     int eleNum = 0;
 
@@ -49,7 +49,7 @@ OverloadCast & OverloadCast::operator=(std::initializer_list<std::string> initVa
     return *this;
 }
 
-std::string & OverloadCast::operator[](std::size_t idx)
+std::string & OverloadTest::operator[](std::size_t idx)
 {
     if (idx < 3)
     { return this->memStrAry[idx]; }
@@ -57,7 +57,7 @@ std::string & OverloadCast::operator[](std::size_t idx)
     { return this->invalidIndex; }
 }
 
-const std::string & OverloadCast::operator[](std::size_t idx) const
+const std::string & OverloadTest::operator[](std::size_t idx) const
 {
     if (idx < 3)
     { return this->memStrAry[idx]; }
@@ -65,80 +65,85 @@ const std::string & OverloadCast::operator[](std::size_t idx) const
     { return this->invalidIndex; }
 }
 
-OverloadCast & OverloadCast::operator++(void)
+OverloadTest & OverloadTest::operator++(void)
 {
     // 无实际操作，仅打印输出表示执行
-    cout << "++OverloadCast called!" << endl;
+    cout << "++OverloadTest called!" << endl;
     return *this;
 }
 
-OverloadCast & OverloadCast::operator--(void)
+OverloadTest & OverloadTest::operator--(void)
 {
     // 无实际操作，仅打印输出表示执行
-    cout << "--OverloadCast called!" << endl;
+    cout << "--OverloadTest called!" << endl;
     return *this;
 }
 
-OverloadCast & OverloadCast::operator++(int)
+OverloadTest & OverloadTest::operator++(int)
 {
     // 一般先拷贝当前值，然后再调用前置版本
-    cout << "OverloadCast++ called by calling ";
+    cout << "OverloadTest++ called by calling ";
     ++*this;
     return *this;
 }
 
-OverloadCast & OverloadCast::operator--(int)
+OverloadTest & OverloadTest::operator--(int)
 {
     // 一般先拷贝当前值，然后再调用前置版本
-    cout << "OverloadCast-- called by calling ";
+    cout << "OverloadTest-- called by calling ";
     --*this;
     return *this;
 }
 
-std::string & OverloadCast::operator*(void)
+std::string & OverloadTest::operator*(void)
 {
     return this->memStr;
 }
 
-std::string * OverloadCast::operator->(void)
+std::string * OverloadTest::operator->(void)
 {
     // 将实际工作委托给解引用
     // 因为ptr->member相当于(*ptr).member
     return & this->operator*();
 }
 
-void OverloadCast::setMemStr(const string & newStr)
+std::string OverloadTest::operator()(std::string arg) const
+{
+    return "[Overload ()]: " + arg;
+}
+
+void OverloadTest::setMemStr(const string & newStr)
 {
     this->memStr = newStr;
 }
 
-string OverloadCast::getMemStrAry(void)
+string OverloadTest::getMemStrAry(void)
 {
     return this->memStrAry[0] + " " + this->memStrAry[1] + " " + this->memStrAry[2];
 }
 
-OverloadCast operator+(const OverloadCast & lhs, const OverloadCast & rhs)
+OverloadTest operator+(const OverloadTest & lhs, const OverloadTest & rhs)
 {
     // 如果同时重载了符合赋值运算符+=，一般用复合赋值运算符来实现算术运算符
-    OverloadCast result = lhs;
+    OverloadTest result = lhs;
     result += rhs;
     return result;
 }
 
 
-bool operator==(const OverloadCast & lhs, const OverloadCast & rhs)
+bool operator==(const OverloadTest & lhs, const OverloadTest & rhs)
 {
     return lhs.memStr == rhs.memStr;
 }
 
-bool operator<(const OverloadCast & lhs, const OverloadCast & rhs)
+bool operator<(const OverloadTest & lhs, const OverloadTest & rhs)
 {
     return lhs.memStr < rhs.memStr;
 }
 
-void testOverloadCast(void)
+void testOverload(void)
 {
-    OverloadCast ocIns = OverloadCast("Initialized.");
+    OverloadTest ocIns = OverloadTest("Initialized.");
     cout << "Test << and >>" << endl;
     cout << "Original value:";
     cout << ocIns << endl; // 测试输出重载 
@@ -148,9 +153,9 @@ void testOverloadCast(void)
     cout << ocIns << endl << endl;
 
     cout << "Test overload +" << endl;
-    OverloadCast ocLhs = OverloadCast("Left");
-    OverloadCast ocRhs = OverloadCast("Right");
-    OverloadCast ocRst = ocLhs + ocRhs; // 测试算术运算符重载
+    OverloadTest ocLhs = OverloadTest("Left");
+    OverloadTest ocRhs = OverloadTest("Right");
+    OverloadTest ocRst = ocLhs + ocRhs; // 测试算术运算符重载
     cout << ocRst << endl << endl;
 
     cout << "Test overload ==" << endl;
@@ -201,4 +206,29 @@ void testOverloadCast(void)
     ocIns.operator++(0);
     cout << endl;
 
+    cout << "Test overload ()" << endl;
+    cout << ocIns("TestArgument") << endl;
+    cout << endl;
 }
+
+
+
+CallableTest::CallableTest()
+{
+}
+
+CallableTest::~CallableTest()
+{
+}
+
+void testCallSignature(void)
+{
+
+}
+
+void testOverloadCast(void)
+{
+    //testOverload();
+    testCallSignature();
+}
+

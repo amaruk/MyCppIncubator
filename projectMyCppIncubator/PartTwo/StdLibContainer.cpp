@@ -725,12 +725,6 @@ void StdLibContainer::testGeneric(void)
         - 用lambda表达式作为谓词，用其capture list
         - C++11的标准库bind函数
 
-        可调用对象（callable object）：可以对其使用调用运算符()的对象或表达式
-        - 函数
-        - 函数指针
-        - 重载了函数调用运算符的类 TBD
-        - lambda表达式
-
     */
     /*
         C++11:
