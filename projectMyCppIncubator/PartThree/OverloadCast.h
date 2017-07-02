@@ -99,7 +99,7 @@ public:
     // 函数对象常用作泛型算法实参
     // 可直接使用函数对象和()调用
     std::string operator() (std::string arg) const;
-
+    
     // 标准库在functional头文件中定义了一组表示算术运算符/关系运算符/逻辑运算符的类
     // 算术：
     //      plus<Type>  minus<Type>  multiplies<Type>  divides<Type>  mudulus<Type>  nagate<Type>
@@ -144,16 +144,34 @@ bool operator==(const OverloadTest &lhs, const OverloadTest &rhs);
 bool operator<(const OverloadTest &lhs, const OverloadTest &rhs);
 
 
-class CallableTest
+class ConversionTest
 {
 
 public:
-    CallableTest() {};
-    ~CallableTest() {};
+    ConversionTest() {};
+    // 利用构造函数把int转为类对象
+    ConversionTest(int initInt) : memInt(initInt) {
+        std::cout << "Change int to class." << std::endl;
+    };
+    ~ConversionTest() {};
 
+    // 类型转换运算符Conversion Operator
+    // 负责将一个类类型的值转换为其他类型
+    // 一般形式：operator type() const;
+    // type为要转换的类型，不允许转换为数组或函数类型
+    // 允许转换为指针（数组或函数指针皆可）或引用类型
+    // 类型转换运算符没有显式的返回类型，也没有形参，必须定义为类成员函数
+    // 一般不改变转换对象的内容，故定义为常量成员函数
+    // 不能显式调用，只能隐式执行
+    
+    // 利用类型转换运算符把类对象转换为int
+    // 以下定义使得编译器能隐式转换类类型为int
+    operator int() const { std::cout << "Change class to int." << std::endl; return memInt; }
+    // 以下定义只能显式转换类类型为int，如只有此定义，则编译器需要隐式类类型转换时会报错
+    //explicit operator int() const { std::cout << "Explicit change class to int." << std::endl; return memInt; }
 
 private:
-
+    int memInt;
 };
 
 void testOverloadCast(void);

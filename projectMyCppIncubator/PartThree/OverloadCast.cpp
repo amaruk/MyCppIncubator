@@ -226,7 +226,7 @@ struct SigClass //必须为struct，不能为class
 };
 // 重载函数
 void sigOverload(string strPar) { cout << "In sigOverload(" << strPar << "\")" << endl; }
-void sigOverload(int intPar) { cout << "/!\Shall NOT in sigOverload(int)" << endl; }
+void sigOverload(int intPar) { cout << "/!\\Shall NOT in sigOverload(int)" << endl; }
 
 void testCallSignature(void)
 {
@@ -279,9 +279,19 @@ void testCallSignature(void)
     isrVector["overload"]("4");
 }
 
+void testConversion(void)
+{
+    ConversionTest ctIns;
+    ctIns = 123; // 123被转成ConversionTest对象
+    // ConversionTest被转成int，之后内置类型转double运算
+    cout << ctIns + 321.123 << endl; // 隐式类型转换，只可调用普通类类型转换
+    cout << static_cast<int>(ctIns) + 321.123 << endl; // 显式类型转换，可调用普通类类型转换或explicit类类型转换
+}
+
 void testOverloadCast(void)
 {
     //testOverload();
-    testCallSignature();
+    //testCallSignature();
+    testConversion();
 }
 
