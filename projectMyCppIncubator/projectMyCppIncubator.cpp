@@ -13,6 +13,7 @@
 #include "PartThree/OverloadCast.h"
 #include "PartThree/OOP.h"
 #include "PartFour/NamespaceTest.h"
+#include "PartFour/InheritanceTest.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -108,7 +109,8 @@ void partThree(void)
 // Part four: 高级主题
 void partFour(void)
 {
-    testNamespace();
+    //testNamespace();
+    inheritanceTest();
 }
 
 int main(int argc, char *argv[])
@@ -127,8 +129,8 @@ int main(int argc, char *argv[])
 
     //partOne();
     //partTwo();
-    partThree();
-    //partFour();
+    //partThree();
+    partFour();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
