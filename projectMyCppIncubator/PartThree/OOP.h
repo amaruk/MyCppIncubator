@@ -2,6 +2,10 @@
 #include <iostream>
 
 // 基类
+// 派生类处在基类内部，当调用派生类上的成员时，先从派生类的作用域查找成员，进而依次扩展的基类的作用域
+// 因此，派生类的成员将隐藏基类的同名成员
+// 因此，派生类的函数会隐藏基类的同名函数，即使形参列表不同
+// 如果基类中的默认构造函数、拷贝构造函数、拷贝复制运算符、析构函数是delete或不可访问，派生类中对于的成员也是被删除的。
 class OperatingSystem
 {
     // 基类把希望派生类各自实现的函数声明为虚函数virtual function
@@ -16,7 +20,9 @@ class OperatingSystem
 public: // 派生类可以访问，类用户可以访问
     OperatingSystem() = default;
     OperatingSystem(std::string name, int ver, bool open) : osName(name), osVer(ver), osIsOpen(open) {};
-    virtual ~OperatingSystem() = default; // 继承关系中的根节点类一般定义虚析构函数
+    // 为了动态分配继承体系中的对象，继承关系中的根节点类一般定义虚析构函数
+    // delete基类指针时，由于动态绑定，指针可能指向派生类，所以基类析构函数一般定义虚函数，在此情况下可以调用到派生类的析构函数
+    virtual ~OperatingSystem() = default;
 
     // 虚函数
     virtual void dispOsName(void) const;
@@ -79,6 +85,7 @@ public:
     // 改变继承自基类的成员的可访问性
     using OperatingSystem::dispOsVer;
     using OperatingSystem::dispOsOpenSource;
+    // 如果using基类的构造函数，编译器会在派生类里生成对应的派生类构造函数
 
     virtual void dispOsName(void) const override;
     virtual void dispOsMotto(void) override;

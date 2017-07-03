@@ -101,5 +101,4 @@ void testOOP(void)
     dervLinux.dispOsMotto();
     cout << endl;
 
-
 }
