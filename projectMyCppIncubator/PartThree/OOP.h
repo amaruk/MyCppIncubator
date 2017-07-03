@@ -11,7 +11,9 @@ class OperatingSystem
     // final和override出现在形参列表（包括const或引用修饰符）以及尾置返回类型之后
     // 含有纯虚函数的类是抽象基类abstract base class，定义接口，由派生类实现接口。
     // 不能创建抽象基类的对象
-public: // 派生类可以访问，其他用户可以访问
+    // 类之间的友元关系不能传递也不能继承
+
+public: // 派生类可以访问，类用户可以访问
     OperatingSystem() = default;
     OperatingSystem(std::string name, int ver, bool open) : osName(name), osVer(ver), osIsOpen(open) {};
     virtual ~OperatingSystem() = default; // 继承关系中的根节点类一般定义虚析构函数
@@ -25,10 +27,11 @@ public: // 派生类可以访问，其他用户可以访问
     // 可以在类外部为纯虚函数提供定义
     virtual void dispOsMotto(void) = 0; // =0表示纯虚函数
 
-
     static void osRootInfo(void);
-private: // 派生类不可访问，其他用户不可访问
-protected: // 派生类可以访问，其他用户不可访问
+
+private: // 派生类不可访问，类用户不可访问
+
+protected: // 派生类成员及友元可以访问，类用户不可访问
     std::string osName;
     int osVer;
     bool osIsOpen;
@@ -37,7 +40,12 @@ protected: // 派生类可以访问，其他用户不可访问
 // 派生类
 // 通过类派生列表class derivation list指明从哪些基类继承而来。
 // 每个基类前面可以有访问说明符：public/protected/private
+// 访问说明符表示类用户对继承来的成员的访问权限，即
+// 派生类对基类的访问权限取决于基类的public/protected/private声明
+// 派生类用户对派生类继承来的基类成员访问权限取决于派生类的访问说明符
+// 基类public的成员在派生类内部可以直接访问，但如果派生类访问说明符为private，则不能通过派生类实例直接访问基类的public成员
 // 派生类在其他文件中的类声明不需要包含派生列表
+// struct的派生类是公有继承，class的派生类是私有继承
 class OSWindows final : public OperatingSystem // c++11：final的类不能被继承
 {
 public:
@@ -61,6 +69,21 @@ private:
     bool isEmbedded;
 };
 
+class OSLinux : private OperatingSystem // 私有继承
+{
+public:
+    OSLinux() = default;
+    OSLinux(std::string name, int ver, bool open) : OperatingSystem(name, ver, open) {};
+    ~OSLinux() = default;
 
+    // 改变继承自基类的成员的可访问性
+    using OperatingSystem::dispOsVer;
+    using OperatingSystem::dispOsOpenSource;
+
+    virtual void dispOsName(void) const override;
+    virtual void dispOsMotto(void) override;
+
+private:
+};
 
 void testOOP(void);

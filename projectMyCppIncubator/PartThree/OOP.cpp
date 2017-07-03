@@ -46,6 +46,16 @@ void printOsInfo(OperatingSystem &osIns)
     osIns.dispOsMotto();
 }
 
+void OSLinux::dispOsName(void) const
+{
+    cout << "Linux: " << osName << endl;
+}
+
+void OSLinux::dispOsMotto(void)
+{
+    cout << "Liux Mottor: Open and Free." << endl;
+}
+
 void testOOP(void)
 {
     /*
@@ -60,6 +70,7 @@ void testOOP(void)
     动态绑定dynamic binding：又名运行时绑定run-time binding。
     使用基类的引用或指针调用虚函数时，动态决定调用哪个类的函数。即把派生类对象当作基类对象使用。
     称为派生类到基类derived-to-base类型转换
+    派生类到基类的类型转换必须是派生类public继承基类，否则派生类用户无访问权限做类型转换
     动态绑定只有使用引用或指针调用虚函数时才会发生
     对于非引用或指针的虚函数调用，在编译期就确定
 
@@ -74,13 +85,21 @@ void testOOP(void)
 
     */
     OSWindows dervWin = OSWindows(string("Windows"), 10, false, false);
+    OSLinux dervLinux = OSLinux(string("Ubuntu"), 17, true);
 
     cout << "Test virtual and override." << endl;
-    cout << endl << "<WINDOWS CLASS:>" << endl;
+    cout << endl << "<WINDOWS CLASS>" << endl;
     printOsInfo(dervWin);
     // 可以用作用域限定符强制指定调用哪个虚函数，在编译时完成解析
     cout << endl << "<WINDOWS CLASS BUT CALL OS VIRTUAL" << endl;
-    dervWin.OperatingSystem::dispOsName();
+    dervWin.OperatingSystem::dispOsName(); // 如果OSWindows继承时访问说明符为private，就不能直接调用基类的public成员
+    cout << endl << "<LINUX CLASS>" << endl;
+    //printOsInfo(dervLinux); // 私有继承后，类型转换不能访问
+    dervLinux.dispOsName();
+    dervLinux.dispOsVer();
+    dervLinux.dispOsOpenSource();
+    dervLinux.dispOsMotto();
     cout << endl;
+
 
 }

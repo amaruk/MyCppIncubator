@@ -12,6 +12,7 @@ using intAry3Using = int[3];
 // struct和class的区别：可以用任意一个定义类。
 // 区别在于，struct定义的类，在第一个访问说明符之前的成员是public的；
 // class定义的类，在第一个访问说明符之前的成员是private的。
+// 当希望所有成员都是public时，用struct，否则用class 
 
 class CppPrimer
 {
