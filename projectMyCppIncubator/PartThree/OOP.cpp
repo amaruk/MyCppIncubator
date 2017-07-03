@@ -33,11 +33,17 @@ void OSWindows::dispOsName(void) const
     cout << OSWindows::companyName << " Product: " << osName << ". Embedded: " << isEmbedded << endl;
 }
 
+void OSWindows::dispOsMotto(void)
+{
+    cout << OSWindows::companyName << " Mottor: M$ Window$." << endl;
+}
+
 void printOsInfo(OperatingSystem &osIns)
 {
     osIns.dispOsName();
     osIns.dispOsVer();
     osIns.dispOsOpenSource();
+    osIns.dispOsMotto();
 }
 
 void testOOP(void)
@@ -47,12 +53,15 @@ void testOOP(void)
     - 数据抽象： 把现实生活的事物抽象为类，将类的接口与实现分离
     - 继承：定义相似的类型并对其相似关系建模
     - 动态绑定：在一定程度忽略类型区别，以统一的方式使用它们的对象
+    面向对象程序设计的核心思想是多态polymorphism，具有继承关系的多个类型称为多态类型
 
     继承inheritance关系的基础是基类Base class，其他类直接或间接从基类继承，称为派生类derived class
 
     动态绑定dynamic binding：又名运行时绑定run-time binding。
     使用基类的引用或指针调用虚函数时，动态决定调用哪个类的函数。即把派生类对象当作基类对象使用。
     称为派生类到基类derived-to-base类型转换
+    动态绑定只有使用引用或指针调用虚函数时才会发生
+    对于非引用或指针的虚函数调用，在编译期就确定
 
     静态类型static type：编译时已知，是变量声明是的类型或表达式生成的类型
     动态类型dynamic type：变量或表达式表示的内存中对象的类型
@@ -64,14 +73,14 @@ void testOOP(void)
     用基类的默认（合成）拷贝和赋值操作派生类对象，只能操作基类定义的成员，派生类独有的成员被切除sliced down
 
     */
-    OperatingSystem baseOS = OperatingSystem(string("Abstract OS"), 0, true);
     OSWindows dervWin = OSWindows(string("Windows"), 10, false, false);
 
-    cout << "### Test virtual and override." << endl;
-    cout << endl << "<OS CLASS:>" << endl;
-    printOsInfo(baseOS);
+    cout << "Test virtual and override." << endl;
     cout << endl << "<WINDOWS CLASS:>" << endl;
     printOsInfo(dervWin);
+    // 可以用作用域限定符强制指定调用哪个虚函数，在编译时完成解析
+    cout << endl << "<WINDOWS CLASS BUT CALL OS VIRTUAL" << endl;
+    dervWin.OperatingSystem::dispOsName();
     cout << endl;
 
 }
