@@ -7,6 +7,17 @@ using std::endl;
 using std::vector;
 using std::string;
 
+// 显式实例化explicit instantiation
+// 为了避免不同文件使用同样的类型实例化模板，导致相同的模板实例在每个文件中都有一份，导致的额外开销。
+// 显式实例化的两种形式：
+// - 实例化声明，必须出现在任何使用此实例化版本的代码之前
+//extern template class ClassTemplateWithFuncTemplate<int>;
+// - 实例化定义，会实例化所以成员，即使有没被代码使用到的成员模板
+template class ClassTemplateWithFuncTemplate<int>;
+// extern模板声明表示承诺在程序其他位置有该实例化的一个非extern声明的定义
+// 编译器遇到extern模板声明时，不会在本文件中生成实例化代码
+// extern声明可以多次，但必须只有一个定义
+
 void testTemplateGeneric(void)
 {
     /*
