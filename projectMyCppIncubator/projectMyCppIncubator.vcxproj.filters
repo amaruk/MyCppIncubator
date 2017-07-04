@@ -93,6 +93,9 @@
     <ClInclude Include="PartFour\InheritanceTest.h">
       <Filter>Header Files\PartFour</Filter>
     </ClInclude>
+    <ClInclude Include="PartThree\TemplateGeneric.h">
+      <Filter>Header Files\PartThree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="projectMyCppIncubator.cpp">
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="PartFour\InheritanceTest.cpp">
       <Filter>Source Files\PartFour</Filter>
+    </ClCompile>
+    <ClCompile Include="PartThree\TemplateGeneric.cpp">
+      <Filter>Source Files\PartThree</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

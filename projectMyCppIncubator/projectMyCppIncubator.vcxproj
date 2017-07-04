@@ -151,6 +151,7 @@
     <ClInclude Include="PartThree\ClassFeatures.h" />
     <ClInclude Include="PartThree\OOP.h" />
     <ClInclude Include="PartThree\OverloadCast.h" />
+    <ClInclude Include="PartThree\TemplateGeneric.h" />
     <ClInclude Include="PartTwo\DynamicMem.h" />
     <ClInclude Include="PartTwo\StdLibContainer.h" />
     <ClInclude Include="PartTwo\StdLibIO.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="PartThree\ClassFeatures.cpp" />
     <ClCompile Include="PartThree\OOP.cpp" />
     <ClCompile Include="PartThree\OverloadCast.cpp" />
+    <ClCompile Include="PartThree\TemplateGeneric.cpp" />
     <ClCompile Include="PartTwo\DynamicMem.cpp" />
     <ClCompile Include="PartTwo\StdLibContainer.cpp" />
     <ClCompile Include="PartTwo\StdLibIO.cpp" />

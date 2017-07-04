@@ -460,7 +460,7 @@ void StdLibContainer::testContainer(void)
 
     CommonUtils::showSeperator();
 
-    /* Priority Queue 测试 TBD:目前使用的是默认的比较优先级函数 */
+    /* Priority Queue 测试 TODO:目前使用的是默认的比较优先级函数 */
     priority_queue<int> intPrioQueue;
     intPrioQueue.push(1);
     intPrioQueue.emplace(5);
@@ -710,7 +710,7 @@ void StdLibContainer::testGeneric(void)
         标准库提供独立于特定容器的泛型算法（generic algorithm），提供一些经典算法的公共接口，如排序和搜索。
         泛型算法用于不同类型容器和不同类型元素。
         算法只操作迭代器，不会执行容器操作改变容器大小
-        TBD 指针就像内置数组的迭代器
+        指针对于内置数组来说就像迭代器
 
         只读算法：count/find/accumulate/equal。对于只读算法，建议使用cbegin和cend。
         写容器元素的算法：fill/fill_n/copy/replace
@@ -871,7 +871,7 @@ void StdLibContainer::testIterator(void)
     CommonUtils::showSeperator();
 
     /*
-        移动迭代器move iterator：只移动元素，不拷贝 TBD Page 480
+        移动迭代器move iterator：只移动元素，不拷贝 TODO Page 480
     */
 
 
