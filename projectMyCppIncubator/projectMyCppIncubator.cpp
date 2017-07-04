@@ -12,6 +12,7 @@
 #include "PartThree/ClassFeatures.h"
 #include "PartThree/OverloadCast.h"
 #include "PartThree/OOP.h"
+#include "PartThree/TemplateGeneric.h"
 #include "PartFour/NamespaceTest.h"
 #include "PartFour/InheritanceTest.h"
 #include <iostream>
@@ -103,7 +104,8 @@ void partThree(void)
 {
     //testClassFeatures();
     //testOverloadCast();
-    testOOP();
+    //testOOP();
+    testTemplateGeneric();
 }
 
 // Part four: 高级主题
@@ -129,8 +131,8 @@ int main(int argc, char *argv[])
 
     //partOne();
     //partTwo();
-    //partThree();
-    partFour();
+    partThree();
+    //partFour();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");
