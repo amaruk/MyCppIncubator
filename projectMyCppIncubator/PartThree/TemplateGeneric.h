@@ -3,6 +3,7 @@
 #include <memory>
 #include <vector>
 #include <initializer_list>
+#include <string>
 
 /*
     类模板class template
@@ -150,4 +151,65 @@ inline constexpr T ftInlineConstexprDouble(const T &val)
     return val * 2;
 }
 
+// 函数和类模板的默认模板实参default template argument
+template <typename T>
+class CTPrint
+{
+public:
+    CTPrint() = default;
+    void operator()(T t) { std::cout << "CTPrint(" << t << ")" << std::endl; }
+};
+
+template <typename T = int> // 类模板默认模板实参
+class CTPrintAnother
+{
+public:
+    CTPrintAnother() = default;
+    void operator()(T t) { std::cout << "CTPrintAnother(" << t << ")" << std::endl; }
+};
+
+template <typename T, typename F = CTPrint<T>> // 函数模板默认模板实参
+void ftDefaultArg(const T &t, F f = F())
+{
+    std::cout << "ftDefaultArg(" << t << ")" << std::endl;
+    f(t);
+}
+
+// 包含函数模板的普通类
+class ClassNormalWithFuncTemplate
+{
+public:
+    ClassNormalWithFuncTemplate() = default;
+    // 函数模板
+    template <typename T>
+    void funcTemplate(const T &t) const;
+};
+
+// 函数模板在外部定义
+template<typename T>
+void ClassNormalWithFuncTemplate::funcTemplate(const T & t) const
+{
+    std::cout << "ClassNormalWithFuncTemplate(" << t << ")" << std::endl;
+}
+
+// 包含函数模板的类模板
+template <typename T>
+class ClassTemplateWithFuncTemplate
+{
+public:
+    ClassTemplateWithFuncTemplate() = default;
+    // 函数模板
+    template <typename FT>
+    void funcTemplate(const FT &ft, const T &t);
+};
+
+// 函数模板在外部定义
+template<typename T> // 类模板的类型参数
+template<typename FT> // 函数模板的类型参数
+inline void ClassTemplateWithFuncTemplate<T>::funcTemplate(const FT & ft, const T & t)
+{
+    std::cout << "ClassTemplateWithFuncTemplate(" << ft << ", " << t << ")" << std::endl;
+}
+
 void testTemplateGeneric(void);
+

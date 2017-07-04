@@ -39,7 +39,7 @@ void testTemplateGeneric(void)
     { cout << "ctStrIns[" << i << "]: " << ctStrIns[i] << endl; }
     cout << endl;
 
-    // 测试类模板的静态成员
+    // 类模板的静态成员
     cout << "Before Changing ctIntIns.staticStr" << endl
         << "ctIntIns.staticStr: [" << ctIntIns.staticStr
         << "] ctStrIns.staticStr: [" << ctStrIns.staticStr << "]" << endl;
@@ -48,4 +48,18 @@ void testTemplateGeneric(void)
         << "ctIntIns.staticStr: [" << ctIntIns.staticStr
         << "] ctStrIns.staticStr: [" << ctStrIns.staticStr << "]" << endl;
     cout << endl;
+
+    // 函数和类模板的默认模板实参
+    cout << "Default template argument" << endl;
+    ftDefaultArg(12345);
+    ftDefaultArg(54321, CTPrintAnother<>()); // 空模板实参列表表示使用默认值
+    cout << endl;
+
+    // 成员模板：函数模板作为类的成员
+    ClassNormalWithFuncTemplate cnIns = ClassNormalWithFuncTemplate();
+    cnIns.funcTemplate(123);
+    cnIns.funcTemplate(123.456);
+    cnIns.funcTemplate(std::string("Hello, world."));
+    ClassTemplateWithFuncTemplate<int> ctIns = ClassTemplateWithFuncTemplate<int>();
+    ctIns.funcTemplate(123.456, 789);
 }
