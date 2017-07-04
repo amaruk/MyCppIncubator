@@ -112,6 +112,10 @@ void ClassTemplate<T>::check(size_type i, const std::string & msg) const
 // 非类型参数nontype parameter表示值，用特定的类型名来指定。
 // 在使用模板时，显式或隐式地指定模板实参template argument，绑定到模板参数上。
 
+// 函数模板可以被另一个模板或非模板函数重载
+// 如果多个模板函数都能精确匹配，则选择最特例化（最不通用）的版本
+// 如果模板函数和非模板函数都能精确匹配，则选择非模板函数（比模板函数特例化）
+
 // 类型参数
 template <typename T>
 T ftCompare(const T &val1, const T &val2)
@@ -210,6 +214,27 @@ inline void ClassTemplateWithFuncTemplate<T>::funcTemplate(const FT & ft, const 
 {
     std::cout << "ClassTemplateWithFuncTemplate(" << ft << ", " << t << ")" << std::endl;
 }
+
+// 显式模板实参explicit template argument
+// 编译器无法推断出模板实参的类型时，显式指定
+// 如函数模板的T1
+// 显式模板实参按照对应的模板参数从左往右匹配，尽量把不能推断的放模板参数列表的坐标
+template <typename T1, typename T2, typename T3>
+T1 ftExplicitTempArg(const T2 &val1, const T3 &val2)
+{
+    std::cout << "ftExplicitTempArg(" << val1 << ", " << val2 << ")" << std::endl;
+    return val1 * val2;
+}
+
+// 尾置返回类型
+// 此函数接受一对迭代器作为参数，返回迭代器指向的元素
+// 在编译器遇到参数列表之前，beg和end都是不存在的，所以不能用decltype(*beg)来获得返回类型
+// 尾置返回类型在参数列表之后，可以使用beg
+template<typename Iterator>
+auto ftRtnElement(Iterator beg, Iterator end) -> decltype(*beg)
+// 或使用标准库的类型转换type transformation模板（头文件type_traits），如下
+// auto ftRtnElement(Iterator beg, Iterator end) -> typename remove_reference<decltype(*beg)>::type
+{ return *beg; }
 
 void testTemplateGeneric(void);
 

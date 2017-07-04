@@ -23,6 +23,7 @@ void testTemplateGeneric(void)
     /*
         模板是泛型编程的基础。
         模板：创建类或函数的公式，如泛型类型vector，泛型函数find
+        编译器利用调用函数模板时的实参来确定模板实参的过程称为模板实参推断template argument deduction
     */
     cout << "Function template test." << endl;
     // 编译器推断模板实参为int，之后实例化instantiate一个特定版本的函数实例instantiation
@@ -73,4 +74,10 @@ void testTemplateGeneric(void)
     cnIns.funcTemplate(std::string("Hello, world."));
     ClassTemplateWithFuncTemplate<int> ctIns = ClassTemplateWithFuncTemplate<int>();
     ctIns.funcTemplate(123.456, 789);
+    cout << endl;
+
+    // 显式模板实参，指定返回值的类型为double
+    cout << "Returns " << ftExplicitTempArg<double>(12.34, 2) << endl;
+    cout << endl;
+
 }

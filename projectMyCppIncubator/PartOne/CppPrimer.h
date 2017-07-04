@@ -220,3 +220,41 @@ void friendFunc(CppPrimer cppPrimerIns); // 友元函数
 
 //// constexpr函数
 constexpr int constexprFuncTest(int x) { return 123 * x; }
+
+//// 可变参数包
+
+// 用于结束模板函数的递归调用，必须在可变参数版本之前
+
+template <typename T>
+T printT(const T &t)
+{
+    std::cout << t << " ";
+    return t;
+}
+
+template <typename T>
+void variadicTemplate(const T &t)
+{
+    std::cout << endl << "variadicTemplate called without rest:" << endl
+        << "\tt is: " << t << endl;
+}
+
+// Args是模板参数包，表示一个或多个模板类型参数
+// rest是函数参数包，表示一个或多个函数参数
+template <typename T, typename... Args>
+void variadicTemplate(const T &t, const Args&... rest) // 用...扩展Args，扩展（expand）成函数参数列表
+{
+    // 用sizeof...获取模板参数包或函数参数包的实际数量
+    size_t argsSize = sizeof...(Args);
+    size_t restSize = sizeof...(rest);
+    std::cout << endl << "variadicTemplate called with rest:" << endl
+        << "\tArgs contains " << argsSize << " values." << endl
+        << "\trest contains " << restSize << " values." << endl
+        << "\tt is: " << t << endl
+        << "\trest is: ";
+    
+    // 递归调用，但不传递t，而是把rest的第一个实参绑定到t，使每次递归减少rest的实参
+    // 最终因为非可变参数的重载函数更特例化，调用其终止递归
+    variadicTemplate(rest...); // 用...扩展rest，扩展成实参列表
+    //variadicTemplate(printT(rest)...); // 用...扩展printT(rest)，相当于对每个实参调用printT()
+}

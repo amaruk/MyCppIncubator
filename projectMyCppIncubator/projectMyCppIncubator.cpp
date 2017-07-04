@@ -129,9 +129,9 @@ int main(int argc, char *argv[])
     { cout << *argvP << " "; }
     cout << endl << endl;
 
-    //partOne();
+    partOne();
     //partTwo();
-    partThree();
+    //partThree();
     //partFour();
 
 	// 系统调用 "Press any key to continue..."

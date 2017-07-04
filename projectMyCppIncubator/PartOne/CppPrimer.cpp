@@ -683,11 +683,17 @@ void CppPrimer::functionTest(void)
     // void foo(parm_list, …); //逗号可选
     // void foo(…);
 
-    // C++11提供两种方法
+    // C++11提供两种方法实现可变参数
     // 方法一：如果所有实参类型相同，可以传递initializer_list的标准库类型。
     initializerListTest(initializer_list<string>{"one", "two", "three"}, "hundred");
     initializerListTest(initializer_list<string>{"1", "2", "3", "4", "5"}, "100");
-    // 方法二：如果实参类型不同，编写可变参数模板 TODO
+    // 方法二：如果实参类型不同，编写可变参数模板variadic template
+    // 接受可变数目参数的模板函数或模板类
+    // 可变数目的参数成为参数包parameter packet
+    // - 模板参数包template parameter packet：0个或多个模板参数
+    // - 函数参数包function parameter packet：0个或多个模板参数
+    variadicTemplate("StrForT", 1, 2.2, '3', string("444"));
+    cout << endl;
 
     //// 列表初始化返回值
     // C++11规定，函数可以返回{}包围的值的列表，如
