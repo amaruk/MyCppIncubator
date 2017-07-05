@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <bitset>
+#include <regex>
 
 using std::tuple;
 using std::tuple_size;
@@ -14,6 +15,8 @@ using std::vector;
 using std::string;
 using std::get;
 using std::bitset;
+using std::regex;
+using std::smatch;
 
 void tupleTest(void)
 {
@@ -120,8 +123,47 @@ void bitsetTest(void)
 
 }
 
+void regularExpressionTest(void)
+{
+    /*
+        regex                           有一个正则表达式的类
+        regex_match（seq, m, r, mft)    将一个字符序列与一个正则表达式匹配
+                                        在字符序列seq中查找regex对象r中的正则表达式
+                                        seq可以是string、表示范围的一对迭代器、指向空字符结尾的字符数组指针
+                                        m是一个match对象，用来保存匹配结果，m和seq必须是兼容类型
+                                        mft是可选的regex_constants::match_flag_type值
+        regex_search                    寻找第一个与正则表达式匹配的子序列
+        regex_replace                   用给定格式替换一个正则表达式
+        sregex_iterator                 迭代器适配器，用regex_search遍历一个string中所有匹配的子串
+        smatch                          容器类，保存在string中搜索的结果
+        ssub_match                      string中匹配的子表达式结果
+    */
+
+    cout << "## regular expression test." << endl;
+
+    string pattern("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$"); // 正则表达式
+    regex reg(pattern); // 用正则表达式初始化用于查找模式的regex
+    smatch results; // 保存搜索结果
+    string shallNotMatch("notmatch#mail.com");
+    string shallMatch("match@mail.com");
+    
+    if (regex_search(shallNotMatch, results, reg))
+    { cout << "Match!: " << results.str() << endl; }
+    else
+    { cout << "Not match: " << shallNotMatch << endl; }
+
+    if (regex_search(shallMatch, results, reg))
+    { cout << "Match!: " << results.str() << endl; }
+    else
+    { cout << "Not match: " << shallMatch << endl; }
+
+    cout << endl;
+
+}
+
 void stdLibTest(void)
 {
     tupleTest();
     bitsetTest();
+    regularExpressionTest();
 }
