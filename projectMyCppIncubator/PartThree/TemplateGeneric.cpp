@@ -80,4 +80,7 @@ void testTemplateGeneric(void)
     cout << "Returns " << ftExplicitTempArg<double>(12.34, 2) << endl;
     cout << endl;
 
+    // 函数模板特例化
+    ftGeneral(1, 0);
+    ftGeneral(1.2, 2.1);
 }

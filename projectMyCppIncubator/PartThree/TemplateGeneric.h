@@ -236,5 +236,25 @@ auto ftRtnElement(Iterator beg, Iterator end) -> decltype(*beg)
 // auto ftRtnElement(Iterator beg, Iterator end) -> typename remove_reference<decltype(*beg)>::type
 { return *beg; }
 
+// 定义函数模板特例化template specialization
+// 通用函数模板
+template <typename T>
+void ftGeneral(const T &val1, const T &val2)
+{
+    std::cout << "General function template. val1: " << val1 << " val2: " << val2 << std::endl;
+}
+
+// 特例化模板，本质上是实例化模板而非重载模板
+// 注意：特例化的模板相当于一个函数，如果在头文件里实现，多个源文件包含头文件时就会重复定义
+// 解决方案为：
+// - 在头文件里定义并inline（看编译器是否真正inline）
+// - 在头文件里定义并static，限制文件作用域
+// - 在使用的源文件里实现
+template <> // 空尖括号表示为原模板提过所有模板实参
+inline void ftGeneral(const double &val1, const double &val2)
+{
+    std::cout << "Specialization function template. val1: " << val1 << " val2: " << val2 << std::endl;
+}
+
 void testTemplateGeneric(void);
 
