@@ -144,6 +144,7 @@
     <ClInclude Include="Common\CommonUtils.h" />
     <ClInclude Include="PartFour\InheritanceTest.h" />
     <ClInclude Include="PartFour\NamespaceTest.h" />
+    <ClInclude Include="PartFour\StdLibTest.h" />
     <ClInclude Include="PartOne\CppPrimer.h" />
     <ClInclude Include="PartOne\CppPrimerAggregate.h" />
     <ClInclude Include="PartOne\CppPrimerFriend.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Common\CommonUtils.cpp" />
     <ClCompile Include="PartFour\InheritanceTest.cpp" />
     <ClCompile Include="PartFour\NamespaceTest.cpp" />
+    <ClCompile Include="PartFour\StdLibTest.cpp" />
     <ClCompile Include="PartOne\CppPrimer.cpp" />
     <ClCompile Include="PartOne\CppPrimerFriend.cpp" />
     <ClCompile Include="PartOne\CppPrimerLiteral.cpp" />

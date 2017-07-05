@@ -89,4 +89,4 @@ namespace NamespaceVeryVeryLong
 
 // TODO: 模板特例化 Page 698
 
-void testNamespace(void);
+void namespaceTest(void);

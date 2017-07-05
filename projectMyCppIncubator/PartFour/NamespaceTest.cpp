@@ -51,7 +51,7 @@ void ShortNamespace::ShortClass::dispInfo(void)
     cout << "This is a class in very long namespaces" << endl;
 }
 
-void testNamespace(void)
+void namespaceTest(void)
 {
     // 多个库将名字放在全局命名空间会引发命名空间污染 Namespace Pollution
     // 命名空间定义包括两：关键字namespace、命名空间的名字、花括号包围的声明和定义（尾部无需分号）
