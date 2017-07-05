@@ -6,6 +6,7 @@
 #include <vector>
 #include <bitset>
 #include <regex>
+#include <random>
 
 using std::tuple;
 using std::tuple_size;
@@ -17,6 +18,8 @@ using std::get;
 using std::bitset;
 using std::regex;
 using std::smatch;
+using std::default_random_engine;
+using std::uniform_int_distribution;
 
 void tupleTest(void)
 {
@@ -161,9 +164,43 @@ void regularExpressionTest(void)
 
 }
 
+void randomTest(void)
+{
+    /*
+        C++用一组协作类实现随机数：
+        - 随机数引擎类random-number engines：生成随机unsigned整数序列
+        - 随机数分布类random-number distribution：使用引擎返回服从特定概率分布的随机数
+        “随机数发生器”是指引擎对象和分布对象的组合。
+
+        Engine e;               默认构造函数，使用该引擎默认的种子
+        Engine e(s);            使用整型值s作为种子
+        e.seed(s);              使用s重置引擎
+        e.min();                引擎可生成的最小值
+        e.max();                引擎可生成的最大值
+        Engine::result_type     此引擎生成的unsigned整型类型
+        e.discard(u)            用unsigned long long将引擎推进u步
+    */
+
+    cout << "## random test." << endl;
+
+    cout << "default_random_engine:" << endl;
+    default_random_engine randEngine;
+    for (int i = 0; i != 5; i++)
+    { cout << randEngine() << " "; }
+    cout << endl;
+
+    cout << "uniform_int_distribution:" << endl;
+    uniform_int_distribution<unsigned> uniformEngine(0, 9);
+    for (int i = 0; i != 5; i++)
+    { cout << uniformEngine(randEngine) << " "; } // 将randEngine作为随机数源
+    cout << endl;
+
+}
+
 void stdLibTest(void)
 {
     tupleTest();
     bitsetTest();
     regularExpressionTest();
+    randomTest();
 }
