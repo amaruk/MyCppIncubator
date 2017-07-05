@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\CommonUtils.h" />
+    <ClInclude Include="PartFour\ExceptionTest.h" />
     <ClInclude Include="PartFour\InheritanceTest.h" />
     <ClInclude Include="PartFour\NamespaceTest.h" />
     <ClInclude Include="PartFour\StdLibTest.h" />
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\CommonUtils.cpp" />
+    <ClCompile Include="PartFour\ExceptionTest.cpp" />
     <ClCompile Include="PartFour\InheritanceTest.cpp" />
     <ClCompile Include="PartFour\NamespaceTest.cpp" />
     <ClCompile Include="PartFour\StdLibTest.cpp" />

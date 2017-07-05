@@ -16,6 +16,7 @@
 #include "PartFour/StdLibTest.h"
 #include "PartFour/NamespaceTest.h"
 #include "PartFour/InheritanceTest.h"
+#include "PartFour/ExceptionTest.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -112,7 +113,8 @@ void partThree(void)
 // Part four: 高级主题
 void partFour(void)
 {
-    stdLibTest();
+    //stdLibTest();
+    exceptionTest();
     //namespaceTest();
     //inheritanceTest();
 }
