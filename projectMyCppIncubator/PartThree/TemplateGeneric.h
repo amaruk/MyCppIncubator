@@ -244,17 +244,61 @@ void ftGeneral(const T &val1, const T &val2)
     std::cout << "General function template. val1: " << val1 << " val2: " << val2 << std::endl;
 }
 
-// 特例化模板，本质上是实例化模板而非重载模板
+// 特例化函数模板，本质上是实例化模板而非重载模板
 // 注意：特例化的模板相当于一个函数，如果在头文件里实现，多个源文件包含头文件时就会重复定义
 // 解决方案为：
 // - 在头文件里定义并inline（看编译器是否真正inline）
 // - 在头文件里定义并static，限制文件作用域
 // - 在使用的源文件里实现
-template <> // 空尖括号表示为原模板提过所有模板实参
+template <> // 空尖括号表示为原模板提供所有模板实参
 inline void ftGeneral(const double &val1, const double &val2)
 {
     std::cout << "Specialization function template. val1: " << val1 << " val2: " << val2 << std::endl;
 }
+
+// 通用类模板
+template <typename T>
+class ctGeneral
+{
+public:
+    ctGeneral() { std::cout << "General class." << std::endl; }
+    ~ctGeneral() = default;
+    void disp(void) { std::cout << "General disp." << std::endl; }
+};
+
+// 完全特例化类模板
+template <> // 尖括号表示特例化
+class ctGeneral<double> // 指定特例化的模板参数
+{
+public:
+    ctGeneral() { std::cout << "Full special class." << std::endl; }
+    ~ctGeneral() = default;
+    void disp(void) { std::cout << "Full special disp." << std::endl; }
+};
+
+// 部分特例化类模板。只有类模板可以部分特例化。
+template <typename T>
+class ctGeneral<T&>
+{
+public:
+    ctGeneral() { std::cout << "Partial special class: lvalue." << std::endl; }
+    ~ctGeneral() = default;
+    void disp(void) { std::cout << "Partial special lvalue disp." << std::endl; }
+};
+template <typename T> 
+class ctGeneral<T&&>
+{
+public:
+    ctGeneral() { std::cout << "Partial special class: rvalue." << std::endl; }
+    ~ctGeneral() = default;
+    void disp(void) { std::cout << "Partial special rvalue disp." << std::endl; }
+};
+
+// 特例化模板类成员
+template <>
+void ctGeneral<std::string>::disp(void) { std::cout << "Special disp." << std::endl; }
+
+
 
 void testTemplateGeneric(void);
 

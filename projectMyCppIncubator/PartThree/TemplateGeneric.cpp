@@ -82,5 +82,21 @@ void testTemplateGeneric(void)
 
     // 函数模板特例化
     ftGeneral(1, 0);
+    ftGeneral('1', '0');
     ftGeneral(1.2, 2.1);
+    cout << endl;
+
+    // 类模板特例化
+    ctGeneral<int> ctGeneralIns = ctGeneral<int>();
+    ctGeneral<double> ctSpecialIns = ctGeneral<double>();
+    int i = 123;
+    int &ilRef = i;
+    int &&irRef = 123;
+    ctGeneral<decltype(123)> ctGeneralInsLitType = ctGeneral<decltype(123)>();
+    ctGeneral<decltype(ilRef)> ctGeneralInsIntType = ctGeneral<decltype(ilRef)>();
+    ctGeneral<decltype(irRef)> ctGeneralInsMoveIntType = ctGeneral<decltype(irRef)>();
+    ctGeneral<string> ctGeneralStrIns = ctGeneral<string>();
+    ctGeneralStrIns.disp();
+    ctGeneralIns.disp();
+    cout << endl;
 }
