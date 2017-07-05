@@ -7,10 +7,12 @@
 #include <bitset>
 #include <regex>
 #include <random>
+#include <iomanip>
 
 using std::tuple;
 using std::tuple_size;
 using std::cout;
+using std::cin;
 using std::endl;
 using std::vector;
 using std::string;
@@ -20,6 +22,30 @@ using std::regex;
 using std::smatch;
 using std::default_random_engine;
 using std::uniform_int_distribution;
+using std::boolalpha;
+using std::noboolalpha;
+using std::oct;
+using std::hex;
+using std::dec;
+using std::showbase;
+using std::noshowbase;
+using std::uppercase;
+using std::nouppercase;
+using std::showpoint;
+using std::noshowpoint;
+using std::showpos;
+using std::noshowpos;
+using std::scientific;
+using std::fixed;
+using std::hexfloat;
+using std::defaultfloat;
+using std::setw;
+using std::left;
+using std::right;
+using std::internal;
+using std::setfill;
+using std::noskipws;
+using std::skipws;
 
 void tupleTest(void)
 {
@@ -88,8 +114,6 @@ void bitsetTest(void)
     */
     cout << "## bitset test." << endl;
 
-    // cout默认右对齐，需要左对齐时设置如下
-    //cout.setf(std::ios::left);
 
     // 0xBEEF二进制为 1011 1110 1110 1111
     cout.width(32);
@@ -193,8 +217,124 @@ void randomTest(void)
     uniform_int_distribution<unsigned> uniformEngine(0, 9);
     for (int i = 0; i != 5; i++)
     { cout << uniformEngine(randEngine) << " "; } // 将randEngine作为随机数源
+    cout << endl << endl;
+}
+
+void moreIO(void)
+{
+    /*
+        标准库定义操纵符manipulator来修改流的格式状态。
+        操纵符是一个函数或对象，可以作为输入/输出运算符的运算对象，返回所处理的流对象
+    */
+
+    cout << "## More IO." << endl;
+
+    //// 控制布尔值的输出格式 boolalpha/noboolalpha
+    // 默认布尔值打印0和1，使用后输出true和false
+    cout << "Default bool values: " << true << "/" << false << endl;
+    cout << "boolapha bool values: " << boolalpha << true << "/" << false << endl;
+    cout << "noboolalpha bool values: " << noboolalpha << true << "/" << false << endl;
     cout << endl;
 
+    //// 控制整型值的进制
+    // 默认输出十进制，使用hex/oct/dec切换进制
+    cout << "Default int values: " << 255 << endl;
+    cout << "Octal int value: " << oct << 255 << endl;
+    cout << "Hex int value: " << hex << 255 << endl;
+    cout << "Decimal int value: " << dec << 255 << endl;
+    cout << showbase;
+    // 开启和关闭进制值前导：showbase/noshowbase
+    cout << "Octal int value: " << oct << 255 << endl; // 八进制前导0
+    cout << "Hex int value: " << hex << 255 << endl; // 十六进制前导0x
+    cout << "Decimal int value: " << dec << 255 << endl; // 十进制无前导
+    cout << noshowbase;
+    // 配合uppercase/nouppercase控制打印十六进制时大写/小写，科学计数法的E大写/小写
+    cout << uppercase << showbase;
+    cout << "Hex int value: " << hex << 255 << endl; // 十六进制大写
+    cout << dec;
+    cout << nouppercase << noshowbase;
+    cout << endl;
+
+    // showpos/noshowpos控制打印/不打印正号
+    cout << "Default show positive: " << 123 << " " << -123 << endl;
+    cout << showpos;
+    cout << "Show positive: " << 123 << " " << -123 << endl;
+    cout << noshowpos;
+    cout << "Clear show positive: " << 123 << " " << -123 << endl;
+    cout << endl;
+
+    //// 控制浮点格式
+    // 以多高精度(总数字位数，包括小数点之前）打印浮点值（默认6位数字）
+    cout << "Default precision: " << cout.precision() << endl; // 返回当前精度
+    cout << "Default result: " << sqrt(2.0) << endl;
+    cout.precision(8); // 设置精度
+    cout << "Precision(8) result: " << sqrt(2.0) << endl;
+    cout.precision(3); // 设置精度
+    cout << "Precision(3) result: " << sqrt(2.0) << endl;
+    // 数值打印为十六进制/定点十进制/科学计数法
+    cout << "Default: " << sqrt(2.0) * 100 << endl;
+    cout << "Scientific: " << scientific << sqrt(2.0) * 100 << endl;
+    cout << "Fixed decimal: " << fixed << sqrt(2.0) * 100 << endl;
+    cout << "Hexadecimal: " << hexfloat << sqrt(2.0) * 100 << endl;
+    cout << "Defaultfloat: " << defaultfloat << sqrt(2.0) * 100 << endl;
+    // 对于没有小数部分的浮点值是否打印小数点（默认不打印小数点）
+    cout << "Default show point: " << 123.0 << endl;
+    cout << showpoint; // 打印小数点
+    cout << "Set show point: " << 123.0 << endl;
+    cout << noshowpoint; // 打印小数点
+    cout << "Clear show point: " << 123.0 << endl;
+
+    // 输出补白
+    cout << "Align default: "
+        << "|" << setw(10) << -10 << "|" << setw(10) << 123.456 << "|" << endl;// setw指定下一数字或字符串输出的最小空间
+    cout << left << "Align left:    " // left输出左对齐
+        << "|" << setw(10) << -10 << "|" << setw(10) << 123.456 << "|" << endl;
+    cout << right << "Align right:   " // left输出左对齐
+        << "|" << setw(10) << -10 << "|" << setw(10) << 123.456 << "|" << endl;
+    cout << internal << left << "Symbol left:   " // 负数符号的位置，如左对齐则对齐符号，右对齐则对齐值，用空格填满中间空间
+        << "|" << setw(10) << -10 << "|" << setw(10) << 123.456 << "|" << endl;
+    cout << internal << right << "Symbol right:  "
+        << "|" << setw(10) << -10 << "|" << setw(10) << 123.456 << "|" << endl;
+    cout << setfill('#') << "Fill with #:   " // 用#补白
+        << "|" << setw(10) << -10 << "|" << setw(10) << 123.456 << "|" << endl;
+
+    // 输入控制
+    char inputCh;
+    cout << "Default cin. Enter with white space. 'q' to stop." << endl;
+    while (cin >> inputCh)
+    {
+        cout << inputCh;
+        if ('q' == inputCh)
+        { break; }
+    }
+    cout << endl;
+    cout << "Keep white space cin. Enter with white space. 'q' to stop." << endl;
+    cin >> noskipws; // 不跳过空白字符
+    while (cin >> inputCh)
+    {
+        cout << inputCh;
+        if ('q' == inputCh)
+        { break; }
+    }
+    cout << endl;
+    cin >> skipws; // 跳过空白字符
+
+    /*
+        未格式化IO (unformatted IO)：允许把流当作无解释的字节序列来处理
+        is.get(ch)          从is读取一个字节存入ch，返回is
+        os.put(ch)          将ch输出到os，返回os
+        is.get()            将is的一个字节作为int返回
+        is.putback(ch)      将ch放回is，返回is
+        is.unget()          将is向后移动一个字节，返回is
+        is.peek()           将一个字节作为int返回，但不从流中删除
+        is.get(sink, size, delim)
+        is.getline(sink,size,delim)
+        is.read(sink,size)
+        is.gcount()
+        os.write(source,size)
+        is.ignore(size,delim)
+    */
+    
 }
 
 void stdLibTest(void)
@@ -203,4 +343,5 @@ void stdLibTest(void)
     bitsetTest();
     regularExpressionTest();
     randomTest();
+    moreIO();
 }
