@@ -222,6 +222,46 @@ void nonportableTest(void)
     //int *intP = &volInt;
 }
 
+// 把C++的函数extern给c代码
+// 如果正在编译CPP程序，ifdef为真
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+#include <iostream>
+    void cppCode(int i)
+    { std::cout << "Hello, cpp in c." << endl; }
+#ifdef __cplusplus
+}
+#endif
+
+// 把c的函数extern给C++代码
+// 链接指示中的字符串字面量值指出编写函数所用语言，可以是"Ada"， "FORTRAN"，等
+// 单语句链接指示
+extern "C" void cCode(int i);
+// 复合语句链接指示
+extern "C"
+{
+#include <stdio.h>
+
+    void cCode(int i)
+    {
+        printf("Hello, c in cpp.\n");
+        cppCode(123);
+    }
+}
+
+
+void externCTest(void)
+{
+    /*
+        C++使用链接指示linkage directive指出任意非C++函数所用的语言
+        链接指示可以为单个或复合
+        不能出现在类定义或函数定义内部，同样的链接指示必须在函数的每个声明中都出现
+    */
+    cCode(123);
+}
+
 void specialTechTest(void)
 {
     memOperTest();
@@ -232,4 +272,5 @@ void specialTechTest(void)
     unionTest();
     localClassTest();
     nonportableTest();
+    externCTest();
 }
