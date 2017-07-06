@@ -1,6 +1,5 @@
 ﻿#include "stdafx.h"
 #include "SpecialTechTest.h"
-#include <string>
 
 using std::cout;
 using std::endl;
@@ -140,7 +139,25 @@ void memberPointerTest(void)
     /*
         成员指针pointer to member是指向类的非静态成员的指针
     */
-    // TODO
+    // 数据成员指针
+    int MemPtrClass::*intMemPtr; // 声明指向MemPtrClass对象的int成员
+    intMemPtr = &MemPtrClass::intMem; // 指定指针指向的数据成员（并非指向类对象的成员）
+    auto intMemPtr2 = &MemPtrClass::intMem; // 使用C++11的auto
+    MemPtrClass memPtrClass = MemPtrClass(123); // 创建类对象
+    MemPtrClass *memPtrClassP = &memPtrClass; // 创建类对象指针
+    cout << "memPtrClass.*intMemPtr: " << memPtrClass.*intMemPtr << endl;
+    cout << "memPtrClassP->*intMemPtr: " << memPtrClassP->*intMemPtr << endl;
+    // 成员函数指针
+    void (MemPtrClass::*funcMemPtr)(string dispStr); // 声明指向MemPtrClass对象的成员函数
+    funcMemPtr = &MemPtrClass::dispPar; // 指定指针指向的成员函数，必须用取地址运算符
+    auto funMemPtr2 = &MemPtrClass::dispPar;
+    (memPtrClass.*funcMemPtr)("memPtrClass.*funcMemPtr");
+    (memPtrClassP->*funcMemPtr)("memPtrClassP->*funcMemPtr");
+
+
+
+    cout << endl;
+
 }
 
 OuterClass::InnerClassDeclare::InnerClassDeclare()
