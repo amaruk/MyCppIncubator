@@ -118,9 +118,21 @@ void rttiTest(void)
 
 void enumTest(void)
 {
-    /*
-        C++11引入限定作用域的枚举类型scoped enumeration
-    */
+    cpuNamesScoped cpuScoped;
+    cpuScoped = cpuNamesScoped::cpuPpc; // 必须使用枚举成员赋值，不能用常量赋值
+    cpuNamesUnscoped cpuUnscoped = cpuPpc;
+    int scopedPPC = cpuNamesUnscoped::cpuPpc; // 不限定作用域的枚举成员可以隐式转换为整型
+    cout << "scoped enumeration: " << endl
+        << "cpuIntel: " << static_cast<int>(cpuNamesScoped::cpuIntel) << endl
+        << "cpuAmd: " << static_cast<int>(cpuNamesScoped::cpuAmd) << endl
+        << "cpuArm: " << static_cast<int>(cpuNamesScoped::cpuArm) << endl
+        << "cpuPpc: " << static_cast<int>(cpuNamesScoped::cpuPpc) << endl;
+    cout << "unscoped enumeration: " << endl
+        << "cpuIntel: " << cpuIntel << endl
+        << "cpuAmd: " << cpuAmd << endl
+        << "cpuArm: " << cpuArm << endl
+        << "cpuPpc: " << cpuPpc << endl;
+    cout << endl;
 }
 
 void specialTechTest(void)
