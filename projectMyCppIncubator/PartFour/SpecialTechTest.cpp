@@ -185,6 +185,20 @@ void unionTest(void)
     anonyDouble = 12.34;
 }
 
+void localClassTest(void)
+{
+    /*
+        局部类local class：类定义在函数内部
+        局部类的所有成员（包括函数）必须完整定义在类内部
+        不允许静态数据成员
+        不能使用函数作用域中的变量，
+        只能访问外层作用域定义的类型名、静态变量、枚举成员
+
+        局部类可以再嵌套，嵌套类的定义可以出现在局部类外，但必须在局部类相同的作用域中
+    */
+}
+
+
 void specialTechTest(void)
 {
     memOperTest();
@@ -193,4 +207,5 @@ void specialTechTest(void)
     memberPointerTest();
     nestedClassTest();
     unionTest();
+    localClassTest();
 }
