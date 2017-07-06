@@ -198,6 +198,29 @@ void localClassTest(void)
     */
 }
 
+void nonportableTest(void)
+{
+    // 不可移植nonportable特性用于支持低层编程
+
+    /*
+        位域bit-field
+        位域的类型是枚举类型
+        取地址不能作用域位域，因此指针无法指向类的位域
+    */
+    bitField bfIns = bitField();
+    // 超过位域范围的位被丢弃
+    bfIns.mode = 5;
+    cout << "Set 2bit field to 5, result: " << bfIns.mode << endl << endl;
+
+    /*
+        只有volatile的成员函数才能被volatile的对象调用
+        合成拷贝对volatile无效
+    */
+    volatile int volInt = 123;
+    // 只有volatile的指针才能指向volatile对象地址
+    volatile int *volIntP = &volInt;
+    //int *intP = &volInt;
+}
 
 void specialTechTest(void)
 {
@@ -208,4 +231,5 @@ void specialTechTest(void)
     nestedClassTest();
     unionTest();
     localClassTest();
+    nonportableTest();
 }

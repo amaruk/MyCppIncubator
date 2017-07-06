@@ -77,5 +77,18 @@ static union
     double anonyDouble;
 };
 
+// 位域
+typedef unsigned int Bit;
+class bitField
+{
+public:
+    Bit mode : 2;       // mode占2位
+    Bit modified : 1;
+    Bit prot_owner : 3;
+    Bit prot_group : 3;
+    Bit prot_world : 3;
+};
+
+
 void specialTechTest(void);
 
