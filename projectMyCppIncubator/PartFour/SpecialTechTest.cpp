@@ -135,9 +135,36 @@ void enumTest(void)
     cout << endl;
 }
 
+void memberPointerTest(void)
+{
+    /*
+        成员指针pointer to member是指向类的非静态成员的指针
+    */
+    // TODO
+}
+
+OuterClass::InnerClassDeclare::InnerClassDeclare()
+{
+    std::cout << "InnerClassDeclare" << std::endl;
+}
+
+void nestedClassTest(void)
+{
+    /*
+        一个类定义在另一个类的内部，前者称为嵌套类nested class或nested type
+        嵌套类和外层类的成员没有包含的关系
+        嵌套类的名字在外层作用域可见，在外层作用域之外不可见
+    */
+    OuterClass outerIns = OuterClass();
+    OuterClass::InnerClassDeclare innerDeclare = OuterClass::InnerClassDeclare();
+    OuterClass::InnerClassDefind innerDefine = OuterClass::InnerClassDefind();
+}
+
 void specialTechTest(void)
 {
     memOperTest();
     rttiTest();
     enumTest();
+    memberPointerTest();
+    nestedClassTest();
 }

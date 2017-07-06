@@ -40,5 +40,26 @@ enum class cpuNamesScoped : int
 enum cpuNamesUnscoped { cpuIntel, cpuAmd = 15, cpuArm, cpuPpc };
 //enum { cpuPpc }; // 同一作用域内的枚举成员重复定义
 
+// 嵌套类的定义
+class OuterClass
+{
+public:
+    class InnerClassDeclare; // 外层类外部定义嵌套类
+    class InnerClassDefind // 外层类内部定义嵌套类
+    {
+    public:
+        InnerClassDefind() { std::cout << "InnerClassDefind" << std::endl; }
+    };
+
+    OuterClass() { std::cout << "OuterClass" << std::endl; }
+};
+
+class OuterClass::InnerClassDeclare
+{
+public:
+    InnerClassDeclare(); // 外层类外部定义构造函数
+};
+
+
 void specialTechTest(void);
 
