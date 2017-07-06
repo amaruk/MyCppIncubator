@@ -160,6 +160,31 @@ void nestedClassTest(void)
     OuterClass::InnerClassDefind innerDefine = OuterClass::InnerClassDefind();
 }
 
+void unionTest(void)
+{
+    /*
+        union不能含有引用类型的成员，C++11允许含有构造函数或析构函数的类类型作为union成员
+        默认union成员public
+        可以为成员定义public/private/protected
+        可以定义包括构造函数和析构函数的成员函数
+        不能继承也不能作为基类，不能有虚函数
+
+        当包含类类型的成员时，编译器按照成员的次序依次合成默认构造函数或拷贝控制成员
+        如果类类型自定义类默认构造函数或拷贝控制成员，编译器将为union合成的版本声明为delete
+        此时通常使用把union作为类的成员，由类来管理union成员内类类型成员的构造和销毁
+    */
+    Token charToken = { 'a' };  // 初始化cVal
+    Token uninitToken;  // 未初始化
+    Token *tokenP = &uninitToken; // Union指针
+
+    // 为一个数据成员赋值会是其他数据成员变成未定义状态
+    uninitToken.iVal = 123;
+    tokenP->dVal = 12.34;
+
+    // 匿名union的成员在相同作用域可以直接访问
+    anonyDouble = 12.34;
+}
+
 void specialTechTest(void)
 {
     memOperTest();
@@ -167,4 +192,5 @@ void specialTechTest(void)
     enumTest();
     memberPointerTest();
     nestedClassTest();
+    unionTest();
 }

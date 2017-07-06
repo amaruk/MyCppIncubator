@@ -60,6 +60,22 @@ public:
     InnerClassDeclare(); // 外层类外部定义构造函数
 };
 
+// Union定义
+union Token
+{
+    char cVal;
+    int iVal;
+    double dVal;
+};
+
+// 匿名union anonymous union
+// 在其定义的作用域内，成员都可以直接访问
+// 不能包含受保护的成员或私有成员，也不能定义成员函数
+static union
+{
+    int anonyInt;
+    double anonyDouble;
+};
 
 void specialTechTest(void);
 
