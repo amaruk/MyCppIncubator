@@ -188,8 +188,6 @@ void CppPrimer::displayArithTypes(void)
     double *ptrDouble = static_cast<double *>(ptrVoid);
     cout << "*ptrDouble: " << (*ptrDouble) << endl;
 
-    // dynamic_cast: TODO
-
     // const_cast: 去掉底层const，不是函数重载的用法一般预示设计用问题
     const int cIntVal = 123;
     const int *ptrConstInt = &cIntVal;

@@ -17,6 +17,7 @@
 #include "PartFour/NamespaceTest.h"
 #include "PartFour/InheritanceTest.h"
 #include "PartFour/ExceptionTest.h"
+#include "PartFour/SpecialTechTest.h"
 #include <iostream>
 #include <string>
 using std::cout;
@@ -114,9 +115,10 @@ void partThree(void)
 void partFour(void)
 {
     //stdLibTest();
-    exceptionTest();
+    //exceptionTest();
     //namespaceTest();
     //inheritanceTest();
+    specialTechTest();
 }
 
 int main(int argc, char *argv[])

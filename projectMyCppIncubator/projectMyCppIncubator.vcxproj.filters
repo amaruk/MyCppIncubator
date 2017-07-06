@@ -102,6 +102,9 @@
     <ClInclude Include="PartFour\ExceptionTest.h">
       <Filter>Header Files\PartFour</Filter>
     </ClInclude>
+    <ClInclude Include="PartFour\SpecialTechTest.h">
+      <Filter>Header Files\PartFour</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="projectMyCppIncubator.cpp">
@@ -153,6 +156,9 @@
       <Filter>Source Files\PartFour</Filter>
     </ClCompile>
     <ClCompile Include="PartFour\ExceptionTest.cpp">
+      <Filter>Source Files\PartFour</Filter>
+    </ClCompile>
+    <ClCompile Include="PartFour\SpecialTechTest.cpp">
       <Filter>Source Files\PartFour</Filter>
     </ClCompile>
   </ItemGroup>
