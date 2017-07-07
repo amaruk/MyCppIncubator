@@ -105,10 +105,10 @@ void partTwo(void)
 // Part three: 类设计者的工具
 void partThree(void)
 {
-    //testClassFeatures();
+    testClassFeatures();
     //testOverloadCast();
     //testOOP();
-    testTemplateGeneric();
+    //testTemplateGeneric();
 }
 
 // Part four: 高级主题
@@ -137,8 +137,8 @@ int main(int argc, char *argv[])
 
     //partOne();
     //partTwo();
-    //partThree();
-    partFour();
+    partThree();
+    //partFour();
 
 	// 系统调用 "Press any key to continue..."
 	//system("pause");

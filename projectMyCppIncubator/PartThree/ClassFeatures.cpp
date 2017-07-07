@@ -103,8 +103,8 @@ void testClassFeatures(void)
     */
 
     /*
-        对象作为左值，用其身份（内存中的位置）
-        对象作为右值，用其值（内容）
+        对象作为左值时，用其身份（内存中的位置，可以出现在表达式等号左边，如命名的变量）
+        对象作为右值时，用其值（内容，只能出现在等号右边，如临时变量）
         例：
             赋值运算符左侧为非常量的左值，其结果也是左值
             取地址运算符作用于左值，返回的指针是右值
@@ -112,6 +112,27 @@ void testClassFeatures(void)
 
         左值引用 &：不能绑定到要求转换的表达式/字面常量/返回右值的表达式
         右值引用 &&：与左值引用完全相反，只能绑定到右值
+        例外：const 左值引用可以用右值初始化
+        右值引用的用途为自定义类型实现move语义，
+        或实现完美转发perfect forwarding（模板函数向其他函数传递参数时如何保留参数的左右值属性）
+
+        得到右值引用的两种方法：
+        - 强制类型转换为右值引用：static_cast<T&&>(t);
+        - 从函数返回值得到：T&& func() { return t; }
+        注意函数返回值和下面两种写法的区别：
+        T& func() { return t; } // 返回左值引用
+        T func() { return t; } // 返回右值（临时变量）
+
+        例：
+        T& t1 = v;  // t1是类型为引用的变量，指向左值，称为左值引用，t1自身为左值
+        T&& t2 = func(); // t2是右值引用，t2自身为左值
+        注意如果t2定义语句里的T为模板参数、auto、decltype等需要推导的类型，
+        则t2是universal reference，或forwarding reference，根据reference collapsing
+        及右值引用推导原则，t2被左值初始化时为左值引用，被右值初始化时为右值引用。
+
+        std::move()：返回参数对象的右值引用
+        std::forward()：返回参数本来对应的类型的引用，配合forwarding reference实现完美转发
+
     */
     int intVal = 123;
     int &lvalRef1 = intVal;             // 正确，左值引用
@@ -122,7 +143,7 @@ void testClassFeatures(void)
     // 左值有持久的状态，右值是字面量或者表达式求值过程中创建的临时对象
     // 右值引用只能绑定到临时对象（该对象将要被销毁，没有其他用户）
     //int &&rvalRef3 = rvalRef2;          // 错误，变量是左值，不能绑定到右值引用s
-    int &&rvalRef4 = std::move(rvalRef2); // 正确，用move把左值当右值处理。用std::move而不是using避免潜在的名字冲突
+    int &&rvalRef4 = std::move(rvalRef2); // 正确，move接受一个参数，返回该参数对应的右值引用。用std::move而不是using避免潜在的名字冲突
     //调用move之后，可以对此对象赋值或销毁，但不能再使用其值
     
     // 移动赋值操作
