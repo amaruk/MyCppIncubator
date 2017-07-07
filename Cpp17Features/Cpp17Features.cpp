@@ -2,23 +2,20 @@
 //
 
 #include "stdafx.h"
-#include <variant>
+#include "VariantTest.h"
 #include <iostream>
 #include <any>
 #include <filesystem>
 
 using std::cout;
 using std::endl;
-using std::variant;
 using std::any;
 using std::any_cast;
 using std::get;
 
 int main()
 {
-    variant<any> var;
-    var = 5;
-    cout << any_cast<int>(get<any>(var)) << endl;
+    variantTest();
     return 0;
 }
 

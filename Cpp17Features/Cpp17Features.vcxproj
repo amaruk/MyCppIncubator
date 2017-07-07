@@ -148,10 +148,12 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="VariantTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cpp17Features.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="VariantTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
