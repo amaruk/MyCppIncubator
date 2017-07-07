@@ -3,19 +3,18 @@
 
 #include "stdafx.h"
 #include "VariantTest.h"
+#include "AnyTest.h"
 #include <iostream>
 #include <any>
 #include <filesystem>
 
 using std::cout;
 using std::endl;
-using std::any;
-using std::any_cast;
-using std::get;
 
 int main()
 {
-    variantTest();
+    //variantTest();
+    anyTest();
     return 0;
 }
 

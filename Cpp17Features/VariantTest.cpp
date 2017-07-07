@@ -6,6 +6,7 @@
 using std::cout;
 using std::endl;
 using std::variant;
+using std::get;
 
 void variantTest(void)
 {
@@ -20,8 +21,8 @@ void variantTest(void)
     variantIns = 123;
     size_t dataHolder = variantIns.index();
     cout << "Current valid index: " << dataHolder << endl;
-    cout << "get<0>(variantIns): " << std::get<0>(variantIns) << endl
-        << "get<int>(variantIns): " << std::get<int>(variantIns) << endl;
+    cout << "get<0>(variantIns): " << get<0>(variantIns) << endl
+        << "get<int>(variantIns): " << get<int>(variantIns) << endl;
     cout << endl;
 
     try
@@ -34,7 +35,7 @@ void variantTest(void)
     variantIns = 12.3f;
     dataHolder = variantIns.index();
     cout << "Current valid index: " << dataHolder << endl;
-    cout << "get<" << dataHolder << ">(variantIns): " << std::get<1>(variantIns) << endl
-        << "get<float>(variantIns): " << std::get<float>(variantIns) << endl;
+    cout << "get<1>(variantIns): " << get<1>(variantIns) << endl
+        << "get<float>(variantIns): " << get<float>(variantIns) << endl;
     cout << endl;
 }
