@@ -166,7 +166,7 @@ private:
 	// char不一定是signed，由编译器决定
 	char arithType_char = u8'A'; 
 	// 最小尺寸16-bit
-	wchar_t arithType_wchar = L'B';
+	wchar_t arithType_wchar = L'B'; // 用L开通表示wchar_t，字符串用L开头表示wstring。MFC和Win32程序中使用_T()和_TEXT()宏
 	// 最小尺寸16-bit Unicode
 	char16_t arithType_char16 = u'测';
 	// 最小尺寸32-bit Unicode

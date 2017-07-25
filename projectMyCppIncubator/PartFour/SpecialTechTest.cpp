@@ -154,7 +154,8 @@ void memberPointerTest(void)
     (memPtrClass.*funcMemPtr)("memPtrClass.*funcMemPtr");
     (memPtrClassP->*funcMemPtr)("memPtrClassP->*funcMemPtr");
 
-
+    int i = 11;
+    auto j = i;
 
     cout << endl;
 
