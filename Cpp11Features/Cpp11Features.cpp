@@ -3,10 +3,12 @@
 
 #include "stdafx.h"
 #include "ChronoTest.h"
+#include "MultiThreadTest.h"
 
 int main()
 {
-  chronoTest();
+  //chronoTest();
+  multiThreadTest();
   return 0;
 }
 
