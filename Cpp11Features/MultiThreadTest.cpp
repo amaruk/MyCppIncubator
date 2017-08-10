@@ -21,6 +21,7 @@ using std::thread;
 using std::mutex;
 using std::timed_mutex;
 using std::lock_guard;
+using std::unique_lock;
 using std::this_thread::sleep_for;
 using std::this_thread::get_id;
 using std::chrono::microseconds;
@@ -109,7 +110,7 @@ void threadTimeMutex(char waitCh, timed_mutex &tmd_mtx)
 void threadMutexLockGuard(mutex &mtx)
 {
   try
-  { 
+  {
     // Change to #if 0 to be blocked forever after exception
 #if 1
     lock_guard<mutex> lockGuard(mtx);
@@ -121,7 +122,24 @@ void threadMutexLockGuard(mutex &mtx)
 #endif
   }
   catch (std::logic_error &)
-  { cout << "threadMutex " << get_id() << " excepted." << endl; }
+  {
+    cout << "threadMutex " << get_id() << " excepted." << endl;
+  }
+}
+
+void threadMutexUniqueLock(mutex &mtx)
+{
+  try
+  {
+    unique_lock<mutex> uniqueLock(mtx);
+    //uniqueLock.lock(); // 创建同时执行lock
+    throw (std::logic_error("ERROR"));
+    uniqueLock.unlock();
+  }
+  catch (std::logic_error &)
+  {
+    cout << "threadMutexUniqueLock " << get_id() << " excepted." << endl;
+  }
 }
 
 void mutexTest(void)
@@ -153,8 +171,8 @@ void mutexTest(void)
   threadMutex5.join();
 
   // Lock
-  // std::lock_guard    实现mutex生命周期的Mutex RAII
-  // std::unique_lock   同上，提供更好的上锁和解锁控制
+  // std::lock_guard    实现mutex生命周期的Mutex RAII，只有构造函数
+  // std::unique_lock   同上，提供更好的上锁和解锁控制函数
   // RAII: Resource Acquisition Is Initialization
   // 在类的构造函数中分配资源，在析构函数中释放资源。
   // 当一个对象创建的时候，构造函数会自动地被调用；
@@ -168,6 +186,12 @@ void mutexTest(void)
   threadMutex6.join();
   threadMutex7.join();
 
+  cout << endl << "----MUTEX UNIQUE LOCK----" << endl;
+  thread threadMutex8(threadMutexUniqueLock, std::ref(mtx));
+  sleep_for(microseconds(20));
+  thread threadMutex9(threadMutexUniqueLock, std::ref(mtx));
+  threadMutex8.join();
+  threadMutex9.join();
 
   // std::once_flag
   // std::adopt_lock_t
