@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <future>
 #include <chrono>
 
 /*
@@ -22,9 +23,15 @@ using std::mutex;
 using std::timed_mutex;
 using std::lock_guard;
 using std::unique_lock;
+using std::future;
+using std::promise;
+using std::packaged_task;
+using std::async;
 using std::this_thread::sleep_for;
 using std::this_thread::get_id;
 using std::chrono::microseconds;
+using std::chrono::milliseconds;
+using std::chrono::seconds;
 
 MultiThreadTest::MultiThreadTest()
 {
@@ -40,7 +47,7 @@ void threadParValue(uint32_t runTimes)
   for (uint32_t i = 0; i != runTimes; i++)
   {
     cout << "Thread(uint) " << get_id() << " running: " << i << endl;
-    sleep_for(microseconds(10));
+    sleep_for(milliseconds(10));
   }
 }
 
@@ -49,7 +56,7 @@ void threadParRef(uint32_t &runTimes)
   for (uint32_t i = 0; i != runTimes; i++)
   {
     cout << "Thread(&uint) " << get_id() << " running: " << i << endl;
-    sleep_for(microseconds(10));
+    sleep_for(milliseconds(10));
   }
 }
 
@@ -86,14 +93,14 @@ void threadMutex(uint32_t runTimes, mutex &mtx)
     mtx.lock();
     cout << "threadMutex " << get_id() << " running: " << i << endl;
     mtx.unlock();
-    sleep_for(microseconds(i));
+    sleep_for(milliseconds(i));
   }
 }
 
 void threadTimeMutex(char waitCh, timed_mutex &tmd_mtx)
 {
   // Block waiting for 100ms and print
-  while (!tmd_mtx.try_lock_for(microseconds(100)))
+  while (!tmd_mtx.try_lock_for(milliseconds(100)))
   {
     cout << waitCh;
   }
@@ -102,7 +109,7 @@ void threadTimeMutex(char waitCh, timed_mutex &tmd_mtx)
   cout << "threadTimeMutex " << get_id() << " done!" << endl;
 
   // Wait 1000ms before unlock
-  sleep_for(microseconds(10000));
+  sleep_for(milliseconds(10000));
 
   tmd_mtx.unlock();
 }
@@ -181,14 +188,14 @@ void mutexTest(void)
 
   cout << endl << "----MUTEX LOCK GUARD----" << endl;
   thread threadMutex6(threadMutexLockGuard, std::ref(mtx));
-  sleep_for(microseconds(20));
+  sleep_for(milliseconds(20));
   thread threadMutex7(threadMutexLockGuard, std::ref(mtx));
   threadMutex6.join();
   threadMutex7.join();
 
   cout << endl << "----MUTEX UNIQUE LOCK----" << endl;
   thread threadMutex8(threadMutexUniqueLock, std::ref(mtx));
-  sleep_for(microseconds(20));
+  sleep_for(milliseconds(20));
   thread threadMutex9(threadMutexUniqueLock, std::ref(mtx));
   threadMutex8.join();
   threadMutex9.join();
@@ -204,8 +211,70 @@ void mutexTest(void)
 
 }
 
+void threadPromise(future<int> & refFuture)
+{
+  cout << "threadPromise " << get_id() << " wating..." << endl;
+  cout << "threadPromise " << get_id() << " get: " << refFuture.get() << endl;
+}
+
+void threadPackagedTask(void)
+{
+  for (int i = 0; i != 5; i++)
+  {
+    cout << "threadPackagedTask " << get_id() << " working: " << i << endl;
+    sleep_for(seconds(1));
+  }
+}
+
+void asyncMain(int runTimes)
+{
+  for (int i = 0; i != runTimes; i++)
+  {
+    cout << "asyncMain " << get_id() << " working: " << i << endl;
+    sleep_for(seconds(1));
+  }
+}
+
+void futureTest(void)
+{
+  cout << endl << "====futureTest====" << endl;
+
+  // future对象由异步任务的提供者provider来创建，将共享状态与future对象绑定
+  // 在其他线程里future对象来get共享状态，如果共享状态标志不为ready，就阻塞
+  // provider设置共享状态的值后，get就解除阻塞
+  // provider可以是函数或者类：
+  // - async函数
+  // - promise类的get_future函数
+  // - packaged_task类的get_future函数
+
+  cout << endl << "----PROMISE----" << endl;
+  promise<int> promiseInt;
+  future<int> futureInt = promiseInt.get_future(); // 获取promise关联的future
+  thread threadFuture1(threadPromise, std::ref(futureInt));
+  sleep_for(seconds(5));
+  cout << "main worked for 5 seconds." << endl;
+  promiseInt.set_value(123);
+  threadFuture1.join();
+
+  cout << endl << "----PACKAGED_TASK----" << endl;
+  packaged_task<void(void)> pkgTask(threadPackagedTask); //可调用对象传给packaged_task
+  future<void> futureVoid = pkgTask.get_future(); // 获取pakcaged_task关联的future
+  cout << "main waiting for packaged_task." << endl;
+  thread threadFuture2(std::move(pkgTask)); // 用packaged_task创建线程
+  futureVoid.get();
+  threadFuture2.join();
+
+  cout << endl << "----ASYNC----" << endl;
+  cout << "main waiting for async." << endl;
+  future<void> futureAsync = async(asyncMain, 3);
+  while (futureAsync.wait_for(milliseconds(100)) == std::future_status::timeout)
+  { cout << "."; }
+  futureAsync.get();
+}
+
 void multiThreadTest(void)
 {
-  threadTest();
-  mutexTest();
+  //threadTest();
+  //mutexTest();
+  futureTest();
 }
