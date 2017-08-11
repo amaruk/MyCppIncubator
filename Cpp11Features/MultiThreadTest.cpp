@@ -6,6 +6,7 @@
 #include <mutex>
 #include <future>
 #include <chrono>
+#include <atomic>
 
 /*
  * 多线程编程相关的头文件：
@@ -30,9 +31,12 @@ using std::condition_variable;
 using std::async;
 using std::this_thread::sleep_for;
 using std::this_thread::get_id;
+using std::this_thread::yield;
 using std::chrono::microseconds;
 using std::chrono::milliseconds;
 using std::chrono::seconds;
+using std::atomic_flag;
+using std::atomic;
 
 MultiThreadTest::MultiThreadTest()
 {
@@ -272,7 +276,9 @@ void futureTest(void)
   cout << "main waiting for async." << endl;
   future<void> futureAsync = async(asyncMain, 3);
   while (futureAsync.wait_for(milliseconds(100)) == std::future_status::timeout)
-  { cout << "."; }
+  {
+    cout << ".";
+  }
   futureAsync.get();
 }
 
@@ -281,7 +287,9 @@ void threadWait(condition_variable &cv, mutex &mtx, bool &isReady)
   unique_lock<mutex> uniLock(mtx); // 创建时自动lock
   cout << "threadWait " << get_id() << " warting." << endl;
   while (!isReady)
-  { cv.wait(uniLock); } // wait会自动unlock，wait到后自动再次lock
+  {
+    cv.wait(uniLock);
+  } // wait会自动unlock，wait到后自动再次lock
   cout << "threadWait " << get_id() << " done." << endl;
   uniLock.unlock();
 }
@@ -313,10 +321,41 @@ void conditionVariableTest(void)
   threadNotifier.join();
 }
 
+void threadCheckAtomicFlag(atomic<bool> &atomicBool, atomic_flag &atomicFlag)
+{
+  while (!atomicBool)
+  { yield(); }
+
+  // test_and_set是RMW（Read-Modify_Write）的原子操作
+  while (atomicFlag.test_and_set()) // 如果test发现未set，则set，返回未set
+  { ; }
+
+  // 没置位
+  cout << "threadCheckAtomicFlag " << get_id() << " sets atomic flag." << endl;
+  // 清除置位，让其他线程可以继续
+  atomicFlag.clear();
+}
+
+void atomicTest(void)
+{
+  atomic<bool> atomicBool(false);
+  atomic_flag atomicFlagBool = ATOMIC_FLAG_INIT; // 用宏初始化状态为clear
+
+  thread threadAtomic1(threadCheckAtomicFlag, std::ref(atomicBool), std::ref(atomicFlagBool));
+  thread threadAtomic2(threadCheckAtomicFlag, std::ref(atomicBool), std::ref(atomicFlagBool));
+
+  cout << "main sleep for 1 second and starts threads..." << endl;
+  sleep_for(seconds(1));
+  atomicBool = true;
+  threadAtomic1.join();
+  threadAtomic2.join();
+}
+
 void multiThreadTest(void)
 {
   //threadTest();
   //mutexTest();
   //futureTest();
-  conditionVariableTest();
+  //conditionVariableTest();
+  atomicTest();
 }
