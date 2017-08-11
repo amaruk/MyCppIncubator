@@ -26,6 +26,7 @@ using std::unique_lock;
 using std::future;
 using std::promise;
 using std::packaged_task;
+using std::condition_variable;
 using std::async;
 using std::this_thread::sleep_for;
 using std::this_thread::get_id;
@@ -246,6 +247,9 @@ void futureTest(void)
   // - async函数
   // - promise类的get_future函数
   // - packaged_task类的get_future函数
+  //
+  // shared_future和future类似，可共享状态的结果
+  // future_error继承logic_error标准异常
 
   cout << endl << "----PROMISE----" << endl;
   promise<int> promiseInt;
@@ -272,9 +276,41 @@ void futureTest(void)
   futureAsync.get();
 }
 
+void threadWait(condition_variable &cv, mutex &mtx, bool &isReady)
+{
+  unique_lock<mutex> uniLock(mtx); // 创建时自动lock
+  cout << "threadWait " << get_id() << " warting." << endl;
+  while (!isReady)
+  { cv.wait(uniLock); } // wait会自动unlock，wait到后自动再次lock
+  cout << "threadWait " << get_id() << " done." << endl;
+  uniLock.unlock();
+}
+
+void threadNotify(condition_variable &cv, mutex &mtx, bool &isReady)
+{
+  cout << "threadNotify " << get_id() << " notifying." << endl;
+  unique_lock<mutex> uniLock(mtx); // 创建时自动lock
+  isReady = true;
+  uniLock.unlock();
+  cv.notify_one();
+}
+
 void conditionVariableTest(void)
 {
-    // 
+
+  cout << endl << "====conditionVariableTest====" << endl;
+
+  cout << endl << "----CV----" << endl;
+  mutex mtx;
+  condition_variable cv;
+  bool isReady = false;
+
+  thread threadWaiter(threadWait, std::ref(cv), std::ref(mtx), std::ref(isReady));
+  sleep_for(seconds(1));
+  thread threadNotifier(threadNotify, std::ref(cv), std::ref(mtx), std::ref(isReady));
+
+  threadWaiter.join();
+  threadNotifier.join();
 }
 
 void multiThreadTest(void)
