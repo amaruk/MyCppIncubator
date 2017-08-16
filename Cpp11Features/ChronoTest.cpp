@@ -52,6 +52,10 @@ void durationTest(void)
   // 无类型转换的浮点缩放
   cout << microfortnights(sec).count() << " microfortnights." << endl
     << nanocenturies(sec).count() << " nanocenturies." << endl;
+
+  // Windows的精度到100ns。Linux的精度到ns。
+  // 使用如下语句打印默认精度，对比windows和linux位数。
+  // cout << std::chrono::system_clock::now().time_since_epoch().count() << endl;
 }
 
 void clockTimepointTest(void)
