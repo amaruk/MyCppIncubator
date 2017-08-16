@@ -7,8 +7,8 @@
 
 int main()
 {
-  //chronoTest();
-  multiThreadTest();
+  chronoTest();
+  //multiThreadTest();
   return 0;
 }
 
