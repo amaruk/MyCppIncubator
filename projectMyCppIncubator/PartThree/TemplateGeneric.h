@@ -8,6 +8,7 @@
 /*
     类模板class template
     编译器不能为类模板推断参数类型，使用类模板时必须在模板名后用<>提供额外信息。
+    早期没有typename关键字时，用template <class T>
 */
 template <typename T>
 class ClassTemplate

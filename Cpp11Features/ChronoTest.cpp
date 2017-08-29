@@ -28,7 +28,7 @@ ChronoTest::~ChronoTest()
 
 void durationTest(void)
 {
-  // ´ÓdurationÄ£°å´´½¨ÌØ¶¨ÀàĞÍµÄÀà
+  // ä»durationæ¨¡æ¿åˆ›å»ºç‰¹å®šç±»å‹çš„ç±»
   using shakes = duration<int, std::ratio<1, 100000000>>;
   using jiffies = duration<int, std::centi>;
   using microfortnights = duration<float, std::ratio<12096, 10000>>;
@@ -40,33 +40,33 @@ void durationTest(void)
 
   cout << "1 second is:" << endl;
 
-  // ÎŞÀàĞÍ×ª»»£¬ÎŞ¾«¶ÈËğÊ§µÄÕûĞÎËõ·Å¡£
-  // Ö±½Ó°ÑÒ»ÖÖduration×÷ÎªÁíÒ»ÖÖdurationµÄ²ÎÊı¹¹Ôì¡£
+  // æ— ç±»å‹è½¬æ¢ï¼Œæ— ç²¾åº¦æŸå¤±çš„æ•´å½¢ç¼©æ”¾ã€‚
+  // ç›´æ¥æŠŠä¸€ç§durationä½œä¸ºå¦ä¸€ç§durationçš„å‚æ•°æ„é€ ã€‚
   cout << microseconds(sec).count() << " microseconds." << endl
     << shakes(sec).count() << " shakes." << endl
     << jiffies(sec).count() << " jiffies." << endl;
 
-  // ÏÔÊ½ÀàĞÍ×ª»»£¬ÓĞ¾«¶ÈËğÊ§¡£
+  // æ˜¾å¼ç±»å‹è½¬æ¢ï¼Œæœ‰ç²¾åº¦æŸå¤±ã€‚
   cout << duration_cast<minutes>(sec).count() << " minutes." << endl;
 
-  // ÎŞÀàĞÍ×ª»»µÄ¸¡µãËõ·Å
+  // æ— ç±»å‹è½¬æ¢çš„æµ®ç‚¹ç¼©æ”¾
   cout << microfortnights(sec).count() << " microfortnights." << endl
     << nanocenturies(sec).count() << " nanocenturies." << endl;
 
-  // WindowsµÄ¾«¶Èµ½100ns¡£LinuxµÄ¾«¶Èµ½ns¡£
-  // Ê¹ÓÃÈçÏÂÓï¾ä´òÓ¡Ä¬ÈÏ¾«¶È£¬¶Ô±ÈwindowsºÍlinuxÎ»Êı¡£
-  // cout << std::chrono::system_clock::now().time_since_epoch().count() << endl;
+  // Windowsçš„ç²¾åº¦åˆ°100nsã€‚Linuxçš„ç²¾åº¦åˆ°nsã€‚
+  // ä½¿ç”¨å¦‚ä¸‹è¯­å¥æ‰“å°é»˜è®¤ç²¾åº¦ï¼Œå¯¹æ¯”windowså’Œlinuxä½æ•°ã€‚
+  cout << std::chrono::system_clock::now().time_since_epoch().count() << endl;
 }
 
 void clockTimepointTest(void)
 {
   /*
-   * system_clock£ºsystem-wide real time wall clock. ²»Ò»¶¨ÊÇmonotonic¡£
-   *    Ã»ÓĞÖ¸¶¨ÏµÍ³Ê±ÖÓ´ÓÄÄ¸ö¼ÍÔª¿ªÊ¼£¬µ«Ò»°ã¶¼ÊÇ
+   * system_clockï¼šsystem-wide real time wall clock. ä¸ä¸€å®šæ˜¯monotonicã€‚
+   *    æ²¡æœ‰æŒ‡å®šç³»ç»Ÿæ—¶é’Ÿä»å“ªä¸ªçºªå…ƒå¼€å§‹ï¼Œä½†ä¸€èˆ¬éƒ½æ˜¯
    *    00:00:00 UTC Thursday 1 January 1970
-   * steady_clock£º²»ÊÇwall clock£¬¶øÊÇÀàËÆ´ÓÏµÍ³Æô¶¯¿ªÊ¼µ½ÏÖÔÚÎªÖ¹µÄÊ±¼ä¼ä¸ô¡£monotonic¡£
-   * high_resolution_clock£ºÊ¹ÓÃ×îĞ¡tick¼ä¸ôµÄclock¡£
-   *    ¿ÉÄÜµÈÍ¬ÓÚsystem_clock£¬»òsteady_clock£¬»òÄ³¶ÀÁ¢µÄclock
+   * steady_clockï¼šä¸æ˜¯wall clockï¼Œè€Œæ˜¯ç±»ä¼¼ä»ç³»ç»Ÿå¯åŠ¨å¼€å§‹åˆ°ç°åœ¨ä¸ºæ­¢çš„æ—¶é—´é—´éš”ã€‚monotonicã€‚
+   * high_resolution_clockï¼šä½¿ç”¨æœ€å°tické—´éš”çš„clockã€‚
+   *    å¯èƒ½ç­‰åŒäºsystem_clockï¼Œæˆ–steady_clockï¼Œæˆ–æŸç‹¬ç«‹çš„clock
   */
 
   cout << endl << "==== Clock and Timepoint Test ====" << endl;
@@ -86,10 +86,10 @@ void clockTimepointTest(void)
 void chronoTest(void)
 {
   /*
-   * ÈıÖÖÖ÷ÒªÀàĞÍ:
-   * - Duration£ºÄ³ÖÖÊ±¼äµ¥Î»±íÊ¾µÄÊ±¼ä¶Î£¬Èç42ÃëÓÃduration±íÊ¾Îª42¸ö1ÃëÊ±¼äµ¥ÔªµÄtick
-   * - Clock£ºÓÉÆğÊ¼¼ÍÔª£¨epoch£©ºÍtick rate×é³É¡£ÈçÆğÊ¼ÓÚ1970Äê1ÔÂ1ÈÕ£¬tickÎªÃë
-   * - Time point£ºÊ±¼äµã
+   * ä¸‰ç§ä¸»è¦ç±»å‹:
+   * - Durationï¼šæŸç§æ—¶é—´å•ä½è¡¨ç¤ºçš„æ—¶é—´æ®µï¼Œå¦‚42ç§’ç”¨durationè¡¨ç¤ºä¸º42ä¸ª1ç§’æ—¶é—´å•å…ƒçš„tick
+   * - Clockï¼šç”±èµ·å§‹çºªå…ƒï¼ˆepochï¼‰å’Œtick rateç»„æˆã€‚å¦‚èµ·å§‹äº1970å¹´1æœˆ1æ—¥ï¼Œtickä¸ºç§’
+   * - Time pointï¼šæ—¶é—´ç‚¹
    */
   durationTest();
   clockTimepointTest();
