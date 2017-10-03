@@ -4,11 +4,13 @@
 #include "stdafx.h"
 #include "ChronoTest.h"
 #include "MultiThreadTest.h"
+#include "UnorderedMapTest.h"
 
 int main()
 {
-  chronoTest();
+  //chronoTest();
   //multiThreadTest();
+  unorderedMapTest();
   return 0;
 }
 
