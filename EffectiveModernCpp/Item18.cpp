@@ -6,13 +6,17 @@
 using std::cout;
 using std::endl;
 using std::unique_ptr;
+using std::make_unique;
 
-
-std::unique_ptr<ClassBase> Factory::createInstDeleterDefault(int deriveType)
+std::unique_ptr<ClassBase> FactoryUniquePtr::createInstDeleterDefault(int deriveType)
 {
   if (deriveType == 1)
   {
-    return std::make_unique<ClassDerived1>();
+    return make_unique<ClassDerived1>();
+  }
+  else
+  {
+    return make_unique<ClassDerived2>();
   }
 }
 
@@ -22,7 +26,7 @@ void myDeleterFunc(ClassBase *pClassBase)
   delete pClassBase;
 }
 
-auto Factory::createInstDeleterCustom(int deriveType)
+auto FactoryUniquePtr::createInstDeleterCustom(int deriveType)
 {
 
   // 使用函数和使用lambda表达式效果相同，建议使用lambda表达式
@@ -52,6 +56,10 @@ auto Factory::createInstDeleterCustom(int deriveType)
   {
     pClassBase.reset(new ClassDerived1());
   }
+  else
+  {
+    pClassBase.reset(new ClassDerived2());
+  }
 
   return pClassBase;
 #endif
@@ -59,17 +67,18 @@ auto Factory::createInstDeleterCustom(int deriveType)
 
 void item18(void)
 {
-  cout << "----- Create unique_ptr with default deleter" << endl;
+  cout << endl << "----- Item 18 -----" << endl;
+  cout << ">> Create unique_ptr with default deleter" << endl;
   {
-    unique_ptr<ClassBase> pClassBase = Factory::createInstDeleterDefault(1);
+    unique_ptr<ClassBase> pClassBase = FactoryUniquePtr::createInstDeleterDefault(1);
     // 直接用返回值给shared_ptr赋值
     // std::shared_ptr<ClassBase> psClassBase = Factory::createInstDeleterDefault(1);
     // 或用move给shared_ptr赋值
     // std::shared_ptr<ClassBase> psClassBase = std::move(pClassBase);
   }
 
-  cout << "----- Create unique_ptr with myDeleter" << endl;
+  cout << ">> Create unique_ptr with myDeleter" << endl;
   {
-    auto pClassBaseMyDeleter = Factory::createInstDeleterCustom(1);
+    auto pClassBaseMyDeleter = FactoryUniquePtr::createInstDeleterCustom(1);
   }
 }

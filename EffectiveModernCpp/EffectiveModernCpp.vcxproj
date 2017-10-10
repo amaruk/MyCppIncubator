@@ -147,7 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterFour.h" />
+    <ClInclude Include="ClassHierarchy.h" />
     <ClInclude Include="Item18.h" />
+    <ClInclude Include="Item19.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -155,6 +157,7 @@
     <ClCompile Include="ChapterFour.cpp" />
     <ClCompile Include="EffectiveModernCpp.cpp" />
     <ClCompile Include="Item18.cpp" />
+    <ClCompile Include="Item19.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
