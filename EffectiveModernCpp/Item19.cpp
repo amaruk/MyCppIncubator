@@ -72,6 +72,10 @@ auto FactorySharedPtr::createInstDeleterCustom(int deriveType)
 
   // shared_ptr不像unique_ptr那样能以数组为模板参数
 
+  // 注意，如果两个对象各自有shared_ptr指向对方，即使没有外界shared_ptr指向他们，
+  // 这一对对象永远不会被自动销毁，最终导致泄漏，因为他们总是有对方的shared_ptr指着。
+  // 可以考虑把其中一个改为weak_ptr。
+
   return pClassBase;
 }
 

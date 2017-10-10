@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Item18.h"
 #include "Item19.h"
+#include "Item20.h"
 
 using std::cout;
 using std::endl;
@@ -30,10 +31,13 @@ void ChapterFour(void)
       * reference count是动态分配的
       * Reference count的增加和减少操作都是原子操作，相对耗时
     - weak_ptr
+      * 类似shared_ptr，但是没有“拥有”的概念，可以检查自己是否变成悬空指针
+      * weak_ptr和shared_ptr尺寸相同
   */
   cout << "##### Chapter Four #####" << endl;
   
   item18();
   item19();
+  item20();
 }
 

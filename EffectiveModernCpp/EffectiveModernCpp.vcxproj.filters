@@ -40,7 +40,10 @@
       <Filter>Header Files\ChapterFour</Filter>
     </ClInclude>
     <ClInclude Include="Item19.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ChapterFour</Filter>
+    </ClInclude>
+    <ClInclude Include="Item20.h">
+      <Filter>Header Files\ChapterFour</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +60,10 @@
       <Filter>Source Files\ChapterFour</Filter>
     </ClCompile>
     <ClCompile Include="Item19.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ChapterFour</Filter>
+    </ClCompile>
+    <ClCompile Include="Item20.cpp">
+      <Filter>Header Files\ChapterFour</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
