@@ -6,6 +6,7 @@
 #include "Item18.h"
 #include "Item19.h"
 #include "Item20.h"
+#include "MemLeakCheck.h"
 
 using std::cout;
 using std::endl;
@@ -36,8 +37,11 @@ void ChapterFour(void)
   */
   cout << "##### Chapter Four #####" << endl;
   
-  item18();
-  item19();
-  item20();
+  //item18();
+  //item19();
+  //item20();
+
+  // Example of using weak_ptr to do memory leaking checking.
+  memLeakTest();
 }
 
