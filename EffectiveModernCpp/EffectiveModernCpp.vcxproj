@@ -151,6 +151,7 @@
     <ClInclude Include="Item18.h" />
     <ClInclude Include="Item19.h" />
     <ClInclude Include="Item20.h" />
+    <ClInclude Include="Item21.h" />
     <ClInclude Include="MemLeakCheck.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Item18.cpp" />
     <ClCompile Include="Item19.cpp" />
     <ClCompile Include="Item20.cpp" />
+    <ClCompile Include="Item21.cpp" />
     <ClCompile Include="MemLeakCheck.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

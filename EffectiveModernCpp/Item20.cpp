@@ -66,6 +66,11 @@ void item20(void)
     {
       cout << "autoFromWptr generates exception." << endl;
     }
+
+    // weak_ptr在control block里也有weak count
+    // （但由于优化的原因，并不总是等于weak_ptr的个数）
+    // 还有weak_ptr存在的话，即使没有shared_ptr指向了，
+    // 被指向的对象和control block的空间也不会被释放。
     
   }
 }

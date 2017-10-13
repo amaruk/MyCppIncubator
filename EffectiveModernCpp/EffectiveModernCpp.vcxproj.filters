@@ -47,6 +47,9 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Item21.h">
+      <Filter>Header Files\ChapterFour</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -68,6 +71,9 @@
       <Filter>Source Files\ChapterFour</Filter>
     </ClCompile>
     <ClCompile Include="MemLeakCheck.cpp">
+      <Filter>Source Files\ChapterFour</Filter>
+    </ClCompile>
+    <ClCompile Include="Item21.cpp">
       <Filter>Source Files\ChapterFour</Filter>
     </ClCompile>
   </ItemGroup>

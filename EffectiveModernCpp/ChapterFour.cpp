@@ -6,6 +6,7 @@
 #include "Item18.h"
 #include "Item19.h"
 #include "Item20.h"
+#include "Item21.h"
 #include "MemLeakCheck.h"
 
 using std::cout;
@@ -34,14 +35,19 @@ void ChapterFour(void)
     - weak_ptr
       * 类似shared_ptr，但是没有“拥有”的概念，可以检查自己是否变成悬空指针
       * weak_ptr和shared_ptr尺寸相同
+
+    有三个make函数：make_unique/make_shared/allocate_shared
+    allocate_shared除了make_shared的功能以外，其第一个参数为用于动态内存分配的allocator对象
+    make_unique从C++14开始引入，make_shared从C++11开始引入
   */
   cout << "##### Chapter Four #####" << endl;
   
   //item18();
   //item19();
   //item20();
+  item21();
 
   // Example of using weak_ptr to do memory leaking checking.
-  memLeakTest();
+  //memLeakTest();
 }
 
