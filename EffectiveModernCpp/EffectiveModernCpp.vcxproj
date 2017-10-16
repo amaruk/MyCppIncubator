@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterFour.h" />
+    <ClInclude Include="ChapterSix.h" />
     <ClInclude Include="ClassHierarchy.h" />
     <ClInclude Include="Item18.h" />
     <ClInclude Include="Item19.h" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChapterFour.cpp" />
+    <ClCompile Include="ChapterSix.cpp" />
     <ClCompile Include="EffectiveModernCpp.cpp" />
     <ClCompile Include="Item18.cpp" />
     <ClCompile Include="Item19.cpp" />

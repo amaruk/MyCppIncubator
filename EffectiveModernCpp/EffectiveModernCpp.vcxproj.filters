@@ -15,6 +15,12 @@
     <Filter Include="Header Files\ChapterFour">
       <UniqueIdentifier>{640a4a92-eccc-4564-a859-111b7bc6cca8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ChapterSix">
+      <UniqueIdentifier>{089518ee-173b-4797-9191-0c3c30872b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ChapterSix">
+      <UniqueIdentifier>{794a61b2-ab12-4374-ae4a-ae57f5b523ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -53,6 +59,9 @@
     <ClInclude Include="Item22.h">
       <Filter>Header Files\ChapterFour</Filter>
     </ClInclude>
+    <ClInclude Include="ChapterSix.h">
+      <Filter>Header Files\ChapterSix</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -81,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="Item22.cpp">
       <Filter>Source Files\ChapterFour</Filter>
+    </ClCompile>
+    <ClCompile Include="ChapterSix.cpp">
+      <Filter>Source Files\ChapterSix</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

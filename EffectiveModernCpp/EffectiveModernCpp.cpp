@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "ChapterFour.h"
+#include "ChapterSix.h"
 #include <iostream>
 
 using std::cout;
@@ -10,8 +11,8 @@ using std::endl;
 
 int main()
 {
-  ChapterFour();
-
+  //ChapterFour();
+  ChapterSix();
 
   cout << endl;
 
