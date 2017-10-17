@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Item31.h"
 
 
 void ChapterSix(void)
@@ -17,4 +18,5 @@ void ChapterSix(void)
   // 可以把lambda语句赋值给auto变量，这个auto变量即为此lambda对应的closure
   // 同时可以赋值给其他的auto变量，获得多个拷贝。
 
+  Item31();
 }
