@@ -2,4 +2,4 @@
 
 #include <iostream>
 
-void Item32();
+void item32();

@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-void Item31()
+void item31()
 {
   cout << endl << "----- Item 31 -----" << endl;
   cout << ">> ..." << endl;

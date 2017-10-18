@@ -146,32 +146,33 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChapterFour.h" />
-    <ClInclude Include="ChapterSix.h" />
     <ClInclude Include="ClassHierarchy.h" />
     <ClInclude Include="Item18.h" />
     <ClInclude Include="Item19.h" />
     <ClInclude Include="Item20.h" />
     <ClInclude Include="Item21.h" />
     <ClInclude Include="Item22.h" />
+    <ClInclude Include="Item23.h" />
     <ClInclude Include="Item31.h" />
     <ClInclude Include="Item32.h" />
+    <ClInclude Include="Item33.h" />
+    <ClInclude Include="Item9.h" />
     <ClInclude Include="MemLeakCheck.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ChapterFour.cpp" />
-    <ClCompile Include="ChapterSix.cpp" />
     <ClCompile Include="EffectiveModernCpp.cpp" />
     <ClCompile Include="Item18.cpp" />
     <ClCompile Include="Item19.cpp" />
     <ClCompile Include="Item20.cpp" />
     <ClCompile Include="Item21.cpp" />
     <ClCompile Include="Item22.cpp" />
+    <ClCompile Include="Item23.cpp" />
     <ClCompile Include="Item31.cpp" />
     <ClCompile Include="Item32.cpp" />
+    <ClCompile Include="Item33.cpp" />
+    <ClCompile Include="Item9.cpp" />
     <ClCompile Include="MemLeakCheck.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

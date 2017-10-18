@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Item31.h"
+#include "Item32.h"
 #include <memory>
 #include <vector>
 #include <functional>
@@ -10,7 +10,7 @@ using std::make_unique;
 using std::vector;
 using std::bind;
 
-void Item32()
+void item32()
 {
   cout << endl << "----- Item 32 -----" << endl;
   cout << ">> ..." << endl;

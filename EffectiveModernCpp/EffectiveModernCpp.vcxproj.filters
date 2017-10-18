@@ -9,18 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Source Files\ChapterFour">
-      <UniqueIdentifier>{463dbf9e-d550-41a1-8d26-d73b7ab4c161}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ChapterFour">
-      <UniqueIdentifier>{640a4a92-eccc-4564-a859-111b7bc6cca8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ChapterSix">
-      <UniqueIdentifier>{089518ee-173b-4797-9191-0c3c30872b4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ChapterSix">
-      <UniqueIdentifier>{794a61b2-ab12-4374-ae4a-ae57f5b523ac}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -32,41 +20,41 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChapterFour.h">
-      <Filter>Header Files\ChapterFour</Filter>
+    <ClInclude Include="ClassHierarchy.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item18.h">
-      <Filter>Header Files\ChapterFour</Filter>
-    </ClInclude>
-    <ClInclude Include="ClassHierarchy.h">
-      <Filter>Header Files\ChapterFour</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item19.h">
-      <Filter>Header Files\ChapterFour</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item20.h">
-      <Filter>Header Files\ChapterFour</Filter>
-    </ClInclude>
-    <ClInclude Include="MemLeakCheck.h">
-      <Filter>Header Files\ChapterFour</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item21.h">
-      <Filter>Header Files\ChapterFour</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item22.h">
-      <Filter>Header Files\ChapterFour</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChapterSix.h">
-      <Filter>Header Files\ChapterSix</Filter>
+    <ClInclude Include="MemLeakCheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item23.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item33.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item31.h">
-      <Filter>Header Files\ChapterSix</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item32.h">
-      <Filter>Header Files\ChapterSix</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item9.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,35 +64,38 @@
     <ClCompile Include="EffectiveModernCpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChapterFour.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
-    </ClCompile>
-    <ClCompile Include="Item18.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
-    </ClCompile>
-    <ClCompile Include="Item19.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
-    </ClCompile>
-    <ClCompile Include="Item20.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
+    <ClCompile Include="Item23.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MemLeakCheck.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item18.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item19.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item20.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item21.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item22.cpp">
-      <Filter>Source Files\ChapterFour</Filter>
-    </ClCompile>
-    <ClCompile Include="ChapterSix.cpp">
-      <Filter>Source Files\ChapterSix</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item31.cpp">
-      <Filter>Source Files\ChapterSix</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item32.cpp">
-      <Filter>Source Files\ChapterSix</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item33.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item9.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
