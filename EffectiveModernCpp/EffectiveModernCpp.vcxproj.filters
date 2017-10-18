@@ -56,12 +56,12 @@
     <ClInclude Include="Item9.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Item3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectiveModernCpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item23.cpp">
@@ -97,5 +97,12 @@
     <ClCompile Include="Item9.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EffectiveModernCpp.cpp" />
+    <ClCompile Include="Item3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EffectiveModernCpp.rc" />
   </ItemGroup>
 </Project>

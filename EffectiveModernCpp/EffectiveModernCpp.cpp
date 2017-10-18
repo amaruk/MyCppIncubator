@@ -1,22 +1,24 @@
-// EffectiveModernCpp.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include <iostream>
+#include "Item3.h"
 #include "Item9.h"
+#include "Item23.h"
 
 using std::cout;
 using std::endl;
 
 int main()
 {
+////////// Chapter One: Deducing types //////////
+  //item3();// TBD
+
 ////////// Chapter Three: Moving to Modern C++ //////////
-  item9();
+  //item9();
 
 ////////// Chapter Four: Smart pointers //////////
 
   /*
-  C++11的四种智能指针：
+  C++11的四种智能指针： 
   - auto_ptr
     * Deprecated leftover from C++98. unique_ptr的前身。
   - unique_ptr
@@ -58,7 +60,7 @@ int main()
   //      arguments and forward them to other functions such that the target functions
   //      receive exactly the same arguments as were passed to the forwarding functions.
   // rvalue右值是实现这两个功能的基础。
-  //item23();
+  item23();
 
 ////////// Chapter Six: Lambda Expressions //////////
 
@@ -78,7 +80,7 @@ int main()
 
   //item31();
   //item32();
-  //item33();
+  //item33();//TBD
 
   cout << endl;
 
