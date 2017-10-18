@@ -65,6 +65,9 @@
     <ClInclude Include="Item31.h">
       <Filter>Header Files\ChapterSix</Filter>
     </ClInclude>
+    <ClInclude Include="Item32.h">
+      <Filter>Header Files\ChapterSix</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -98,6 +101,9 @@
       <Filter>Source Files\ChapterSix</Filter>
     </ClCompile>
     <ClCompile Include="Item31.cpp">
+      <Filter>Source Files\ChapterSix</Filter>
+    </ClCompile>
+    <ClCompile Include="Item32.cpp">
       <Filter>Source Files\ChapterSix</Filter>
     </ClCompile>
   </ItemGroup>

@@ -32,6 +32,7 @@ void Item31()
     // 如果this对应的对象被销毁了，lambda里的this即为dangle
     // 解决方案是显示地创建局部变量，拷贝成员变量，然后再用此局部变量来做值捕获
     // C++14提供了generalized lambda capture，如下，保证把成员变量值捕获进lambda而不带this
+    // 详情参考Item32
     auto lambdaCpp14 = [divisor = divisor](int value) { return value % divisor == 0; };
 
     // 注意如果divisor在作用域里是static的，那么其实并没有值捕获divisor，
