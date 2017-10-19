@@ -146,13 +146,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chapter1.h" />
+    <ClInclude Include="Chapter5.h" />
     <ClInclude Include="ClassHierarchy.h" />
     <ClInclude Include="Item18.h" />
     <ClInclude Include="Item19.h" />
     <ClInclude Include="Item20.h" />
     <ClInclude Include="Item21.h" />
     <ClInclude Include="Item22.h" />
-    <ClInclude Include="Item23.h" />
     <ClInclude Include="Item3.h" />
     <ClInclude Include="Item31.h" />
     <ClInclude Include="Item32.h" />
@@ -164,12 +165,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EffectiveModernCpp.cpp" />
+    <ClCompile Include="Item1.cpp" />
     <ClCompile Include="Item18.cpp" />
     <ClCompile Include="Item19.cpp" />
+    <ClCompile Include="Item2.cpp" />
     <ClCompile Include="Item20.cpp" />
     <ClCompile Include="Item21.cpp" />
     <ClCompile Include="Item22.cpp" />
     <ClCompile Include="Item23.cpp" />
+    <ClCompile Include="Item24.cpp" />
     <ClCompile Include="Item3.cpp" />
     <ClCompile Include="Item31.cpp" />
     <ClCompile Include="Item32.cpp" />
@@ -182,9 +186,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="EffectiveModernCpp.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

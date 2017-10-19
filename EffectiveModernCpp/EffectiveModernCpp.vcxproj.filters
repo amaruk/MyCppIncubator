@@ -41,9 +41,6 @@
     <ClInclude Include="MemLeakCheck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item23.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Item33.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,8 +104,14 @@
     <ClCompile Include="Item3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="EffectiveModernCpp.rc" />
+    <ClCompile Include="Item24.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
