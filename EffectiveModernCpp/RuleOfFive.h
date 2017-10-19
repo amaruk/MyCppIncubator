@@ -7,15 +7,15 @@ using std::endl;
 using std::vector;
 using std::string;
 
-class Fox
+class ROF
 {
 public:
-  Fox() { cout << "\tFox()" << endl; }
-  Fox(string name) : m_Name(name) { cout << "\tFox(string)" << endl; }
-  Fox(const Fox& anotherFox) : m_Name(anotherFox.m_Name) { cout << "\tFox(const Fox&)" << endl; }
-  Fox(Fox&& anotherFox) : m_Name(std::move(anotherFox.m_Name)) { cout << "\tFox(Fox&&)" << endl; }
-  Fox& operator=(Fox& anotherFox) { cout << "\t=(Fox&)" << endl; this->m_Name = anotherFox.m_Name; return *this; }
-  Fox& operator=(Fox&& anotherFox) { cout << "\t=(Fox&&)" << endl; this->m_Name = std::move(anotherFox.m_Name); return *this; }
+  ROF() { cout << "\tROF()" << endl; }
+  ROF(string name) : m_Name(name) { cout << "\tROF(string)" << endl; }
+  ROF(const ROF& anotherRof) : m_Name(anotherRof.m_Name) { cout << "\tROF(const ROF&)" << endl; }
+  ROF(ROF&& anotherRof) : m_Name(std::move(anotherRof.m_Name)) { cout << "\tROF(ROF&&)" << endl; }
+  ROF& operator=(ROF& anotherRof) { cout << "\t=(ROF&)" << endl; this->m_Name = anotherRof.m_Name; return *this; }
+  ROF& operator=(ROF&& anotherRof) { cout << "\t=(ROF&&)" << endl; this->m_Name = std::move(anotherRof.m_Name); return *this; }
 
   void SetName(const string& newName) { this->m_Name = newName; }
   const string GetName() { return this->m_Name; }
