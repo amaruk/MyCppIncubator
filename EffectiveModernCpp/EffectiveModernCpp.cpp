@@ -88,9 +88,10 @@ int main()
           receive exactly the same arguments as were passed to the forwarding functions.
      rvalue右值是实现这两个功能的基础。
    */
+  RuleOfFive();
   //item23();
-  item24();
-  //TODO item25();
+  //item24();
+  item25();
   //TODO item26();
   //TODO item27();
   //TODO item28();

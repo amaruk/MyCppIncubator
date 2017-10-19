@@ -62,6 +62,9 @@
     <ClInclude Include="Chapter5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RuleOfFive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -111,6 +114,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RuleOfFive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item25.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
