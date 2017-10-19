@@ -16,6 +16,7 @@ public:
   ROF(ROF&& anotherRof) : m_Name(std::move(anotherRof.m_Name)) { cout << "\tROF(ROF&&)" << endl; }
   ROF& operator=(ROF& anotherRof) { cout << "\t=(ROF&)" << endl; this->m_Name = anotherRof.m_Name; return *this; }
   ROF& operator=(ROF&& anotherRof) { cout << "\t=(ROF&&)" << endl; this->m_Name = std::move(anotherRof.m_Name); return *this; }
+  ~ROF() { cout << "\t~ROF()" << endl; }
 
   void SetName(const string& newName) { this->m_Name = newName; }
   const string GetName() { return this->m_Name; }
