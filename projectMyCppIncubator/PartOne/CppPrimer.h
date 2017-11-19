@@ -189,9 +189,9 @@ private:
 	// 指针
 	short *arithType_ptr = nullptr;
     // 数组
-    intAry3 intAry3Var{ 1, 2, 3 }; // 类内初始值必须使用=做初始化或试用{}直接初始化
-    // 可变数据成员
-    mutable int mutableVar = 0; // 类内初始值必须使用=做初始化或试用{}直接初始化
+    intAry3 intAry3Var{ 1, 2, 3 }; // 类内初始值必须使用=做初始化或使用{}直接初始化
+    // 可变数据成员，即使在const成员函数里也可以改变mutable成员的值
+    mutable int mutableVar = 0; // 类内初始值必须使用=做初始化或使用{}直接初始化
 
     //// 打印数组
     void CppPrimer::printIntAry(int intAry[], int size);

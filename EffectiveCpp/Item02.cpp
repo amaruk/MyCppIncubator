@@ -14,7 +14,7 @@ const int Item02::NumTurns; // 特例：定义不能在头文件中
 
 void ExampleItem02()
 {
-  // Prefer consts, enums, and inlines to #defines
+  // Item 2: Prefer consts, enums, and inlines to #defines
   // 把预处理的工作转换为编译器的工作
 
 

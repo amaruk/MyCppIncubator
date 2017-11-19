@@ -1,4 +1,7 @@
 #pragma once
+
+#include "common.h"
+
 class Item01
 {
 public:

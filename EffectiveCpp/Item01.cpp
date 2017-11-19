@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "common.h"
 #include "Item01.h"
 
 
@@ -14,7 +13,7 @@ Item01::~Item01()
 
 void ExampleItem01()
 {
-  // View C++ as a federation of languages
+  // Item 1: View C++ as a federation of languages
   // 可以把C++分为4部分：
   // - C：基于C的部分，兼容C的考虑
   // - Object-Oriented C++：关于类的特性
