@@ -46,9 +46,10 @@ public:
     { std::cout << "Constructor(bool, char, wchar_t)" << std::endl; }
 
     // 参数为string
-    // explicit关键字阻止此构造函数的参数做隐式类类型转换
+    // explicit关键字阻止编译器为此构造函数的参数做隐式类类型转换
     // 多个参数的构造函数不能隐式类类型转换，所以explicit只对单参数构造函数有效
-    // explicit关键字只允许出现在类内部的构造函数声明出，类外部的定义不能加explicit
+    // 多个参数的构造函数如果只有一个参数没有默认值，也属于可以使用explicit的构造函数
+    // explicit关键字只允许出现在类内部的构造函数声明处，类外部的定义不能加explicit
     explicit CppPrimer(CppPrimerStr initStr);
     
     // C++11引入委托构造函数，一个构造函数使用其所属类的其他构造函数执行部分或全部初始化工作。

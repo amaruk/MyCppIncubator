@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "projectMyCppIncubator", "projectMyCppIncubator\projectMyCppIncubator.vcxproj", "{75691D44-7B43-4B85-BD9E-CB5D48A678CD}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsTips", "WindowsTips\WindowsTips.vcxproj", "{8502D6D6-3866-4010-9B2E-E056005FC7BB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EffectiveModernCpp", "EffectiveModernCpp\EffectiveModernCpp.vcxproj", "{F6CE0194-BA48-44BA-9FD6-2DC20DB36F57}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EffectiveCpp", "EffectiveCpp\EffectiveCpp.vcxproj", "{1F73FE69-56E1-46D6-B4AA-98A7B722757D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,14 @@ Global
 		{F6CE0194-BA48-44BA-9FD6-2DC20DB36F57}.Release|x64.Build.0 = Release|x64
 		{F6CE0194-BA48-44BA-9FD6-2DC20DB36F57}.Release|x86.ActiveCfg = Release|Win32
 		{F6CE0194-BA48-44BA-9FD6-2DC20DB36F57}.Release|x86.Build.0 = Release|Win32
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Debug|x64.ActiveCfg = Debug|x64
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Debug|x64.Build.0 = Debug|x64
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Debug|x86.ActiveCfg = Debug|Win32
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Debug|x86.Build.0 = Debug|Win32
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Release|x64.ActiveCfg = Release|x64
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Release|x64.Build.0 = Release|x64
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Release|x86.ActiveCfg = Release|Win32
+		{1F73FE69-56E1-46D6-B4AA-98A7B722757D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

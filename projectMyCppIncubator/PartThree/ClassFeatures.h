@@ -6,8 +6,8 @@
     五种特殊的成员函数（拷贝控制操作 copy control）：
     - copy constructor拷贝构造函数：当用同类型的另一个对象初始化本对象时的行为
     - move constructor移动构造函数：同上
-    - copy-assignment operator拷贝赋值运算符：将一个对象赋予给同类型的另一个对象时的行为
-    - move-assignment operator移动赋值运算符：同上
+    - copy assignment operator拷贝赋值运算符：将一个对象赋予给同类型的另一个对象时，拷贝对象的值
+    - move assignment operator移动赋值运算符：同上
     - destructor析构函数：对象销毁时的行为
 
     如果类没有定义拷贝操作成员，编译器自动定义缺省操作。
@@ -40,10 +40,23 @@ public:
     // 数组的元素逐个拷贝。
     // 参数是引用。因为非引用的形参在实参传递时需要调用拷贝构造函数，
     // 如果拷贝构造函数的形参为非引用，就会无限循环调用自己
-    ClassFeatures(const ClassFeatures &cfIns); // 参数可以非const，但一般都是。通常不是explicit。
+    ClassFeatures(const ClassFeatures& cfIns); // 参数可以非const，但一般都是。通常不是explicit。
     // 合成拷贝构造函数相当于 ClassFeatures(const ClassFeatures &cfIns) : mem1(cfIns.mem1), mem2(cfIns.mem2){}
     // 使能下面代码，阻止拷贝构造函数
     //ClassFeatures(const ClassFeatures &cfIns) = delete;
+
+    // 重载赋值运算符，实现拷贝赋值运算符，定义how an object is passed by value.
+    // 如不自定义，编译器会生成合成拷贝赋值运算符(synthesized copy-assignment operator)
+    ClassFeatures & operator=(const ClassFeatures& rgtIns); // 赋值运算符通常返回指向左侧运算对象的引用
+    // 合成拷贝构造函数相当于 ClassFeatures & operator=(const ClassFeatures &rgtIns) { mem1 = rgtIns.mem1; mem2 = rgtIns.mem2; return *this; }
+    // 注意obj1 = obj2;使用了拷贝赋值运算符，而Object obj1 = obj2;使用了拷贝构造函数。
+    // 规则为：但有新对象创建时会调用拷贝构造函数，否则只是拷贝赋值
+
+    // 移动构造函数
+    ClassFeatures(ClassFeatures&& cfIns) noexcept; // 移动操作不应抛出任何异常
+
+    // 移动赋值运算符
+    ClassFeatures& operator=(ClassFeatures&& rgtIns) noexcept;
 
     // 析构函数
     // 释放对象使用的资源，销毁对象的非static数据成员(此操作在析构函数执行完后，隐含的析构阶段执行）
@@ -53,20 +66,9 @@ public:
     // 析构函数可以= delete，但不能再定义该类型的变量或释放指向该类型动态分配对象的指针
     ~ClassFeatures();
 
-    // 重载赋值运算符，实现拷贝赋值运算符
-    // 如不自定义，编译器会生成合成拷贝赋值运算符(synthesized copy-assignment operator)
-    ClassFeatures & operator=(const ClassFeatures &rgtIns); // 赋值运算符通常返回指向左侧运算对象的引用
-    // 合成拷贝构造函数相当于 ClassFeatures & operator=(const ClassFeatures &rgtIns) { mem1 = rgtIns.mem1; mem2 = rgtIns.mem2; return *this; }
-
-    // 移动构造函数
-    ClassFeatures(ClassFeatures &&cfIns) noexcept; // 移动操作不应抛出任何异常
-
-    // 移动赋值运算符
-    ClassFeatures & operator=(ClassFeatures &&rgtIns) noexcept;
-
     // 普通成员函数也可以同时提供拷贝和移动的版本
-    void funcCopyOrMove(const ClassFeatures &cfIns) {} // 拷贝版本
-    void funcCopyOrMove(ClassFeatures &&cfIns) {} // 移动版本
+    void funcCopyOrMove(const ClassFeatures& cfIns) {} // 拷贝版本
+    void funcCopyOrMove(ClassFeatures&& cfIns) {} // 移动版本
 
     // 使用引用限定符reference qualifier声明 左值引用函数 和 右值引用函数
     // 和const限定符一样，引用限定符只能用于非static成员函数，且必须同时现在声明和定义中

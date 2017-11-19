@@ -68,6 +68,8 @@ StdLibContainer::~StdLibContainer()
 void StdLibContainer::testContainer(void)
 {
     // 容器：特定类型对象的集合
+    // STL: Standard Template Library.
+    // C++标准库中的容器(vector, list, ...)、iterator(vector<int>::iterator, ...)、算法(for_each, find, sort, ...)、相关功能的库
     // 顺序容器：提供控制元素存储和访问顺序的能力顺序与元素加入容器时的位置对应
 
     //// 各种顺序容器类型

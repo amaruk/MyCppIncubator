@@ -164,6 +164,8 @@ void CppPrimer::displayArithTypes(void)
 	//  对解引用指针执行sizeof得到指针指向的对象所占空间大小，指针不需有效
 	//  对数组执行sizeof得到整个数组所占空间大小。可用constexpr size_t sz = sizeof(ia) / sizeof(*ia)来获得数组元素个数
   //  size_t是机器相关的无符号类型，被设计的足够大以便能够表示内存中任意对象的大小，在cstddef头文件中定义
+  //  在C++里是对某种unsigned类型的typedef，用于计数（如char*的string里字符的个数，STL容器的元素个数），
+  //  也是操作符[]函数接受的参数类型，如vector，deque，string。
 	//  对string对象或vector对象执行sizeof只返回固定部分的大小，而不计算对象中的元素占用多少空间。
 
 	//// 命名的强制类型转换
