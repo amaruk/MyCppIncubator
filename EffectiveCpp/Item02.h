@@ -1,11 +1,14 @@
 #pragma once
-#include "common.h"
 
-class Item02
+#include "ItemBase.h"
+
+class Item02 : public ItemBase
 {
 public:
   Item02();
   ~Item02();
+
+  void ItemEntry() override;
 
   static const int NumTurns = 5; // 特例：类的成员如果是static的const的整型（integer，char，bool），则此语句为声明
                                  // 定义在实现文件里，不能放在此头文件中，因为初值在声明时已经给出，定义时不可再给初值
@@ -24,4 +27,3 @@ inline T callWithMax(const T& a, const T& b)
   return (a > b) ? a : b;
 }
 
-void ExampleItem02();

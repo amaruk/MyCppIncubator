@@ -2,7 +2,8 @@
 #include "Item04.h"
 
 
-Item04::Item04()
+Item04::Item04() :
+  ItemBase("04")
 {
 }
 
@@ -11,10 +12,9 @@ Item04::~Item04()
 {
 }
 
-void ExampleItem04()
+void Item04::ItemEntry()
 {
   // Item 4: Make sure that objects are initialized before they're used
-  cout << "===== Example Item 04 =====" << endl;
 
   // 在类的构造函数member initialization list里初始化成员。
   // 在构造函数内部对成员操作是赋值，在初始化列表里是初始化。

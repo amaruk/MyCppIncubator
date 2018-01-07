@@ -151,6 +151,10 @@
     <ClInclude Include="Item03.h" />
     <ClInclude Include="Item04.h" />
     <ClInclude Include="Item05.h" />
+    <ClInclude Include="Item06.h" />
+    <ClInclude Include="Item07.h" />
+    <ClInclude Include="Item08.h" />
+    <ClInclude Include="ItemBase.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -162,6 +166,10 @@
     <ClCompile Include="Item03.cpp" />
     <ClCompile Include="Item04.cpp" />
     <ClCompile Include="Item05.cpp" />
+    <ClCompile Include="Item06.cpp" />
+    <ClCompile Include="Item07.cpp" />
+    <ClCompile Include="Item08.cpp" />
+    <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

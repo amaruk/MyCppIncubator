@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Item02.h"
 
-Item02::Item02()
+Item02::Item02() :
+  ItemBase("02")
 {
 }
 
@@ -12,13 +13,10 @@ Item02::~Item02()
 
 const int Item02::NumTurns; // 特例：定义不能在头文件中
 
-void ExampleItem02()
+void Item02::ItemEntry()
 {
   // Item 2: Prefer consts, enums, and inlines to #defines
   // 把预处理的工作转换为编译器的工作
-
-
-  cout << "===== Example Item 02 =====" << endl;
 
   // 用const常量替代宏定义，如
   // #define ASPECT_RATIO 1.653

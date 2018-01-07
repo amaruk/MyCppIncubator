@@ -2,7 +2,8 @@
 #include "Item03.h"
 #include <vector>
 
-Item03::Item03()
+Item03::Item03() :
+  ItemBase("03")
 {
 }
 
@@ -12,11 +13,9 @@ Item03::~Item03()
 }
 
 
-void ExampleItem03()
+void Item03::ItemEntry()
 {
   // Item 3: Use const whenever possible 
-
-  cout << "===== Example Item 03 =====" << endl;
 
   char greeting[] = "hello";
 

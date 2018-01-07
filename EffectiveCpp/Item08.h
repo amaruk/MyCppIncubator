@@ -2,11 +2,14 @@
 
 #include "ItemBase.h"
 
-class Item01 : public ItemBase
+class Item08 :
+  public ItemBase
 {
 public:
-  Item01();
-  ~Item01();
+  Item08();
+  ~Item08();
 
   void ItemEntry() override;
+
 };
+
