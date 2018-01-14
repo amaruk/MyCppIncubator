@@ -10,25 +10,25 @@ Item07::~Item07()
 {
 }
 
-class AbstractBaseClass
+class Item7AbstractBaseClass
 {
 public:
-  AbstractBaseClass() { cout << "Constructor: AbstractBaseClass" << endl; }
-  virtual ~AbstractBaseClass() = 0;
+  Item7AbstractBaseClass() { cout << "Constructor: Item7AbstractBaseClass" << endl; }
+  virtual ~Item7AbstractBaseClass() = 0;
 };
 
 // 必须定义纯虚的析构函数，否则链接错误
 // 因为子类析构时会调用基类的析构函数
-AbstractBaseClass::~AbstractBaseClass()
+Item7AbstractBaseClass::~Item7AbstractBaseClass()
 {
-  cout << "Destructor: AbstractBaseClass" << endl;
+  cout << "Destructor: Item7AbstractBaseClass" << endl;
 }
 
-class DerivedClass : public AbstractBaseClass
+class Item7DerivedClass : public Item7AbstractBaseClass
 {
 public:
-  DerivedClass() { cout << "Constructor: DerivedClass" << endl; }
-  ~DerivedClass() { cout << "Destructor: DerivedClass" << endl; }
+  Item7DerivedClass() { cout << "Constructor: Item7DerivedClass" << endl; }
+  ~Item7DerivedClass() { cout << "Destructor: Item7DerivedClass" << endl; }
 };
 
 void Item07::ItemEntry()
@@ -42,6 +42,6 @@ void Item07::ItemEntry()
   // 不要继承且多态没有virtual成员的类，析构时会导致未定义行为
   // 有纯虚构造函数的类是抽象类，不能实例化。如果想把某个类定义为抽象类，但其成员没有纯虚函数，则使其析构为纯虚。但注意要定义为此类的纯虚构造函数。
 
-  AbstractBaseClass* pBase = new DerivedClass();
+  Item7AbstractBaseClass* pBase = new Item7DerivedClass();
   delete pBase;
 }
