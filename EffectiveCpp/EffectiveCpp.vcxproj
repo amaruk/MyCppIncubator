@@ -155,6 +155,8 @@
     <ClInclude Include="Item07.h" />
     <ClInclude Include="Item08.h" />
     <ClInclude Include="Item09.h" />
+    <ClInclude Include="Item10.h" />
+    <ClInclude Include="Item11.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -171,6 +173,8 @@
     <ClCompile Include="Item07.cpp" />
     <ClCompile Include="Item08.cpp" />
     <ClCompile Include="Item09.cpp" />
+    <ClCompile Include="Item10.cpp" />
+    <ClCompile Include="Item11.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
