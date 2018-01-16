@@ -13,6 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Chapter_01">
+      <UniqueIdentifier>{30df7e0a-b6fa-44e9-9ad3-163808d6566a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter_01">
+      <UniqueIdentifier>{2a799107-2490-4f24-a38c-adcf90d78613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Chapter_02">
+      <UniqueIdentifier>{c885aed0-1254-440a-945f-049d9ac37e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter_02">
+      <UniqueIdentifier>{8fdbd980-9344-45ac-b00a-9e8fe43961cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Chapter_03">
+      <UniqueIdentifier>{25606337-f519-4c2d-ae7c-fccc00da34e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter_03">
+      <UniqueIdentifier>{72536050-4af5-43cb-8eb4-182ae9e988b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Chapter_04">
+      <UniqueIdentifier>{74c938b8-5748-46a9-89b0-205ae4153782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter_04">
+      <UniqueIdentifier>{fd93b379-4764-4dcc-8a16-9ad1740551dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -21,59 +45,68 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item01.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item02.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item03.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item04.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item05.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item06.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ItemBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Item01.h">
+      <Filter>Header Files\Chapter_01</Filter>
+    </ClInclude>
+    <ClInclude Include="Item04.h">
+      <Filter>Header Files\Chapter_01</Filter>
+    </ClInclude>
+    <ClInclude Include="Item03.h">
+      <Filter>Header Files\Chapter_01</Filter>
+    </ClInclude>
+    <ClInclude Include="Item02.h">
+      <Filter>Header Files\Chapter_01</Filter>
+    </ClInclude>
+    <ClInclude Include="Item05.h">
+      <Filter>Header Files\Chapter_02</Filter>
+    </ClInclude>
+    <ClInclude Include="Item06.h">
+      <Filter>Header Files\Chapter_02</Filter>
+    </ClInclude>
     <ClInclude Include="Item07.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_02</Filter>
     </ClInclude>
     <ClInclude Include="Item08.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_02</Filter>
     </ClInclude>
     <ClInclude Include="Item09.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_02</Filter>
     </ClInclude>
     <ClInclude Include="Item10.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_02</Filter>
     </ClInclude>
     <ClInclude Include="Item11.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_02</Filter>
     </ClInclude>
     <ClInclude Include="Item12.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_02</Filter>
     </ClInclude>
     <ClInclude Include="Item13.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_03</Filter>
     </ClInclude>
     <ClInclude Include="Item14.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_03</Filter>
     </ClInclude>
     <ClInclude Include="Item15.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Chapter_03</Filter>
+    </ClInclude>
+    <ClInclude Include="Item16.h">
+      <Filter>Header Files\Chapter_03</Filter>
+    </ClInclude>
+    <ClInclude Include="Item17.h">
+      <Filter>Header Files\Chapter_03</Filter>
+    </ClInclude>
+    <ClInclude Include="Item18.h">
+      <Filter>Header Files\Chapter_04</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,53 +116,62 @@
     <ClCompile Include="EffectiveCpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item01.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item02.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item03.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item04.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item05.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item06.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ItemBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Item01.cpp">
+      <Filter>Source Files\Chapter_01</Filter>
+    </ClCompile>
+    <ClCompile Include="Item02.cpp">
+      <Filter>Source Files\Chapter_01</Filter>
+    </ClCompile>
+    <ClCompile Include="Item03.cpp">
+      <Filter>Source Files\Chapter_01</Filter>
+    </ClCompile>
+    <ClCompile Include="Item04.cpp">
+      <Filter>Source Files\Chapter_01</Filter>
+    </ClCompile>
+    <ClCompile Include="Item05.cpp">
+      <Filter>Source Files\Chapter_02</Filter>
+    </ClCompile>
+    <ClCompile Include="Item06.cpp">
+      <Filter>Source Files\Chapter_02</Filter>
+    </ClCompile>
     <ClCompile Include="Item07.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_02</Filter>
     </ClCompile>
     <ClCompile Include="Item08.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_02</Filter>
     </ClCompile>
     <ClCompile Include="Item09.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_02</Filter>
     </ClCompile>
     <ClCompile Include="Item10.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_02</Filter>
     </ClCompile>
     <ClCompile Include="Item11.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_02</Filter>
     </ClCompile>
     <ClCompile Include="Item12.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_02</Filter>
     </ClCompile>
     <ClCompile Include="Item13.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_03</Filter>
     </ClCompile>
     <ClCompile Include="Item14.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_03</Filter>
     </ClCompile>
     <ClCompile Include="Item15.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Chapter_03</Filter>
+    </ClCompile>
+    <ClCompile Include="Item16.cpp">
+      <Filter>Source Files\Chapter_03</Filter>
+    </ClCompile>
+    <ClCompile Include="Item17.cpp">
+      <Filter>Source Files\Chapter_03</Filter>
+    </ClCompile>
+    <ClCompile Include="Item18.cpp">
+      <Filter>Source Files\Chapter_04</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
