@@ -688,10 +688,10 @@ void CppPrimer::functionTest(void)
     initializerListTest(initializer_list<string>{"one", "two", "three"}, "hundred");
     initializerListTest(initializer_list<string>{"1", "2", "3", "4", "5"}, "100");
     // 方法二：如果实参类型不同，编写可变参数模板variadic template
-    // 接受可变数目参数的模板函数或模板类
-    // 可变数目的参数成为参数包parameter packet
+    // 可变参数模板：接受可变数目参数的模板函数或模板类
+    // 可变数目的参数称为参数包parameter packet，有两种参数包：
     // - 模板参数包template parameter packet：0个或多个模板参数
-    // - 函数参数包function parameter packet：0个或多个模板参数
+    // - 函数参数包function parameter packet：0个或多个函数参数
     variadicTemplate("StrForT", 1, 2.2, '3', string("444"));
     cout << endl;
 

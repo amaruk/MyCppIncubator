@@ -108,6 +108,9 @@
     <ClInclude Include="Item18.h">
       <Filter>Header Files\Chapter_04</Filter>
     </ClInclude>
+    <ClInclude Include="Item19.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="Item18.cpp">
       <Filter>Source Files\Chapter_04</Filter>
+    </ClCompile>
+    <ClCompile Include="Item19.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

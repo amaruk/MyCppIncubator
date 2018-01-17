@@ -240,10 +240,20 @@ void variadicTemplate(const T &t)
         << "\tt is: " << t << endl;
 }
 
-// Args是模板参数包，表示一个或多个模板类型参数
-// rest是函数参数包，表示一个或多个函数参数
+// 用...指出一个模板参数或函数参数是一个包。
+// Args是模板参数包，表示零个或多个模板类型参数
+// rest是函数参数包，表示零个或多个函数参数
+// 下面的例子表示variadicTemplate是可变参数函数模板，
+// 有名为T的类型参数，名为Args的模板参数包，可以表示零个或多个额外的类型参数。
+// 函数参数列表里包含const &类型的参数，指向T的类型；包含名为rest的函数参数包，表示零个或多个函数参数
+// 实际调用时，推导如下：
+// int i=0; double d=3.14; string s="hello";
+// variadicTemplate(i, s, 123, d); // 包中有3个参数，编译器实例化出 void variadicTemplate(const int&, const string&, const int&, const double&);
+// variadicTemplate(s, 123, d);    // 包中有2个参数，编译器实例化出 void variadicTemplate(const string&, const int&, const double&);
+// variadicTemplate(s, i);         // 包中有1个参数，编译器实例化出 void variadicTemplate(const string&, const int&);
+// variadicTemplate("test");       // 空包，编译器实例化出 void variadicTemplate(const char[5]&);
 template <typename T, typename... Args>
-void variadicTemplate(const T &t, const Args&... rest) // 用...扩展Args，扩展（expand）成函数参数列表
+void variadicTemplate(const T &t, const Args&... rest) // 用...扩展Args
 {
     // 用sizeof...获取模板参数包或函数参数包的实际数量
     size_t argsSize = sizeof...(Args);
