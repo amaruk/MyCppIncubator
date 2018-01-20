@@ -11,6 +11,6 @@ public:
   virtual void ItemEntry() = 0;
 
 private:
-  string m_itemNo{ "" };
+  string m_itemNo{};
 };
 
