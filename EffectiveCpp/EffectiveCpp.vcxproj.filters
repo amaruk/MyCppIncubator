@@ -145,6 +145,12 @@
       <Filter>Header Files\Chapter_05</Filter>
     </ClInclude>
     <ClInclude Include="Item29.h">
+      <Filter>Header Files\Chapter_05</Filter>
+    </ClInclude>
+    <ClInclude Include="Item30.h">
+      <Filter>Header Files\Chapter_05</Filter>
+    </ClInclude>
+    <ClInclude Include="Item31.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -243,6 +249,12 @@
       <Filter>Source Files\Chapter_05</Filter>
     </ClCompile>
     <ClCompile Include="Item29.cpp">
+      <Filter>Source Files\Chapter_05</Filter>
+    </ClCompile>
+    <ClCompile Include="Item30.cpp">
+      <Filter>Source Files\Chapter_05</Filter>
+    </ClCompile>
+    <ClCompile Include="Item31.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
