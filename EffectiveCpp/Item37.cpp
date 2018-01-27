@@ -32,14 +32,17 @@ namespace ITEM37
     void Virtual(string par) override { cout << "ANODERIVED Virtual: " << par << endl; }
   };
 }
+
 void Item37::ItemEntry()
 {
-  using ITEM37::BaseClass;
-  using ITEM37::DerivedClass;
-  using ITEM37::AnotherDerivedClass;
   //// Item 37: Never redefine a function's inherited default parameter value
   // 虚函数动态绑定（dynamic binding或late binding），参数默认值静态绑定（static binding或early binding）
   // 静态类型是声明是在代码字面上的类型，和赋予的对象类型无关。
+
+  using ITEM37::BaseClass;
+  using ITEM37::DerivedClass;
+  using ITEM37::AnotherDerivedClass;
+
   BaseClass* pB1;                           // 静态类型为BaseClass*；动态类型没有，因为还没赋值
   BaseClass* pB2 = new DerivedClass;        // 静态类型为BaseClass*；动态类型为DerivedClass*
   BaseClass* pB3 = new AnotherDerivedClass; // 静态类型为BaseClass*；动态类型为AnotherDerivedClass*
