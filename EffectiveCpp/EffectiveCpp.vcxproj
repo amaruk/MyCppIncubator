@@ -193,6 +193,8 @@
     <ClInclude Include="Item45.h" />
     <ClInclude Include="Item46.h" />
     <ClInclude Include="Item47.h" />
+    <ClInclude Include="Item48.h" />
+    <ClInclude Include="Item49.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -247,6 +249,8 @@
     <ClCompile Include="Item45.cpp" />
     <ClCompile Include="Item46.cpp" />
     <ClCompile Include="Item47.cpp" />
+    <ClCompile Include="Item48.cpp" />
+    <ClCompile Include="Item49.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
