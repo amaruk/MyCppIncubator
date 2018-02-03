@@ -225,6 +225,12 @@
     <ClInclude Include="Item49.h">
       <Filter>Header Files\Chapter_08</Filter>
     </ClInclude>
+    <ClInclude Include="Item50.h">
+      <Filter>Header Files\Chapter_08</Filter>
+    </ClInclude>
+    <ClInclude Include="Item51.h">
+      <Filter>Header Files\Chapter_08</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -381,6 +387,12 @@
       <Filter>Source Files\Chapter_07</Filter>
     </ClCompile>
     <ClCompile Include="Item49.cpp">
+      <Filter>Source Files\Chapter_08</Filter>
+    </ClCompile>
+    <ClCompile Include="Item50.cpp">
+      <Filter>Source Files\Chapter_08</Filter>
+    </ClCompile>
+    <ClCompile Include="Item51.cpp">
       <Filter>Source Files\Chapter_08</Filter>
     </ClCompile>
   </ItemGroup>
