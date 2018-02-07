@@ -709,6 +709,7 @@ bool toBeBind(int intArg, char charArg, string strArg)
 void StdLibContainer::testGeneric(void)
 {
     /*
+        泛型编程是编写与类型无关的代码，是代码复用的一种手段。模板则是泛型编程的基础。
         标准库提供独立于特定容器的泛型算法（generic algorithm），提供一些经典算法的公共接口，如排序和搜索。
         泛型算法用于不同类型容器和不同类型元素。
         算法只操作迭代器，不会执行容器操作改变容器大小

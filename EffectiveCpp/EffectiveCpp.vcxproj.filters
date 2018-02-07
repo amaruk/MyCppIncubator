@@ -246,6 +246,9 @@
     <ClInclude Include="Item54.h">
       <Filter>Header Files\Chapter_09</Filter>
     </ClInclude>
+    <ClInclude Include="Item55.h">
+      <Filter>Header Files\Chapter_09</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -417,6 +420,9 @@
       <Filter>Source Files\Chapter_09</Filter>
     </ClCompile>
     <ClCompile Include="Item54.cpp">
+      <Filter>Source Files\Chapter_09</Filter>
+    </ClCompile>
+    <ClCompile Include="Item55.cpp">
       <Filter>Source Files\Chapter_09</Filter>
     </ClCompile>
   </ItemGroup>
