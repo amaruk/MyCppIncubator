@@ -184,7 +184,8 @@ void mutexTest(void)
 
   // Lock
   // std::lock_guard    实现mutex生命周期的Mutex RAII，只有构造函数
-  // std::unique_lock   同上，提供更好的上锁和解锁控制函数
+  // std::unique_lock   同上，提供更好的上锁和解锁控制函数，即可以在构造时不lock，手动lock和unlock，其实例可move
+  // 如果不需要unique_lock提供的额外功能，则选用lock_guard。
   // RAII: Resource Acquisition Is Initialization
   // 在类的构造函数中分配资源，在析构函数中释放资源。
   // 当一个对象创建的时候，构造函数会自动地被调用；
