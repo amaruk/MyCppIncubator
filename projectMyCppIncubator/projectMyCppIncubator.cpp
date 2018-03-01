@@ -1,5 +1,4 @@
-﻿// projectMyCppIncubator.cpp : Defines the entry point for the console application.
-//
+﻿// 基于C++ Primer第五版的笔记
 
 #include "stdafx.h"
 #include "PartOne/CppPrimer.h"
