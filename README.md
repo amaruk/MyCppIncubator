@@ -1,7 +1,5 @@
 # MyCppIncubator
-Try to create a C++ project with as many language features as possible.
-
-Memo of the following books:
+This project contains memos and examples of the following books:
 
 * C++ Primer (5th Edition)
 * Effective C++ (3rd Edition)

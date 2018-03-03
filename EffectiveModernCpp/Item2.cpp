@@ -1,14 +1,19 @@
 #include "stdafx.h"
-#include "Chapter1.h"
+#include "Item02.h"
 
-using std::cout;
-using std::endl;
-
-void item2()
+Item02::Item02() :
+  ItemBase("02")
 {
-  cout << endl << "----- Item 2 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item02::~Item02()
+{
+}
+
+
+void Item02::ItemEntry()
+{
   // 可以把auto当作template
   // auto x = 27;
   // const auto cx = x;

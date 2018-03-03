@@ -146,19 +146,29 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Chapter1.h" />
-    <ClInclude Include="Chapter5.h" />
+    <ClInclude Include="Chapter01.h" />
+    <ClInclude Include="Chapter03.h" />
+    <ClInclude Include="Chapter04.h" />
+    <ClInclude Include="Chapter05.h" />
+    <ClInclude Include="Chapter06.h" />
     <ClInclude Include="ClassHierarchy.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Item01.h" />
+    <ClInclude Include="Item02.h" />
     <ClInclude Include="Item18.h" />
     <ClInclude Include="Item19.h" />
     <ClInclude Include="Item20.h" />
     <ClInclude Include="Item21.h" />
     <ClInclude Include="Item22.h" />
-    <ClInclude Include="Item3.h" />
+    <ClInclude Include="Item03.h" />
+    <ClInclude Include="Item23.h" />
+    <ClInclude Include="Item24.h" />
+    <ClInclude Include="Item25.h" />
     <ClInclude Include="Item31.h" />
     <ClInclude Include="Item32.h" />
     <ClInclude Include="Item33.h" />
-    <ClInclude Include="Item9.h" />
+    <ClInclude Include="Item09.h" />
+    <ClInclude Include="ItemBase.h" />
     <ClInclude Include="MemLeakCheck.h" />
     <ClInclude Include="RuleOfFive.h" />
     <ClInclude Include="stdafx.h" />
@@ -180,7 +190,8 @@
     <ClCompile Include="Item31.cpp" />
     <ClCompile Include="Item32.cpp" />
     <ClCompile Include="Item33.cpp" />
-    <ClCompile Include="Item9.cpp" />
+    <ClCompile Include="Item09.cpp" />
+    <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="MemLeakCheck.cpp" />
     <ClCompile Include="RuleOfFive.cpp" />
     <ClCompile Include="stdafx.cpp">

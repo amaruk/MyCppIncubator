@@ -1,20 +1,24 @@
 #include "stdafx.h"
-#include "Chapter5.h"
+#include "Item23.h"
 #include <memory>
-#include <vector>
 #include <functional>
 
-using std::cout;
-using std::endl;
 using std::make_unique;
-using std::vector;
 using std::bind;
 
-void item23()
+Item23::Item23() :
+  ItemBase("23")
 {
-  cout << endl << "----- Item 23 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item23::~Item23()
+{
+}
+
+
+void Item23::ItemEntry()
+{
   // std::move无条件把参数转换为rvalue
   // std::forward的参数如果是用rvalue初始化的，则把参数转换为rvalue：
 

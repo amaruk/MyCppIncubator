@@ -1,13 +1,11 @@
 #include "stdafx.h"
 #include <iostream>
-#include "Chapter1.h"
-#include "Chapter5.h"
-#include "Item3.h"
-#include "Item9.h"
+#include "Chapter01.h"
+#include "Chapter03.h"
+#include "Chapter04.h"
+#include "Chapter05.h"
+#include "Chapter06.h"
 
-
-using std::cout;
-using std::endl;
 
 int main()
 {
@@ -20,27 +18,27 @@ int main()
       - for decltype
     C++14对C++11的规则进行扩展
   */
-  //item1();
-  //item2();
-  //item3();
-  //TODO item4();
+  //Item01().ItemEntry();
+  //Item02().ItemEntry();
+  //Item03().ItemEntry();
+  //TODO Item04().ItemEntry();
   
 ////////// Chapter Two: auto //////////
-  //TODO item5();
-  //TODO item6();
+  //TODO Item05().ItemEntry();
+  //TODO Item06().ItemEntry();
 
 ////////// Chapter Three: Moving to Modern C++ //////////
-  //TODO item7();
-  //TODO item8();
-  //item9();
-  //TODO item10();
-  //TODO item11();
-  //TODO item12();
-  //TODO item13();
-  //TODO item14();
-  //TODO item15();
-  //TODO item16();
-  //TODO item17();
+  //TODO Item07().ItemEntry();
+  //TODO Item08().ItemEntry();
+  //Item09().ItemEntry();
+  //TODO Item10().ItemEntry();
+  //TODO Item11().ItemEntry();
+  //TODO Item12().ItemEntry();
+  //TODO Item13().ItemEntry();
+  //TODO Item14().ItemEntry();
+  //TODO Item15().ItemEntry();
+  //TODO Item16().ItemEntry();
+  //TODO Item17().ItemEntry();
 
 ////////// Chapter Four: Smart pointers //////////
 
@@ -70,11 +68,11 @@ int main()
     allocate_shared除了make_shared的功能以外，其第一个参数为用于动态内存分配的allocator对象
     make_unique从C++14开始引入，make_shared从C++11开始引入
   */
-  //item18();
-  //item19();
-  //item20();
-  //item21();
-  //item22();
+  //Item18().ItemEntry();
+  //Item19().ItemEntry();
+  //Item20().ItemEntry();
+  //Item21().ItemEntry();
+  //Item22().ItemEntry();
 
 ////////// Chapter Five: Rvalue References, Move Semantics, and Perfect Forwarding //////////
 
@@ -88,15 +86,15 @@ int main()
           receive exactly the same arguments as were passed to the forwarding functions.
      rvalue右值是实现这两个功能的基础。
    */
-  RuleOfFive();
-  //item23();
-  //item24();
-  item25();
-  //TODO item26();
-  //TODO item27();
-  //TODO item28();
-  //TODO item29();
-  //TODO item30();
+  //RuleOfFive();
+  //Item23().ItemEntry();
+  //Item24().ItemEntry();
+  //Item25().ItemEntry();
+  //TODO Item26().ItemEntry();
+  //TODO Item27().ItemEntry();
+  //TODO Item28().ItemEntry();
+  //TODO Item29().ItemEntry();
+  //TODO Item30().ItemEntry();
 
 
 ////////// Chapter Six: Lambda Expressions //////////
@@ -116,26 +114,24 @@ int main()
      同时可以赋值给其他的auto变量，获得多个拷贝。
    */
 
-  //item31();
-  //item32();
-  //TODO item33();
-  //TODO item34();
+  //Item31().ItemEntry();
+  //Item32().ItemEntry();
+  //TODO Item33().ItemEntry();
+  //TODO Item34().ItemEntry();
   
 ////////// Chapter Seven: The Concurrency API //////////
 
-  //TODO item35();
-  //TODO item36();
-  //TODO item37();
-  //TODO item38();
-  //TODO item39();
-  //TODO item40();
+  //TODO Item35().ItemEntry();
+  //TODO Item36().ItemEntry();
+  //TODO Item37().ItemEntry();
+  //TODO Item38().ItemEntry();
+  //TODO Item39().ItemEntry();
+  //TODO Item40().ItemEntry();
   
 ////////// Chapter Eight: Tweaks //////////
 
-//TODO item41();
-//TODO item42();
-
-  cout << endl;
+  //TODO Item41().ItemEntry();
+  //TODO Item42().ItemEntry();
 
   return 0;
 }

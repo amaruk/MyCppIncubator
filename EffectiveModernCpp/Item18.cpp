@@ -1,6 +1,4 @@
-
 #include "stdafx.h"
-#include <iostream>
 #include "Item18.h"
 
 using std::cout;
@@ -65,9 +63,20 @@ auto FactoryUniquePtr::createInstDeleterCustom(int deriveType)
 #endif
 }
 
-void item18(void)
+
+Item18::Item18() :
+  ItemBase("18")
 {
-  cout << endl << "----- Item 18 -----" << endl;
+}
+
+
+Item18::~Item18()
+{
+}
+
+
+void Item18::ItemEntry()
+{
   cout << ">> Create unique_ptr with default deleter" << endl;
   {
     unique_ptr<ClassBase> pClassBase = FactoryUniquePtr::createInstDeleterDefault(1);

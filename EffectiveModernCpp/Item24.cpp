@@ -1,18 +1,19 @@
 #include "stdafx.h"
-#include "Chapter5.h"
-#include <vector>
-#include <string>
+#include "Item24.h"
 
-using std::cout;
-using std::endl;
-using std::vector;
-using std::string;
-
-void item24()
+Item24::Item24() :
+  ItemBase("24")
 {
-  cout << endl << "----- Item 24 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item24::~Item24()
+{
+}
+
+
+void Item24::ItemEntry()
+{
   // T&&不一定是右值引用，例如：
   // void f(Widget&& param)         // 右值引用
   // Widget&& var1 Widget();        // 右值引用

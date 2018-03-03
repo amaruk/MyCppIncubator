@@ -1,12 +1,21 @@
 #include "stdafx.h"
-#include "Item9.h"
+#include "Item09.h"
 #include <memory>
 #include <vector>
 #include <list>
 #include <functional>
 
-using std::cout;
-using std::endl;
+
+Item09::Item09() :
+  ItemBase("09")
+{
+}
+
+
+Item09::~Item09()
+{
+}
+
 
 // C++98风格typedef
 typedef std::unique_ptr<std::vector<std::string, std::string>> UPtrVecSS;
@@ -20,7 +29,8 @@ using FuncPtr = void(*)(int, const std::string&);
 template<typename T>
 using MyAllocList = std::list<T>;
 
-void item9()
+
+void Item09::ItemEntry()
 {
   // Type trait: 在头文件<type_traits>里定义的一组模板
   // std::remove_const<T>::type           // 从const T产生T

@@ -1,20 +1,26 @@
 #include "stdafx.h"
 #include "Item32.h"
 #include <memory>
-#include <vector>
 #include <functional>
 
-using std::cout;
-using std::endl;
 using std::make_unique;
-using std::vector;
 using std::bind;
 
-void item32()
-{
-  cout << endl << "----- Item 32 -----" << endl;
-  cout << ">> ..." << endl;
+#include "Item01.h"
 
+Item32::Item32() :
+  ItemBase("32")
+{
+}
+
+
+Item32::~Item32()
+{
+}
+
+
+void Item32::ItemEntry()
+{
   // C++11不支持把对象move进closure，C++14提供init capture以支持move及其他新功能，
   // 也叫做generalized lambda capture，意为C++11的capture的generalized模式。
   // 使用init capture可以指定：

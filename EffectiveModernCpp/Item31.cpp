@@ -1,14 +1,19 @@
 #include "stdafx.h"
 #include "Item31.h"
 
-using std::cout;
-using std::endl;
-
-void item31()
+Item31::Item31() :
+  ItemBase("31")
 {
-  cout << endl << "----- Item 31 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item31::~Item31()
+{
+}
+
+
+void Item31::ItemEntry()
+{
   // Lambda默认捕获模式为引用捕获(by-reference)和值捕获(by-value)
 
   {

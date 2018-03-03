@@ -1,6 +1,12 @@
 #pragma once
 
-#include <memory>
-#include "ClassHierarchy.h"
+#include "ItemBase.h"
+class Item21 :
+  public ItemBase
+{
+public:
+  Item21();
+  ~Item21();
 
-void item21(void);
+  void ItemEntry() override;
+};

@@ -1,13 +1,12 @@
 #pragma once
 
 #include "ItemBase.h"
-class Item33 :
+class Item01 :
   public ItemBase
 {
 public:
-  Item33();
-  ~Item33();
+  Item01();
+  ~Item01();
 
   void ItemEntry() override;
 };
-

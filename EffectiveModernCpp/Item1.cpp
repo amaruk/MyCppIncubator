@@ -1,14 +1,19 @@
 #include "stdafx.h"
-#include "Chapter1.h"
+#include "Item01.h"
 
-using std::cout;
-using std::endl;
-
-void item1()
+Item01::Item01() :
+  ItemBase("01")
 {
-  cout << endl << "----- Item 1 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item01::~Item01()
+{
+}
+
+
+void Item01::ItemEntry()
+{
   // 对于函数模板来说（Paramtype是和T相关但可能添加了限定符的部分，如const T&）：
   // template<typename T>
   // void f(ParamType param);

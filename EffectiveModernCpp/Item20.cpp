@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Item20.h"
+#include <memory>
 
 using std::cout;
 using std::endl;
@@ -7,9 +8,20 @@ using std::shared_ptr;
 using std::weak_ptr;
 using std::make_shared;
 
-void item20(void)
+
+Item20::Item20() :
+  ItemBase("20")
 {
-  cout << endl << "----- Item 20 -----" << endl;
+}
+
+
+Item20::~Item20()
+{
+}
+
+
+void Item20::ItemEntry()
+{
   cout << ">> Test weak_ptr expire" << endl;
 
   shared_ptr<int> sptr = make_shared<int>(123); // Reference countΪ1

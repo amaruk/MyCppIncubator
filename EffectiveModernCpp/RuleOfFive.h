@@ -1,11 +1,8 @@
+#include "ItemBase.h"
 #include <vector>
-#include <iostream>
 #include <string>
 
-using std::cout;
-using std::endl;
 using std::vector;
-using std::string;
 
 class ROF
 {
@@ -25,3 +22,4 @@ private:
   string m_Name{ "DEFAULT" };
 };
 
+void RuleOfFive();

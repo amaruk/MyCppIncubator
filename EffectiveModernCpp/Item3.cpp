@@ -1,15 +1,19 @@
 #include "stdafx.h"
-#include "Chapter1.h"
-#include <string>
+#include "Item03.h"
 
-using std::cout;
-using std::endl;
-
-void item3()
+Item03::Item03() :
+  ItemBase("03")
 {
-  cout << endl << "----- Item 3 -----" << endl;
-  cout << ">> ..." << endl;
-  
+}
+
+
+Item03::~Item03()
+{
+}
+
+
+void Item03::ItemEntry()
+{
   // decltype: 给一个名字或者表达式，返回对应的类型
 
   // 常见的情况：

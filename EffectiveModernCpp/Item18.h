@@ -1,9 +1,18 @@
 #pragma once
 
-#include <iostream>
-#include <memory>
+#include "ItemBase.h"
 #include "ClassHierarchy.h"
+#include <memory>
 
+class Item18 :
+  public ItemBase
+{
+public:
+  Item18();
+  ~Item18();
+
+  void ItemEntry() override;
+};
 
 class FactoryUniquePtr
 {

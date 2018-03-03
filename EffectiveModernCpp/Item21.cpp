@@ -1,7 +1,8 @@
 #include "stdafx.h"
-#include <iostream>
-#include <vector>
 #include "Item21.h"
+#include <vector>
+#include <memory>
+#include "ClassHierarchy.h"
 
 using std::cout;
 using std::endl;
@@ -17,11 +18,20 @@ int prepSth(void)
 void doSth(shared_ptr<ClassBase> pSrd, int prepSthResult)
 { }
 
-void item21(void)
-{
-  cout << endl << "----- Item 21 -----" << endl;
-  cout << ">> ..." << endl;
 
+Item21::Item21() :
+  ItemBase("21")
+{
+}
+
+
+Item21::~Item21()
+{
+}
+
+
+void Item21::ItemEntry()
+{
   //////// 倾向于使用make_xxx的3个原因：
 
   // 1. 使用make_xxx只写一遍ClassBase类名，建少代码内的重复。

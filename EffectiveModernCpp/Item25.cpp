@@ -1,18 +1,19 @@
 #include "stdafx.h"
-#include "Chapter5.h"
-#include <vector>
-#include <string>
+#include "Item25.h"
 
-using std::cout;
-using std::endl;
-using std::vector;
-using std::string;
-
-void item25()
+Item25::Item25() :
+  ItemBase("25")
 {
-  cout << endl << "----- Item 25 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item25::~Item25()
+{
+}
+
+
+void Item25::ItemEntry()
+{
   // 在转给其他函数使用之前，
   // 如果要传右值引用，用move来无条件转为右值以实现移动
   // 如果要传universial reference，因为不一定为左值引用还是右值引用，用forward来根据初始化的情况来转右值或左值再使用

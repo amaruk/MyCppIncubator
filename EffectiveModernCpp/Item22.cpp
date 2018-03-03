@@ -1,7 +1,8 @@
 #include "stdafx.h"
-#include <iostream>
-#include <vector>
 #include "Item22.h"
+#include <vector>
+#include <memory>
+#include "ClassHierarchy.h"
 
 using std::cout;
 using std::endl;
@@ -11,12 +12,19 @@ using std::shared_ptr;
 using std::make_shared;
 using std::vector;
 
-
-void item22(void)
+Item22::Item22() :
+  ItemBase("22")
 {
-  cout << endl << "----- Item 22 -----" << endl;
-  cout << ">> ..." << endl;
+}
 
+
+Item22::~Item22()
+{
+}
+
+
+void Item22::ItemEntry()
+{
   // Pimpl Idiom: Pointer to implementation idiom
   // 
   // се╣Ц

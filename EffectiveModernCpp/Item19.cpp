@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Item19.h"
+#include <memory>
 
 using std::cout;
 using std::endl;
@@ -79,9 +80,20 @@ auto FactorySharedPtr::createInstDeleterCustom(int deriveType)
   return pClassBase;
 }
 
-void item19(void)
+
+Item19::Item19() :
+  ItemBase("19")
 {
-  cout << endl << "----- Item 19 -----" << endl;
+}
+
+
+Item19::~Item19()
+{
+}
+
+
+void Item19::ItemEntry()
+{
   cout << ">> Create shared_ptr with default deleter" << endl;
   {
     shared_ptr<ClassBase> pClassBase = FactorySharedPtr::createInstDeleterDefault(2);

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -145,6 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Chapter01.h" />
+    <ClInclude Include="Chapter02.h" />
+    <ClInclude Include="Chapter03.h" />
+    <ClInclude Include="Chapter04.h" />
+    <ClInclude Include="Chapter05.h" />
+    <ClInclude Include="Chapter06.h" />
+    <ClInclude Include="Chapter07.h" />
+    <ClInclude Include="Chapter08.h" />
+    <ClInclude Include="Chapter09.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="Item01.h" />
     <ClInclude Include="Item02.h" />

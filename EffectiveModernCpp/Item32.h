@@ -1,5 +1,13 @@
 #pragma once
 
-#include <iostream>
+#include "ItemBase.h"
+class Item32 :
+  public ItemBase
+{
+public:
+  Item32();
+  ~Item32();
 
-void item32();
+  void ItemEntry() override;
+};
+
