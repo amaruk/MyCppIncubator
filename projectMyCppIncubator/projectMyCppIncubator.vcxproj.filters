@@ -45,9 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="PartOne\CppPrimer.h">
       <Filter>Header Files\PartOne</Filter>
     </ClInclude>
