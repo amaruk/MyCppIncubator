@@ -150,12 +150,14 @@
     <ClInclude Include="Chapter01.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Item01.h" />
+    <ClInclude Include="Item02.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Item01.cpp" />
+    <ClCompile Include="Item02.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="MoreEffectiveCpp.cpp" />
     <ClCompile Include="stdafx.cpp">
