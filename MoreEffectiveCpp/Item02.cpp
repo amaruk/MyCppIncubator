@@ -16,11 +16,11 @@ void Item02::ItemEntry()
 {
   // Item02: Prefer C++-style casts.
 
-  // static_castÀàËÆÓÚCµÄÀàĞÍ×ª»»¡£²»ÄÜ×ª»»constness¡£
-  // const_castÓÃÓÚÖ»×ª»»constnessºÍvolatileness¡£
-  // dynamic_castÖ»ÓÃÓÚÔÚ¼Ì³Ğ²ã¼¶ÖĞ£¬°ÑÖ¸Õë»òÒıÓÃ´Ó»ùÀà×ª»»ÎªÅÉÉúÀà»òĞÖµÜÀà£¬²¢¿ÉÍ¨¹ı¼ì²â×ª»»½á¹ûÊÇ·ñÎªnullÀ´ÅĞ¶Ï×ª»»ÊÇ·ñ³É¹¦¡£
-  // reinterpret_castºÍµ×²ãÊµÏÖ°ó¶¨£¬ÒÆÖ²ĞÔ²î
+  // static_castç±»ä¼¼äºCçš„ç±»å‹è½¬æ¢ã€‚ä¸èƒ½è½¬æ¢constnessã€‚
+  // const_castç”¨äºåªè½¬æ¢constnesså’Œvolatilenessã€‚
+  // dynamic_caståªç”¨äºåœ¨ç»§æ‰¿å±‚çº§ä¸­ï¼ŒæŠŠæŒ‡é’ˆæˆ–å¼•ç”¨ä»åŸºç±»è½¬æ¢ä¸ºæ´¾ç”Ÿç±»æˆ–å…„å¼Ÿç±»ï¼Œå¹¶å¯é€šè¿‡æ£€æµ‹è½¬æ¢ç»“æœæ˜¯å¦ä¸ºnullæ¥åˆ¤æ–­è½¬æ¢æ˜¯å¦æˆåŠŸã€‚
+  // reinterpret_castå’Œåº•å±‚å®ç°ç»‘å®šï¼Œç§»æ¤æ€§å·®
 
-  // ¶ÔÓÚshared_ptrÓÃ¶ÔÓ¦µÄ£º
+  // å¯¹äºshared_ptrç”¨å¯¹åº”çš„ï¼š
   // static_pointer_cast, dynamic_pointer_cast, const_pointer_cast, reinterpret_pointer_cast
 }

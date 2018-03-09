@@ -16,7 +16,7 @@ namespace ITEM05
   class MyInteger
   {
   public:
-    // Í¨¹ı¹¹Ôìº¯ÊıÖ§³ÖÒşÊ½ÀàĞÍ×ª»»
+    // é€šè¿‡æ„é€ å‡½æ•°æ”¯æŒéšå¼ç±»å‹è½¬æ¢
     MyInteger(int intVal) : m_val(intVal) {};
     explicit MyInteger(string strVal) : m_val(65535) {};
     MyInteger(std::wstring wstrVal, int addition = 1) : m_val(32767 + addition) {};
@@ -31,7 +31,7 @@ namespace ITEM05
   public:
     MyNotInteger(int intVal) : m_val(intVal) {};
 
-    // ÒşÊ½ÀàĞÍ×ª»»²Ù×÷·û£º operator Òª×ª»»µÄÀàĞÍ() {}
+    // éšå¼ç±»å‹è½¬æ¢æ“ä½œç¬¦ï¼š operator è¦è½¬æ¢çš„ç±»å‹() {}
     operator MyInteger()
     {
       MyInteger myInteger{0};
@@ -48,9 +48,9 @@ using namespace ITEM05;
 void Item05::ItemEntry()
 {
   // Item05: Be wary of user-defined conversion functions.
-  // ×Ô¶¨ÒåµÄÀàÈç¹ûÒªÈÃ±àÒëÆ÷Ö§³ÖÒşÊ½ÀàĞÍ×ª»»ÓĞÁ½ÖÖ·½Ê½£º
-  // 1. ´´½¨¿ÉÒÔÖ»Ìá¹©µ¥¸ö²ÎÊıÀ´µ÷ÓÃµÄ¹¹Ôìº¯Êı
-  // 2. ÖØÔØÒşÊ½ÀàĞÍ×ª»»²Ù×÷·û
+  // è‡ªå®šä¹‰çš„ç±»å¦‚æœè¦è®©ç¼–è¯‘å™¨æ”¯æŒéšå¼ç±»å‹è½¬æ¢æœ‰ä¸¤ç§æ–¹å¼ï¼š
+  // 1. åˆ›å»ºå¯ä»¥åªæä¾›å•ä¸ªå‚æ•°æ¥è°ƒç”¨çš„æ„é€ å‡½æ•°
+  // 2. é‡è½½éšå¼ç±»å‹è½¬æ¢æ“ä½œç¬¦
 
   MyInteger myIntegerCtorInt = 123 ;
   myIntegerCtorInt.Display();
@@ -58,10 +58,10 @@ void Item05::ItemEntry()
   MyInteger myIntegerCtorDouble = 654.321;
   myIntegerCtorDouble.Display();
 
-  // Explicit×èÖ¹ÒşÊ½ÀàĞÍ×ª»»
+  // Explicité˜»æ­¢éšå¼ç±»å‹è½¬æ¢
   //MyInteger myIntegerCtorStringFail = string("anything");
   //MyInteger myIntegerCtorStringFail = "anything";
-  // µ«ÏÔÊ¾µ÷ÓÃ¹¹Ôìº¯ÊıÊ±£¬²ÎÊı¿ÉÒşÊ½×ª»»
+  // ä½†æ˜¾ç¤ºè°ƒç”¨æ„é€ å‡½æ•°æ—¶ï¼Œå‚æ•°å¯éšå¼è½¬æ¢
   MyInteger myIntegerCtorStringOk{ "anything" };
   myIntegerCtorStringOk.Display();
 
@@ -72,8 +72,8 @@ void Item05::ItemEntry()
   MyInteger myInteger = myNotInteger;
   myInteger.Display();
 
-  // ÓÉÓÚ±àÒëÆ÷ÔÚÎŞÆ¥Åä²Ù×÷Ê±»á³¢ÊÔ¸÷ÖÖ¿ÉÄÜµÄÒşÊ½ÀàĞÍ×ª»»£¬
-  // Èç¹û×Ô¶¨ÒåÒşÊ½ÀàĞÍ×ª»»ºó£¬Ã»ÓĞÖØÔØ±ØÒªµÄ²Ù×÷£¬±àÒëÆ÷¿ÉÄÜÏÈ×ö×îºÏÊÊµÄÒşÊ½ÀàĞÍ×ª»»£¬È»ºóÖ´ĞĞ²Ù×÷£¬¶ø²»ÊÇÖ±½Ó±¨´í¡£
-  // ¾¡Á¿²»ÒªÊµÏÖÒşÊ½ÀàĞÍ×ª»»²Ù×÷·û£¬¶øÌá¹©ÏÔÊ½ÀàĞÍ×ª»»º¯Êı¡£Èç±ê×¼¿âµÄstring×ªCÀàĞÍµÄchar*£¬ĞèÒªÏÔÊ½µØµ÷ÓÃc_strº¯Êı¡£
-  // ±ÜÃâ¹¹Ôìº¯Êı³ÉÎªÒşÊ½ÀàĞÍ×ª»»ÓÃexplicit¹Ø¼ü×Ö¡£
+  // ç”±äºç¼–è¯‘å™¨åœ¨æ— åŒ¹é…æ“ä½œæ—¶ä¼šå°è¯•å„ç§å¯èƒ½çš„éšå¼ç±»å‹è½¬æ¢ï¼Œ
+  // å¦‚æœè‡ªå®šä¹‰éšå¼ç±»å‹è½¬æ¢åï¼Œæ²¡æœ‰é‡è½½å¿…è¦çš„æ“ä½œï¼Œç¼–è¯‘å™¨å¯èƒ½å…ˆåšæœ€åˆé€‚çš„éšå¼ç±»å‹è½¬æ¢ï¼Œç„¶åæ‰§è¡Œæ“ä½œï¼Œè€Œä¸æ˜¯ç›´æ¥æŠ¥é”™ã€‚
+  // å°½é‡ä¸è¦å®ç°éšå¼ç±»å‹è½¬æ¢æ“ä½œç¬¦ï¼Œè€Œæä¾›æ˜¾å¼ç±»å‹è½¬æ¢å‡½æ•°ã€‚å¦‚æ ‡å‡†åº“çš„stringè½¬Cç±»å‹çš„char*ï¼Œéœ€è¦æ˜¾å¼åœ°è°ƒç”¨c_strå‡½æ•°ã€‚
+  // é¿å…æ„é€ å‡½æ•°æˆä¸ºéšå¼ç±»å‹è½¬æ¢ç”¨explicitå…³é”®å­—ã€‚
 }

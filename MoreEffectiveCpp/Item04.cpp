@@ -26,12 +26,12 @@ void Item04::ItemEntry()
 {
   // Item04: Avoid gratuitous default constructors.
 
-  // ���Ĭ�Ϲ��캯�������ã����޷�����array��Ҳ�޷��ڶ���new��array
+  // 如果默认构造函数不可用，就无法创建array，也无法在堆上new出array
   //NoDefaultCtor noDefaultCtor{};
   //NoDefaultCtor noDefaultCtorAry[3];
   //NoDefaultCtor *noDefaultCtorAryPtr = new NoDefaultCtor[3];
 
-  // �������: ��ʽ���÷�Ĭ�Ϲ��캯��
+  // 解决方案: 显式调用非默认构造函数
   NoDefaultCtor noDefaultCtorAry[3] =
   {
     NoDefaultCtor(1),
@@ -39,12 +39,12 @@ void Item04::ItemEntry()
     NoDefaultCtor(3)
   };
 
-  // ���ڶ���new��array��һ��һ��new����ָ������Ԫ��һ��һ����
+  // 对于堆上new的array，一个一个new，和指针数组元素一个一个绑定
 
-  // û��Ĭ�Ϲ��캯������һ���������޷�ʹ�û���ģ���������
-  // ģ��������һ�㶼��Ҫ���������ṩĬ�Ϲ��캯������Ϊģ���ڲ�����arrayʵ�ֵġ�
+  // 没有默认构造函数的另一个问题是无法使用基于模板的容器类
+  // 模板容器类一般都会要求其类型提供默认构造函数，因为模板内部是用array实现的。
 
-  // û��Ĭ�Ϲ��캯���������Ҫ�����������ṩ�乹����Ҫ�Ĳ���
+  // 没有默认构造函数的虚基类要求其派生类提供其构造需要的参数
 
-  // �����Ĭ�Ϲ��캯����������Ķ���û�д��ڵ�ʵ�����壬��ʹ�����ϵ�������ڣ�Ҳ��Ҫ�ṩĬ�Ϲ��캯��
+  // 但如果默认构造函数构造出来的对象没有存在的实际意义，即使有以上的问题存在，也不要提供默认构造函数
 }
