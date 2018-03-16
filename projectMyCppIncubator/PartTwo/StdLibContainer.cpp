@@ -235,12 +235,12 @@ void StdLibContainer::testContainer(void)
         *删除操作vector，string之后，删除点之后位置的迭代器、引用和指针都会失效
         *删除操作list，forward_list之后，迭代器、引用、指针都有效
         *vector和string不支持push_front、emplace_front和pop_front
-        c.push_back(t);         在c的尾部创建值为t或由args创建的元素，返回void，t为元素类型的对象
-        c.emplace_back(args);   C++11，args为元素构造函数的参数
-        c.push_front(t);        在c的头部创建值为t或由args创建的元素，返回void
-        c.emplace_front(args);  C++11
-        c.insert(p,t);          在c的迭代器p指向的元素之前添加至为t或由args创建的元素，返回指向新添加元素的迭代器
-        c.emplace(p,args);      C++11
+        c.push_back(t);         在c的尾部创建值t元素，返回void，t为元素类型的对象
+        c.emplace_back(args);   C++11，在c的尾部创建由args创建的元素，args为元素构造函数的参数
+        c.push_front(t);        在c的头部创建值t元素，返回void
+        c.emplace_front(args);  C++11，在c的头部创建值为t或由args创建的元素
+        c.insert(p,t);          在c的迭代器p指向的元素之前添加t元素，返回指向新添加元素的迭代器
+        c.emplace(p,args);      C++11，在c的迭代器p指向的元素之前添加由args创建的元素
         c.insert(p,n,t);        在c的迭代器p指向的元素之前添加n个值为t的元素，返回指向新添加的第一个元素的迭代器。若n为0，返回p
         c.insert(p,b,e);        将b和e迭代器指定范围内的元素插入到迭代器p指向的元素之前，b和e不能指向c。返回指向新添加的第一个元素的迭代器。若范围为空，返回p
         c.insert(p,il);         il是花括号包围的元素值列表，插入到迭代器p指向的元素之前，返回指向新添加的第一个元素的迭代器。若il为空，返回p
