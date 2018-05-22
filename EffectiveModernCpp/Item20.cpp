@@ -24,30 +24,30 @@ void Item20::ItemEntry()
 {
   cout << ">> Test weak_ptr expire" << endl;
 
-  shared_ptr<int> sptr = make_shared<int>(123); // Reference countÎª1
+  shared_ptr<int> sptr = make_shared<int>(123); // Reference countä¸º1
   cout << "*sptr: " << *sptr << endl;
-  weak_ptr<int> wptr(sptr); // wptrÖ¸ÏòsptrËùÖ¸ÏòµÄ¶ÔÏó
-  cout << "When reference count is 1: " << wptr.expired() << endl; // ÊÇ·ñĞü¹Òdangle
+  weak_ptr<int> wptr(sptr); // wptræŒ‡å‘sptræ‰€æŒ‡å‘çš„å¯¹è±¡
+  cout << "When reference count is 1: " << wptr.expired() << endl; // æ˜¯å¦æ‚¬æŒ‚dangle
 
-  // weak_ptr²»ÄÜ½âÒıÓÃ£¬ËùÒÔÎŞ·¨µÃµ½ÆäÖ¸ÏòµÄÖµ
-  // ¼´Ê¹ÄÜ½âÒıÓÃ£¬ÏÈÓÃexpire¼ì²éÔÙ½âÒıÓÃ£¬ÕâÁ½¸ö·ÖÀëµÄ²½Öè»áµ¼ÖÂrace condition
-  // Òª½èÖúshared_ptrÀ´½âÒıÓÃ
+  // weak_pträ¸èƒ½è§£å¼•ç”¨ï¼Œæ‰€ä»¥æ— æ³•å¾—åˆ°å…¶æŒ‡å‘çš„å€¼
+  // å³ä½¿èƒ½è§£å¼•ç”¨ï¼Œå…ˆç”¨expireæ£€æŸ¥å†è§£å¼•ç”¨ï¼Œè¿™ä¸¤ä¸ªåˆ†ç¦»çš„æ­¥éª¤ä¼šå¯¼è‡´race condition
+  // è¦å€ŸåŠ©shared_ptræ¥è§£å¼•ç”¨
   {
-    shared_ptr<int> sptrFromWptr = wptr.lock(); // Èç¹ûwptrÒÑ¾­expireÁË£¬sptrFromWptrÎªnull
+    shared_ptr<int> sptrFromWptr = wptr.lock(); // å¦‚æœwptrå·²ç»expireäº†ï¼ŒsptrFromWpträ¸ºnull
     cout << "sptrFromWptr: " << *sptrFromWptr << endl;
-    auto autoFromWptr = wptr.lock(); // autoÍ¬shared_ptr
+    auto autoFromWptr = wptr.lock(); // autoåŒshared_ptr
     cout << "autoFromWptr: " << *autoFromWptr << endl;
-    shared_ptr<int> aptrByWptr(wptr); //Èç¹ûwptrÒÑ¾­expire£¬Å×³öÒì³£
+    shared_ptr<int> aptrByWptr(wptr); //å¦‚æœwptrå·²ç»expireï¼ŒæŠ›å‡ºå¼‚å¸¸
     cout << "aptrByWptr: " << *aptrByWptr << endl;
   }
 
 
-  sptr = nullptr; // Reference countÎª0
-  cout << "When reference count is 0: " << wptr.expired() << endl; // ÊÇ·ñĞü¹Òdangle
+  sptr = nullptr; // Reference countä¸º0
+  cout << "When reference count is 0: " << wptr.expired() << endl; // æ˜¯å¦æ‚¬æŒ‚dangle
 
   {
     shared_ptr<int> sptrFromWptr = wptr.lock();
-    // sptrFromWptrÓ¦¸ÃÎªnull
+    // sptrFromWptråº”è¯¥ä¸ºnull
     if (sptrFromWptr == nullptr)
     {
       cout << "sptrFromWptr is null." << endl;
@@ -58,7 +58,7 @@ void Item20::ItemEntry()
     }
 
     auto autoFromWptr = wptr.lock();
-    // sptrFromWptrÓ¦¸ÃÎªnull
+    // sptrFromWptråº”è¯¥ä¸ºnull
     if (autoFromWptr == nullptr)
     {
       cout << "autoFromWptr is null." << endl;
@@ -68,7 +68,7 @@ void Item20::ItemEntry()
       cout << "!!!!!autoFromWptr should be null!!!!!" << endl;
     }
 
-    // Ó¦¸ÃÅ×³öÒì³£
+    // åº”è¯¥æŠ›å‡ºå¼‚å¸¸
     try
     {
       shared_ptr<int> aptrByWptr(wptr);
@@ -79,10 +79,10 @@ void Item20::ItemEntry()
       cout << "autoFromWptr generates exception." << endl;
     }
 
-    // weak_ptrÔÚcontrol blockÀïÒ²ÓĞweak count
-    // £¨µ«ÓÉÓÚÓÅ»¯µÄÔ­Òò£¬²¢²»×ÜÊÇµÈÓÚweak_ptrµÄ¸öÊı£©
-    // »¹ÓĞweak_ptr´æÔÚµÄ»°£¬¼´Ê¹Ã»ÓĞshared_ptrÖ¸ÏòÁË£¬
-    // ±»Ö¸ÏòµÄ¶ÔÏóºÍcontrol blockµÄ¿Õ¼äÒ²²»»á±»ÊÍ·Å¡£
+    // weak_ptråœ¨control blocké‡Œä¹Ÿæœ‰weak count
+    // ï¼ˆä½†ç”±äºä¼˜åŒ–çš„åŸå› ï¼Œå¹¶ä¸æ€»æ˜¯ç­‰äºweak_ptrçš„ä¸ªæ•°ï¼‰
+    // è¿˜æœ‰weak_ptrå­˜åœ¨çš„è¯ï¼Œå³ä½¿æ²¡æœ‰shared_ptræŒ‡å‘äº†ï¼Œ
+    // è¢«æŒ‡å‘çš„å¯¹è±¡å’Œcontrol blockçš„ç©ºé—´ä¹Ÿä¸ä¼šè¢«é‡Šæ”¾ã€‚
     
   }
 }

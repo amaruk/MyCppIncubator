@@ -10,12 +10,12 @@ int main()
 {
 ////////// Chapter One: Deducing types //////////
   /*
-    C++98µÄtype deduction¹æÔò£º
+    C++98çš„type deductionè§„åˆ™ï¼š
       - for function templates
-    C++11µÄtype deduction¹æÔò£º
+    C++11çš„type deductionè§„åˆ™ï¼š
       - for auto
       - for decltype
-    C++14¶ÔC++11µÄ¹æÔò½øĞĞÀ©Õ¹
+    C++14å¯¹C++11çš„è§„åˆ™è¿›è¡Œæ‰©å±•
   */
   //Item01().ItemEntry();
   //Item02().ItemEntry();
@@ -42,30 +42,30 @@ int main()
 ////////// Chapter Four: Smart pointers //////////
 
   /*
-    C++11µÄËÄÖÖÖÇÄÜÖ¸Õë£º 
+    C++11çš„å››ç§æ™ºèƒ½æŒ‡é’ˆï¼š 
     - auto_ptr
-      * Deprecated leftover from C++98. unique_ptrµÄÇ°Éí¡£
+      * Deprecated leftover from C++98. unique_ptrçš„å‰èº«ã€‚
     - unique_ptr
-      * Ä¬ÈÏÇé¿öÏÂ¿ÉÒÔÈÏÎªºÍÔ­Ê¼Ö¸Õë´óĞ¡ÏàÍ¬£¬¿ÉÓÃÔÚ¶ÔÄÚ´æÊ¹ÓÃÓĞÏŞÖÆµÄ³¡¾°¡£
-        Ä¬ÈÏÓÃdelete£»Èç¹û×Ô¶¨ÒåÁËdeleter£¬ÄÚ´æÏûºÄ»áÔö¼Ó¡£
-        Ôö¼ÓµÄ´óĞ¡ÊÓdeleterº¯ÊıµÄÄÚ²¿×´Ì¬¶àÉÙ¶ø¶¨¡£
-        Ã»ÓĞcaptureµÄlambdaº¯Êı»á±ÈÃ»ÓĞÄÚ²¿×´Ì¬µÄº¯ÊıÒª½ÚÊ¡¿Õ¼ä¡£
-      * ·Ç¿ÕµÄunique_ptr¡°ÓµÓĞ¡±ÆäÖ¸ÏòµÄ¶ÔÏó¡£
-      * moveµÄÊ±ºò°Ñ¡°ÓµÓĞÈ¨¡±×ªÈÃ¸øÁíÒ»¸öÖ¸Õë£¬°Ñ×Ô¼ºÖÃÎªnull¡£
-      * copy²»ÔÊĞí£¬·ñÔò¿ÉÄÜ»á³öÏÖÁ½¸öunique_ptrÍ¬Ê±ÓµÓĞ¶ÔÏó£¬°´¸÷×ÔµÄÇé¿öÇåÀíÆäÖ¸ÏòµÄ¶ÑÉÏ¶ÔÏó
-      * ²»ÄÜ°ÑÔ­Ê¼Ö¸ÕëÖ±½Ó¸³Öµ¸øunique_ptr£¬ÒòÎªÎŞ·¨ÀàĞÍ×ª»»¡£ÒªÓÃreset(new ...)À´°ó¶¨ÓµÓĞ¹ØÏµ
+      * é»˜è®¤æƒ…å†µä¸‹å¯ä»¥è®¤ä¸ºå’ŒåŸå§‹æŒ‡é’ˆå¤§å°ç›¸åŒï¼Œå¯ç”¨åœ¨å¯¹å†…å­˜ä½¿ç”¨æœ‰é™åˆ¶çš„åœºæ™¯ã€‚
+        é»˜è®¤ç”¨deleteï¼›å¦‚æœè‡ªå®šä¹‰äº†deleterï¼Œå†…å­˜æ¶ˆè€—ä¼šå¢åŠ ã€‚
+        å¢åŠ çš„å¤§å°è§†deleterå‡½æ•°çš„å†…éƒ¨çŠ¶æ€å¤šå°‘è€Œå®šã€‚
+        æ²¡æœ‰captureçš„lambdaå‡½æ•°ä¼šæ¯”æ²¡æœ‰å†…éƒ¨çŠ¶æ€çš„å‡½æ•°è¦èŠ‚çœç©ºé—´ã€‚
+      * éç©ºçš„unique_ptrâ€œæ‹¥æœ‰â€å…¶æŒ‡å‘çš„å¯¹è±¡ã€‚
+      * moveçš„æ—¶å€™æŠŠâ€œæ‹¥æœ‰æƒâ€è½¬è®©ç»™å¦ä¸€ä¸ªæŒ‡é’ˆï¼ŒæŠŠè‡ªå·±ç½®ä¸ºnullã€‚
+      * copyä¸å…è®¸ï¼Œå¦åˆ™å¯èƒ½ä¼šå‡ºç°ä¸¤ä¸ªunique_ptråŒæ—¶æ‹¥æœ‰å¯¹è±¡ï¼ŒæŒ‰å„è‡ªçš„æƒ…å†µæ¸…ç†å…¶æŒ‡å‘çš„å †ä¸Šå¯¹è±¡
+      * ä¸èƒ½æŠŠåŸå§‹æŒ‡é’ˆç›´æ¥èµ‹å€¼ç»™unique_ptrï¼Œå› ä¸ºæ— æ³•ç±»å‹è½¬æ¢ã€‚è¦ç”¨reset(new ...)æ¥ç»‘å®šæ‹¥æœ‰å…³ç³»
     - shared_ptr
-      * ÊÇÔ­Ê¼Ö¸ÕëµÄÁ½±¶´óĞ¡£º³ıÁËÔ­Ê¼Ö¸ÕëÖ®Íâ£¬»¹ÓĞÄÚ²¿µÄÔ­Ê¼Ö¸ÕëÖ¸Ïòcontrol block
-      £¨control block½á¹¹ÀïÓĞreference count£©
-      * reference countÊÇ¶¯Ì¬·ÖÅäµÄ
-      * Reference countµÄÔö¼ÓºÍ¼õÉÙ²Ù×÷¶¼ÊÇÔ­×Ó²Ù×÷£¬Ïà¶ÔºÄÊ±
+      * æ˜¯åŸå§‹æŒ‡é’ˆçš„ä¸¤å€å¤§å°ï¼šé™¤äº†åŸå§‹æŒ‡é’ˆä¹‹å¤–ï¼Œè¿˜æœ‰å†…éƒ¨çš„åŸå§‹æŒ‡é’ˆæŒ‡å‘control block
+      ï¼ˆcontrol blockç»“æ„é‡Œæœ‰reference countï¼‰
+      * reference countæ˜¯åŠ¨æ€åˆ†é…çš„
+      * Reference countçš„å¢åŠ å’Œå‡å°‘æ“ä½œéƒ½æ˜¯åŸå­æ“ä½œï¼Œç›¸å¯¹è€—æ—¶
     - weak_ptr
-      * ÀàËÆshared_ptr£¬µ«ÊÇÃ»ÓĞ¡°ÓµÓĞ¡±µÄ¸ÅÄî£¬¿ÉÒÔ¼ì²é×Ô¼ºÊÇ·ñ±ä³ÉĞü¿ÕÖ¸Õë
-      * weak_ptrºÍshared_ptr³ß´çÏàÍ¬
+      * ç±»ä¼¼shared_ptrï¼Œä½†æ˜¯æ²¡æœ‰â€œæ‹¥æœ‰â€çš„æ¦‚å¿µï¼Œå¯ä»¥æ£€æŸ¥è‡ªå·±æ˜¯å¦å˜æˆæ‚¬ç©ºæŒ‡é’ˆ
+      * weak_ptrå’Œshared_ptrå°ºå¯¸ç›¸åŒ
 
-    ÓĞÈı¸ömakeº¯Êı£ºmake_unique/make_shared/allocate_shared
-    allocate_shared³ıÁËmake_sharedµÄ¹¦ÄÜÒÔÍâ£¬ÆäµÚÒ»¸ö²ÎÊıÎªÓÃÓÚ¶¯Ì¬ÄÚ´æ·ÖÅäµÄallocator¶ÔÏó
-    make_unique´ÓC++14¿ªÊ¼ÒıÈë£¬make_shared´ÓC++11¿ªÊ¼ÒıÈë
+    æœ‰ä¸‰ä¸ªmakeå‡½æ•°ï¼šmake_unique/make_shared/allocate_shared
+    allocate_sharedé™¤äº†make_sharedçš„åŠŸèƒ½ä»¥å¤–ï¼Œå…¶ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºç”¨äºåŠ¨æ€å†…å­˜åˆ†é…çš„allocatorå¯¹è±¡
+    make_uniqueä»C++14å¼€å§‹å¼•å…¥ï¼Œmake_sharedä»C++11å¼€å§‹å¼•å…¥
   */
   //Item18().ItemEntry();
   //Item19().ItemEntry();
@@ -77,13 +77,13 @@ int main()
 
   /* Move semantics: makes it possible for compilers to replace expensive copying operations
         with less expensive moves.
-        ¿½±´¹¹Ôìº¯ÊıºÍ¿½±´¸³Öµ²Ù×÷ÓÃÓÚ¿ØÖÆcopy
-        ÒÆ¶¯¹¹Ôìº¯ÊıºÍÒÆ¶¯¸³Öµ²Ù×÷ÓÃÓÚ¿ØÖÆmove
-        ÒÀÀµÒÆ¶¯ÓïÒåÊµÏÖµÄmove-only type£¬Èçunique_ptr£¬future£¬thread
+        æ‹·è´æ„é€ å‡½æ•°å’Œæ‹·è´èµ‹å€¼æ“ä½œç”¨äºæ§åˆ¶copy
+        ç§»åŠ¨æ„é€ å‡½æ•°å’Œç§»åŠ¨èµ‹å€¼æ“ä½œç”¨äºæ§åˆ¶move
+        ä¾èµ–ç§»åŠ¨è¯­ä¹‰å®ç°çš„move-only typeï¼Œå¦‚unique_ptrï¼Œfutureï¼Œthread
      Perfect forwarding: make it possible to write function templates that take arbitrary
           arguments and forward them to other functions such that the target functions
           receive exactly the same arguments as were passed to the forwarding functions.
-     rvalueÓÒÖµÊÇÊµÏÖÕâÁ½¸ö¹¦ÄÜµÄ»ù´¡¡£
+     rvalueå³å€¼æ˜¯å®ç°è¿™ä¸¤ä¸ªåŠŸèƒ½çš„åŸºç¡€ã€‚
    */
   //RuleOfFive();
   //Item23().ItemEntry();
@@ -101,16 +101,16 @@ int main()
   /* Lambda Expression:
      [capture list](parameter list) mutable -> return type {function body}
 
-     ÊÊºÏÓÃlambdaµÄ³¡¾°£º
-     * STLµÄ_ifËã·¨£¬Èçfind_if/remove_if/count_if
-     * STLµÄ±È½Ïº¯ÊıµÄËã·¨£¬Èçsort/nth_element/lower_bound
-     * STLÖ®Íâ£¬Ê¹ÓÃlambda¿ìËÙÊµÏÖunique_ptrºÍshared_ptrµÄdeleter
+     é€‚åˆç”¨lambdaçš„åœºæ™¯ï¼š
+     * STLçš„_ifç®—æ³•ï¼Œå¦‚find_if/remove_if/count_if
+     * STLçš„æ¯”è¾ƒå‡½æ•°çš„ç®—æ³•ï¼Œå¦‚sort/nth_element/lower_bound
+     * STLä¹‹å¤–ï¼Œä½¿ç”¨lambdaå¿«é€Ÿå®ç°unique_ptrå’Œshared_ptrçš„deleter
 
-     ClosureÊÇlambda´´½¨µÄÔËĞĞÊ±¶ÔÏó¡£closureÀïÓĞcaptureÊı¾İµÄ¿½±´
-     Closure classÊÇclosureÊµÀı¶ÔÓ¦µÄÀà¡£±àÒëÆ÷ÎªÃ¿¸ölambda´´½¨closure class£¬
-        lambdaÀïÃæµÄÓï¾äÊÇÕâ¸öÀàµÄ³ÉÔ±º¯Êı¡£
-     ¿ÉÒÔ°ÑlambdaÓï¾ä¸³Öµ¸øauto±äÁ¿£¬Õâ¸öauto±äÁ¿¼´Îª´Ëlambda¶ÔÓ¦µÄclosure
-     Í¬Ê±¿ÉÒÔ¸³Öµ¸øÆäËûµÄauto±äÁ¿£¬»ñµÃ¶à¸ö¿½±´¡£
+     Closureæ˜¯lambdaåˆ›å»ºçš„è¿è¡Œæ—¶å¯¹è±¡ã€‚closureé‡Œæœ‰captureæ•°æ®çš„æ‹·è´
+     Closure classæ˜¯closureå®ä¾‹å¯¹åº”çš„ç±»ã€‚ç¼–è¯‘å™¨ä¸ºæ¯ä¸ªlambdaåˆ›å»ºclosure classï¼Œ
+        lambdaé‡Œé¢çš„è¯­å¥æ˜¯è¿™ä¸ªç±»çš„æˆå‘˜å‡½æ•°ã€‚
+     å¯ä»¥æŠŠlambdaè¯­å¥èµ‹å€¼ç»™autoå˜é‡ï¼Œè¿™ä¸ªautoå˜é‡å³ä¸ºæ­¤lambdaå¯¹åº”çš„closure
+     åŒæ—¶å¯ä»¥èµ‹å€¼ç»™å…¶ä»–çš„autoå˜é‡ï¼Œè·å¾—å¤šä¸ªæ‹·è´ã€‚
    */
 
   //Item31().ItemEntry();

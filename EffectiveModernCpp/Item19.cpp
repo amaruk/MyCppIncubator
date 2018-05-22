@@ -21,29 +21,29 @@ std::shared_ptr<ClassBase> FactorySharedPtr::createInstDeleterDefault(int derive
 
 auto FactorySharedPtr::createInstDeleterCustom(int deriveType)
 {
-  // ºÍItem18ÀïÏàÍ¬µÄlambda±í´ïÊ½
+  // å’ŒItem18é‡Œç›¸åŒçš„lambdaè¡¨è¾¾å¼
   auto myDeleter = [](ClassBase *pClassBase)
   {
     cout << "myDeleter()" << endl;
     delete pClassBase;
   };
 
-  // ÁíÒ»¸ölambda±í´ïÊ½
+  // å¦ä¸€ä¸ªlambdaè¡¨è¾¾å¼
   auto myAnotherDeleter = [](ClassBase *pClassBase)
   {
     cout << "myAnotherDeleter()" << endl;
     delete pClassBase;
   };
 
-  // ×¢Òâshared_ptrºÍunique_ptrÊ¹ÓÃ×Ô¶¨ÒådeleterÊ±µÄÇø±ğ
+  // æ³¨æ„shared_ptrå’Œunique_pträ½¿ç”¨è‡ªå®šä¹‰deleteræ—¶çš„åŒºåˆ«
   //unique_ptr<ClassBase, decltype(myDeleter)> pClassBase(nullptr, myDeleter);
   shared_ptr<ClassBase> pClassBase(nullptr, myDeleter);
-  // ¶ÔÓÚshared_ptrÀ´Ëµ£¬deleter²»ÊÇÆäÀàĞÍµÄÒ»²¿·Ö
-  // ¶ødeleter×÷Îªunique_ptrµÄÄ£°å²ÎÊı£¬ÊÇÆäÀàĞÍµÄÒ»²¿·Ö
-  // ÓÉ´Ë¿ÉÒÔ¶¨ÒåÏàÍ¬ÀàĞÍµÄshared_ptr£¬µ«Ê¹ÓÃ²»Í¬µÄdeleter
+  // å¯¹äºshared_ptræ¥è¯´ï¼Œdeleterä¸æ˜¯å…¶ç±»å‹çš„ä¸€éƒ¨åˆ†
+  // è€Œdeleterä½œä¸ºunique_ptrçš„æ¨¡æ¿å‚æ•°ï¼Œæ˜¯å…¶ç±»å‹çš„ä¸€éƒ¨åˆ†
+  // ç”±æ­¤å¯ä»¥å®šä¹‰ç›¸åŒç±»å‹çš„shared_ptrï¼Œä½†ä½¿ç”¨ä¸åŒçš„deleter
   shared_ptr<ClassBase> pAnotherClassBase(nullptr, myAnotherDeleter);
-  // Ê¹ÓÃ×Ô¶¨Òådeleter²»Ôö¼Óshared_ptrµÄ´óĞ¡
-  // ×Ô¶¨ÒåµÄdeleter´æÔÚcontrol blockÀï£¬¶ø²»ÊÇÔÚshared_ptrÀï¡£
+  // ä½¿ç”¨è‡ªå®šä¹‰deleterä¸å¢åŠ shared_ptrçš„å¤§å°
+  // è‡ªå®šä¹‰çš„deleterå­˜åœ¨control blocké‡Œï¼Œè€Œä¸æ˜¯åœ¨shared_ptré‡Œã€‚
 
   if (deriveType == 1)
   {
@@ -56,26 +56,26 @@ auto FactorySharedPtr::createInstDeleterCustom(int deriveType)
     pAnotherClassBase = make_shared<ClassDerived2>();
   }
 
-  // ²»Òª¶à´ÎÊ¹ÓÃÍ¬Ò»¸öÔ­Ê¼Ö¸Õë×÷Îª²ÎÊı³õÊ¼»¯shared_ptr£¬ÈçÏÂ£º
+  // ä¸è¦å¤šæ¬¡ä½¿ç”¨åŒä¸€ä¸ªåŸå§‹æŒ‡é’ˆä½œä¸ºå‚æ•°åˆå§‹åŒ–shared_ptrï¼Œå¦‚ä¸‹ï¼š
   // auto rp = new ClassBase();
   // shared_ptr<ClassBase> sp1(rp, myDeleter);
   // shared_ptr<ClassBase> sp2(rp, myDeleter);
-  // ÕâÑù»áµ¼ÖÂÍ¬Ò»¸öÔ­Ê¼Ö¸Õë±»Á½¸öshared_ptr¹ØÁª£¬Á½¸öshared_ptrÏÈºóÊÍ·Å±»Ö¸Ïò
-  // µÄÔ­Ê¼Ö¸ÕëÊ±£¬Õâ¸öÔ­Ê¼Ö¸Õë»á±»ÊÍ·ÅÁ½´Î¡£
-  // Ò»¶¨ÒªÊ¹ÓÃÔ­Ê¼Ö¸ÕëµÄ»°½¨Òé²»Ê¹ÓÃ±äÁ¿´æ´¢¶øÖ±½Ó×÷Îª²ÎÊı£¬Èç
+  // è¿™æ ·ä¼šå¯¼è‡´åŒä¸€ä¸ªåŸå§‹æŒ‡é’ˆè¢«ä¸¤ä¸ªshared_ptrå…³è”ï¼Œä¸¤ä¸ªshared_ptrå…ˆåé‡Šæ”¾è¢«æŒ‡å‘
+  // çš„åŸå§‹æŒ‡é’ˆæ—¶ï¼Œè¿™ä¸ªåŸå§‹æŒ‡é’ˆä¼šè¢«é‡Šæ”¾ä¸¤æ¬¡ã€‚
+  // ä¸€å®šè¦ä½¿ç”¨åŸå§‹æŒ‡é’ˆçš„è¯å»ºè®®ä¸ä½¿ç”¨å˜é‡å­˜å‚¨è€Œç›´æ¥ä½œä¸ºå‚æ•°ï¼Œå¦‚
   // shared_ptr<ClassBase> sp3(new ClassBase(), myDeleter);
-  // È»ºóµÚ¶ş¸öshared_ptrÓÃµÚÒ»¸öshared_ptr×÷Îª²ÎÊı´´½¨£¬Èç
+  // ç„¶åç¬¬äºŒä¸ªshared_ptrç”¨ç¬¬ä¸€ä¸ªshared_pträ½œä¸ºå‚æ•°åˆ›å»ºï¼Œå¦‚
   // shared_ptr<ClassBase> sp4(sp3);
-  // ×¢ÒâthisÒ²ÊÇÔ­Ê¼Ö¸Õë¡£Ò»¶¨ÒªÊ¹ÓÃthis×÷Îªshared_ptrµÄ¹¹Ôì²ÎÊıÊ±£¬
-  // ÈÃthisËùÔÚµÄÀà¼Ì³Ğenable_shared_from_this<>£¬ÒÔ±ã°²È«µØÊ¹ÓÃthis¡£
+  // æ³¨æ„thisä¹Ÿæ˜¯åŸå§‹æŒ‡é’ˆã€‚ä¸€å®šè¦ä½¿ç”¨thisä½œä¸ºshared_ptrçš„æ„é€ å‚æ•°æ—¶ï¼Œ
+  // è®©thisæ‰€åœ¨çš„ç±»ç»§æ‰¿enable_shared_from_this<>ï¼Œä»¥ä¾¿å®‰å…¨åœ°ä½¿ç”¨thisã€‚
 
-  // shared_ptr²»ÄÜÔÙ×ªÎªunique_ptr£¬¼´Ê¹Ö»ÓĞÒ»¸öshared_ptr
+  // shared_pträ¸èƒ½å†è½¬ä¸ºunique_ptrï¼Œå³ä½¿åªæœ‰ä¸€ä¸ªshared_ptr
 
-  // shared_ptr²»Ïñunique_ptrÄÇÑùÄÜÒÔÊı×éÎªÄ£°å²ÎÊı
+  // shared_pträ¸åƒunique_ptré‚£æ ·èƒ½ä»¥æ•°ç»„ä¸ºæ¨¡æ¿å‚æ•°
 
-  // ×¢Òâ£¬Èç¹ûÁ½¸ö¶ÔÏó¸÷×ÔÓĞshared_ptrÖ¸Ïò¶Ô·½£¬¼´Ê¹Ã»ÓĞÍâ½çshared_ptrÖ¸ÏòËûÃÇ£¬
-  // ÕâÒ»¶Ô¶ÔÏóÓÀÔ¶²»»á±»×Ô¶¯Ïú»Ù£¬×îÖÕµ¼ÖÂĞ¹Â©£¬ÒòÎªËûÃÇ×ÜÊÇÓĞ¶Ô·½µÄshared_ptrÖ¸×Å¡£
-  // ¿ÉÒÔ¿¼ÂÇ°ÑÆäÖĞÒ»¸ö¸ÄÎªweak_ptr¡£
+  // æ³¨æ„ï¼Œå¦‚æœä¸¤ä¸ªå¯¹è±¡å„è‡ªæœ‰shared_ptræŒ‡å‘å¯¹æ–¹ï¼Œå³ä½¿æ²¡æœ‰å¤–ç•Œshared_ptræŒ‡å‘ä»–ä»¬ï¼Œ
+  // è¿™ä¸€å¯¹å¯¹è±¡æ°¸è¿œä¸ä¼šè¢«è‡ªåŠ¨é”€æ¯ï¼Œæœ€ç»ˆå¯¼è‡´æ³„æ¼ï¼Œå› ä¸ºä»–ä»¬æ€»æ˜¯æœ‰å¯¹æ–¹çš„shared_ptræŒ‡ç€ã€‚
+  // å¯ä»¥è€ƒè™‘æŠŠå…¶ä¸­ä¸€ä¸ªæ”¹ä¸ºweak_ptrã€‚
 
   return pClassBase;
 }
