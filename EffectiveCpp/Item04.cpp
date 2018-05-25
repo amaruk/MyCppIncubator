@@ -16,13 +16,31 @@ void Item04::ItemEntry()
 {
   // Item 4: Make sure that objects are initialized before they're used
 
-  // ÔÚÀàµÄ¹¹Ôìº¯Êımember initialization listÀï³õÊ¼»¯³ÉÔ±¡£
-  // ÔÚ¹¹Ôìº¯ÊıÄÚ²¿¶Ô³ÉÔ±²Ù×÷ÊÇ¸³Öµ£¬ÔÚ³õÊ¼»¯ÁĞ±íÀïÊÇ³õÊ¼»¯¡£
-  // ³õÊ¼»¯ÁĞ±íĞ§ÂÊ¸ß¡£
-  // constºÍÒıÓÃ³ÉÔ±±ØĞëÔÚ³õÊ¼»¯ÁĞ±íÀï³õÊ¼»¯£¬ÒòÎªÆä²»ÄÜÔÚ¹¹Ôìº¯ÊıÄÚ²¿¸³Öµ
-  // ¸¸ÀàÏÈÓÚ×ÓÀà³õÊ¼»¯£¬³ÉÔ±°´ÕÕÉùÃ÷µÄÏÈºóË³Ğò³õÊ¼»¯£¨¼´Ê¹ÔÚ¹¹Ôìº¯ÊıµÄ³õÊ¼»¯ÁĞ±íÀïË³Ğò²»Í¬£©
+  // POD (Plain Old Data)
+  std::cout << "Is int a POD type: " << std::is_pod<int>() << std::endl;
+  std::cout << "Is Item04 a POD type: " << std::is_pod<Item04>() << std::endl;
 
-  // ×¢Òâ£ºthe relative order of initialization of non-local static objects defined in different translation units is undefined.
-  // Òâ¼´·Ç¾Ö²¿µÄstatic±äÁ¿ÔÚ²»Í¬µÄÎÄ¼ş¼¶±àÒëµ¥ÔªÀï³öÏÖ£¬Æä³õÊ¼»¯ÔÚºÎÊ±Íê³ÉÊÇÎ´¶¨ÒåµÄ¡£
-  // ½â¾ö·½·¨ÎªÊ¹ÓÃµ¥ÀıÄ£Ê½
+  // ç±»çš„æˆå‘˜å¯ä»¥åœ¨ç±»å®šä¹‰æ—¶åˆå§‹åŒ–ï¼ˆdefault member initializer)
+  // class OneClass {
+  //    NonPodClass m_nonPodMember{"initial value"};
+  // };
+  //
+  // ä¹Ÿå¯ä»¥åœ¨ç±»çš„æ„é€ å‡½æ•°member initialization listé‡Œåˆå§‹åŒ–
+  // OneClass::OneClass() : m_nonPodMember("initial value") { }
+  // : m_nonPodMember("initial value") è¿™éƒ¨åˆ†ç§°ä¸ºconstructor initializer
+  // m_nonPodMember("initial value")   è¿™éƒ¨åˆ†æ˜¯member initializerï¼Œæœ‰å¤šä¸ªçš„è¯å°±æ˜¯member initializer list
+  // 
+  // ä¹Ÿå¯ä»¥åœ¨ç±»çš„æ„é€ å‡½æ•°é‡Œåˆå§‹åŒ–
+  // OneClass::OneClass() { m_nonPodMember = NonPodClass("initial value"); }
+  //
+  // å¯¹äºéPODçš„æˆå‘˜ï¼Œç”¨default member initializeræœ€å¥½ï¼Œ å› ä¸ºæœ¬è´¨ä¸Šæ˜¯ç”±ç¼–è¯‘å™¨ç”Ÿæˆmember initialization list,
+  // ç¼–è¯‘å™¨å¯ä»¥ä½œä¼˜åŒ–ã€‚member initialization listæ¯”æ„é€ å‡½æ•°å†…éƒ¨å¥½æ˜¯å› ä¸ºä½¿ç”¨ç›´æ¥åˆå§‹åŒ–ï¼Œä¸äº§ç”Ÿä¸´æ—¶çš„ä¸­é—´å˜é‡ï¼Œ
+  // ä¹Ÿå°±æ²¡æœ‰åç»­çš„æ‹·è´æˆ–è€…ç§»åŠ¨æ“ä½œã€‚
+
+  // constå’Œå¼•ç”¨æˆå‘˜å¿…é¡»åœ¨åˆå§‹åŒ–åˆ—è¡¨é‡Œåˆå§‹åŒ–ï¼Œå› ä¸ºå…¶ä¸èƒ½åœ¨æ„é€ å‡½æ•°å†…éƒ¨èµ‹å€¼
+  // çˆ¶ç±»å…ˆäºå­ç±»åˆå§‹åŒ–ï¼Œæˆå‘˜æŒ‰ç…§å£°æ˜çš„å…ˆåé¡ºåºåˆå§‹åŒ–ï¼ˆå³ä½¿åœ¨æ„é€ å‡½æ•°çš„åˆå§‹åŒ–åˆ—è¡¨é‡Œé¡ºåºä¸åŒï¼‰
+
+  // æ³¨æ„ï¼šthe relative order of initialization of non-local static objects defined in different translation units is undefined.
+  // æ„å³éå±€éƒ¨çš„staticå˜é‡åœ¨ä¸åŒçš„æ–‡ä»¶çº§ç¼–è¯‘å•å…ƒé‡Œå‡ºç°ï¼Œå…¶åˆå§‹åŒ–åœ¨ä½•æ—¶å®Œæˆæ˜¯æœªå®šä¹‰çš„ã€‚
+  // è§£å†³æ–¹æ³•ä¸ºä½¿ç”¨å•ä¾‹æ¨¡å¼
 }
