@@ -63,6 +63,9 @@
     <ClInclude Include="Item06.h">
       <Filter>Header Files\Chapter02</Filter>
     </ClInclude>
+    <ClInclude Include="Item07.h">
+      <Filter>Header Files\Chapter02</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -90,6 +93,9 @@
       <Filter>Source Files\Chapter02</Filter>
     </ClCompile>
     <ClCompile Include="Item06.cpp">
+      <Filter>Source Files\Chapter02</Filter>
+    </ClCompile>
+    <ClCompile Include="Item07.cpp">
       <Filter>Source Files\Chapter02</Filter>
     </ClCompile>
   </ItemGroup>
