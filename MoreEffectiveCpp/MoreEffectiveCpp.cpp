@@ -12,7 +12,7 @@ int main()
   //Item04().ItemEntry();
 
   ////////// Chapter Two: Operators //////////
-  // 可以重载的操作符
+  //// 可以重载的操作符
   // operator new         operator delete
   // operator new[]       operator delete[]
   // +    -     *     /     %     ^       &       |       ~
@@ -20,15 +20,16 @@ int main()
   // ^=   &=    |=    <<    >>    <<=     >>=     ==      !=
   // <=   >=    &&    ||    ++    --      ,       ->*     ->
   // ()   []
-
-  // 不可以重载的操作符
-  // .            .*            ::            ?:
-  // new          delete        sizeof        typeid
-  // static_cast  dynamic_cast  const_cast    reinterpret_cast
+  //// 不可以重载的操作符
+  // .            .*              ::            ?:
+  // new operator delete operator sizeof        typeid
+  // static_cast  dynamic_cast    const_cast    reinterpret_cast
+  // （关于new operator和operator new的区别见Item08）
 
   //Item05().ItemEntry();
   //Item06().ItemEntry();
-  Item07().ItemEntry();
+  //Item07().ItemEntry();
+  Item08().ItemEntry();
 
 
 
