@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Chapter01.h" />
     <ClInclude Include="Chapter02.h" />
+    <ClInclude Include="Chapter03.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Item01.h" />
     <ClInclude Include="Item02.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Item06.h" />
     <ClInclude Include="Item07.h" />
     <ClInclude Include="Item08.h" />
+    <ClInclude Include="Item09.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="Item06.cpp" />
     <ClCompile Include="Item07.cpp" />
     <ClCompile Include="Item08.cpp" />
+    <ClCompile Include="Item09.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="MoreEffectiveCpp.cpp" />
     <ClCompile Include="stdafx.cpp">

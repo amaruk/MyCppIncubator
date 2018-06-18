@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Chapter01.h"
 #include "Chapter02.h"
+#include "Chapter03.h"
 
 
 int main()
@@ -29,7 +30,11 @@ int main()
   //Item05().ItemEntry();
   //Item06().ItemEntry();
   //Item07().ItemEntry();
-  Item08().ItemEntry();
+  //Item08().ItemEntry();
+
+  ////////// Chapter Three: Exceptions //////////
+  Item09().ItemEntry();
+
 
 
 
