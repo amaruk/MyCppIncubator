@@ -1,23 +1,12 @@
 #include "stdafx.h"
 #include "Item01.h"
-
-
-Item01::Item01() :
-  ItemBase("01")
-{
-}
-
-
-Item01::~Item01()
-{
-}
-
+  
 void Item01::ItemEntry()
 {
   //// Item 1: View C++ as a federation of languages
-  // ¿ÉÒÔ°ÑC++·ÖÎª4²¿·Ö£º
-  // - C£º»ùÓÚCµÄ²¿·Ö£¬¼æÈİCµÄ¿¼ÂÇ
-  // - Object-Oriented C++£º¹ØÓÚÀàµÄÌØĞÔ
-  // - Template C++£ºÄ£°åºÍ·ºĞÍ
-  // - The STL£º±ê×¼Ä£°å¿â
+  // å¯ä»¥æŠŠC++åˆ†ä¸º4éƒ¨åˆ†ï¼š
+  // - Cï¼šåŸºäºCçš„éƒ¨åˆ†ï¼Œå…¼å®¹Cçš„è€ƒè™‘
+  // - Object-Oriented C++ï¼šå…³äºç±»çš„ç‰¹æ€§
+  // - Template C++ï¼šæ¨¡æ¿å’Œæ³›å‹
+  // - The STLï¼šæ ‡å‡†æ¨¡æ¿åº“
 }

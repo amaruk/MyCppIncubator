@@ -1,19 +1,9 @@
 #include "stdafx.h"
 #include "Item05.h"
 
-Item05::Item05() :
-  ItemBase("05")
-{
-}
-
-
-Item05::~Item05()
-{
-}
-
 void Item05::ItemEntry()
 {
   ///// Item 5: Know what functions C++ silently writes and calls 
-  // ±àÒëÆ÷Ä¬ÈÏÉú³ÉµÄ¹¹Ôìº¯ÊıµÈÊÇpublicºÍinlineµÄ¡£
+  // ç¼–è¯‘å™¨é»˜è®¤ç”Ÿæˆçš„æ„é€ å‡½æ•°ç­‰æ˜¯publicå’Œinlineçš„ã€‚
 }
 

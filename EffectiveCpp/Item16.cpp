@@ -1,27 +1,16 @@
 #include "stdafx.h"
 #include "Item16.h"
 
-
-Item16::Item16() :
-  ItemBase("16")
-{
-}
-
-
-Item16::~Item16()
-{
-}
-
 void Item16::ItemEntry()
 {
   //// Item 16: Use the same form in corresponding uses of new and delete.
-  // 注意delete数组的时候要加[]，new时用[]则delete时也用[]
+  // 娉ㄦ剰delete鏁扮粍鐨勬椂鍊欒鍔燵]锛宯ew鏃剁敤[]鍒檇elete鏃朵篃鐢╗]
   std::string *stringPtr1 = new std::string;
   std::string *stringPtr2 = new std::string[100];
   delete stringPtr1;      // delete an object
   delete[] stringPtr2;    // delete an array of objects
 
-  // 特别要注意用typedef类型的时候，查看原来的类型确定要不要delete时带[]
+  // 鐗瑰埆瑕佹敞鎰忕敤typedef绫诲瀷鐨勬椂鍊欙紝鏌ョ湅鍘熸潵鐨勭被鍨嬬‘瀹氳涓嶈delete鏃跺甫[]
   typedef std::string AddressLines[4];
   std::string *pal = new AddressLines;
   delete[] pal;

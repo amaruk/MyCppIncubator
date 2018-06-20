@@ -1,25 +1,13 @@
 #include "stdafx.h"
 #include "Item14.h"
 
-
-Item14::Item14() :
-  ItemBase("14")
-{
-}
-
-
-Item14::~Item14()
-{
-}
-
-
 void Item14::ItemEntry()
 {
   //// Item 14: Think carefully about copying behavior in resource-managing classes.
-  // ÊµÏÖRAIIÀàµÄÊ±ºòÒª×¢Òâ´¦Àí¿½±´²Ù×÷£º
-  // 1. °Ñ¿½±´²Ù×÷ÖÃÎªprivate£¬²»ÔÊĞí¿½±´
-  // 2. ¿½±´Ê±Ôõ¼Ó¼ÆÊı£¬ÓÃshared_ptrÊµÏÖ£¬×Ô¶¨Òåshared_ptrµÄdeleter
-  // 3. ÊµÏÖÉî¿½±´£¬RAII³ÖÓĞµÄ×ÊÔ´Ò²¿½±´Ò»·İ
-  // 4. ¿½±´Ê±×ªÒÆRAII³ÖÓĞµÄ×ÊÔ´
+  // å®ç°RAIIç±»çš„æ—¶å€™è¦æ³¨æ„å¤„ç†æ‹·è´æ“ä½œï¼š
+  // 1. æŠŠæ‹·è´æ“ä½œç½®ä¸ºprivateï¼Œä¸å…è®¸æ‹·è´
+  // 2. æ‹·è´æ—¶æ€åŠ è®¡æ•°ï¼Œç”¨shared_ptrå®ç°ï¼Œè‡ªå®šä¹‰shared_ptrçš„deleter
+  // 3. å®ç°æ·±æ‹·è´ï¼ŒRAIIæŒæœ‰çš„èµ„æºä¹Ÿæ‹·è´ä¸€ä»½
+  // 4. æ‹·è´æ—¶è½¬ç§»RAIIæŒæœ‰çš„èµ„æº
 
 }

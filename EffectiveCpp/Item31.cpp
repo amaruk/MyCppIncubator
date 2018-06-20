@@ -1,20 +1,9 @@
 #include "stdafx.h"
 #include "Item31.h"
 
-
-Item31::Item31() :
-  ItemBase("31")
-{
-}
-
-
-Item31::~Item31()
-{
-}
-
 void Item31::ItemEntry()
 {
   //// Item 31: Minimize compilation dependencies between files.
-  // Interface Class£ºÎªÅÉÉúÀàÖ¸¶¨½Ó¿Ú
-  // Í¨³£Ã»ÓĞÊı¾İ³ÉÔ±£¬Ã»ÓĞ¹¹Ôìº¯Êı£¬ÓĞĞéÎö¹¹º¯Êı£¬ÒÔ¼°Ò»ÏµÁĞÖ¸¶¨Îª½Ó¿ÚµÄ´¿Ğéº¯Êı
+  // Interface Classï¼šä¸ºæ´¾ç”Ÿç±»æŒ‡å®šæ¥å£
+  // é€šå¸¸æ²¡æœ‰æ•°æ®æˆå‘˜ï¼Œæ²¡æœ‰æ„é€ å‡½æ•°ï¼Œæœ‰è™šææ„å‡½æ•°ï¼Œä»¥åŠä¸€ç³»åˆ—æŒ‡å®šä¸ºæ¥å£çš„çº¯è™šå‡½æ•°
 }

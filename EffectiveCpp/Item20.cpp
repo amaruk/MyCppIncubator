@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item20.h"
 
-
-Item20::Item20() :
-  ItemBase("20")
-{
-}
-
-
-Item20::~Item20()
-{
-}
-
 class Item20BaseClass
 {
 public:
@@ -38,22 +27,22 @@ namespace
 void Item20::ItemEntry()
 {
   //// Item 20: Prefer pass-by-reference-to-const to pass-by-value
-  // C++Ä¬ÈÏÊ¹ÓÃ¿½±´¹¹Ôìº¯Êı½øĞĞpass-by-value£¬
-  // º¯Êı²ÎÊıÎªÊµ¼Ê²ÎÊıµÄ¿½±´£¬·µ»ØÖµÒ²ÊÇ·µ»Ø¶ÔÏóµÄ¿½±´
+  // C++é»˜è®¤ä½¿ç”¨æ‹·è´æ„é€ å‡½æ•°è¿›è¡Œpass-by-valueï¼Œ
+  // å‡½æ•°å‚æ•°ä¸ºå®é™…å‚æ•°çš„æ‹·è´ï¼Œè¿”å›å€¼ä¹Ÿæ˜¯è¿”å›å¯¹è±¡çš„æ‹·è´
 
-  // Í¨¹ıpass by reference-to-const£¬reference±ÜÃâĞÂ¶ÔÏóÍ¨¹ı¿½±´²úÉú´Ó¶ø¼õÉÙ¿ªÏú
-  // const±£Ö¤ËäÈ»ÊÇ´«µİÒıÓÃ£¬µ«º¯Êı²»»á¸Ä±ä²ÎÊıµÄÖµ¡£
-  // ´«ÒıÓÃÍ¬Ê±»¹ÄÜ±ÜÃâslicing problem£¬ÒòÎªÒıÓÃÊµ¼ÊÊÇÓÉÖ¸ÕëÊµÏÖµÄ¡£
+  // é€šè¿‡pass by reference-to-constï¼Œreferenceé¿å…æ–°å¯¹è±¡é€šè¿‡æ‹·è´äº§ç”Ÿä»è€Œå‡å°‘å¼€é”€
+  // constä¿è¯è™½ç„¶æ˜¯ä¼ é€’å¼•ç”¨ï¼Œä½†å‡½æ•°ä¸ä¼šæ”¹å˜å‚æ•°çš„å€¼ã€‚
+  // ä¼ å¼•ç”¨åŒæ—¶è¿˜èƒ½é¿å…slicing problemï¼Œå› ä¸ºå¼•ç”¨å®é™…æ˜¯ç”±æŒ‡é’ˆå®ç°çš„ã€‚
 
-  // ÊÊºÏ´«ÖµµÄÀàĞÍ£ºbuilt-in types and STL iterator and function object types
-  // ÆäÓà´«ÒıÓÃ
+  // é€‚åˆä¼ å€¼çš„ç±»å‹ï¼šbuilt-in types and STL iterator and function object types
+  // å…¶ä½™ä¼ å¼•ç”¨
 
   cout << "---Create instances" << endl;
   Item20DerivedClass derivedIns{};
   cout << "---Display copy-by-value" << endl;
-  DisplayByValue(derivedIns); // ²ÎÊı´«ÖµµÄº¯Êı£¬¿½±´¹¹Ôì»ùÀàÊµÀı£¬ÅÉÉúÀà²¿·Ö±»slicing£¬Ö»ÄÜµ÷ÓÃµ½»ùÀàµÄdisplay
+  DisplayByValue(derivedIns); // å‚æ•°ä¼ å€¼çš„å‡½æ•°ï¼Œæ‹·è´æ„é€ åŸºç±»å®ä¾‹ï¼Œæ´¾ç”Ÿç±»éƒ¨åˆ†è¢«slicingï¼Œåªèƒ½è°ƒç”¨åˆ°åŸºç±»çš„display
   cout << "---Display copy-by-reference" << endl;
-  DisplayByRef(derivedIns); // ÒıÓÃ²ÎÊıµÄº¯Êı£¬´«ÈëÖ¸Õë£¬ÄÜµ÷ÓÃµ½ÅÉÉúÀàµÄdisplay
+  DisplayByRef(derivedIns); // å¼•ç”¨å‚æ•°çš„å‡½æ•°ï¼Œä¼ å…¥æŒ‡é’ˆï¼Œèƒ½è°ƒç”¨åˆ°æ´¾ç”Ÿç±»çš„display
 
 
 

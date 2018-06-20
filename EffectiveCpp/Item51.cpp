@@ -1,21 +1,10 @@
 #include "stdafx.h"
 #include "Item51.h"
 
-
-Item51::Item51() :
-  ItemBase("51")
-{
-}
-
-
-Item51::~Item51()
-{
-}
-
 void Item51::ItemEntry()
 {
   //// Item 51: Adhere to convention when writing new and delete
-  // ×Ô¶¨ÒånewµÄÊ±ºò×¢ÒâÕıÈ·µÄ·µ»ØÖµ£¬ÄÚ´æ²»×ãÊ±µ÷ÓÃnew-handlerº¯Êı£¬ÒªÕıÈ·´¦Àí²»ÉêÇëÄÚ´æµÄÇëÇó¡£
-  // ×Ô¶¨ÒådeleteµÄÊ±ºò×¢ÒâC++ÔÊĞídelete¿ÕÖ¸Õë
-  // ÎªÁË´¦ÀíÅÉÉúÀàµÄnewºÍdelete£¬¿ÉÒÔµ÷ÓÃ±ê×¼newºÍdeleteÊµÏÖ
+  // è‡ªå®šä¹‰newçš„æ—¶å€™æ³¨æ„æ­£ç¡®çš„è¿”å›å€¼ï¼Œå†…å­˜ä¸è¶³æ—¶è°ƒç”¨new-handlerå‡½æ•°ï¼Œè¦æ­£ç¡®å¤„ç†ä¸ç”³è¯·å†…å­˜çš„è¯·æ±‚ã€‚
+  // è‡ªå®šä¹‰deleteçš„æ—¶å€™æ³¨æ„C++å…è®¸deleteç©ºæŒ‡é’ˆ
+  // ä¸ºäº†å¤„ç†æ´¾ç”Ÿç±»çš„newå’Œdeleteï¼Œå¯ä»¥è°ƒç”¨æ ‡å‡†newå’Œdeleteå®ç°
 }

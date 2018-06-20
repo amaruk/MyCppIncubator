@@ -1,16 +1,6 @@
 #include "stdafx.h"
 #include "Item04.h"
 
-Item04::Item04() :
-  ItemBase("04")
-{
-}
-
-
-Item04::~Item04()
-{
-}
-
 namespace ITEM04
 {
   class NoDefaultCtor

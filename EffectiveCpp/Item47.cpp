@@ -1,36 +1,25 @@
 #include "stdafx.h"
 #include "Item47.h"
 
-
-Item47::Item47() :
-  ItemBase("47")
-{
-}
-
-
-Item47::~Item47()
-{
-}
-
 namespace ITEM47
 {
   template<typename Obj>
-  struct MyTrait // Í¨³£ÓÃstructÊµÏÖ£¬³ÆÎªtrait class
+  struct MyTrait // é€šå¸¸ç”¨structå®ç°ï¼Œç§°ä¸ºtrait class
   {};
 }
 
 void Item47::ItemEntry()
 {
   //// Item 47: Use traits classes for information about types
-  // IteratorµÄÎåÖÖÀàĞÍ£º
-  // - Input iterator£ºÖ»ÄÜÏòÇ°ÒÆ¶¯£¬Ã¿´ÎÒÆ¶¯Ò»²½£¬Ö»ÄÜ¶ÁÈ¡Ö¸ÏòµÄÄÚÈİ£¬Ö»ÄÜ¶ÁÒ»´Î¡£Èç¶ÁÈ¡ÊäÈëµÄistream_iterator¡£
-  // - Output iterator£ºÀàËÆinput£¬µ«ÓÃÓÚÊä³ö
-  // - Forward iterator£º³ıÁËinputºÍoutputµÄ¹¦ÄÜ£¬»¹¿ÉÒÔ¶Á»òĞ´¶à´Î¡£ÈçhashÈİÆ÷
-  // - Bidirectional iterator£º¿ÉÒÔË«ÏòÒÆ¶¯¡£Èçlist£¬set£¬map
-  // - Random access iterator£º¿ÉÒÔ×ö³£Á¿Ê±¼ä¶ø·ÇÏßĞÔÊ±¼äµÄÒ»´Î¶à²½ÌøÔ¾¡£ÓÃÄÚ½¨Ö¸ÕëÊµÏÖ¡£Èçvector£¬deque£¬string
+  // Iteratorçš„äº”ç§ç±»å‹ï¼š
+  // - Input iteratorï¼šåªèƒ½å‘å‰ç§»åŠ¨ï¼Œæ¯æ¬¡ç§»åŠ¨ä¸€æ­¥ï¼Œåªèƒ½è¯»å–æŒ‡å‘çš„å†…å®¹ï¼Œåªèƒ½è¯»ä¸€æ¬¡ã€‚å¦‚è¯»å–è¾“å…¥çš„istream_iteratorã€‚
+  // - Output iteratorï¼šç±»ä¼¼inputï¼Œä½†ç”¨äºè¾“å‡º
+  // - Forward iteratorï¼šé™¤äº†inputå’Œoutputçš„åŠŸèƒ½ï¼Œè¿˜å¯ä»¥è¯»æˆ–å†™å¤šæ¬¡ã€‚å¦‚hashå®¹å™¨
+  // - Bidirectional iteratorï¼šå¯ä»¥åŒå‘ç§»åŠ¨ã€‚å¦‚listï¼Œsetï¼Œmap
+  // - Random access iteratorï¼šå¯ä»¥åšå¸¸é‡æ—¶é—´è€Œéçº¿æ€§æ—¶é—´çš„ä¸€æ¬¡å¤šæ­¥è·³è·ƒã€‚ç”¨å†…å»ºæŒ‡é’ˆå®ç°ã€‚å¦‚vectorï¼Œdequeï¼Œstring
 
-  // trait£ºÔÚ±àÒëÆ÷»ñÈ¡¶ÔÏóÀàĞÍĞÅÏ¢µÄ¼¼Êõ
-  // ÒòÎªÒª´¦ÀíÄÚÖÃÀàĞÍ£¬ËùÒÔ²»ÄÜÍù¶ÔÏó×¢ÈëĞÅÏ¢£¬Ö»ÄÜÓÃÄ£°åÊµÏÖ
-  // ÓÃÖØÔØµÄº¯ÊıÀ´Ìæ»»ÔËĞĞÊ±µÄif elseÅĞ¶Ï£¬½øĞĞ±àÒëÊ±°´²ÎÊıÀàĞÍµÄ²»Í¬´¦Àí
+  // traitï¼šåœ¨ç¼–è¯‘å™¨è·å–å¯¹è±¡ç±»å‹ä¿¡æ¯çš„æŠ€æœ¯
+  // å› ä¸ºè¦å¤„ç†å†…ç½®ç±»å‹ï¼Œæ‰€ä»¥ä¸èƒ½å¾€å¯¹è±¡æ³¨å…¥ä¿¡æ¯ï¼Œåªèƒ½ç”¨æ¨¡æ¿å®ç°
+  // ç”¨é‡è½½çš„å‡½æ•°æ¥æ›¿æ¢è¿è¡Œæ—¶çš„if elseåˆ¤æ–­ï¼Œè¿›è¡Œç¼–è¯‘æ—¶æŒ‰å‚æ•°ç±»å‹çš„ä¸åŒå¤„ç†
 
 }

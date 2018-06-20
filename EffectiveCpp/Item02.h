@@ -5,14 +5,14 @@
 class Item02 : public ItemBase
 {
 public:
-  Item02();
-  ~Item02();
+  Item02() : ItemBase("02") { }
+  ~Item02() = default;
 
   void ItemEntry() override;
 
-  static const int NumTurns = 5; // ÌØÀı£ºÀàµÄ³ÉÔ±Èç¹ûÊÇstaticµÄconstµÄÕûĞÍ£¨integer£¬char£¬bool£©£¬Ôò´ËÓï¾äÎªÉùÃ÷
-                                 // ¶¨ÒåÔÚÊµÏÖÎÄ¼şÀï£¬²»ÄÜ·ÅÔÚ´ËÍ·ÎÄ¼şÖĞ£¬ÒòÎª³õÖµÔÚÉùÃ÷Ê±ÒÑ¾­¸ø³ö£¬¶¨ÒåÊ±²»¿ÉÔÙ¸ø³õÖµ
-  int scores[NumTurns];   // Èç¹û±àÒëÆ÷²»ÔÊĞíµÄ»°£¬ÓÃ¡°enum hack¡±À´ÊµÏÖ£¬ÈçÏÂ£º
+  static const int NumTurns = 5; // ç‰¹ä¾‹ï¼šç±»çš„æˆå‘˜å¦‚æœæ˜¯staticçš„constçš„æ•´å‹ï¼ˆintegerï¼Œcharï¼Œboolï¼‰ï¼Œåˆ™æ­¤è¯­å¥ä¸ºå£°æ˜
+                                 // å®šä¹‰åœ¨å®ç°æ–‡ä»¶é‡Œï¼Œä¸èƒ½æ”¾åœ¨æ­¤å¤´æ–‡ä»¶ä¸­ï¼Œå› ä¸ºåˆå€¼åœ¨å£°æ˜æ—¶å·²ç»ç»™å‡ºï¼Œå®šä¹‰æ—¶ä¸å¯å†ç»™åˆå€¼
+  int scores[NumTurns];   // å¦‚æœç¼–è¯‘å™¨ä¸å…è®¸çš„è¯ï¼Œç”¨â€œenum hackâ€æ¥å®ç°ï¼Œå¦‚ä¸‹ï¼š
 
   enum {EnumNumTurns = 5};  // Enum hack
   int scoresEnum[EnumNumTurns];
@@ -20,7 +20,7 @@ public:
 };
 
 //#define CALL_WITH_MA(a,b) f((a)>(b) ? (a) : (b))
-// Ìæ»»Îª
+// æ›¿æ¢ä¸º
 template <typename T>
 inline T callWithMax(const T& a, const T& b)
 {

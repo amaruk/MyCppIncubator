@@ -1,37 +1,26 @@
 #include "stdafx.h"
 #include "Item54.h"
 
-
-Item54::Item54() :
-  ItemBase("54")
-{
-}
-
-
-Item54::~Item54()
-{
-}
-
 void Item54::ItemEntry()
 {
   //// Item 54: Familiarize yourself with the standard library, including TR1
-  // TR1 (Technical Report 1)³ö×ÔC++ library working group.
-  // C++±ê×¼Î¯Ô±»áÔÚ°ÑTR1µÄ¹¦ÄÜÄÉÈë±ê×¼Ö®Ç°±£Áô¶ÔÆäĞŞ¸ÄµÄÈ¨Àû¡£
-  // µÚÒ»°æ±ê×¼ISO/IEC 14882:1998£¬Í¨³ÆC++98
-  // µÚ¶ş°æ±ê×¼ISO/IEC 14882:2003£¬Í¨³ÆC++03
-  // C++11£¬ÏÈÇ°±»³Æ×÷C++0x£¬¼´ISO/IEC 14882:2011
+  // TR1 (Technical Report 1)å‡ºè‡ªC++ library working group.
+  // C++æ ‡å‡†å§”å‘˜ä¼šåœ¨æŠŠTR1çš„åŠŸèƒ½çº³å…¥æ ‡å‡†ä¹‹å‰ä¿ç•™å¯¹å…¶ä¿®æ”¹çš„æƒåˆ©ã€‚
+  // ç¬¬ä¸€ç‰ˆæ ‡å‡†ISO/IEC 14882:1998ï¼Œé€šç§°C++98
+  // ç¬¬äºŒç‰ˆæ ‡å‡†ISO/IEC 14882:2003ï¼Œé€šç§°C++03
+  // C++11ï¼Œå…ˆå‰è¢«ç§°ä½œC++0xï¼Œå³ISO/IEC 14882:2011
 
-  // C++98±ê×¼¿âµÄ×é³É£º
-  // 1. STL (Standard Template Library)£º°üº¬container£¨vector£¬string£¬mapµÈ£©£»
-  //    iterator£»algorithm£¨find£¬sort£¬TransformµÈ£©£»function obejct£¨less£¬greater£¬µÈ£©£»
-  //    containerºÍfunction object adapter£¨stack£¬priority_queue£¬mem_fun£¬not1£¬µÈ£©
-  // 2. Iostreams£ºÒ²Ö§³ÖÓÃ»§×Ô¶¨ÒåµÄbuffering£¬internationalized IO£¬Ô¤¶¨ÒåµÄcin£¬cout£¬cerr£¬clog¡£
-  // 3. Internationalization£ºÖ§³Ö¶à¸öactive locales£¬unicodeµÄwchar_tºÍwstring¡£
-  // 4. Numeric processing£ºcomplex numberµÄÄ£°å£¨complex£©ºÍpure valueµÄÊı×é£¨valarray£©¡£
-  // 5. Òì³£¼Ì³Ğ½â¹¹£ºexception»ùÀà£¬logic_errorºÍruntime_errorÅÉÉúÀàµÈ¡£
-  // 6. C89µÄ±ê×¼¿â£ºC++°üº¬C89±ê×¼¿â
+  // C++98æ ‡å‡†åº“çš„ç»„æˆï¼š
+  // 1. STL (Standard Template Library)ï¼šåŒ…å«containerï¼ˆvectorï¼Œstringï¼Œmapç­‰ï¼‰ï¼›
+  //    iteratorï¼›algorithmï¼ˆfindï¼Œsortï¼ŒTransformç­‰ï¼‰ï¼›function obejctï¼ˆlessï¼Œgreaterï¼Œç­‰ï¼‰ï¼›
+  //    containerå’Œfunction object adapterï¼ˆstackï¼Œpriority_queueï¼Œmem_funï¼Œnot1ï¼Œç­‰ï¼‰
+  // 2. Iostreamsï¼šä¹Ÿæ”¯æŒç”¨æˆ·è‡ªå®šä¹‰çš„bufferingï¼Œinternationalized IOï¼Œé¢„å®šä¹‰çš„cinï¼Œcoutï¼Œcerrï¼Œclogã€‚
+  // 3. Internationalizationï¼šæ”¯æŒå¤šä¸ªactive localesï¼Œunicodeçš„wchar_tå’Œwstringã€‚
+  // 4. Numeric processingï¼šcomplex numberçš„æ¨¡æ¿ï¼ˆcomplexï¼‰å’Œpure valueçš„æ•°ç»„ï¼ˆvalarrayï¼‰ã€‚
+  // 5. å¼‚å¸¸ç»§æ‰¿è§£æ„ï¼šexceptionåŸºç±»ï¼Œlogic_errorå’Œruntime_erroræ´¾ç”Ÿç±»ç­‰ã€‚
+  // 6. C89çš„æ ‡å‡†åº“ï¼šC++åŒ…å«C89æ ‡å‡†åº“
 
-  // TR1Ôö¼ÓÁË14Ïî¹¦ÄÜ¿â£¬Î»ÓÚstd::tr1µÄnamespaceÏÂ¡£
+  // TR1å¢åŠ äº†14é¡¹åŠŸèƒ½åº“ï¼Œä½äºstd::tr1çš„namespaceä¸‹ã€‚
   // 1. Smart pointer
   // 2. function
   // 3. bind

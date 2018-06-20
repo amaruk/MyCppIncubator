@@ -1,22 +1,11 @@
 #include "stdafx.h"
 #include "Item35.h"
 
-
-Item35::Item35() :
-  ItemBase("35")
-{
-}
-
-
-Item35::~Item35()
-{
-}
-
 void Item35::ItemEntry()
 {
   //// Item 35: Consider alternatives to virtual functions
-  // Non-virtual interface (NVI) idiom: ÔÚpublicµÄ·Çvirtualº¯ÊıÀïµ÷ÓÃprivateµÄĞéº¯Êı¡£Éè¼ÆÄ£Ê½ÖĞ³ÆÎªtemplate method
-  // StrategyÉè¼ÆÄ£Ê½£¬ÓÃº¯ÊıÖ¸ÕëÌæ´úĞéº¯Êı
-  // StrategyÉè¼ÆÄ£Ê½£¬µ«Ê¹ÓÃfunction¶ÔÏó¶ø·Çº¯ÊıÖ¸Õë
-  // ´«Í³µÄStrategyÉè¼ÆÄ£Ê½
+  // Non-virtual interface (NVI) idiom: åœ¨publicçš„évirtualå‡½æ•°é‡Œè°ƒç”¨privateçš„è™šå‡½æ•°ã€‚è®¾è®¡æ¨¡å¼ä¸­ç§°ä¸ºtemplate method
+  // Strategyè®¾è®¡æ¨¡å¼ï¼Œç”¨å‡½æ•°æŒ‡é’ˆæ›¿ä»£è™šå‡½æ•°
+  // Strategyè®¾è®¡æ¨¡å¼ï¼Œä½†ä½¿ç”¨functionå¯¹è±¡è€Œéå‡½æ•°æŒ‡é’ˆ
+  // ä¼ ç»Ÿçš„Strategyè®¾è®¡æ¨¡å¼
 }

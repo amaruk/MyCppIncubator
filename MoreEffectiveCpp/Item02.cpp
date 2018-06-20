@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item02.h"
 
-Item02::Item02() :
-  ItemBase("02")
-{
-}
-
-
-Item02::~Item02()
-{
-}
-
-
 void Item02::ItemEntry()
 {
   // Item02: Prefer C++-style casts.

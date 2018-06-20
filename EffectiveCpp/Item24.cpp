@@ -1,19 +1,8 @@
 #include "stdafx.h"
 #include "Item24.h"
 
-
-Item24::Item24() :
-  ItemBase("24")
-{
-}
-
-
-Item24::~Item24()
-{
-}
-
 void Item24::ItemEntry()
 {
   //// Item 24: Declare non-member functions when type conversions should apply to all parameters
-  // ²Î¿¼Ô­ÊéitemµÄÕÂ½Ú£¬³Ë·¨²Ù×÷·û×÷Îª·Ç³ÉÔ±º¯Êı£¬ÔÚÖ§³ÖÒşÊ½×ª»»µÄÇé¿öÏÂ£¬ÊÊÓÃÓÚ¸ü¶àµÄÀàĞÍ»ìºÏ²Ù×÷¡£
+  // å‚è€ƒåŸä¹¦itemçš„ç« èŠ‚ï¼Œä¹˜æ³•æ“ä½œç¬¦ä½œä¸ºéæˆå‘˜å‡½æ•°ï¼Œåœ¨æ”¯æŒéšå¼è½¬æ¢çš„æƒ…å†µä¸‹ï¼Œé€‚ç”¨äºæ›´å¤šçš„ç±»å‹æ··åˆæ“ä½œã€‚
 }

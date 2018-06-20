@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item37.h"
 
-
-Item37::Item37() :
-  ItemBase("37")
-{
-}
-
-
-Item37::~Item37()
-{
-}
-
 namespace ITEM37
 {
   class BaseClass
@@ -36,18 +25,18 @@ namespace ITEM37
 void Item37::ItemEntry()
 {
   //// Item 37: Never redefine a function's inherited default parameter value
-  // Ðéº¯Êý¶¯Ì¬°ó¶¨£¨dynamic binding»òlate binding£©£¬²ÎÊýÄ¬ÈÏÖµ¾²Ì¬°ó¶¨£¨static binding»òearly binding£©
-  // ¾²Ì¬ÀàÐÍÊÇÉùÃ÷ÊÇÔÚ´úÂë×ÖÃæÉÏµÄÀàÐÍ£¬ºÍ¸³ÓèµÄ¶ÔÏóÀàÐÍÎÞ¹Ø¡£
+  // è™šå‡½æ•°åŠ¨æ€ç»‘å®šï¼ˆdynamic bindingæˆ–late bindingï¼‰ï¼Œå‚æ•°é»˜è®¤å€¼é™æ€ç»‘å®šï¼ˆstatic bindingæˆ–early bindingï¼‰
+  // é™æ€ç±»åž‹æ˜¯å£°æ˜Žæ˜¯åœ¨ä»£ç å­—é¢ä¸Šçš„ç±»åž‹ï¼Œå’Œèµ‹äºˆçš„å¯¹è±¡ç±»åž‹æ— å…³ã€‚
 
   using ITEM37::BaseClass;
   using ITEM37::DerivedClass;
   using ITEM37::AnotherDerivedClass;
 
-  BaseClass* pB1;                           // ¾²Ì¬ÀàÐÍÎªBaseClass*£»¶¯Ì¬ÀàÐÍÃ»ÓÐ£¬ÒòÎª»¹Ã»¸³Öµ
-  BaseClass* pB2 = new DerivedClass;        // ¾²Ì¬ÀàÐÍÎªBaseClass*£»¶¯Ì¬ÀàÐÍÎªDerivedClass*
-  BaseClass* pB3 = new AnotherDerivedClass; // ¾²Ì¬ÀàÐÍÎªBaseClass*£»¶¯Ì¬ÀàÐÍÎªAnotherDerivedClass*
-  // Í¨¹ý¸³Öµ¿ÉÒÔ¸Ä±ä¶¯Ì¬ÀàÐÍ
-  // Ðéº¯ÊýÊÇ¶¯Ì¬°ó¶¨µÄ£¬µ«²ÎÊýÄ¬ÈÏÖµÎªÁËÌá¸ßÐ§ÂÊÊÇ¾²Ì¬°ó¶¨µÄ£¬ËùÒÔ²ÎÊý¾²Ì¬Öµ¶¼ÊÇ»ùÀàµÄ¾²Ì¬Öµ
+  BaseClass* pB1;                           // é™æ€ç±»åž‹ä¸ºBaseClass*ï¼›åŠ¨æ€ç±»åž‹æ²¡æœ‰ï¼Œå› ä¸ºè¿˜æ²¡èµ‹å€¼
+  BaseClass* pB2 = new DerivedClass;        // é™æ€ç±»åž‹ä¸ºBaseClass*ï¼›åŠ¨æ€ç±»åž‹ä¸ºDerivedClass*
+  BaseClass* pB3 = new AnotherDerivedClass; // é™æ€ç±»åž‹ä¸ºBaseClass*ï¼›åŠ¨æ€ç±»åž‹ä¸ºAnotherDerivedClass*
+  // é€šè¿‡èµ‹å€¼å¯ä»¥æ”¹å˜åŠ¨æ€ç±»åž‹
+  // è™šå‡½æ•°æ˜¯åŠ¨æ€ç»‘å®šçš„ï¼Œä½†å‚æ•°é»˜è®¤å€¼ä¸ºäº†æé«˜æ•ˆçŽ‡æ˜¯é™æ€ç»‘å®šçš„ï¼Œæ‰€ä»¥å‚æ•°é™æ€å€¼éƒ½æ˜¯åŸºç±»çš„é™æ€å€¼
   pB2->Virtual();
   pB3->Virtual();
   delete pB2;

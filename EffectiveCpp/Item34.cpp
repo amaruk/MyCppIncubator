@@ -1,20 +1,9 @@
 #include "stdafx.h"
 #include "Item34.h"
 
-
-Item34::Item34() :
-  ItemBase("34")
-{
-}
-
-
-Item34::~Item34()
-{
-}
-
 namespace ITEM34
 {
-  // ÓĞ´¿Ğéº¯ÊıµÄÀàÊÇabstract class£¬²»ÄÜ²úÉúÊµÀı
+  // æœ‰çº¯è™šå‡½æ•°çš„ç±»æ˜¯abstract classï¼Œä¸èƒ½äº§ç”Ÿå®ä¾‹
   class BaseClass
   {
   public:
@@ -52,7 +41,7 @@ namespace ITEM34
       cout << "DerivedClass: VirtualFuncOverride" << endl;
     }
 
-    // ²»Ó¦¸Ã¶¨ÒåÓë»ùÀàÏàÍ¬µÄº¯Êı
+    // ä¸åº”è¯¥å®šä¹‰ä¸åŸºç±»ç›¸åŒçš„å‡½æ•°
 #if 0
     void Func()
     {
@@ -65,22 +54,22 @@ namespace ITEM34
 void Item34::ItemEntry()
 {
   //// Item 34: Differentiate between inheritance of interface and inheritance of implementation
-  // ´¿Ğéº¯ÊıÈÃÅÉÉúÀàinherit interface£¬»ùÀàÒªÇóÅÉÉúÀàÌá¹©ÊµÏÖ£¬µ«»ùÀàÒ»°ã²»Ìá¹©Ä¬ÈÏÊµÏÖ
-  // ÆÕÍ¨Ğéº¯ÊıÈÃÅÉÉúÀàinherit interfaceºÍdefault implementation¡£
-  // ÆÕÍ¨º¯ÊıÈÃÅÉÉúÀàinherit interfaceºÍmandatory implementation¡£²»ÔÊĞíÅÉÉúÀàÓĞ²»Í¬µÄĞĞÎª¡£
+  // çº¯è™šå‡½æ•°è®©æ´¾ç”Ÿç±»inherit interfaceï¼ŒåŸºç±»è¦æ±‚æ´¾ç”Ÿç±»æä¾›å®ç°ï¼Œä½†åŸºç±»ä¸€èˆ¬ä¸æä¾›é»˜è®¤å®ç°
+  // æ™®é€šè™šå‡½æ•°è®©æ´¾ç”Ÿç±»inherit interfaceå’Œdefault implementationã€‚
+  // æ™®é€šå‡½æ•°è®©æ´¾ç”Ÿç±»inherit interfaceå’Œmandatory implementationã€‚ä¸å…è®¸æ´¾ç”Ÿç±»æœ‰ä¸åŒçš„è¡Œä¸ºã€‚
 
   ITEM34::DerivedClass derived{};
 
-  // µ÷ÓÃÅÉÉúÀàÊµÏÖµÄ´¿Ğéº¯Êı
+  // è°ƒç”¨æ´¾ç”Ÿç±»å®ç°çš„çº¯è™šå‡½æ•°
   derived.PureVirtualFunc();
-  // µ÷ÓÃ»ùÀàÊµÏÖµÄ´¿Ğéº¯Êı
+  // è°ƒç”¨åŸºç±»å®ç°çš„çº¯è™šå‡½æ•°
   derived.BaseClass::PureVirtualFunc();
 
-  // µ÷ÓÃÃ»ÓĞoverrideµÄĞéº¯Êı
+  // è°ƒç”¨æ²¡æœ‰overrideçš„è™šå‡½æ•°
   derived.VirtualFuncNoOverride();
-  // µ÷ÓÃoverrideµÄĞéº¯Êı
+  // è°ƒç”¨overrideçš„è™šå‡½æ•°
   derived.VirtualFuncOverride();
 
-  // µ÷ÓÃÆÕÍ¨º¯Êı
+  // è°ƒç”¨æ™®é€šå‡½æ•°
   derived.Func();
 }

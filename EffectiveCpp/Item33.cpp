@@ -1,21 +1,10 @@
 #include "stdafx.h"
 #include "Item33.h"
 
-
-Item33::Item33() :
-  ItemBase("33")
-{
-}
-
-
-Item33::~Item33()
-{
-}
-
 void Item33::ItemEntry()
 {
   //// Item 33: Avoid hiding inherited names
-  // »ùÀàºÍÅÉÉúÀàµÄ¹ØÏµ¿ÉÒÔÏëÏñÎª£¬»ùÀàÎªÒ»¶Î´óÀ¨ºÅÄÚµÄ´úÂë£¬ÅÉÉúÀàÎªÆäÖÐÁíÒ»¶Î´óÀ¨ºÅÄÚµÄ´úÂë¡£
-  // ÄÚ²¿·¶Î§µÄÍ¬Ãû³ÉÔ±»áÒþ²ØÍâ²¿·¶Î§µÄ³ÉÔ±¡£×¢ÒâÊÇÍ¬Ãû£¬±àÒëÆ÷²¢²»ÔÚºõÀàÐÍ£¬»òÕßÊÇº¯ÊýµÄ²ÎÊý¡£
-  // ¿ÉÒÔÔÚÅÉÉúÀàÀïÓÃ using Base::fun;À´ÒýÈë»ùÀàµÄfun£¬°üÀ¨ÖØÔØµÄfun
+  // åŸºç±»å’Œæ´¾ç”Ÿç±»çš„å…³ç³»å¯ä»¥æƒ³åƒä¸ºï¼ŒåŸºç±»ä¸ºä¸€æ®µå¤§æ‹¬å·å†…çš„ä»£ç ï¼Œæ´¾ç”Ÿç±»ä¸ºå…¶ä¸­å¦ä¸€æ®µå¤§æ‹¬å·å†…çš„ä»£ç ã€‚
+  // å†…éƒ¨èŒƒå›´çš„åŒåæˆå‘˜ä¼šéšè—å¤–éƒ¨èŒƒå›´çš„æˆå‘˜ã€‚æ³¨æ„æ˜¯åŒåï¼Œç¼–è¯‘å™¨å¹¶ä¸åœ¨ä¹Žç±»åž‹ï¼Œæˆ–è€…æ˜¯å‡½æ•°çš„å‚æ•°ã€‚
+  // å¯ä»¥åœ¨æ´¾ç”Ÿç±»é‡Œç”¨ using Base::fun;æ¥å¼•å…¥åŸºç±»çš„funï¼ŒåŒ…æ‹¬é‡è½½çš„fun
 }

@@ -1,24 +1,13 @@
 #include "stdafx.h"
 #include "Item13.h"
 
-
-Item13::Item13() :
-  ItemBase("13")
-{
-}
-
-
-Item13::~Item13()
-{
-}
-
 void Item13::ItemEntry()
 {
   //// Item 13: Use objects to manage resources.
-  // ÔÚÒ»¶Î´úÂëÖĞÏÈnew£¬ºóÖ´ĞĞ´úÂë£¬×îºódelete¡£×Ü»áÒòÎªÖĞ¼ä´úÂëÖ´ĞĞ³ö´í£¬¶øµ¼ÖÂÃ»ÓĞdeleteÔì³ÉĞ¹Â©¡£
-  // ÕâÀïµÄuse objects to manage resourcesÖ¸Resource Acquisition Is Initialization (RAII)£¬
-  // ÒòÎª´´½¨×ÊÔ´ºÍ³õÊ¼»¯×ÊÔ´×ÜÊÇÔÚÒ»Æğ£¬Í¬Ê±objectÎö¹¹µÄÊ±ºò±£Ö¤ÊÍ·Å×ÊÔ´¡£
-  // auto_ptrÊÇRAIIµÄÒ»ÖÖÊµÏÖ
-  // shared_ptrÊÇreference-counting smart pointer (RCSP)µÄÒ»ÖÖÊµÏÖ£¬ÄÜ¼ÇÂ¼ÓĞ¶àÉÙ¶ÔÏóÖ¸ÏòÍ¬Ò»¸ö×ÊÔ´£¬
-  // µ±Ã»ÓĞ¶ÔÏóÖ¸Ïò×ÊÔ´Ê±ÊÍ·Å×ÊÔ´£¬µ«²»ÄÜÊÍ·Å³É»·µÄÒıÓÃ¡£
+  // åœ¨ä¸€æ®µä»£ç ä¸­å…ˆnewï¼Œåæ‰§è¡Œä»£ç ï¼Œæœ€ådeleteã€‚æ€»ä¼šå› ä¸ºä¸­é—´ä»£ç æ‰§è¡Œå‡ºé”™ï¼Œè€Œå¯¼è‡´æ²¡æœ‰deleteé€ æˆæ³„æ¼ã€‚
+  // è¿™é‡Œçš„use objects to manage resourcesæŒ‡Resource Acquisition Is Initialization (RAII)ï¼Œ
+  // å› ä¸ºåˆ›å»ºèµ„æºå’Œåˆå§‹åŒ–èµ„æºæ€»æ˜¯åœ¨ä¸€èµ·ï¼ŒåŒæ—¶objectææ„çš„æ—¶å€™ä¿è¯é‡Šæ”¾èµ„æºã€‚
+  // auto_ptræ˜¯RAIIçš„ä¸€ç§å®ç°
+  // shared_ptræ˜¯reference-counting smart pointer (RCSP)çš„ä¸€ç§å®ç°ï¼Œèƒ½è®°å½•æœ‰å¤šå°‘å¯¹è±¡æŒ‡å‘åŒä¸€ä¸ªèµ„æºï¼Œ
+  // å½“æ²¡æœ‰å¯¹è±¡æŒ‡å‘èµ„æºæ—¶é‡Šæ”¾èµ„æºï¼Œä½†ä¸èƒ½é‡Šæ”¾æˆç¯çš„å¼•ç”¨ã€‚
 }

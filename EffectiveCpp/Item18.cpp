@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item18.h"
 
-
-Item18::Item18() :
-  ItemBase("18")
-{
-}
-
-
-Item18::~Item18()
-{
-}
-
 struct DayType
 {
   explicit DayType(int d)  :
@@ -48,10 +37,10 @@ class DateClass {
 
 public:
 
-  // ²»×öÈÎºÎÏŞÖÆµÄ¹¹Ôìº¯ÊıÈçÏÂ£¬Ê¹ÓÃÕß¿ÉÄÜ´«ÈëµÄÔÂ·İÌ«´ó£¬¸ºÊıµÄÈÕÆÚ£¬µÈµÈ
+  // ä¸åšä»»ä½•é™åˆ¶çš„æ„é€ å‡½æ•°å¦‚ä¸‹ï¼Œä½¿ç”¨è€…å¯èƒ½ä¼ å…¥çš„æœˆä»½å¤ªå¤§ï¼Œè´Ÿæ•°çš„æ—¥æœŸï¼Œç­‰ç­‰
   //DateClass(int month, int day, int year) {}
 
-  // ÓÃ½á¹¹°ü×°Äê¡¢ÔÂ¡¢ÈÕ£¬¼õÉÙ´íÎóÊ¹ÓÃµÄ»ú»á£¬¾¡Á¿ÔÚ±àÒëÆÚ¼´¿É·¢ÏÖ
+  // ç”¨ç»“æ„åŒ…è£…å¹´ã€æœˆã€æ—¥ï¼Œå‡å°‘é”™è¯¯ä½¿ç”¨çš„æœºä¼šï¼Œå°½é‡åœ¨ç¼–è¯‘æœŸå³å¯å‘ç°
   DateClass(YearType y, MonthType m, DayType d) {}
 
 };
@@ -60,10 +49,10 @@ public:
 void Item18::ItemEntry()
 {
   //// Item 18: Make interfaces easy to use correctly and hard to use incorrectly
-  // ±ÈÈç´¦ÀíÄêÔÂÈÕµÄ½Ó¿Ú£¬Èç¹ûÏëÒªÈÃ½Ó¿ÚµÄÊ¹ÓÃÕß¾¡Á¿¼õÉÙ´íÎóÊ¹ÓÃµÄ»ú»á£¬¿ÉÒÔ¶¨Òå½á¹¹·â×°
+  // æ¯”å¦‚å¤„ç†å¹´æœˆæ—¥çš„æ¥å£ï¼Œå¦‚æœæƒ³è¦è®©æ¥å£çš„ä½¿ç”¨è€…å°½é‡å‡å°‘é”™è¯¯ä½¿ç”¨çš„æœºä¼šï¼Œå¯ä»¥å®šä¹‰ç»“æ„å°è£…
 
-  //DateClass(1, 2, 3); // ÓÉÓÚexplicit¹¹Ôìº¯Êı£¬ËùÒÔ²»ÄÜÓÃintÒşÊ½×ª»»
-  //DateClass(MonthType(1), DayType(1), YearType(1970)); // ²ÎÊıÀàĞÍË³Ğò´íÎóÒ²ÄÜÔÚ±àÒëÆÚ·¢ÏÖ
-  DateClass(YearType(1970), MonthType::Jan(), DayType(1)); // ÔöÇ¿MonthType£¬±ÜÃâ³öÏÖ·Ç·¨ÔÂ·İ
+  //DateClass(1, 2, 3); // ç”±äºexplicitæ„é€ å‡½æ•°ï¼Œæ‰€ä»¥ä¸èƒ½ç”¨intéšå¼è½¬æ¢
+  //DateClass(MonthType(1), DayType(1), YearType(1970)); // å‚æ•°ç±»å‹é¡ºåºé”™è¯¯ä¹Ÿèƒ½åœ¨ç¼–è¯‘æœŸå‘ç°
+  DateClass(YearType(1970), MonthType::Jan(), DayType(1)); // å¢å¼ºMonthTypeï¼Œé¿å…å‡ºç°éæ³•æœˆä»½
 
 }

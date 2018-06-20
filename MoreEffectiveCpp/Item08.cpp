@@ -1,17 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Item08.h"
 
-Item08::Item08() :
-  ItemBase("08")
-{
-}
-
-
-Item08::~Item08()
-{
-}
-
-
 void Item08::ItemEntry()
 {
   // Item08: Understand the different meanings of new and delete.

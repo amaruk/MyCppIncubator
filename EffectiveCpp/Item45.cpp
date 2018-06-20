@@ -1,20 +1,9 @@
 #include "stdafx.h"
 #include "Item45.h"
 
-
-Item45::Item45() :
-  ItemBase("45")
-{
-}
-
-
-Item45::~Item45()
-{
-}
-
 namespace ITEM45
 {
-  // Ä£ÄâÖÇÄÜÖ¸ÕëµÄÊµÏÖ
+  // æ¨¡æ‹Ÿæ™ºèƒ½æŒ‡é’ˆçš„å®ç°
   template<typename T>
   class MySmartPointer
   {
@@ -22,16 +11,16 @@ namespace ITEM45
 
     MySmartPointer(T t) { cout << "MySmartPointer<T>::CTOR(T)" << endl; }
 
-    // ½ÓÊÜÍ¨ÓÃÅÉÉúÀàÀàĞÍµÄ¿½±´¹¹Ôìº¯Êı generalized copy constructor£º
-    // ÌØ¶¨ÀàĞÍµÄÄ£°åÊµÀı¶ÔÏó ¿ÉÒÔÓÃÍ¬Ò»¸öÄ£°åµÄ²»Í¬ÀàĞÍÊµÀı¶ÔÏó À´´´½¨
-    // ±íÊ¾MySmartPointer<T>¿ÉÒÔÓÉMySmartPointer<S>´´½¨
-    // µ«´ËÊ±SºÍT¿ÉÒÔÏà»¥¹¹Ôì
+    // æ¥å—é€šç”¨æ´¾ç”Ÿç±»ç±»å‹çš„æ‹·è´æ„é€ å‡½æ•° generalized copy constructorï¼š
+    // ç‰¹å®šç±»å‹çš„æ¨¡æ¿å®ä¾‹å¯¹è±¡ å¯ä»¥ç”¨åŒä¸€ä¸ªæ¨¡æ¿çš„ä¸åŒç±»å‹å®ä¾‹å¯¹è±¡ æ¥åˆ›å»º
+    // è¡¨ç¤ºMySmartPointer<T>å¯ä»¥ç”±MySmartPointer<S>åˆ›å»º
+    // ä½†æ­¤æ—¶Så’ŒTå¯ä»¥ç›¸äº’æ„é€ 
     template<typename S>
     MySmartPointer(const MySmartPointer<S>& another)
     { cout << "MySmartPointer<T>::CTOR(MySmartPointer<S>)" << endl; }
   };
 
-  // Ö»Ö§³ÖÄÜ¹»ÒşÊ½ÀàĞÍ×ª»»µÄ¹¹Ôìº¯Êı
+  // åªæ”¯æŒèƒ½å¤Ÿéšå¼ç±»å‹è½¬æ¢çš„æ„é€ å‡½æ•°
   template<typename T>
   class MySmartPointerAdvanced
   {
@@ -42,7 +31,7 @@ namespace ITEM45
     // 
     template<typename S>
     MySmartPointerAdvanced(const MySmartPointerAdvanced<S>& another) :
-      m_typeT(another.m_typeT) // Èç¹û²»ÄÜÒşÊ½ÀàĞÍ×ª»»Ôò±àÒë´íÎó
+      m_typeT(another.m_typeT) // å¦‚æœä¸èƒ½éšå¼ç±»å‹è½¬æ¢åˆ™ç¼–è¯‘é”™è¯¯
     {
       cout << "MySmartPointerAdvanced<T>::CTOR(MySmartPointerAdvanced<S>)" << endl;
     }
@@ -56,7 +45,7 @@ namespace ITEM45
 void Item45::ItemEntry()
 {
   //// Item 45: Use member function templates to accept "all compatible types."
-  // Member function template»ò³Æmember template£¬ÓÃÓÚÎªÀàÉú³É³ÉÔ±º¯ÊıµÄº¯ÊıÄ£°å
+  // Member function templateæˆ–ç§°member templateï¼Œç”¨äºä¸ºç±»ç”Ÿæˆæˆå‘˜å‡½æ•°çš„å‡½æ•°æ¨¡æ¿
   using ITEM45::MySmartPointer;
   MySmartPointer<int> intIns{123};
   MySmartPointer<double> doubleIns{ intIns };
@@ -64,7 +53,7 @@ void Item45::ItemEntry()
 
   using ITEM45::MySmartPointerAdvanced;
   MySmartPointerAdvanced<int> intAdvIns{ 123 };
-  MySmartPointerAdvanced<double> doubleAdvIns{ intAdvIns }; // int ÄÜ×ª double
-  //MySmartPointerAdvanced<int> intAdvInsAnother{ doubleAdvIns }; // double ²»ÄÜ×ª int£¬±àÒë´íÎó
+  MySmartPointerAdvanced<double> doubleAdvIns{ intAdvIns }; // int èƒ½è½¬ double
+  //MySmartPointerAdvanced<int> intAdvInsAnother{ doubleAdvIns }; // double ä¸èƒ½è½¬ intï¼Œç¼–è¯‘é”™è¯¯
 
 }

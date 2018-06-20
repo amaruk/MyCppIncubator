@@ -1,24 +1,13 @@
 #include "stdafx.h"
 #include "Item50.h"
 
-
-Item50::Item50() :
-  ItemBase("50")
-{
-}
-
-
-Item50::~Item50()
-{
-}
-
 void Item50::ItemEntry()
 {
   //// Item 50: Understand when it makes sense to replace new and delete
-  // ²»ÓÃnewºÍdeleteµÄÔ­Òò£º
-  // 1. Íü¼Çdeleteµ¼ÖÂÄÚ´æĞ¹Â©£¬¶à´Îdeleteµ¼ÖÂÎ´¶¨ÒåĞĞÎª
-  // 2. Ëæ±àÒëÆ÷µÄnewºÍdeleteÓÉÓÚÍ¨ÓÃ£¬ÔÚÌØ¶¨Ó¦ÓÃ³¡¾°ÖĞĞ§ÂÊ²»¹»ºÃ
-  // 3. newºÍdelete²»Ìá¹©Í³¼ÆÊı¾İµÄ¹¦ÄÜ
+  // ä¸ç”¨newå’Œdeleteçš„åŸå› ï¼š
+  // 1. å¿˜è®°deleteå¯¼è‡´å†…å­˜æ³„æ¼ï¼Œå¤šæ¬¡deleteå¯¼è‡´æœªå®šä¹‰è¡Œä¸º
+  // 2. éšç¼–è¯‘å™¨çš„newå’Œdeleteç”±äºé€šç”¨ï¼Œåœ¨ç‰¹å®šåº”ç”¨åœºæ™¯ä¸­æ•ˆç‡ä¸å¤Ÿå¥½
+  // 3. newå’Œdeleteä¸æä¾›ç»Ÿè®¡æ•°æ®çš„åŠŸèƒ½
 
 
 }

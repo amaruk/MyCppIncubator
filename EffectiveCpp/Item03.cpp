@@ -2,47 +2,36 @@
 #include "Item03.h"
 #include <vector>
 
-Item03::Item03() :
-  ItemBase("03")
-{
-}
-
-
-Item03::~Item03()
-{
-}
-
-
 void Item03::ItemEntry()
 {
   // Item 3: Use const whenever possible 
 
   char greeting[] = "hello";
 
-  ///// ¶ÔÓÚÖ¸Õë£¬constÔÚĞÇºÅ×ó±ß±íÊ¾Ö¸ÏòµÄÎªconst£¬ÔÚĞÇºÅÓÒ±ß±íÊ¾Ö¸Õë×ÔÉíÊÇconst
-  // const char * ºÍ char const *ÒâÒåÏàÍ¬
+  ///// å¯¹äºæŒ‡é’ˆï¼Œconståœ¨æ˜Ÿå·å·¦è¾¹è¡¨ç¤ºæŒ‡å‘çš„ä¸ºconstï¼Œåœ¨æ˜Ÿå·å³è¾¹è¡¨ç¤ºæŒ‡é’ˆè‡ªèº«æ˜¯const
+  // const char * å’Œ char const *æ„ä¹‰ç›¸åŒ
         char*       p  = greeting; // non-const data, non-const pointer
   const char*       p1 = greeting; //     const data, non-const pointer
         char* const p2 = greeting; // non-const data,     const pointer
   const char* const p3 = greeting; //     const data,     const pointer
 
-  ///// IteratorµÄĞĞÎªÀàËÆÓëT*Ö¸Õë£¬µ«ÊÇÆäconstµÄĞÎÊ½ÂÔÓĞ²»Í¬
+  ///// Iteratorçš„è¡Œä¸ºç±»ä¼¼ä¸T*æŒ‡é’ˆï¼Œä½†æ˜¯å…¶constçš„å½¢å¼ç•¥æœ‰ä¸åŒ
   std::vector<int> intVec = { 1,2,3,4,5,6 };
-  const std::vector<int>::iterator iter = intVec.begin(); // ×¢Òâ£¬ÕâÀïconstµÄÎ»ÖÃºÍÖ¸ÕëµÄconstÓÃ·¨²»Ò»ÖÂ
-                                                          // ÕâÀïÏàµ±ÓÚT* const£¬±íÊ¾iterator×ÔÉíÎª³£Á¿
+  const std::vector<int>::iterator iter = intVec.begin(); // æ³¨æ„ï¼Œè¿™é‡Œconstçš„ä½ç½®å’ŒæŒ‡é’ˆçš„constç”¨æ³•ä¸ä¸€è‡´
+                                                          // è¿™é‡Œç›¸å½“äºT* constï¼Œè¡¨ç¤ºiteratorè‡ªèº«ä¸ºå¸¸é‡
   *iter = 10;
-  //++iter; // ²»ÄÜĞŞ¸Äiter×ÔÉí
-  std::vector<int>::const_iterator cIter = intVec.begin(); // const_iterator±íÊ¾iteratorÖ¸ÏòµÄÖµÎªconst
-  //*cIter = 10; // ²»ÄÜĞŞ¸ÄÖ¸ÏòµÄÖµ
+  //++iter; // ä¸èƒ½ä¿®æ”¹iterè‡ªèº«
+  std::vector<int>::const_iterator cIter = intVec.begin(); // const_iteratorè¡¨ç¤ºiteratoræŒ‡å‘çš„å€¼ä¸ºconst
+  //*cIter = 10; // ä¸èƒ½ä¿®æ”¹æŒ‡å‘çš„å€¼
   ++cIter;
 
-  ///// const³ÉÔ±º¯Êı±íÊ¾ÕâĞ©º¯Êı²»¸Ä±ä¸ÃÀà¶ÔÏóµÄ·Çstatic³ÉÔ±£¬ÕâĞ©º¯Êı¿ÉÒÔÔÚconst¶ÔÏóÉÏ±»µ÷ÓÃ
-  // ÓĞÁ½¸ö²»Í¬µÄÀíÄî£º
-  // bitwise constness£¨»ò³Æphysical constness£©£ºconst³ÉÔ±º¯Êı²»¸Ä±ä¸Ã¶ÔÏóµÄ·Çstatic³ÉÔ±¡£
-  //    µ«¿¼ÂÇÌØÊâÇé¿ö£¬Èç¹û³ÉÔ±±äÁ¿ÊÇÖ¸Õë£¬ÓĞconst³ÉÔ±º¯Êı·µ»ØºÍ³ÉÔ±±äÁ¿Ïà¹ØµÄÖ¸Õë£¬Õâ·ûºÏ´Ë¸ÅÄî£¬µ«µ÷ÓÃÕß¿ÉÒÔÀûÓÃÖ¸ÕëĞŞ¸Ä³ÉÔ±±äÁ¿
-  // logical constness£ºÔÚÉÏÊöÌØÊâÇé¿ö´æÔÚµÄÌõ¼şÏÂ£¬const³ÉÔ±º¯ÊıÓ¦¸ÃÒ²ÔÊĞí¸Ä±ä³ÉÔ±µÄÖµ£¬µ«±ØĞëÔÚ²»ÄÜ±»µ÷ÓÃÕß²ì¾õµÄÇé¿öÏÂ¸Ä±ä¡£
-  //    Ê¹ÓÃmutableĞŞÊÎ³ÉÔ±£¬À´ÈÃconst³ÉÔ±º¯ÊıÒ²¿ÉÒÔ¸Ä±ä³ÉÔ±µÄÖµ¡£
+  ///// constæˆå‘˜å‡½æ•°è¡¨ç¤ºè¿™äº›å‡½æ•°ä¸æ”¹å˜è¯¥ç±»å¯¹è±¡çš„éstaticæˆå‘˜ï¼Œè¿™äº›å‡½æ•°å¯ä»¥åœ¨constå¯¹è±¡ä¸Šè¢«è°ƒç”¨
+  // æœ‰ä¸¤ä¸ªä¸åŒçš„ç†å¿µï¼š
+  // bitwise constnessï¼ˆæˆ–ç§°physical constnessï¼‰ï¼šconstæˆå‘˜å‡½æ•°ä¸æ”¹å˜è¯¥å¯¹è±¡çš„éstaticæˆå‘˜ã€‚
+  //    ä½†è€ƒè™‘ç‰¹æ®Šæƒ…å†µï¼Œå¦‚æœæˆå‘˜å˜é‡æ˜¯æŒ‡é’ˆï¼Œæœ‰constæˆå‘˜å‡½æ•°è¿”å›å’Œæˆå‘˜å˜é‡ç›¸å…³çš„æŒ‡é’ˆï¼Œè¿™ç¬¦åˆæ­¤æ¦‚å¿µï¼Œä½†è°ƒç”¨è€…å¯ä»¥åˆ©ç”¨æŒ‡é’ˆä¿®æ”¹æˆå‘˜å˜é‡
+  // logical constnessï¼šåœ¨ä¸Šè¿°ç‰¹æ®Šæƒ…å†µå­˜åœ¨çš„æ¡ä»¶ä¸‹ï¼Œconstæˆå‘˜å‡½æ•°åº”è¯¥ä¹Ÿå…è®¸æ”¹å˜æˆå‘˜çš„å€¼ï¼Œä½†å¿…é¡»åœ¨ä¸èƒ½è¢«è°ƒç”¨è€…å¯Ÿè§‰çš„æƒ…å†µä¸‹æ”¹å˜ã€‚
+  //    ä½¿ç”¨mutableä¿®é¥°æˆå‘˜ï¼Œæ¥è®©constæˆå‘˜å‡½æ•°ä¹Ÿå¯ä»¥æ”¹å˜æˆå‘˜çš„å€¼ã€‚
 
-  ///// Èç¹ûconst°æ±¾³ÉÔ±º¯ÊıºÍnon-const°æ±¾³ÉÔ±º¯ÊıÄÚÈİÏàÍ¬£¬ÎªÁË±ÜÃâ´úÂëÈßÓà£¬¿ÉÒÔÔÚnon-const°æ±¾Àïµ÷ÓÃconst°æ±¾
-  // ÏÈÓÃstatic_cast<const T&>(*this)°Ñnon-constµÄthisÇ¿×ªÎªconst£¬È»ºóÔÙÓÃconst_cast<T&>°Ñconst°æ±¾·µ»ØÖµµÄconstÏŞ¶¨È¥µô
+  ///// å¦‚æœconstç‰ˆæœ¬æˆå‘˜å‡½æ•°å’Œnon-constç‰ˆæœ¬æˆå‘˜å‡½æ•°å†…å®¹ç›¸åŒï¼Œä¸ºäº†é¿å…ä»£ç å†—ä½™ï¼Œå¯ä»¥åœ¨non-constç‰ˆæœ¬é‡Œè°ƒç”¨constç‰ˆæœ¬
+  // å…ˆç”¨static_cast<const T&>(*this)æŠŠnon-constçš„thiså¼ºè½¬ä¸ºconstï¼Œç„¶åå†ç”¨const_cast<T&>æŠŠconstç‰ˆæœ¬è¿”å›å€¼çš„consté™å®šå»æ‰
 }

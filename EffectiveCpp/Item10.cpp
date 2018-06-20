@@ -1,21 +1,10 @@
 #include "stdafx.h"
 #include "Item10.h"
 
-
-Item10::Item10() :
-  ItemBase("10")
-{
-}
-
-
-Item10::~Item10()
-{
-}
-
 void Item10::ItemEntry()
 {
   //// Item 10: Have assignment operators return a reference to *this
-  // ¿ÉÒÔÁ¬Ğø¸³Öµ²Ù×÷£ºx=y=z=5;
-  // ÊÇÒòÎª¸³Öµ²Ù×÷·ûµÄÊµÏÖ×ÜÊÇ·µ»Ø×ó²Ù×÷ÊıµÄÒıÓÃ£¨ÊµÏÖÊ±·µ»Ø*this£©
+  // å¯ä»¥è¿ç»­èµ‹å€¼æ“ä½œï¼šx=y=z=5;
+  // æ˜¯å› ä¸ºèµ‹å€¼æ“ä½œç¬¦çš„å®ç°æ€»æ˜¯è¿”å›å·¦æ“ä½œæ•°çš„å¼•ç”¨ï¼ˆå®ç°æ—¶è¿”å›*thisï¼‰
 }
 

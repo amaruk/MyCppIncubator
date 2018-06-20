@@ -1,16 +1,6 @@
 #include "stdafx.h"
 #include "Item05.h"
 
-Item05::Item05() :
-  ItemBase("05")
-{
-}
-
-
-Item05::~Item05()
-{
-}
-
 namespace ITEM05
 {
   class MyInteger

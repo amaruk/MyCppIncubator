@@ -1,21 +1,10 @@
 #include "stdafx.h"
 #include "Item42.h"
 
-
-Item42::Item42() :
-  ItemBase("42")
-{
-}
-
-
-Item42::~Item42()
-{
-}
-
 namespace ITEM42
 {
   template<typename C>
-  void f(const C& container, typename C::iterator iter) // C::iteratorÎªnested dependent name
+  void f(const C& container, typename C::iterator iter) // C::iteratorä¸ºnested dependent name
   {
 
   }
@@ -24,14 +13,14 @@ namespace ITEM42
 void Item42::ItemEntry()
 {
   //// Item 42: Understand the two meanings of typename
-  // ÒÔÏÂÁ½ÖÖ·½Ê½ÉùÃ÷templateÊÇÏàÍ¬µÄ£º
+  // ä»¥ä¸‹ä¸¤ç§æ–¹å¼å£°æ˜templateæ˜¯ç›¸åŒçš„ï¼š
   // template<class T> class Widget;
   // template<typename T> class Widget;
-  // ÔÚÄ£°åÄÚ²¿ÒÀÀµÓÚÄ£°å²ÎÊı²ÅÄÜÈ·¶¨ÀàĞÍµÄÃû×Ö½Ğdependent name£¬Èçtypename CµÄCÔÚÄ£°åÄÚ²¿ÓÃµ½µÄµØ·½
-  // Èç¹ûdependent nameÊÇÊôÓÚÄ³¸öÀàµÄ£¬Ôò³ÆÎªnested dependent name£¬ÈçC::iterator
-  // ²»ÒÀÀµÄ£°å²ÎÊı¼´¿ÉÈ·¶¨ÀàĞÍµÄÃû×Ö½Ğnon-dependent name£¬ÈçintÀàĞÍµÄ±äÁ¿Ãû×Ö
+  // åœ¨æ¨¡æ¿å†…éƒ¨ä¾èµ–äºæ¨¡æ¿å‚æ•°æ‰èƒ½ç¡®å®šç±»å‹çš„åå­—å«dependent nameï¼Œå¦‚typename Cçš„Cåœ¨æ¨¡æ¿å†…éƒ¨ç”¨åˆ°çš„åœ°æ–¹
+  // å¦‚æœdependent nameæ˜¯å±äºæŸä¸ªç±»çš„ï¼Œåˆ™ç§°ä¸ºnested dependent nameï¼Œå¦‚C::iterator
+  // ä¸ä¾èµ–æ¨¡æ¿å‚æ•°å³å¯ç¡®å®šç±»å‹çš„åå­—å«non-dependent nameï¼Œå¦‚intç±»å‹çš„å˜é‡åå­—
 
-  // ÒòÎªnested dependent nameÔÚ²»ÖªµÀCÏ¸½ÚµÄÊ±ºòÎŞ·¨È·¶¨ÆäÎªÀàĞÍ»¹ÊÇCµÄ³ÉÔ±£¬µ±ÆäÓ¦ÎªÀàĞÍÊ±£¬ÔÚÆäÇ°ÃæÌí¼Ótypename¹Ø¼ü×Ö
+  // å› ä¸ºnested dependent nameåœ¨ä¸çŸ¥é“Cç»†èŠ‚çš„æ—¶å€™æ— æ³•ç¡®å®šå…¶ä¸ºç±»å‹è¿˜æ˜¯Cçš„æˆå‘˜ï¼Œå½“å…¶åº”ä¸ºç±»å‹æ—¶ï¼Œåœ¨å…¶å‰é¢æ·»åŠ typenameå…³é”®å­—
 
 
 

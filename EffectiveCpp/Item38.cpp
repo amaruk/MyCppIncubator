@@ -1,27 +1,16 @@
 #include "stdafx.h"
 #include "Item38.h"
 
-
-Item38::Item38() :
-  ItemBase("38")
-{
-}
-
-
-Item38::~Item38()
-{
-}
-
 void Item38::ItemEntry()
 {
   //// Item 38: Model "has-a" or "is-implemented-in-terms-of" through composition
-  // CompositionÊÇÖ¸Ò»¸öÀàĞÍµÄ¶ÔÏó°üº¬ÁíÒ»¸öÀàĞÍµÄ¶ÔÏó£¨ÁíÒ»¸öÀàĞÍµÄ¶ÔÏóÊÇÀà³ÉÔ±£©
+  // Compositionæ˜¯æŒ‡ä¸€ä¸ªç±»å‹çš„å¯¹è±¡åŒ…å«å¦ä¸€ä¸ªç±»å‹çš„å¯¹è±¡ï¼ˆå¦ä¸€ä¸ªç±»å‹çš„å¯¹è±¡æ˜¯ç±»æˆå‘˜ï¼‰
 
-  // Application domain£º¶ÔÏó±íÊ¾¶ÔÊÀ½çÉÏµÄÊÂÎï½¨Ä££¬ÈçÈË£¬Æû³µ£¬µÈ
-  // Implementation domain£ºµ¥´¿ÓÃÓÚÊµÏÖ¹¦ÄÜ£¬Èç»º´æ£¬»¥³âÁ¿£¬µÈ
+  // Application domainï¼šå¯¹è±¡è¡¨ç¤ºå¯¹ä¸–ç•Œä¸Šçš„äº‹ç‰©å»ºæ¨¡ï¼Œå¦‚äººï¼Œæ±½è½¦ï¼Œç­‰
+  // Implementation domainï¼šå•çº¯ç”¨äºå®ç°åŠŸèƒ½ï¼Œå¦‚ç¼“å­˜ï¼Œäº’æ–¥é‡ï¼Œç­‰
 
-  // Composition±íÊ¾ÒÔÏÂÁ½ÖÖÖ®Ò»£º
-  // 1. has-a£ºÔÚapplication domainµÄ¶ÔÏóÖ®¼äµÄ¹ØÏµ
-  // 2. is-implemented-in-terms-of£ºÔÚimplementation domainµÄ¶ÔÏóÖ®¼äµÄ¹ØÏµ
+  // Compositionè¡¨ç¤ºä»¥ä¸‹ä¸¤ç§ä¹‹ä¸€ï¼š
+  // 1. has-aï¼šåœ¨application domainçš„å¯¹è±¡ä¹‹é—´çš„å…³ç³»
+  // 2. is-implemented-in-terms-ofï¼šåœ¨implementation domainçš„å¯¹è±¡ä¹‹é—´çš„å…³ç³»
 
 }

@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item04.h"
 
-
-Item04::Item04() :
-  ItemBase("04")
-{
-}
-
-
-Item04::~Item04()
-{
-}
-
 void Item04::ItemEntry()
 {
   // Item 4: Make sure that objects are initialized before they're used

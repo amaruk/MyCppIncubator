@@ -26,7 +26,6 @@ int main()
   // new operator delete operator sizeof        typeid
   // static_cast  dynamic_cast    const_cast    reinterpret_cast
   // （关于new operator和operator new的区别见Item08）
-
   //Item05().ItemEntry();
   //Item06().ItemEntry();
   //Item07().ItemEntry();

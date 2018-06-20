@@ -1,21 +1,10 @@
 #include "stdafx.h"
 #include "Item32.h"
 
-
-Item32::Item32() :
-  ItemBase("32")
-{
-}
-
-
-Item32::~Item32()
-{
-}
-
 void Item32::ItemEntry()
 {
   //// Item 32: Make sure public inheritance models "is-a."
   // Public inheritance means derived class type object "is-a" base class type object.
-  // ¹Ø¼üµãÔÚÓÚ»ùÀàÊÊÓÃµÄ¹æÔòÔÚÅÉÉúÀàÒ²ÊÊÓÃ¡£±ÈÈç»ùÀàÊÇÄñ£¬ÓĞ¡°·É¡±µÄpublic½Ó¿Ú£»publicÅÉÉúÀàÊÇÆó¶ì£¬¡°·É¡±µÄ½Ó¿ÚÊÊÓÃÓëÆó¶ì£¬µ«Êµ¼ÊÆó¶ì²»ÄÜ¡°·É¡±¡£
+  // å…³é”®ç‚¹åœ¨äºåŸºç±»é€‚ç”¨çš„è§„åˆ™åœ¨æ´¾ç”Ÿç±»ä¹Ÿé€‚ç”¨ã€‚æ¯”å¦‚åŸºç±»æ˜¯é¸Ÿï¼Œæœ‰â€œé£â€çš„publicæ¥å£ï¼›publicæ´¾ç”Ÿç±»æ˜¯ä¼é¹…ï¼Œâ€œé£â€çš„æ¥å£é€‚ç”¨ä¸ä¼é¹…ï¼Œä½†å®é™…ä¼é¹…ä¸èƒ½â€œé£â€ã€‚
 
 }

@@ -5,8 +5,8 @@
 class Item06 : public ItemBase
 {
 public:
-  Item06();
-  ~Item06();
+  Item06() : ItemBase("06") { }
+  ~Item06() = default;
 
   void ItemEntry() override;
 };

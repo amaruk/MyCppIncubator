@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item09.h"
 
-
-Item09::Item09() :
-  ItemBase("09")
-{
-}
-
-
-Item09::~Item09()
-{
-}
-
 class Item9BaseClass
 {
 public:
@@ -29,15 +18,15 @@ public:
 void Item09::ItemEntry()
 {
   //// Item 9: Never call virtual functions during construction or destruction
-  // ´´½¨ÅÉÉúÀàÊµÀýÊ±£¬ÏÈÖ´ÐÐ»ùÀà¹¹Ôìº¯Êý£¬ÔÚ´ËÆÚ¼äÊµÀýÀàÐÍÎª»ùÀàÀàÐÍ£¬ÇÒÖ»ÄÜÊ¹ÓÃ»ùÀàµÄ³ÉÔ±
-  // Ö´ÐÐÍê»ùÀà¹¹Ôìº¯Êýºó£¬Ö´ÐÐÅÉÉúÀà¹¹Ôìº¯Êý£¬´ËÊ±ÊµÀýÀàÐÍÎªÅÉÉúÀàÀàÐÍ¡£
-  // Îö¹¹µÄÊ±ºò£¬ÏÈÖ´ÐÐÅÉÉúÀàµÄÎö¹¹º¯Êý£¬ÔÙÖ´ÐÐ»ùÀàµÄÎö¹¹º¯Êý
+  // åˆ›å»ºæ´¾ç”Ÿç±»å®žä¾‹æ—¶ï¼Œå…ˆæ‰§è¡ŒåŸºç±»æž„é€ å‡½æ•°ï¼Œåœ¨æ­¤æœŸé—´å®žä¾‹ç±»åž‹ä¸ºåŸºç±»ç±»åž‹ï¼Œä¸”åªèƒ½ä½¿ç”¨åŸºç±»çš„æˆå‘˜
+  // æ‰§è¡Œå®ŒåŸºç±»æž„é€ å‡½æ•°åŽï¼Œæ‰§è¡Œæ´¾ç”Ÿç±»æž„é€ å‡½æ•°ï¼Œæ­¤æ—¶å®žä¾‹ç±»åž‹ä¸ºæ´¾ç”Ÿç±»ç±»åž‹ã€‚
+  // æžæž„çš„æ—¶å€™ï¼Œå…ˆæ‰§è¡Œæ´¾ç”Ÿç±»çš„æžæž„å‡½æ•°ï¼Œå†æ‰§è¡ŒåŸºç±»çš„æžæž„å‡½æ•°
 
-  // ËùÒÔÔÚÊµÀýÎª»ùÀàÀàÐÍÆÚ¼ä£¬Èç¹ûµ÷ÓÃÐéº¯Êý£¬Ôòµ÷ÓÃµÄ»áÊÇ»ùÀàµÄÐéº¯Êý£¬¶ø·Ç×ÓÀà¶Ô´ËÐéº¯ÊýµÄÊµÏÖ¡£
-  // ÎªÁË±ÜÃâ´ËÀàÎÊÌâ£¬²»ÒªÔÚ¹¹Ôìº¯ÊýºÍÎö¹¹º¯ÊýÀïµ÷ÓÃÐéº¯Êý¡£
-  // ÕæµÄÓÐ±ØÒªÊµÏÖÀàËÆ³¡¾°µÄ»°£¬ÈÃ×ÓÀàµÄ¹¹Ôìº¯Êý´«²ÎÊý¸ø»ùÀà¹¹Ôìº¯Êý¼´¿É¡£
+  // æ‰€ä»¥åœ¨å®žä¾‹ä¸ºåŸºç±»ç±»åž‹æœŸé—´ï¼Œå¦‚æžœè°ƒç”¨è™šå‡½æ•°ï¼Œåˆ™è°ƒç”¨çš„ä¼šæ˜¯åŸºç±»çš„è™šå‡½æ•°ï¼Œè€Œéžå­ç±»å¯¹æ­¤è™šå‡½æ•°çš„å®žçŽ°ã€‚
+  // ä¸ºäº†é¿å…æ­¤ç±»é—®é¢˜ï¼Œä¸è¦åœ¨æž„é€ å‡½æ•°å’Œæžæž„å‡½æ•°é‡Œè°ƒç”¨è™šå‡½æ•°ã€‚
+  // çœŸçš„æœ‰å¿…è¦å®žçŽ°ç±»ä¼¼åœºæ™¯çš„è¯ï¼Œè®©å­ç±»çš„æž„é€ å‡½æ•°ä¼ å‚æ•°ç»™åŸºç±»æž„é€ å‡½æ•°å³å¯ã€‚
 
-  // ×¢Òâ´òÓ¡µÄË³Ðò
+  // æ³¨æ„æ‰“å°çš„é¡ºåº
   cout << "Creating a base class instance:" << endl;
   {
     Item9BaseClass baseInstance{};

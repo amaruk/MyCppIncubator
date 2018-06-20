@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item15.h"
 
-
-Item15::Item15() :
-  ItemBase("15")
-{
-}
-
-
-Item15::~Item15()
-{
-}
-
 class Item15InnerClass
 {
 public:
@@ -26,7 +15,7 @@ public:
   Item15OuterClass() { cout << "Item15OuterClass CTOR" << endl; }
   ~Item15OuterClass() { cout << "Item15OuterClass DTOR" << endl; }
 
-  // Ìá¹©Á½ÖÖÒşÊ½ÀàĞÍ×ª»»
+  // æä¾›ä¸¤ç§éšå¼ç±»å‹è½¬æ¢
   operator Item15InnerClass() const { return m_inner; }
   operator int() const { return m_int; }
 
@@ -49,9 +38,9 @@ void UseIntPtr(int pInt)
 void Item15::ItemEntry()
 {
   //// Item 15: Provide access to raw resources in resource-managing classes.
-  // ÓÃgetº¯Êı´Óauto_ptr»òshared_ptrÀïÏÔÊ½×ª»»»ñÈ¡Ô­Ê¼Ö¸Õë
-  // Ö±½Óµ÷ÓÃÖØÔØµÄ->»ò*²Ù×÷·û£¬µ÷ÓÃÔ­Ê¼Ö¸ÕëµÄ³ÉÔ±
-  // »òÌá¹©ÒşÊ½×ª»»
+  // ç”¨getå‡½æ•°ä»auto_ptræˆ–shared_ptré‡Œæ˜¾å¼è½¬æ¢è·å–åŸå§‹æŒ‡é’ˆ
+  // ç›´æ¥è°ƒç”¨é‡è½½çš„->æˆ–*æ“ä½œç¬¦ï¼Œè°ƒç”¨åŸå§‹æŒ‡é’ˆçš„æˆå‘˜
+  // æˆ–æä¾›éšå¼è½¬æ¢
   Item15OuterClass outerInst{};
   cout << "---After create outer" << endl;
   UseInnerInst(outerInst);

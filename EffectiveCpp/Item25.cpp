@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item25.h"
 
-
-Item25::Item25() :
-  ItemBase("25")
-{
-}
-
-
-Item25::~Item25()
-{
-}
-
 ///////////////////////////////////////
 
 namespace TestDefaultSwap
@@ -20,7 +9,7 @@ namespace TestDefaultSwap
   {
   public:
     SwapTester(int& val) : m_ptr(&val) {};
-    // Ö§³Ö¿½±´¹¹ÔìºÍ¿½±´¸³ÖµµÄÀà£¬std::swap¾Í¿ÉÒÔ¶ÔÆä½øĞĞ²Ù×÷
+    // æ”¯æŒæ‹·è´æ„é€ å’Œæ‹·è´èµ‹å€¼çš„ç±»ï¼Œstd::swapå°±å¯ä»¥å¯¹å…¶è¿›è¡Œæ“ä½œ
 
     SwapTester& operator=(const SwapTester& rhs)
     {
@@ -30,7 +19,7 @@ namespace TestDefaultSwap
     }
 
   private:
-    int* m_ptr{ nullptr }; // ¿ÉÄÜÎªÖ¸Ïò´óĞÍÊı¾İ½á¹¹µÄÖ¸Õë
+    int* m_ptr{ nullptr }; // å¯èƒ½ä¸ºæŒ‡å‘å¤§å‹æ•°æ®ç»“æ„çš„æŒ‡é’ˆ
   };
 }
 
@@ -50,7 +39,7 @@ namespace TestExtendSwap
       return *this;
     }
 
-    void swap(SwapTester& another) // ¶¨Òåswapº¯ÊıÊµÏÖÖ»½»»»Ö¸ÕëÖµµÄpimpl
+    void swap(SwapTester& another) // å®šä¹‰swapå‡½æ•°å®ç°åªäº¤æ¢æŒ‡é’ˆå€¼çš„pimpl
     {
       using std::swap;
       swap(this->m_ptr, another.m_ptr);
@@ -61,14 +50,14 @@ namespace TestExtendSwap
   };
 }
 
-// ²»ÄÜ¸Ä±ästdµÄswapÄ£°åº¯Êı£¬µ«¿ÉÒÔÖ¸¶¨×Ô¶¨ÒåµÄÄ£°åº¯ÊıÊµÀı
+// ä¸èƒ½æ”¹å˜stdçš„swapæ¨¡æ¿å‡½æ•°ï¼Œä½†å¯ä»¥æŒ‡å®šè‡ªå®šä¹‰çš„æ¨¡æ¿å‡½æ•°å®ä¾‹
 namespace std
 {
-  template<> // ²»Ö¸¶¨T±íÊ¾ÕâÊÇÄ£°åº¯ÊıµÄÊµÀı
+  template<> // ä¸æŒ‡å®šTè¡¨ç¤ºè¿™æ˜¯æ¨¡æ¿å‡½æ•°çš„å®ä¾‹
   void swap<TestExtendSwap::SwapTester>(TestExtendSwap::SwapTester& lhs, TestExtendSwap::SwapTester& rhs)
   {
     cout << "std::swap<TestExtendSwap::SwapTester>" << endl;
-    lhs.swap(rhs); // ²»ÄÜÖ±½Ó·ÃÎÊË½ÓĞ³ÉÔ±£¬Ê¹ÓÃÀàÌá¹©swapº¯Êı
+    lhs.swap(rhs); // ä¸èƒ½ç›´æ¥è®¿é—®ç§æœ‰æˆå‘˜ï¼Œä½¿ç”¨ç±»æä¾›swapå‡½æ•°
   }
 }
 
@@ -76,7 +65,7 @@ namespace std
 
 namespace TestExtendTemplateSwap
 {
-  template <typename T> // ¸ÄÎªÄ£°åÀà
+  template <typename T> // æ”¹ä¸ºæ¨¡æ¿ç±»
   class SwapTester
   {
   public:
@@ -99,7 +88,7 @@ namespace TestExtendTemplateSwap
     int* m_ptr{ nullptr };
   };
 
-  // ÔÚÃüÃû¿Õ¼äÄÚ¶¨Òå·Ç³ÉÔ±º¯ÊıÀ´swap
+  // åœ¨å‘½åç©ºé—´å†…å®šä¹‰éæˆå‘˜å‡½æ•°æ¥swap
   template<typename T>
   void swap(TestExtendTemplateSwap::SwapTester<T>& lhs, TestExtendTemplateSwap::SwapTester<T>& rhs)
   {
@@ -112,7 +101,7 @@ namespace std
 {
 
 #if ILLEGAL
-  // ²¿·ÖÊµÀı»¯Ä£°åº¯Êı·Ç·¨
+  // éƒ¨åˆ†å®ä¾‹åŒ–æ¨¡æ¿å‡½æ•°éæ³•
   template<typename T>
   void swap<TestExtendTemplateSwap::SwapTester<T>>(TestExtendTemplateSwap::SwapTester<T>& lhs, TestExtendTemplateSwap::SwapTester<T>& rhs)
   {
@@ -122,7 +111,7 @@ namespace std
 #endif
 
 #if NOTSUGGESTED
-  // ÖØÔØswapº¯Êı¶ø·ÇÊµÀı»¯¿ÉĞĞ£¬µ«²»½¨ÒéÏòstdÃüÃû¿Õ¼äÌí¼ÓĞÂ³ÉÔ±
+  // é‡è½½swapå‡½æ•°è€Œéå®ä¾‹åŒ–å¯è¡Œï¼Œä½†ä¸å»ºè®®å‘stdå‘½åç©ºé—´æ·»åŠ æ–°æˆå‘˜
   template<typename T>
   void swap(TestExtendTemplateSwap::SwapTester<T>& lhs, TestExtendTemplateSwap::SwapTester<T>& rhs)
   {
@@ -136,23 +125,23 @@ namespace std
 void Item25::ItemEntry()
 {
   //// Item 25: Consider support for a non-throwing swap
-  // ×îÖ±¹ÛµÄ½»»»Á½¸öÖµµÄ·½·¨ÊÇÊ¹ÓÃÖĞ¼ä±äÁ¿½øĞĞÈı´Î¸³Öµ¡£
+  // æœ€ç›´è§‚çš„äº¤æ¢ä¸¤ä¸ªå€¼çš„æ–¹æ³•æ˜¯ä½¿ç”¨ä¸­é—´å˜é‡è¿›è¡Œä¸‰æ¬¡èµ‹å€¼ã€‚
 
-  // Èç¹ûÊÇÖ¸Õë£¬¿ÉÒÔÖ»½»»»Ö¸ÕëÖµ£¬¶ø²»ÊÇ¿½±´Ö¸ÕëÖ¸ÏòµÄ¶ÔÏó¡£
+  // å¦‚æœæ˜¯æŒ‡é’ˆï¼Œå¯ä»¥åªäº¤æ¢æŒ‡é’ˆå€¼ï¼Œè€Œä¸æ˜¯æ‹·è´æŒ‡é’ˆæŒ‡å‘çš„å¯¹è±¡ã€‚
   // pimpl idiom (Pointer to implementation)
-  // ´ËÊ±¿ÉÒÔ´´½¨swapÄ£°åµÄÊµÀı,Èç±¾ÎÄ¼şÖĞµÄ´úÂë
+  // æ­¤æ—¶å¯ä»¥åˆ›å»ºswapæ¨¡æ¿çš„å®ä¾‹,å¦‚æœ¬æ–‡ä»¶ä¸­çš„ä»£ç 
 
   int value1 = 1;
   int value2 = 2;
 
-  // Ê¹ÓÃstdµÄÄ¬ÈÏswap£¬µ÷ÓÃ¿½±´¹¹Ôìº¯Êı»ò¿½±´¸³Öµ²Ù×÷·û
+  // ä½¿ç”¨stdçš„é»˜è®¤swapï¼Œè°ƒç”¨æ‹·è´æ„é€ å‡½æ•°æˆ–æ‹·è´èµ‹å€¼æ“ä½œç¬¦
   cout << endl << "==========Test Default Swap" << endl;
   TestDefaultSwap::SwapTester defaultTester1{value1};
   TestDefaultSwap::SwapTester defaultTester2{value2};
   cout << "----Gonna Swap" << endl;
   std::swap(defaultTester1, defaultTester2);
 
-  // ×Ô¶¨ÒåstdµÄswapµÄÄ£°åº¯ÊıÊµÀıÀ´½»»»
+  // è‡ªå®šä¹‰stdçš„swapçš„æ¨¡æ¿å‡½æ•°å®ä¾‹æ¥äº¤æ¢
   cout << endl << "==========Test Extend Swap" << endl;
   TestExtendSwap::SwapTester extendTester1{ value1 };
   TestExtendSwap::SwapTester extendTester2{ value2 };

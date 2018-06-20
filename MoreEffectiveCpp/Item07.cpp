@@ -1,17 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Item07.h"
 
-Item07::Item07() :
-  ItemBase("07")
-{
-}
-
-
-Item07::~Item07()
-{
-}
-
-
 void Item07::ItemEntry()
 {
   // Item07: Never overload &&, ||, or ,.

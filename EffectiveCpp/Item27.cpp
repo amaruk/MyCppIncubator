@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item27.h"
 
-
-Item27::Item27() :
-  ItemBase("27")
-{
-}
-
-
-Item27::~Item27()
-{
-}
-
 namespace ITEM27
 {
   class BaseClass

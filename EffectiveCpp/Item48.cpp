@@ -1,29 +1,18 @@
 #include "stdafx.h"
 #include "Item48.h"
 
-
-Item48::Item48() :
-  ItemBase("48")
-{
-}
-
-
-Item48::~Item48()
-{
-}
-
 void Item48::ItemEntry()
 {
   //// Item 48: Be aware of template metaprogramming
-  // Template MetaProgramming (TMP): ±àĞ´»ùÓÚÄ£°åµÄC++³ÌĞò£¬Ö´ĞĞÓÚ±àÒëÆÚ¡£
-  // Ïàµ±ÓÚtemplate metaprogramÊÇÓÃc++±àĞ´µ«ÓÉ±àÒëÆ÷Ö´ĞĞµÄ³ÌĞò£¬Ö´ĞĞµÄÊä³öÎªÄ£°åµÄÊµÀı£¬½øĞĞ³£¹æ±àÒë¡£
-  // ±ÈÈçÓÃtypeidÅĞ¶ÏÀàĞÍÊÇÔÚÔËĞĞÆÚÖ´ĞĞµÄ±à³Ì·½Ê½£¬ÓÃItem47µÄtraitÔòÔÚ±àÒëÆ÷Íê³ÉÅĞ¶Ï¡£
+  // Template MetaProgramming (TMP): ç¼–å†™åŸºäºæ¨¡æ¿çš„C++ç¨‹åºï¼Œæ‰§è¡Œäºç¼–è¯‘æœŸã€‚
+  // ç›¸å½“äºtemplate metaprogramæ˜¯ç”¨c++ç¼–å†™ä½†ç”±ç¼–è¯‘å™¨æ‰§è¡Œçš„ç¨‹åºï¼Œæ‰§è¡Œçš„è¾“å‡ºä¸ºæ¨¡æ¿çš„å®ä¾‹ï¼Œè¿›è¡Œå¸¸è§„ç¼–è¯‘ã€‚
+  // æ¯”å¦‚ç”¨typeidåˆ¤æ–­ç±»å‹æ˜¯åœ¨è¿è¡ŒæœŸæ‰§è¡Œçš„ç¼–ç¨‹æ–¹å¼ï¼Œç”¨Item47çš„traitåˆ™åœ¨ç¼–è¯‘å™¨å®Œæˆåˆ¤æ–­ã€‚
 
-  // TMP±»Ö¤Ã÷ÊÇÍ¼ÁéÍê±¸µÄ£¨Turing-complete£©£¬¼´ÈÎºÎ¿É¼ÆËãµÄÎÊÌâ¶¼¿É±»½â¾ö¡£
-  // ÈçÑ­»·¿ÉÓÃµİ¹éÄ£°åÊµÀı»¯À´ÊµÏÖ¡£
+  // TMPè¢«è¯æ˜æ˜¯å›¾çµå®Œå¤‡çš„ï¼ˆTuring-completeï¼‰ï¼Œå³ä»»ä½•å¯è®¡ç®—çš„é—®é¢˜éƒ½å¯è¢«è§£å†³ã€‚
+  // å¦‚å¾ªç¯å¯ç”¨é€’å½’æ¨¡æ¿å®ä¾‹åŒ–æ¥å®ç°ã€‚
 
-  // ±È½ÏºÃµÄTMPÊµ¼ù£º
-  // 1. Ensuring dimensional unit correctness. ±£Ö¤¸÷ÖÖ¼ÆËãµÄ×éºÏÊÇÕıÈ·ÓĞÒâÒåµÄ¡£
-  // 2. Optimizing matrix operations. Ê¹ÓÃexpression template¼ÓËÙÔËËã£¬µ«±£³Ö±í´ïÊ½µÄĞÎÊ½²»±ä¡£
-  // 3. Generating custom design pattern implementations. Ê¹ÓÃpolicy-based designÊµÏÖ£¬³ÆÎªgenerative programming¡£
+  // æ¯”è¾ƒå¥½çš„TMPå®è·µï¼š
+  // 1. Ensuring dimensional unit correctness. ä¿è¯å„ç§è®¡ç®—çš„ç»„åˆæ˜¯æ­£ç¡®æœ‰æ„ä¹‰çš„ã€‚
+  // 2. Optimizing matrix operations. ä½¿ç”¨expression templateåŠ é€Ÿè¿ç®—ï¼Œä½†ä¿æŒè¡¨è¾¾å¼çš„å½¢å¼ä¸å˜ã€‚
+  // 3. Generating custom design pattern implementations. ä½¿ç”¨policy-based designå®ç°ï¼Œç§°ä¸ºgenerative programmingã€‚
 }

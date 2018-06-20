@@ -1,20 +1,9 @@
 #include "stdafx.h"
 #include "Item22.h"
 
-
-Item22::Item22() :
-  ItemBase("22")
-{
-}
-
-
-Item22::~Item22()
-{
-}
-
 void Item22::ItemEntry()
 {
   //// Item 22: Declare data members private
-  // private体现的封装的好处，成员私有之后，类内部实现可以随意变化，
-  // 只要接口定义和接口行为不变，用户就不用改变他们的代码
+  // private浣撶幇鐨勫皝瑁呯殑濂藉锛屾垚鍛樼鏈変箣鍚庯紝绫诲唴閮ㄥ疄鐜板彲浠ラ殢鎰忓彉鍖栵紝
+  // 鍙鎺ュ彛瀹氫箟鍜屾帴鍙ｈ涓轰笉鍙橈紝鐢ㄦ埛灏变笉鐢ㄦ敼鍙樹粬浠殑浠ｇ爜
 }

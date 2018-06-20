@@ -1,17 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Item09.h"
 
-Item09::Item09() :
-  ItemBase("09")
-{
-}
-
-
-Item09::~Item09()
-{
-}
-
-
 void Item09::ItemEntry()
 {
   // Item09: Use destructors to prevent resource leaks.

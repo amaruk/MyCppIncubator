@@ -1,29 +1,19 @@
 #include "stdafx.h"
 #include "Item02.h"
 
-Item02::Item02() :
-  ItemBase("02")
-{
-}
-
-
-Item02::~Item02()
-{
-}
-
-const int Item02::NumTurns; // ÌØÀı£º¶¨Òå²»ÄÜÔÚÍ·ÎÄ¼şÖĞ
+const int Item02::NumTurns; // ç‰¹ä¾‹ï¼šå®šä¹‰ä¸èƒ½åœ¨å¤´æ–‡ä»¶ä¸­
 
 void Item02::ItemEntry()
 {
   // Item 2: Prefer consts, enums, and inlines to #defines
-  // °ÑÔ¤´¦ÀíµÄ¹¤×÷×ª»»Îª±àÒëÆ÷µÄ¹¤×÷
+  // æŠŠé¢„å¤„ç†çš„å·¥ä½œè½¬æ¢ä¸ºç¼–è¯‘å™¨çš„å·¥ä½œ
 
-  // ÓÃconst³£Á¿Ìæ´úºê¶¨Òå£¬Èç
+  // ç”¨constå¸¸é‡æ›¿ä»£å®å®šä¹‰ï¼Œå¦‚
   // #define ASPECT_RATIO 1.653
-  // Ìæ»»Îª
+  // æ›¿æ¢ä¸º
   // const double AspectRatio = 1.653;
   cout << "static const int class member: " << Item02::NumTurns << endl;
 
-  // ºê¶¨ÒåµÄº¯ÊıÓÃinlineµÄº¯ÊıÄ£°åÀ´Ìæ»»
+  // å®å®šä¹‰çš„å‡½æ•°ç”¨inlineçš„å‡½æ•°æ¨¡æ¿æ¥æ›¿æ¢
   cout << "max value of (1,2) is: " << callWithMax(1, 2) << endl;
 }

@@ -1,19 +1,6 @@
 #include "stdafx.h"
 #include "Item49.h"
 
-
-Item49::Item49() :
-  ItemBase("49")
-{
-}
-
-
-Item49::~Item49()
-{
-}
-
-
-
 namespace ITEM49
 {
   void OutOfMen()
@@ -25,18 +12,18 @@ namespace ITEM49
 void Item49::ItemEntry()
 {
   //// Item 49: Understand the behavior of the new-handler
-  // newÓÉÓÚÄÚ´æÉêÇëÊ§°ÜÊ±£¬Å×³öÒì³££¬¿ÉÒÔ×Ô¶¨Òånew-handlerÀ´´¦Àí
-  // new»á·´¸´µ÷ÓÃnew-handlerÒÔ³¢ÊÔ»ñÈ¡ÄÚ´æ¡£ËùÒÔnew-handler±ØĞëÑ¡ÔñÒÔÏÂ·½Ê½µÄÒ»ÖÖ£º
-  // 1. ÕÒµ½¿ÉÓÃµÄÄÚ´æ
-  // 2. Èç¹ûµ±Ç°handlerÎŞ·¨ÕÒµ½¿ÉÓÃµÄÄÚ´æ£¬¿ÉÒÔ³¢ÊÔset_new_handlerÈÃ±ğµÄhandlerÀ´³¢ÊÔ¡£
-  // 3. Èç¹ûÉèÖÃnullÎªhandler£¬ÔÚnew»áÅ×³öÒì³£
-  // 4. ÓÉhandlerÅ×³öÒì³££¬Èçbad_alloc»òÆäÅÉÉúÒì³£Àà£¬new²»»ácatch£¬¼ÌĞøÏòÉÏÅ×³ö
-  // 5. ²»·µ»Ø£¬Ö±½Óµ÷ÓÃabort»òexit
-  // ÓÃCRTP£¨curiously recurring template pattern)À´ÎªÀàÊµÏÖ×Ô¶¨ÒåµÄnewºÍnew-handler»ùÀà¹¦ÄÜ¡£
+  // newç”±äºå†…å­˜ç”³è¯·å¤±è´¥æ—¶ï¼ŒæŠ›å‡ºå¼‚å¸¸ï¼Œå¯ä»¥è‡ªå®šä¹‰new-handleræ¥å¤„ç†
+  // newä¼šåå¤è°ƒç”¨new-handlerä»¥å°è¯•è·å–å†…å­˜ã€‚æ‰€ä»¥new-handlerå¿…é¡»é€‰æ‹©ä»¥ä¸‹æ–¹å¼çš„ä¸€ç§ï¼š
+  // 1. æ‰¾åˆ°å¯ç”¨çš„å†…å­˜
+  // 2. å¦‚æœå½“å‰handleræ— æ³•æ‰¾åˆ°å¯ç”¨çš„å†…å­˜ï¼Œå¯ä»¥å°è¯•set_new_handlerè®©åˆ«çš„handleræ¥å°è¯•ã€‚
+  // 3. å¦‚æœè®¾ç½®nullä¸ºhandlerï¼Œåœ¨newä¼šæŠ›å‡ºå¼‚å¸¸
+  // 4. ç”±handleræŠ›å‡ºå¼‚å¸¸ï¼Œå¦‚bad_allocæˆ–å…¶æ´¾ç”Ÿå¼‚å¸¸ç±»ï¼Œnewä¸ä¼šcatchï¼Œç»§ç»­å‘ä¸ŠæŠ›å‡º
+  // 5. ä¸è¿”å›ï¼Œç›´æ¥è°ƒç”¨abortæˆ–exit
+  // ç”¨CRTPï¼ˆcuriously recurring template pattern)æ¥ä¸ºç±»å®ç°è‡ªå®šä¹‰çš„newå’Œnew-handleråŸºç±»åŠŸèƒ½ã€‚
 
-  // ÓÃÈçÏÂµÄnewÀ´Ê¹ÓÃ²»Å×³öÒì³£¶øÊÇ·µ»ØnullµÄnew£º
+  // ç”¨å¦‚ä¸‹çš„newæ¥ä½¿ç”¨ä¸æŠ›å‡ºå¼‚å¸¸è€Œæ˜¯è¿”å›nullçš„newï¼š
   // Widget *pw2 =new (std::nothrow) Widget;
-  // µ«×¢ÒâÖ»±£Ö¤new²Ù×÷²»Å×³öÒì³££¬WidgetµÄ¹¹Ôìº¯Êı¿ÉÄÜµ÷ÓÃÆÕÍ¨µÄnew£¬Ê§°Ü¶øÅ×³öÒì³£
+  // ä½†æ³¨æ„åªä¿è¯newæ“ä½œä¸æŠ›å‡ºå¼‚å¸¸ï¼ŒWidgetçš„æ„é€ å‡½æ•°å¯èƒ½è°ƒç”¨æ™®é€šçš„newï¼Œå¤±è´¥è€ŒæŠ›å‡ºå¼‚å¸¸
 
   std::set_new_handler(ITEM49::OutOfMen);
   int* pBigData = new int[0x7fffffff];

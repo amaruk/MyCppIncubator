@@ -1,37 +1,26 @@
 #include "stdafx.h"
 #include "Item52.h"
 
-
-Item52::Item52() :
-  ItemBase("52")
-{
-}
-
-
-Item52::~Item52()
-{
-}
-
 void Item52::ItemEntry()
 {
   //// Item 52: Write placement delete if you write placement new
-  // ½ÓÊÕ³ıÁËsize_tÖ®Íâ²ÎÊıµÄnew£¬³ÆÎªplacement version of new
-  // newÒ»¸öÀàµÄÊ±ºò£¬Ê×ÏÈ·ÖÅäÄÚ´æ¿Õ¼ä£¬½Ó×Åµ÷ÓÃÀàµÄ¹¹Ôìº¯Êı¡£
+  // æ¥æ”¶é™¤äº†size_tä¹‹å¤–å‚æ•°çš„newï¼Œç§°ä¸ºplacement version of new
+  // newä¸€ä¸ªç±»çš„æ—¶å€™ï¼Œé¦–å…ˆåˆ†é…å†…å­˜ç©ºé—´ï¼Œæ¥ç€è°ƒç”¨ç±»çš„æ„é€ å‡½æ•°ã€‚
   // Widget *pw = new Widget;
-  // µ«Èç¹û¹¹Ôìº¯ÊıÅ×³öÒì³££¬ÔòĞèÒªC++ÔËĞĞÊ±»·¾³²¶»ñ²¢µ÷ÓÃnew¶ÔÓ¦µÄdelete£¬ÒÔÃâÄÚ´æĞ¹Â©¡£
-  // ÔËĞĞÊ±»·¾³ÔÚ´¦Àíreplacement of newµÄÇé¿öÊ±£¬³¢ÊÔÑ°ÕÒºÍreplacement of newÓĞÏàÍ¬²ÎÊıµÄreplacement of delete.
-  // Èç¹ûÕÒ²»µ½Ôò²»µ÷ÓÃÈÎºÎdelete¡£´ËÊ±·¢ÉúÄÚ´æĞ¹Â©¡£
-  // ×¢ÒâdeleteÊ±
+  // ä½†å¦‚æœæ„é€ å‡½æ•°æŠ›å‡ºå¼‚å¸¸ï¼Œåˆ™éœ€è¦C++è¿è¡Œæ—¶ç¯å¢ƒæ•è·å¹¶è°ƒç”¨newå¯¹åº”çš„deleteï¼Œä»¥å…å†…å­˜æ³„æ¼ã€‚
+  // è¿è¡Œæ—¶ç¯å¢ƒåœ¨å¤„ç†replacement of newçš„æƒ…å†µæ—¶ï¼Œå°è¯•å¯»æ‰¾å’Œreplacement of newæœ‰ç›¸åŒå‚æ•°çš„replacement of delete.
+  // å¦‚æœæ‰¾ä¸åˆ°åˆ™ä¸è°ƒç”¨ä»»ä½•deleteã€‚æ­¤æ—¶å‘ç”Ÿå†…å­˜æ³„æ¼ã€‚
+  // æ³¨æ„deleteæ—¶
   // delete pw; 
-  // ´ËÓï¾äµ÷ÓÃÆÕÍ¨µÄdelete£¬¶ø·Çreplacement of delete¡£ËùÒÔÌá¹©replacement of newÊ±£¬ÒªÍ¬Ê±Ìá¹©ÆÕÍ¨µÄdeleteºÍreplacement of delete.
+  // æ­¤è¯­å¥è°ƒç”¨æ™®é€šçš„deleteï¼Œè€Œéreplacement of deleteã€‚æ‰€ä»¥æä¾›replacement of newæ—¶ï¼Œè¦åŒæ—¶æä¾›æ™®é€šçš„deleteå’Œreplacement of delete.
 
-  // ÔÚ¼Ì³ĞµÄÇé¿öÏÂ£¬×¢ÒâÏà»¥¸²¸ÇµÄÌõ¼ş
-  // C++Ä¬ÈÏÔÚÈ«¾ÖÌá¹©ÈçÏÂÈıÖÖnew
+  // åœ¨ç»§æ‰¿çš„æƒ…å†µä¸‹ï¼Œæ³¨æ„ç›¸äº’è¦†ç›–çš„æ¡ä»¶
+  // C++é»˜è®¤åœ¨å…¨å±€æä¾›å¦‚ä¸‹ä¸‰ç§new
   // void* operator new(std::size_t) throw(std::bad_alloc);      // normal new
   // void* operator new(std::size_t, void*) throw();             // placement new
   // void* operator new(std::size_t, const std::nothrow_t&) throw();  // nothrow new
-  // ÔÚÀàÄÚ²¿¶¨ÒåÈÎºÎĞÎÊ½µÄnew¶¼»áÒş²ØÒÔÉÏÈıÖÖ¡£²»ÏëÒş²ØµÄ»°ÒªÔÚÀàÖĞÌí¼ÓÏàÍ¬Ç©ÃûµÄº¯Êı£¬µ÷ÓÃÈ«¾ÖµÄ°æ±¾¡£
-  // deleteÍ¬Àí
+  // åœ¨ç±»å†…éƒ¨å®šä¹‰ä»»ä½•å½¢å¼çš„newéƒ½ä¼šéšè—ä»¥ä¸Šä¸‰ç§ã€‚ä¸æƒ³éšè—çš„è¯è¦åœ¨ç±»ä¸­æ·»åŠ ç›¸åŒç­¾åçš„å‡½æ•°ï¼Œè°ƒç”¨å…¨å±€çš„ç‰ˆæœ¬ã€‚
+  // deleteåŒç†
 
 
 

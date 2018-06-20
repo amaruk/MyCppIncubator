@@ -1,16 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Item06.h"
 
-Item06::Item06() :
-  ItemBase("06")
-{
-}
-
-
-Item06::~Item06()
-{
-}
-
 namespace ITEM06
 {
   class MyIncDecOpers

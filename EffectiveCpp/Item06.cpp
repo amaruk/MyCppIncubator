@@ -1,19 +1,9 @@
 #include "stdafx.h"
 #include "Item06.h"
 
-Item06::Item06() :
-  ItemBase("06")
-{
-}
-
-
-Item06::~Item06()
-{
-}
-
 void Item06::ItemEntry()
 {
   ///// Item 6: Explicitly disallow the use of compiler-generated functions you do not want
-  // 不想提供拷贝构造函数和拷贝操作符时，声明他们为private（普通类不能调用private成员函数），且不定义（其他的成员函数和友元因未定义而调用失败）
+  // 涓嶆兂鎻愪緵鎷疯礉鏋勯�犲嚱鏁板拰鎷疯礉鎿嶄綔绗︽椂锛屽０鏄庝粬浠负private锛堟櫘閫氱被涓嶈兘璋冪敤private鎴愬憳鍑芥暟锛夛紝涓斾笉瀹氫箟锛堝叾浠栫殑鎴愬憳鍑芥暟鍜屽弸鍏冨洜鏈畾涔夎�岃皟鐢ㄥけ璐ワ級
 }
 

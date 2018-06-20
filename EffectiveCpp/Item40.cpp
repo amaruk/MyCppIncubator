@@ -1,20 +1,9 @@
 #include "stdafx.h"
 #include "Item40.h"
 
-
-Item40::Item40() :
-  ItemBase("40")
-{
-}
-
-
-Item40::~Item40()
-{
-}
-
 void Item40::ItemEntry()
 {
   //// Item 40: Use multiple inheritance judiciously
-  // Virtual Base ClassÓÃÀ´½â¾ödeadly multiple inheritance diamond.
-  // ±ê×¼¿âµÄÎÄ¼şÀàÓÃ´ËÊµÏÖ
+  // Virtual Base Classç”¨æ¥è§£å†³deadly multiple inheritance diamond.
+  // æ ‡å‡†åº“çš„æ–‡ä»¶ç±»ç”¨æ­¤å®ç°
 }

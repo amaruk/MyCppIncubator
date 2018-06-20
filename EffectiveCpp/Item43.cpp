@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item43.h"
 
-
-Item43::Item43() :
-  ItemBase("43")
-{
-}
-
-
-Item43::~Item43()
-{
-}
-
 namespace ITEM43
 {
   class Cat
@@ -48,7 +37,7 @@ namespace ITEM43
   class Keeper<Fox>
   {
   public:
-    void Feed(const Fox& animal) // Èç¹û²»¶¨ÒåFeedº¯Êı£¬ÔòKeeperµÄÄ£°åÊµÀıÔÚÄ£°åÀàĞÍÎªFoxÊ±½«Ã»ÓĞFeedº¯Êı¿ÉÒÔµ÷ÓÃ£¬ÎŞ·¨±àÒë¡£
+    void Feed(const Fox& animal) // å¦‚æœä¸å®šä¹‰Feedå‡½æ•°ï¼Œåˆ™Keeperçš„æ¨¡æ¿å®ä¾‹åœ¨æ¨¡æ¿ç±»å‹ä¸ºFoxæ—¶å°†æ²¡æœ‰Feedå‡½æ•°å¯ä»¥è°ƒç”¨ï¼Œæ— æ³•ç¼–è¯‘ã€‚
     {
       cout << "Feeding: ";
       animal.Say();
