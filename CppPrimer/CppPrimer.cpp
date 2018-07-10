@@ -1,7 +1,7 @@
 ﻿// 基于C++ Primer第五版的笔记
 
 #include "stdafx.h"
-#include "PartOne/CppPrimer.h"
+#include "PartOne/CppPrimerBasic.h"
 #include "PartOne/CppPrimerFriend.h"
 #include "PartOne/CppPrimerAggregate.h"
 #include "PartOne/CppPrimerLiteral.h"
