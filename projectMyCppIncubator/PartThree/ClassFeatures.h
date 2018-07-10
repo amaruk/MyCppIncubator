@@ -10,6 +10,11 @@
     - move assignment operator移动赋值运算符：同上
     - destructor析构函数：对象销毁时的行为
 
+    // Trivial和non-trivial析构：
+    // 如果有显式的析构函数，则为non-trivial；如果有非static的成员为non-trivial，则为non-trivial。
+    // 即使定义空的析构，也为non-trivial。
+    // 在没有non-trivial成员的情况下，编译器自动生成的析构为trivial。
+
     如果类没有定义拷贝操作成员，编译器自动定义缺省操作。
     可以在拷贝控制成员的参数列表之后之后添加“= default"来要求编译器生成合成的版本。
     可以用参数列表之后的“=delete”定义拷贝构造函数和拷贝赋值运算，表示不能以任何方式使用他们

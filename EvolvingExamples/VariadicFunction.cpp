@@ -1,5 +1,4 @@
 ﻿
-#include "stdafx.h"
 #include <iostream>
 #include <stdarg.h>
 #include "VariadicFunction.h"
