@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Chapter03">
       <UniqueIdentifier>{0dab78c3-7b00-4d09-8285-12a8c1195719}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Chapter04">
+      <UniqueIdentifier>{11521297-f4f3-4912-a1a7-6a18ffa27f27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter04">
+      <UniqueIdentifier>{f18f3096-4b54-40cc-898a-7ecb204daec8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -96,6 +102,18 @@
     <ClInclude Include="Item14.h">
       <Filter>Header Files\Chapter03</Filter>
     </ClInclude>
+    <ClInclude Include="Item15.h">
+      <Filter>Header Files\Chapter03</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter04.h">
+      <Filter>Header Files\Chapter04</Filter>
+    </ClInclude>
+    <ClInclude Include="Item16.h">
+      <Filter>Header Files\Chapter04</Filter>
+    </ClInclude>
+    <ClInclude Include="Item17.h">
+      <Filter>Header Files\Chapter04</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="Item14.cpp">
       <Filter>Source Files\Chapter03</Filter>
+    </ClCompile>
+    <ClCompile Include="Item15.cpp">
+      <Filter>Source Files\Chapter03</Filter>
+    </ClCompile>
+    <ClCompile Include="Item16.cpp">
+      <Filter>Source Files\Chapter04</Filter>
+    </ClCompile>
+    <ClCompile Include="Item17.cpp">
+      <Filter>Source Files\Chapter04</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

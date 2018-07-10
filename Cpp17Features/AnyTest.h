@@ -21,4 +21,4 @@ public:
     virtual ~AnyDerived() = default;
 };
 
-void anyTest(void);
+void AnyTest(void);

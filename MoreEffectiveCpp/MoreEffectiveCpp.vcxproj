@@ -150,6 +150,7 @@
     <ClInclude Include="Chapter01.h" />
     <ClInclude Include="Chapter02.h" />
     <ClInclude Include="Chapter03.h" />
+    <ClInclude Include="Chapter04.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Item01.h" />
     <ClInclude Include="Item02.h" />
@@ -165,6 +166,9 @@
     <ClInclude Include="Item12.h" />
     <ClInclude Include="Item13.h" />
     <ClInclude Include="Item14.h" />
+    <ClInclude Include="Item15.h" />
+    <ClInclude Include="Item16.h" />
+    <ClInclude Include="Item17.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -184,6 +188,9 @@
     <ClCompile Include="Item12.cpp" />
     <ClCompile Include="Item13.cpp" />
     <ClCompile Include="Item14.cpp" />
+    <ClCompile Include="Item15.cpp" />
+    <ClCompile Include="Item16.cpp" />
+    <ClCompile Include="Item17.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="MoreEffectiveCpp.cpp" />
     <ClCompile Include="stdafx.cpp">

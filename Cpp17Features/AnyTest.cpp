@@ -9,7 +9,7 @@ using std::endl;
 using std::string;
 using std::vector;
 
-void anyTest(void)
+void AnyTest(void)
 {
     /*
         一个任意类型值的类型安全容器

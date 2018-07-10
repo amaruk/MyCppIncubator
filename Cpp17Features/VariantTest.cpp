@@ -8,7 +8,7 @@ using std::endl;
 using std::variant;
 using std::get;
 
-void variantTest(void)
+void VariantTest(void)
 {
     /*
         类型安全的union
