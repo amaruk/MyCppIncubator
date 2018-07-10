@@ -68,32 +68,32 @@ public:
         : CppPrimer(std::string("Delegated constructor")) 
     { std::cout << "Delegating constructor" << std::endl; }
 
-	~CppPrimer();
+    ~CppPrimer();
 
     //// 只打印消息的函数
     void showInfo(void)
     { std::cout << "/!\\showInfo()." << std::endl; } // 定义在类内部的函数是隐式的inline
 
-	//// 显示私有成员中算数类型变量的值
-	void displayArithTypes(void);
-	
+    //// 显示私有成员中算数类型变量的值
+    void displayArithTypes(void);
+
     //// 测试各种初始化的方式
-	void varInitTest(void);
-	
+    void varInitTest(void);
+
     //// 指针/引用/const相关
-	void ptrRefTest(void);
-	
+    void ptrRefTest(void);
+
     //// 字符串
-	void stringTest(void);
-	
+    void stringTest(void);
+  
     //// 向量
-	void vectorTest(void);
-	
+    void vectorTest(void);
+  
     //// 迭代器
-	void iteratorTest(void);
-	
+    void iteratorTest(void);
+
     //// 数组
-	void arrayTest(void);
+    void arrayTest(void);
     
     //// 异常
     void exceptionTest(void);
@@ -161,34 +161,34 @@ private:
     void staticParameterTest(std::string strVar = staticStrVar) {} // 静态成员作为默认实参
 
 
-	//// 算数类型变量
-	// 最小尺寸规范未定义
-	bool arithType_bool = false;
-	// 最小尺寸8-bit. 有三种类型：char/unsigned char/signed char，
-	// char不一定是signed，由编译器决定
-	char arithType_char = u8'A'; 
-	// 最小尺寸16-bit
-	wchar_t arithType_wchar = L'B'; // 用L开通表示wchar_t，字符串用L开头表示wstring。MFC和Win32程序中使用_T()和_TEXT()宏
-	// 最小尺寸16-bit Unicode
-	char16_t arithType_char16 = u'测';
-	// 最小尺寸32-bit Unicode
-	char32_t arithType_char32 = U'试';
-	// 最小尺寸16-bit
-	short arithType_short = 32767;
-	// 最小尺寸16-bit, VS下32-bit
-	unsigned int arithType_int = 65535u;
-	// 最小尺寸32-bit
-	long arithType_long = 2147483647L;
-	// 最小尺寸64-bit
-	long long arithType_longlong = 9223372036854775807LL;
-	// 6位有效数字
-	float arithType_float = 0.123456F;
-	// 10位有效数字
-	double arithType_double = 0.0123456789;
-	// 10位有效数字
-	long double arithType_longdouble = 0.0987654321L;
-	// 指针
-	short *arithType_ptr = nullptr;
+  //// 算数类型变量
+  // 最小尺寸规范未定义
+  bool arithType_bool = false;
+  // 最小尺寸8-bit. 有三种类型：char/unsigned char/signed char，
+  // char不一定是signed，由编译器决定
+  char arithType_char = u8'A'; 
+  // 最小尺寸16-bit
+  wchar_t arithType_wchar = L'B'; // 用L开通表示wchar_t，字符串用L开头表示wstring。MFC和Win32程序中使用_T()和_TEXT()宏
+  // 最小尺寸16-bit Unicode
+  char16_t arithType_char16 = u'测';
+  // 最小尺寸32-bit Unicode
+  char32_t arithType_char32 = U'试';
+  // 最小尺寸16-bit
+  short arithType_short = 32767;
+  // 最小尺寸16-bit, VS下32-bit
+  unsigned int arithType_int = 65535u;
+  // 最小尺寸32-bit
+  long arithType_long = 2147483647L;
+  // 最小尺寸64-bit
+  long long arithType_longlong = 9223372036854775807LL;
+  // 6位有效数字
+  float arithType_float = 0.123456F;
+  // 10位有效数字
+  double arithType_double = 0.0123456789;
+  // 10位有效数字
+  long double arithType_longdouble = 0.0987654321L;
+  // 指针
+  short *arithType_ptr = nullptr;
     // 数组
     intAry3 intAry3Var{ 1, 2, 3 }; // 类内初始值必须使用=做初始化或使用{}直接初始化
     // 可变数据成员，即使在const成员函数里也可以改变mutable成员的值

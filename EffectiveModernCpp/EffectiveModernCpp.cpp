@@ -85,7 +85,6 @@ int main()
           receive exactly the same arguments as were passed to the forwarding functions.
      rvalue右值是实现这两个功能的基础。
    */
-  //RuleOfFive();
   //Item23().ItemEntry();
   //Item24().ItemEntry();
   //Item25().ItemEntry();

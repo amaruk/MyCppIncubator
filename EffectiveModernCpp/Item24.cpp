@@ -14,38 +14,38 @@ Item24::~Item24()
 
 void Item24::ItemEntry()
 {
-  // T&&²»Ò»¶¨ÊÇÓÒÖµÒıÓÃ£¬ÀıÈç£º
-  // void f(Widget&& param)         // ÓÒÖµÒıÓÃ
-  // Widget&& var1 Widget();        // ÓÒÖµÒıÓÃ
-  // auto&& var2 = var1;            // autoÉùÃ÷£¬universal reference
+  // T&&ä¸ä¸€å®šæ˜¯å³å€¼å¼•ç”¨ï¼Œä¾‹å¦‚ï¼š
+  // void f(Widget&& param)         // å³å€¼å¼•ç”¨
+  // Widget&& var1 Widget();        // å³å€¼å¼•ç”¨
+  // auto&& var2 = var1;            // autoå£°æ˜ï¼Œuniversal reference
   // template<typename T>
-  // void f(std::vector<T>&& param);// ÓÒÖµÒıÓÃ
+  // void f(std::vector<T>&& param);// å³å€¼å¼•ç”¨
   // template<typename T>
-  // void f(T&& param);             // ×÷Îªº¯ÊıµÄÄ£°å²ÎÊı£¬universal reference
+  // void f(T&& param);             // ä½œä¸ºå‡½æ•°çš„æ¨¡æ¿å‚æ•°ï¼Œuniversal reference
 
-  // T&&¿ÉÒÔ°ó¶¨µ½ÓÒÖµ£¨Í¬ÓÒÖµÒıÓÃ£©£¬
-  // ¿ÉÒÔ×÷Îª×óÖµÒıÓÃ£¬
-  // ¿ÉÒÔ°ó¶¨µ½const»ònon-const
-  // ¿ÉÒÔ°ó¶¨µ½volatile»ònon-volatile
-  // ¼¸ºõ¿ÉÒÔ°ó¶¨ËùÓĞ¶ÔÏó¡£¿ÉÒÔ³ÉÎªuniversal reference»òforwarding reference
+  // T&&å¯ä»¥ç»‘å®šåˆ°å³å€¼ï¼ˆåŒå³å€¼å¼•ç”¨ï¼‰ï¼Œ
+  // å¯ä»¥ä½œä¸ºå·¦å€¼å¼•ç”¨ï¼Œ
+  // å¯ä»¥ç»‘å®šåˆ°constæˆ–non-const
+  // å¯ä»¥ç»‘å®šåˆ°volatileæˆ–non-volatile
+  // å‡ ä¹å¯ä»¥ç»‘å®šæ‰€æœ‰å¯¹è±¡ã€‚å¯ä»¥æˆä¸ºuniversal referenceæˆ–forwarding reference
   //
-  // Á½ÖÖÇé¿öÏÂT&&Îªuniversal reference£ºautoÉùÃ÷»ò×÷Îªº¯ÊıµÄÄ£°å²ÎÊı
-  // Ô­ÒòÊÇtype deduction
+  // ä¸¤ç§æƒ…å†µä¸‹T&&ä¸ºuniversal referenceï¼šautoå£°æ˜æˆ–ä½œä¸ºå‡½æ•°çš„æ¨¡æ¿å‚æ•°
+  // åŸå› æ˜¯type deduction
   // template<typename T>
   // void f(T&& param);           // Universal reference
   // auto&& var2 = var1;          // Universal reference
-  // universal referenceÓÃ×óÖµ³õÊ¼»¯¼´Îª×óÖµÒıÓÃ£¬ÓÃÓÒÖµ³õÊ¼»¯¼´ÎªÓÒÖµÒıÓÃ£¬Èç£º
+  // universal referenceç”¨å·¦å€¼åˆå§‹åŒ–å³ä¸ºå·¦å€¼å¼•ç”¨ï¼Œç”¨å³å€¼åˆå§‹åŒ–å³ä¸ºå³å€¼å¼•ç”¨ï¼Œå¦‚ï¼š
   // Widget w;
-  // f(w);                        // wÎª×óÖµ£¬paramÀàĞÍÎªWidget&×óÖµÒıÓÃ
-  // f(std::move(w));             // moveÖ®ºóÀàĞÍ×ª»»ÎªÓÒÖµ£¬paramÀàĞÍÎªWidget&&ÓÒÖµÒıÓÃ
-  // µ«Òª×¢ÒâÓĞÏŞ¶¨·ûµÄÇé¿öÏÂ£¬T&&¾Í²»ÊÇuniversal referenceÁË£¬Èç£º
+  // f(w);                        // wä¸ºå·¦å€¼ï¼Œparamç±»å‹ä¸ºWidget&å·¦å€¼å¼•ç”¨
+  // f(std::move(w));             // moveä¹‹åç±»å‹è½¬æ¢ä¸ºå³å€¼ï¼Œparamç±»å‹ä¸ºWidget&&å³å€¼å¼•ç”¨
+  // ä½†è¦æ³¨æ„æœ‰é™å®šç¬¦çš„æƒ…å†µä¸‹ï¼ŒT&&å°±ä¸æ˜¯universal referenceäº†ï¼Œå¦‚ï¼š
   // template<typename T>
-  // void f(std::vector<T>&& param);  // paramÊÇÓÒÖµÒıÓÃ
+  // void f(std::vector<T>&& param);  // paramæ˜¯å³å€¼å¼•ç”¨
   // vector<int> v;
-  // f(v);                            // ´íÎó£¬vÊÇ×óÖµ£¬²»ÄÜ°ó¶¨µ½ÓÒÖµÒıÓÃ
+  // f(v);                            // é”™è¯¯ï¼Œvæ˜¯å·¦å€¼ï¼Œä¸èƒ½ç»‘å®šåˆ°å³å€¼å¼•ç”¨
   // template<typename T>
-  // void f(const T&& param);         // ¼ÓÉÏconstÖ®ºó£¬paramÒ²²»ÊÇuniversal reference¶øÊÇÓÒÖµÒıÓÃ
-  // µ«²¢²»ÊÇÖ»ÓĞT&&³öÏÖ¾ÍÊÇuniversal reference
+  // void f(const T&& param);         // åŠ ä¸Šconstä¹‹åï¼Œparamä¹Ÿä¸æ˜¯universal referenceè€Œæ˜¯å³å€¼å¼•ç”¨
+  // ä½†å¹¶ä¸æ˜¯åªæœ‰T&&å‡ºç°å°±æ˜¯universal reference
 
 
 

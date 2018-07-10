@@ -21,22 +21,22 @@ Item32::~Item32()
 
 void Item32::ItemEntry()
 {
-  // C++11²»Ö§³Ö°Ñ¶ÔÏómove½øclosure£¬C++14Ìá¹©init captureÒÔÖ§³Ömove¼°ÆäËûĞÂ¹¦ÄÜ£¬
-  // Ò²½Ğ×ögeneralized lambda capture£¬ÒâÎªC++11µÄcaptureµÄgeneralizedÄ£Ê½¡£
-  // Ê¹ÓÃinit capture¿ÉÒÔÖ¸¶¨£º
+  // C++11ä¸æ”¯æŒæŠŠå¯¹è±¡moveè¿›closureï¼ŒC++14æä¾›init captureä»¥æ”¯æŒmoveåŠå…¶ä»–æ–°åŠŸèƒ½ï¼Œ
+  // ä¹Ÿå«åšgeneralized lambda captureï¼Œæ„ä¸ºC++11çš„captureçš„generalizedæ¨¡å¼ã€‚
+  // ä½¿ç”¨init captureå¯ä»¥æŒ‡å®šï¼š
   // * The name of a data member in the closure class generated from the lambda and
   // * an expression initializing that data member.
 
   auto pUnqInt = make_unique<int>(123);
   auto lambdaInitCap = [pUnqInt = std::move(pUnqInt)]{ return *pUnqInt; };
-  // µÈºÅ×ó±ßµÄpUnqInt×÷ÓÃÓòÎªclosureÀàÄÚ²¿£¬µÈºÅÓÒ±ßµÄpUnqInt×÷ÓÃÓòÎª¶¨Òålambda±í´ïÊ½µÄÓï¾äËùÔÚ×÷ÓÃÓò
-  // µÈºÅ×ó±ßµÄpUnqInt¼´Îªclosure classµÄdata member
+  // ç­‰å·å·¦è¾¹çš„pUnqIntä½œç”¨åŸŸä¸ºclosureç±»å†…éƒ¨ï¼Œç­‰å·å³è¾¹çš„pUnqIntä½œç”¨åŸŸä¸ºå®šä¹‰lambdaè¡¨è¾¾å¼çš„è¯­å¥æ‰€åœ¨ä½œç”¨åŸŸ
+  // ç­‰å·å·¦è¾¹çš„pUnqIntå³ä¸ºclosure classçš„data member
 
-  // Ò²¿ÉÒÔÖ±½ÓÓÃmake_unique£¬¼´Îªan expression initializing that data member
+  // ä¹Ÿå¯ä»¥ç›´æ¥ç”¨make_uniqueï¼Œå³ä¸ºan expression initializing that data member
   auto lambdaInitCap2 = [pUnqInt = std::make_unique<int>(321)]{ return *pUnqInt; };
 
-  // C++11Àï¿ÉÒÔ×Ô¼ºÊµÏÖºÍlambdaµÄclosure classÔ­ÀíÒ»ÑùµÄÀà£¨´úÂë¼ûÊé£©£¬
-  // »òÓÃbindÄ£Äâ
+  // C++11é‡Œå¯ä»¥è‡ªå·±å®ç°å’Œlambdaçš„closure classåŸç†ä¸€æ ·çš„ç±»ï¼ˆä»£ç è§ä¹¦ï¼‰ï¼Œ
+  // æˆ–ç”¨bindæ¨¡æ‹Ÿ
   vector<int> data{ 1,2,3 };
   // C++14
   auto lambdaInitCapVec = [data = std::move(data)]{};
@@ -46,7 +46,7 @@ void Item32::ItemEntry()
     std::move(data)
   );  
 
-  // C++11£¬Ä£Äâmake_unique
+  // C++11ï¼Œæ¨¡æ‹Ÿmake_unique
 
 
 

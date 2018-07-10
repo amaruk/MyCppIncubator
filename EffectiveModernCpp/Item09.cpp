@@ -17,27 +17,27 @@ Item09::~Item09()
 }
 
 
-// C++98·ç¸ñtypedef
+// C++98é£æ ¼typedef
 typedef std::unique_ptr<std::vector<std::string, std::string>> UPtrVecSS;
 typedef void(*FuncPtr)(int, const std::string&);
 
-// C++11·ç¸ñalias declaration
+// C++11é£æ ¼alias declaration
 using UPtrVecSS = std::unique_ptr<std::vector<std::string, std::string>>;
 using FuncPtr = void(*)(int, const std::string&);
 
-// AliasµÄÓÅµãÎªÖ§³ÖÄ£°å£ºalias template
+// Aliasçš„ä¼˜ç‚¹ä¸ºæ”¯æŒæ¨¡æ¿ï¼šalias template
 template<typename T>
 using MyAllocList = std::list<T>;
 
 
 void Item09::ItemEntry()
 {
-  // Type trait: ÔÚÍ·ÎÄ¼ş<type_traits>Àï¶¨ÒåµÄÒ»×éÄ£°å
-  // std::remove_const<T>::type           // ´Óconst T²úÉúT
-  // std::remove_reference<T>::type       // ´ÓT&ºÍT&&²úÉúT
-  // std::add_lvalue_reference<T>::type   // ´ÓT²úÉúT&
-  // ÕâĞ©ÊÇC++11ÓÃÇ¶Ì×µÄtypedef¶¨ÒåµÄ
-  // C++14ÓÃalias templateÖØĞÂÊµÏÖÎª£º
+  // Type trait: åœ¨å¤´æ–‡ä»¶<type_traits>é‡Œå®šä¹‰çš„ä¸€ç»„æ¨¡æ¿
+  // std::remove_const<T>::type           // ä»const Täº§ç”ŸT
+  // std::remove_reference<T>::type       // ä»T&å’ŒT&&äº§ç”ŸT
+  // std::add_lvalue_reference<T>::type   // ä»Täº§ç”ŸT&
+  // è¿™äº›æ˜¯C++11ç”¨åµŒå¥—çš„typedefå®šä¹‰çš„
+  // C++14ç”¨alias templateé‡æ–°å®ç°ä¸ºï¼š
   // std::remove_const_t<T>
   // std::remove_reference_t<T>
   // std::add_lvalue_reference_t<T>

@@ -14,34 +14,34 @@ Item02::~Item02()
 
 void Item02::ItemEntry()
 {
-  // ¿ÉÒÔ°Ñautoµ±×÷template
+  // å¯ä»¥æŠŠautoå½“ä½œtemplate
   // auto x = 27;
   // const auto cx = x;
   // const auto& rx = x;
-  // Ïàµ±ÓÚautoÊÇT£¬autoºÍconst autoºÍconst auto&ÎªTµÄParamType£ºTºÍconst TºÍconst T&
+  // ç›¸å½“äºautoæ˜¯Tï¼Œautoå’Œconst autoå’Œconst auto&ä¸ºTçš„ParamTypeï¼šTå’Œconst Tå’Œconst T&
   //
-  // ËùÒÔautoµÄÍÆµ¼¹æÔòºÍÄ£°åÒ»Ñù£¨°üÀ¨Ô­Ê¼Ö¸ÕëºÍº¯ÊıÖ¸Õë£©£¬³ıÁËÒ»ÖÖÀıÍâÇé¿ö
-  // auto x = 27;             // ¶ÔÓ¦"3."£¬x²»ÊÇÖ¸ÕëÒ²²»ÊÇÒıÓÃ
-  // const auto cx = x;       // ¶ÔÓ¦"3."£¬x²»ÊÇÖ¸ÕëÒ²²»ÊÇÒıÓÃ
-  // const auto& rx = x;      // ¶ÔÓ¦"1."£¬xÊÇ·Çuniversal reference
-  // auto&& uref1 = x;        // ¶ÔÓ¦"2."£¬xÊÇ×óÖµ£¬ÍÆµ¼Îªint&
-  // auto&& uref2 = cx;       // ¶ÔÓ¦"2."£¬cxÊÇconst int£¬Ò²ÊÇ×óÖµ£¬ÍÆµ¼Îªint&
-  // auto&& uref3 = 27;       // ¶ÔÓ¦"2."£¬27ÊÇintÓÒÖµ£¬ÍÆµ¼Îªint&&
+  // æ‰€ä»¥autoçš„æ¨å¯¼è§„åˆ™å’Œæ¨¡æ¿ä¸€æ ·ï¼ˆåŒ…æ‹¬åŸå§‹æŒ‡é’ˆå’Œå‡½æ•°æŒ‡é’ˆï¼‰ï¼Œé™¤äº†ä¸€ç§ä¾‹å¤–æƒ…å†µ
+  // auto x = 27;             // å¯¹åº”"3."ï¼Œxä¸æ˜¯æŒ‡é’ˆä¹Ÿä¸æ˜¯å¼•ç”¨
+  // const auto cx = x;       // å¯¹åº”"3."ï¼Œxä¸æ˜¯æŒ‡é’ˆä¹Ÿä¸æ˜¯å¼•ç”¨
+  // const auto& rx = x;      // å¯¹åº”"1."ï¼Œxæ˜¯éuniversal reference
+  // auto&& uref1 = x;        // å¯¹åº”"2."ï¼Œxæ˜¯å·¦å€¼ï¼Œæ¨å¯¼ä¸ºint&
+  // auto&& uref2 = cx;       // å¯¹åº”"2."ï¼Œcxæ˜¯const intï¼Œä¹Ÿæ˜¯å·¦å€¼ï¼Œæ¨å¯¼ä¸ºint&
+  // auto&& uref3 = 27;       // å¯¹åº”"2."ï¼Œ27æ˜¯intå³å€¼ï¼Œæ¨å¯¼ä¸ºint&&
   //
-  // ÀıÍâÇé¿ö
-  // C++98³õÊ¼»¯µÄÁ½ÖÖ·½Ê½£º
+  // ä¾‹å¤–æƒ…å†µ
+  // C++98åˆå§‹åŒ–çš„ä¸¤ç§æ–¹å¼ï¼š
   //    int x1 = 27;
   //    int x2(27);
-  // C++11Ìá¹©µÄ¶îÍâ·½Ê½£º
+  // C++11æä¾›çš„é¢å¤–æ–¹å¼ï¼š
   //    int x3 = { 27 };
   //    int x4{ 27 };
-  // µ±ÓÃautoÌæ»»intÀàĞÍÊ±
-  //    auto x1 = 27;       // autoÍÆµ¼Îªint
-  //    auto x2(27);        // Í¬ÉÏ
-  //    auto x3 = { 27 };   // autoÍÆµ¼Îªstd::initializer_list<int>
-  //    auto x4{ 27 };      // Í¬ÉÏ
-  // ÀıÍâÇé¿öÔÚÓÚauto¼ÙÉè´óÀ¨ºÅµÄinitializerÊÇinitializer_list£¬¶øtemplateĞèÒªÊÖ¶¯Ö¸¶¨TypeParamÎªinitializer_listÀàĞÍ
-  // C++14ÔÚautoµ±º¯Êı·µ»ØÖµ»òlambda±í´ïÊ½²ÎÊıÊ±£¬²»ÄÜÍÆµ¼´óÀ¨ºÅÎªinitializer_list
+  // å½“ç”¨autoæ›¿æ¢intç±»å‹æ—¶
+  //    auto x1 = 27;       // autoæ¨å¯¼ä¸ºint
+  //    auto x2(27);        // åŒä¸Š
+  //    auto x3 = { 27 };   // autoæ¨å¯¼ä¸ºstd::initializer_list<int>
+  //    auto x4{ 27 };      // åŒä¸Š
+  // ä¾‹å¤–æƒ…å†µåœ¨äºautoå‡è®¾å¤§æ‹¬å·çš„initializeræ˜¯initializer_listï¼Œè€Œtemplateéœ€è¦æ‰‹åŠ¨æŒ‡å®šTypeParamä¸ºinitializer_listç±»å‹
+  // C++14åœ¨autoå½“å‡½æ•°è¿”å›å€¼æˆ–lambdaè¡¨è¾¾å¼å‚æ•°æ—¶ï¼Œä¸èƒ½æ¨å¯¼å¤§æ‹¬å·ä¸ºinitializer_list
 
 
 }

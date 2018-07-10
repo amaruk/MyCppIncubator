@@ -18,12 +18,24 @@
     <ClInclude Include="VariadicFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RuleOfFive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeakCheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EvolvingExamples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VariadicFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RuleOfFive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemLeakCheck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

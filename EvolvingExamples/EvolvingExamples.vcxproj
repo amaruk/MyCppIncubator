@@ -147,10 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MemLeakCheck.h" />
+    <ClInclude Include="RuleOfFive.h" />
     <ClInclude Include="VariadicFunction.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EvolvingExamples.cpp" />
+    <ClCompile Include="MemLeakCheck.cpp" />
+    <ClCompile Include="RuleOfFive.cpp" />
     <ClCompile Include="VariadicFunction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

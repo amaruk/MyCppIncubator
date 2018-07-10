@@ -14,84 +14,84 @@ Item01::~Item01()
 
 void Item01::ItemEntry()
 {
-  // ¶ÔÓÚº¯ÊıÄ£°åÀ´Ëµ£¨ParamtypeÊÇºÍTÏà¹Øµ«¿ÉÄÜÌí¼ÓÁËÏŞ¶¨·ûµÄ²¿·Ö£¬Èçconst T&£©£º
+  // å¯¹äºå‡½æ•°æ¨¡æ¿æ¥è¯´ï¼ˆParamtypeæ˜¯å’ŒTç›¸å…³ä½†å¯èƒ½æ·»åŠ äº†é™å®šç¬¦çš„éƒ¨åˆ†ï¼Œå¦‚const T&ï¼‰ï¼š
   // template<typename T>
   // void f(ParamType param);
 
-  // ÔÚµ÷ÓÃÕâ¸öÄ£°åÊ±£º
+  // åœ¨è°ƒç”¨è¿™ä¸ªæ¨¡æ¿æ—¶ï¼š
   // f(expr);
-  // ±àÒëÆ÷´ÓexprÍÆµ¼³öTºÍParamType
+  // ç¼–è¯‘å™¨ä»expræ¨å¯¼å‡ºTå’ŒParamType
   
-  // µ«ÓĞÈıÖÖÇé¿öÏÂ£¬ÍÆµ¼²»¹âÒÀÀµÓÚexpr£¬»¹ÒÀÀµÓÚParamTypeµÄĞÎÊ½¡£
+  // ä½†æœ‰ä¸‰ç§æƒ…å†µä¸‹ï¼Œæ¨å¯¼ä¸å…‰ä¾èµ–äºexprï¼Œè¿˜ä¾èµ–äºParamTypeçš„å½¢å¼ã€‚
 
-  // 1. ParamTypeÊÇÖ¸Õë»òÒıÓÃ£¬µ«²»ÊÇuniversal reference
-  // ¹æÔò£ºÈç¹ûexprÊÇÒıÓÃ£¬ÔòºöÂÔÒıÓÃ²¿·Ö£¬½Ó×ÅÓÃexprµÄÀàĞÍÈ¥Ì×ParamTypeµÄÄ£Ê½À´¾ö¶¨T
+  // 1. ParamTypeæ˜¯æŒ‡é’ˆæˆ–å¼•ç”¨ï¼Œä½†ä¸æ˜¯universal reference
+  // è§„åˆ™ï¼šå¦‚æœexpræ˜¯å¼•ç”¨ï¼Œåˆ™å¿½ç•¥å¼•ç”¨éƒ¨åˆ†ï¼Œæ¥ç€ç”¨exprçš„ç±»å‹å»å¥—ParamTypeçš„æ¨¡å¼æ¥å†³å®šT
   //
-  // ÒıÓÃµÄÇé¿öÀıÈç£º
+  // å¼•ç”¨çš„æƒ…å†µä¾‹å¦‚ï¼š
   // template<typename T>
-  // void f(T& param);        // ParamTypeÊÇÒıÓÃ
+  // void f(T& param);        // ParamTypeæ˜¯å¼•ç”¨
   //
   // int x = 27;
-  // f(x);                    // TÊÇint£¬paramÀàĞÍÎªint&
+  // f(x);                    // Tæ˜¯intï¼Œparamç±»å‹ä¸ºint&
   //
   // const int cx = x;
-  // f(cx);                   // TÊÇconst int, paramÀàĞÍÎªconst int&
+  // f(cx);                   // Tæ˜¯const int, paramç±»å‹ä¸ºconst int&
   //
   // const int& rx = x;
-  // f(rx);                   // TÊÇconst int£¬paramÀàĞÍÎªconst int&
-  //                          // exprÊÇÒıÓÃ£¬°´¹æÔòºöÂÔÆäÒıÓÃ²¿·Öºó£¬Ïàµ±ÓÚÇé¿öb
+  // f(rx);                   // Tæ˜¯const intï¼Œparamç±»å‹ä¸ºconst int&
+  //                          // expræ˜¯å¼•ç”¨ï¼ŒæŒ‰è§„åˆ™å¿½ç•¥å…¶å¼•ç”¨éƒ¨åˆ†åï¼Œç›¸å½“äºæƒ…å†µb
   //
-  // Ö¸ÕëµÄÇé¿öÀıÈç£º
+  // æŒ‡é’ˆçš„æƒ…å†µä¾‹å¦‚ï¼š
   // template<typename T>
   // void f(T* param);
   //
-  // Çé¿öa£º
+  // æƒ…å†µaï¼š
   // int x = 27;
-  // f(&x);                   // TÊÇint£¬paramÀàĞÍÎªint*
+  // f(&x);                   // Tæ˜¯intï¼Œparamç±»å‹ä¸ºint*
   //
-  // Çé¿öb£º
+  // æƒ…å†µbï¼š
   // const int *px = &x;
-  // f(px);                   // TÊÇconst int£¬paramÀàĞÍÎªconst int*
+  // f(px);                   // Tæ˜¯const intï¼Œparamç±»å‹ä¸ºconst int*
 
-  // 2. ParamTypeÊÇuniversal reference
-  // ¹æÔò£ºÈç¹ûexprÊÇ×óÖµ£¬TºÍParamType¶¼±»ÍÆµ¼Îª×óÖµÒıÓÃ
-  // ¹æÔò£ºÈç¹ûexprÊÇÓÒÖµ£¬°´ÕÕ"1."µÄ¹æÔòÍÆµ¼
+  // 2. ParamTypeæ˜¯universal reference
+  // è§„åˆ™ï¼šå¦‚æœexpræ˜¯å·¦å€¼ï¼ŒTå’ŒParamTypeéƒ½è¢«æ¨å¯¼ä¸ºå·¦å€¼å¼•ç”¨
+  // è§„åˆ™ï¼šå¦‚æœexpræ˜¯å³å€¼ï¼ŒæŒ‰ç…§"1."çš„è§„åˆ™æ¨å¯¼
   //
-  // ÀıÈç£º
+  // ä¾‹å¦‚ï¼š
   // template<typename T>
-  // void f(T&& param);       // paramÊÇuniversal reference
+  // void f(T&& param);       // paramæ˜¯universal reference
   // 
   // int x = 27;
-  // f(x);                    // xÎª×óÖµ£¬TÊÇint&£¬paramÀàĞÍÎªint&
+  // f(x);                    // xä¸ºå·¦å€¼ï¼ŒTæ˜¯int&ï¼Œparamç±»å‹ä¸ºint&
   //
   // const int cx = x;
-  // f(cx);                   // cxÎª×óÖµ£¬TÊÇconst int&, paramÀàĞÍÎªconst int&
+  // f(cx);                   // cxä¸ºå·¦å€¼ï¼ŒTæ˜¯const int&, paramç±»å‹ä¸ºconst int&
   //
   // const int& rx = x;
-  // f(rx);                   // rxÎª×óÖµ£¬TÊÇconst int&, paramÀàĞÍÎªconst int&
+  // f(rx);                   // rxä¸ºå·¦å€¼ï¼ŒTæ˜¯const int&, paramç±»å‹ä¸ºconst int&
   //
-  // f(27);                   // 27ÎªÓÒÖµ£¬TÊÇint£¬paramÀàĞÍÎªT&&
+  // f(27);                   // 27ä¸ºå³å€¼ï¼ŒTæ˜¯intï¼Œparamç±»å‹ä¸ºT&&
 
-  // 3. ParamType¼È²»ÊÇÖ¸ÕëÒ²²»ÊÇÒıÓÃ
-  // Ïàµ±ÓÚ´«Öµ£¨¿½±´£©£¬ËùÒÔ¿ÉÒÔºöÂÔ¸÷ÖÖÏŞ¶¨·û
-  // ¹æÔò£ºÈç¹ûexprÊÇÒıÓÃ£¬ºöÂÔÒıÓÃ²¿·Ö£»ºöÂÔÒıÓÃºóÈç¹ûexprÊÇconst£¬ºöÂÔconst£¬Èç¹ûexprÊÇvolatile£¬ºöÂÔvolatile
+  // 3. ParamTypeæ—¢ä¸æ˜¯æŒ‡é’ˆä¹Ÿä¸æ˜¯å¼•ç”¨
+  // ç›¸å½“äºä¼ å€¼ï¼ˆæ‹·è´ï¼‰ï¼Œæ‰€ä»¥å¯ä»¥å¿½ç•¥å„ç§é™å®šç¬¦
+  // è§„åˆ™ï¼šå¦‚æœexpræ˜¯å¼•ç”¨ï¼Œå¿½ç•¥å¼•ç”¨éƒ¨åˆ†ï¼›å¿½ç•¥å¼•ç”¨åå¦‚æœexpræ˜¯constï¼Œå¿½ç•¥constï¼Œå¦‚æœexpræ˜¯volatileï¼Œå¿½ç•¥volatile
   //
-  // ÀıÈç£º
+  // ä¾‹å¦‚ï¼š
   // template<typename T>
   // void f(T param);
   //
   // int x = 27;
-  // f(x);                    // TºÍparamÀàĞÍ¶¼Îªint
+  // f(x);                    // Tå’Œparamç±»å‹éƒ½ä¸ºint
   //
   // const int cx = x;
-  // f(cx);                   // TºÍparamÀàĞÍ¶¼Îªint
+  // f(cx);                   // Tå’Œparamç±»å‹éƒ½ä¸ºint
   //
   // const int& rx = x;
-  // f(rx);                   // TºÍparamÀàĞÍ¶¼Îªint
+  // f(rx);                   // Tå’Œparamç±»å‹éƒ½ä¸ºint
   //
-  // const char* const ptr = "test";  // ×ó±ßµÄconst±íÊ¾Ö¸ÕëÖ¸ÏòµÄ×Ö·û´®²»¿ÉĞŞ¸Ä
-  //                                  // ÓÒ±ßµÄconst±íÊ¾Ö¸Õë×ÔÉíµÄÖµ£¨Ö¸ÏòµÄµØÖ·£©²»¿ÉĞŞ¸Ä
-  // f(ptr);                  // TºÍparamÀàĞÍ¶¼Îªconst char*£¬ÓÒ±ßµÄconst±»ºöÂÔ£¬×ó±ßµÄconst±£Áô
+  // const char* const ptr = "test";  // å·¦è¾¹çš„constè¡¨ç¤ºæŒ‡é’ˆæŒ‡å‘çš„å­—ç¬¦ä¸²ä¸å¯ä¿®æ”¹
+  //                                  // å³è¾¹çš„constè¡¨ç¤ºæŒ‡é’ˆè‡ªèº«çš„å€¼ï¼ˆæŒ‡å‘çš„åœ°å€ï¼‰ä¸å¯ä¿®æ”¹
+  // f(ptr);                  // Tå’Œparamç±»å‹éƒ½ä¸ºconst char*ï¼Œå³è¾¹çš„constè¢«å¿½ç•¥ï¼Œå·¦è¾¹çš„constä¿ç•™
 
-  // ×¢ÒâĞ¡ĞÄ´¦ÀíÔ­Ê¼arrayºÍº¯ÊıÖ¸Õë
+  // æ³¨æ„å°å¿ƒå¤„ç†åŸå§‹arrayå’Œå‡½æ•°æŒ‡é’ˆ
 }

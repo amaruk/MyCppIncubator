@@ -19,6 +19,6 @@ Item33::~Item33()
 
 void Item33::ItemEntry()
 {
-  // C++14的generic lambda支持使用auto参数的lambda
-  // TODO 阅读之前的章节重新理解此item
+  // C++14鐨刧eneric lambda鏀寔浣跨敤auto鍙傛暟鐨刲ambda
+  // TODO 闃呰涔嬪墠鐨勭珷鑺傞噸鏂扮悊瑙ｆitem
 }

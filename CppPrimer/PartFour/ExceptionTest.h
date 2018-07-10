@@ -15,7 +15,7 @@ public:
     // 表示对此函数作出了不抛出说明nonthrowing specification
     // noexcept必须出现在函数所有声明语句和定义语句中
     // 出现在尾置返回类型之前
-    // 在成员函数中，要跟在const及引用限定符之后，在final、override、虚函数的-0之前
+    // 在成员函数中，要跟在const及引用限定符之后，在final、override、虚函数的=0之前
     // 函数指针和定义中也可以指定noexcept
     // 在typedef或类型别名中不能出现noexcept
     // 编译器不在编译期验证是否真的不抛出异常，运行时如果抛出异常，则调用terminate

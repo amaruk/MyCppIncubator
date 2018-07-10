@@ -27,10 +27,10 @@ void myDeleterFunc(ClassBase *pClassBase)
 auto FactoryUniquePtr::createInstDeleterCustom(int deriveType)
 {
 
-  // Ê¹ÓÃº¯ÊıºÍÊ¹ÓÃlambda±í´ïÊ½Ğ§¹ûÏàÍ¬£¬½¨ÒéÊ¹ÓÃlambda±í´ïÊ½
+  // ä½¿ç”¨å‡½æ•°å’Œä½¿ç”¨lambdaè¡¨è¾¾å¼æ•ˆæœç›¸åŒï¼Œå»ºè®®ä½¿ç”¨lambdaè¡¨è¾¾å¼
 #if 0
-  // Ê¹ÓÃº¯Êı±Èlambda¸ü·ÑÄÚ´æ¿Õ¼ä
-  unique_ptr<ClassBase, void (*)(ClassBase *pClassBase)> // Ê¹ÓÃº¯ÊıÊ±£¬unique_ptrÀï³ıÁË²ÎÊıÍâ£¬»¹ÓĞ¶îÍâµÄº¯ÊıÖ¸Õë
+  // ä½¿ç”¨å‡½æ•°æ¯”lambdaæ›´è´¹å†…å­˜ç©ºé—´
+  unique_ptr<ClassBase, void (*)(ClassBase *pClassBase)> // ä½¿ç”¨å‡½æ•°æ—¶ï¼Œunique_ptré‡Œé™¤äº†å‚æ•°å¤–ï¼Œè¿˜æœ‰é¢å¤–çš„å‡½æ•°æŒ‡é’ˆ
     pClassBase(nullptr, myDeleterFunc);
 
   if (deriveType == 1)
@@ -40,14 +40,14 @@ auto FactoryUniquePtr::createInstDeleterCustom(int deriveType)
 
   return pClassBase;
 #else
-  // ½èÖúC++14µÄfunction return type deduction£¬°Ñlambda±í´ïÊ½ÒÆÈë¹¤³§º¯Êı
+  // å€ŸåŠ©C++14çš„function return type deductionï¼ŒæŠŠlambdaè¡¨è¾¾å¼ç§»å…¥å·¥å‚å‡½æ•°
   auto myDeleter = [](ClassBase *pClassBase)
   {
     cout << "myDeleter()" << endl;
-    delete pClassBase; // »ùÀàÓĞĞéÎö¹¹º¯Êı£¬ËùÒÔdelete»ùÀàÖ¸ÕëµÄÊ±ºò»áµ÷ÓÃ×ÓÀàÎö¹¹
+    delete pClassBase; // åŸºç±»æœ‰è™šææ„å‡½æ•°ï¼Œæ‰€ä»¥deleteåŸºç±»æŒ‡é’ˆçš„æ—¶å€™ä¼šè°ƒç”¨å­ç±»ææ„
   };
 
-  unique_ptr<ClassBase, decltype(myDeleter)> // µÚ¶ş¸ö²ÎÊıÎª×Ô¶¨ÒådeleterµÄÀàĞÍ
+  unique_ptr<ClassBase, decltype(myDeleter)> // ç¬¬äºŒä¸ªå‚æ•°ä¸ºè‡ªå®šä¹‰deleterçš„ç±»å‹
     pClassBase(nullptr, myDeleter);
 
   if (deriveType == 1)
@@ -80,9 +80,9 @@ void Item18::ItemEntry()
   cout << ">> Create unique_ptr with default deleter" << endl;
   {
     unique_ptr<ClassBase> pClassBase = FactoryUniquePtr::createInstDeleterDefault(1);
-    // Ö±½ÓÓÃ·µ»ØÖµ¸øshared_ptr¸³Öµ
+    // ç›´æ¥ç”¨è¿”å›å€¼ç»™shared_ptrèµ‹å€¼
     // std::shared_ptr<ClassBase> psClassBase = Factory::createInstDeleterDefault(1);
-    // »òÓÃmove¸øshared_ptr¸³Öµ
+    // æˆ–ç”¨moveç»™shared_ptrèµ‹å€¼
     // std::shared_ptr<ClassBase> psClassBase = std::move(pClassBase);
   }
 

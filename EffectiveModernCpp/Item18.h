@@ -17,9 +17,9 @@ public:
 class FactoryUniquePtr
 {
 public:
-  // 在堆上创建子类实例，返回基类指针的工厂函数，使用默认deleter
+  // 鍦ㄥ爢涓婂垱寤哄瓙绫诲疄渚嬶紝杩斿洖鍩虹被鎸囬拡鐨勫伐鍘傚嚱鏁帮紝浣跨敤榛樿deleter
   static std::unique_ptr<ClassBase> createInstDeleterDefault(int deriveType);
-  // 使用自定义deleter
+  // 浣跨敤鑷畾涔塪eleter
   static auto createInstDeleterCustom(int deriveType);
 };
 
