@@ -11,8 +11,8 @@ void printarg(T t)
   std::cout << "- Arg:" << t << std::endl;
 }
 
-// Args是模板参数包template parameter packet，是类型的集合
-// rest是函数参数包function parameter packet，是参数的集合
+// Types是模板参数包template parameter packet，是类型的集合
+// args是函数参数包function parameter packet，是参数的集合
 template <typename T, typename... Types>
 void VariFuncTemplate(const T &t, Types&&... args)
 {

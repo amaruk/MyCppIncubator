@@ -61,5 +61,4 @@ void StringViewTest(void)
   }
   cout << "Out of local scope:" << dangerStrView << endl; // 指向的内容失效
 
-  constexpr string constexprStr = "test";
 }
