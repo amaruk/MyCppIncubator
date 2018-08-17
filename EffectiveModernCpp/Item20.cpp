@@ -8,18 +8,6 @@ using std::shared_ptr;
 using std::weak_ptr;
 using std::make_shared;
 
-
-Item20::Item20() :
-  ItemBase("20")
-{
-}
-
-
-Item20::~Item20()
-{
-}
-
-
 void Item20::ItemEntry()
 {
   cout << ">> Test weak_ptr expire" << endl;

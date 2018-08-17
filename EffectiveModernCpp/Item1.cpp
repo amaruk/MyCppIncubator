@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item01.h"
 
-Item01::Item01() :
-  ItemBase("01")
-{
-}
-
-
-Item01::~Item01()
-{
-}
-
-
 void Item01::ItemEntry()
 {
   // 对于函数模板来说（Paramtype是和T相关但可能添加了限定符的部分，如const T&）：

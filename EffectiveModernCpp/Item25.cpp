@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item25.h"
 
-Item25::Item25() :
-  ItemBase("25")
-{
-}
-
-
-Item25::~Item25()
-{
-}
-
-
 void Item25::ItemEntry()
 {
   // 在转给其他函数使用之前，

@@ -18,18 +18,6 @@ int prepSth(void)
 void doSth(shared_ptr<ClassBase> pSrd, int prepSthResult)
 { }
 
-
-Item21::Item21() :
-  ItemBase("21")
-{
-}
-
-
-Item21::~Item21()
-{
-}
-
-
 void Item21::ItemEntry()
 {
   //////// 倾向于使用make_xxx的3个原因：

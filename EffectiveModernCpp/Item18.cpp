@@ -63,18 +63,6 @@ auto FactoryUniquePtr::createInstDeleterCustom(int deriveType)
 #endif
 }
 
-
-Item18::Item18() :
-  ItemBase("18")
-{
-}
-
-
-Item18::~Item18()
-{
-}
-
-
 void Item18::ItemEntry()
 {
   cout << ">> Create unique_ptr with default deleter" << endl;

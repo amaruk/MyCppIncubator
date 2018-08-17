@@ -80,18 +80,6 @@ auto FactorySharedPtr::createInstDeleterCustom(int deriveType)
   return pClassBase;
 }
 
-
-Item19::Item19() :
-  ItemBase("19")
-{
-}
-
-
-Item19::~Item19()
-{
-}
-
-
 void Item19::ItemEntry()
 {
   cout << ">> Create shared_ptr with default deleter" << endl;

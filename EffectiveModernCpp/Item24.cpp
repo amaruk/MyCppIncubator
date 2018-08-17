@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item24.h"
 
-Item24::Item24() :
-  ItemBase("24")
-{
-}
-
-
-Item24::~Item24()
-{
-}
-
-
 void Item24::ItemEntry()
 {
   // T&&不一定是右值引用，例如：

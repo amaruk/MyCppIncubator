@@ -4,6 +4,7 @@
 #include "Chapter04.h"
 #include "Chapter05.h"
 #include "Chapter06.h"
+#include "Chapter07.h"
 
 
 int main()
@@ -119,7 +120,11 @@ int main()
   
 ////////// Chapter Seven: The Concurrency API //////////
 
-  //TODO Item35().ItemEntry();
+  /* The Concurrency API
+
+  */
+
+  Item35().ItemEntry();
   //TODO Item36().ItemEntry();
   //TODO Item37().ItemEntry();
   //TODO Item38().ItemEntry();

@@ -12,17 +12,6 @@ using std::shared_ptr;
 using std::make_shared;
 using std::vector;
 
-Item22::Item22() :
-  ItemBase("22")
-{
-}
-
-
-Item22::~Item22()
-{
-}
-
-
 void Item22::ItemEntry()
 {
   // Pimpl Idiom: Pointer to implementation idiom

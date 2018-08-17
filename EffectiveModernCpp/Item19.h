@@ -4,15 +4,15 @@
 #include "ClassHierarchy.h"
 #include <memory>
 
-class Item19 :
-  public ItemBase
+class Item19 : public ItemBase
 {
 public:
-  Item19();
-  ~Item19();
+  Item19() : ItemBase("19") { }
+  ~Item19() = default;
 
   void ItemEntry() override;
 };
+
 
 class FactorySharedPtr
 {

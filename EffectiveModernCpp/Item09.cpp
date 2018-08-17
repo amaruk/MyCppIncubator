@@ -5,18 +5,6 @@
 #include <list>
 #include <functional>
 
-
-Item09::Item09() :
-  ItemBase("09")
-{
-}
-
-
-Item09::~Item09()
-{
-}
-
-
 // C++98风格typedef
 typedef std::unique_ptr<std::vector<std::string, std::string>> UPtrVecSS;
 typedef void(*FuncPtr)(int, const std::string&);
@@ -41,6 +29,4 @@ void Item09::ItemEntry()
   // std::remove_const_t<T>
   // std::remove_reference_t<T>
   // std::add_lvalue_reference_t<T>
-
-
 }

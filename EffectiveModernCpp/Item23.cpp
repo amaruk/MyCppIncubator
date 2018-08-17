@@ -6,17 +6,6 @@
 using std::make_unique;
 using std::bind;
 
-Item23::Item23() :
-  ItemBase("23")
-{
-}
-
-
-Item23::~Item23()
-{
-}
-
-
 void Item23::ItemEntry()
 {
   // std::move无条件把参数转换为rvalue

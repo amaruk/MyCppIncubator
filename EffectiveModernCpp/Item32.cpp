@@ -6,19 +6,6 @@
 using std::make_unique;
 using std::bind;
 
-#include "Item01.h"
-
-Item32::Item32() :
-  ItemBase("32")
-{
-}
-
-
-Item32::~Item32()
-{
-}
-
-
 void Item32::ItemEntry()
 {
   // C++11不支持把对象move进closure，C++14提供init capture以支持move及其他新功能，

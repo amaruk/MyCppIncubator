@@ -45,6 +45,18 @@
     <Filter Include="Source Files\Chapter06">
       <UniqueIdentifier>{382066a5-4b86-4131-98e3-38eb1fa13e7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Chapter07">
+      <UniqueIdentifier>{b52f7867-a5aa-499a-a113-2f523d61c4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Chapter08">
+      <UniqueIdentifier>{6f86b6e7-beca-4b88-af26-0d928f995b64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter07">
+      <UniqueIdentifier>{5686c819-d272-47b4-911a-f6c3d3b6a36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chapter08">
+      <UniqueIdentifier>{8dcc463a-c407-480b-9d24-50e4e6a36cde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -122,6 +134,12 @@
     <ClInclude Include="Item33.h">
       <Filter>Header Files\Chapter06</Filter>
     </ClInclude>
+    <ClInclude Include="Chapter07.h">
+      <Filter>Header Files\Chapter07</Filter>
+    </ClInclude>
+    <ClInclude Include="Item35.h">
+      <Filter>Header Files\Chapter07</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -175,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="Item32.cpp">
       <Filter>Source Files\Chapter06</Filter>
+    </ClCompile>
+    <ClCompile Include="Item35.cpp">
+      <Filter>Source Files\Chapter07</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

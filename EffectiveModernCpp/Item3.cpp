@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item03.h"
 
-Item03::Item03() :
-  ItemBase("03")
-{
-}
-
-
-Item03::~Item03()
-{
-}
-
-
 void Item03::ItemEntry()
 {
   // decltype: 给一个名字或者表达式，返回对应的类型

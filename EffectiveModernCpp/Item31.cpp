@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item31.h"
 
-Item31::Item31() :
-  ItemBase("31")
-{
-}
-
-
-Item31::~Item31()
-{
-}
-
-
 void Item31::ItemEntry()
 {
   // Lambda默认捕获模式为引用捕获(by-reference)和值捕获(by-value)

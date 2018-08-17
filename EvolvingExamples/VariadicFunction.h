@@ -18,9 +18,9 @@ void VariFuncTemplate(const T &t, Types&&... args)
 {
   size_t typeSize = sizeof...(Types);
   size_t argsSize = sizeof...(args);
-  cout << "----- Variadic Function: Variadic Template -----" << endl;
-  cout << "- Args contains " << argsSize << " values." << endl
-    << "- rest contains " << argsSize << " values." << endl;
+  std::cout << "----- Variadic Function: Variadic Template -----" << std::endl;
+  std::cout << "- Args contains " << argsSize << " values." << std::endl
+    << "- rest contains " << argsSize << " values." << std::endl;
   // 利用数组的可变参数初始化来对每个参数调用打印函数，由于逗号表达式，数组最后成员都为0
   int arr[] = { (printarg(std::forward<Types>(args)), 0)... };
 }
