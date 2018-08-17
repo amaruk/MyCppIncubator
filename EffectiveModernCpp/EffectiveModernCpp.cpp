@@ -120,9 +120,9 @@ int main()
   
 ////////// Chapter Seven: The Concurrency API //////////
 
-  Item35().ItemEntry();
-  //TODO Item36().ItemEntry();
-  //TODO Item37().ItemEntry();
+  //Item35().ItemEntry();
+  //Item36().ItemEntry();
+  Item37().ItemEntry();
   //TODO Item38().ItemEntry();
   //TODO Item39().ItemEntry();
   //TODO Item40().ItemEntry();

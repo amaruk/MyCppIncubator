@@ -8,25 +8,29 @@ using std::thread;
 using std::async;
 using std::to_string;
 
-int AsyncWork()
+namespace ITEM35
 {
-  cout << "Inside AsyncWork." << endl;
-  return 12345;
+  int AsyncWork()
+  {
+    cout << "Inside AsyncWork." << endl;
+    return 12345;
+  }
 }
 
 void Item35::ItemEntry()
 {
-  // Prefer task-based programming to thread-based.
+  // Item 35: Prefer task-based programming to thread-based.
 
   // Thread-based实现，AsyncWork是thread
-  thread asyThread(AsyncWork);
+  thread asyThread(ITEM35::AsyncWork);
   asyThread.join();
   // Task-based实现，AsyncWork是task
-  auto asyAsync = async(AsyncWork);
+  auto asyAsync = async(ITEM35::AsyncWork);
 
   // task实现比thread实现好
   // 1. 因为task实现可以获取返回值
   cout << asyAsync.get() << endl;
+  
   // 2. task实现可以捕获其内部发生的异常，
   //    而thread实现发生异常时会直接调用std::terminate退出整个程序
   // 3. task实现中标准库为程序员隐藏了线程管理方面的细节，原因如下：
