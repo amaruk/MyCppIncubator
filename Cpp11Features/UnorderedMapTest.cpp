@@ -28,12 +28,12 @@ unordered_map<Node, string, NodeHash> h_map;
 void dispUnorderedMap(unordered_map<Node, string, NodeHash>& m, char* pre)
 {
   cout << "============ " << pre << " ============" << endl;
-  cout << "bucket_count£º" << m.bucket_count() << endl;
-  cout << "max_bucket_count£º" << m.max_bucket_count() << endl;
-  cout << "bucket_size£º" << m.bucket_size(0) << endl;
-  cout << "load_factor£º" << m.load_factor() << endl;
-  cout << "max_load_factor£º" << m.max_load_factor() << endl;
-  cout << "content£º" << endl;
+  cout << "bucket_countï¼š" << m.bucket_count() << endl;
+  cout << "max_bucket_countï¼š" << m.max_bucket_count() << endl;
+  cout << "bucket_sizeï¼š" << m.bucket_size(0) << endl;
+  cout << "load_factorï¼š" << m.load_factor() << endl;
+  cout << "max_load_factorï¼š" << m.max_load_factor() << endl;
+  cout << "contentï¼š" << endl;
 
   unordered_map<Node, string, NodeHash>::iterator it;
   for (it = m.begin(); it != m.end(); it++)
@@ -65,7 +65,7 @@ int unorderedMapTest(void)
   dispUnorderedMap(h_map, "Adding (123,456)");
 
   cout << h_map[Node(2, 2)] << endl;
-  //cout << (h_map[Node(123456, 0)] == "") << endl; //[]ÔÚÖ÷¼ü²»´æÔÚÊ±×Ô¶¯´´½¨
+  //cout << (h_map[Node(123456, 0)] == "") << endl; //[]åœ¨ä¸»é”®ä¸å­˜åœ¨æ—¶è‡ªåŠ¨åˆ›å»º
   cout << (h_map.find(Node(123, 456)) == h_map.end()) << endl;
   cout << (h_map.find(Node(123456, 0)) == h_map.end()) << endl;
 

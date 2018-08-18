@@ -9,12 +9,12 @@
 #include <atomic>
 
 /*
- * ¶àÏß³Ì±à³ÌÏà¹ØµÄÍ·ÎÄ¼ş£º
- * atomic£º°üº¬ÀàatomicºÍatomic_flag£¬ÒÔ¼°C·ç¸ñµÄÔ­×ÓÀàĞÍºÍÔ­×Ó²Ù×÷º¯Êı
- * thread£ºthreadÀà£¬this_threadÃüÃû¿Õ¼ä
- * mutex£º»¥³âÁ¿Ïà¹ØÀàmutex£¬lock_guard£¬unique_lock
- * condition_variable£ºÌõ¼ş±äÁ¿Ïà¹Ø£¬condition_variableºÍcondition_variable_any
- * future£ºProviderÀàpromise£¬package_task¡£futureÀàfuture£¬shared_future
+ * å¤šçº¿ç¨‹ç¼–ç¨‹ç›¸å…³çš„å¤´æ–‡ä»¶ï¼š
+ * atomicï¼šåŒ…å«ç±»atomicå’Œatomic_flagï¼Œä»¥åŠCé£æ ¼çš„åŸå­ç±»å‹å’ŒåŸå­æ“ä½œå‡½æ•°
+ * threadï¼šçº¿ç¨‹ç±»ï¼Œthis_threadå‘½åç©ºé—´
+ * mutexï¼šäº’æ–¥é‡ç›¸å…³ç±»ï¼Œmutexï¼Œlock_guardï¼Œunique_lock
+ * condition_variableï¼šæ¡ä»¶å˜é‡ç›¸å…³ï¼Œcondition_variableå’Œcondition_variable_any
+ * futureï¼šProviderç±»ï¼Œpromiseï¼Œpackage_taskã€‚futureç±»futureï¼Œshared_future
  */
 
 using std::cout;
@@ -38,15 +38,6 @@ using std::chrono::seconds;
 using std::atomic_flag;
 using std::atomic;
 
-MultiThreadTest::MultiThreadTest()
-{
-}
-
-
-MultiThreadTest::~MultiThreadTest()
-{
-}
-
 void threadParValue(uint32_t runTimes)
 {
   for (uint32_t i = 0; i != runTimes; i++)
@@ -67,23 +58,23 @@ void threadParRef(uint32_t &runTimes)
 
 void threadTest(void)
 {
-  // Ä¬ÈÏ¹¹Ôìº¯Êı´´½¨¿ÕµÄthread¶ÔÏó
-  // ¿½±´¹¹Ôìº¯ÊıÖÃÎªdeleted
-  // Ö§³ÖÒÆ¶¯¹¹Ôìº¯Êı
-  // ³õÊ¼»¯¹¹Ôìº¯Êı´´½¨joinable¶ÔÏó£¬Ïú»ÙÖ®Ç°±ØĞë±»Ö÷Ïß³Ìjoin»òÖÃÎªdetached
-  // Ö§³ÖÒÆ¶¯²Ù×÷£¬²»¿ÉjoinableµÄ¶ÔÏó´«ÓÒÖµÒıÓÃ
-  // ¿½±´²Ù×÷·ûÖÃÎªdeleted
+  // é»˜è®¤æ„é€ å‡½æ•°åˆ›å»ºç©ºçš„threadå¯¹è±¡
+  // æ‹·è´æ„é€ å‡½æ•°ç½®ä¸ºdeleted
+  // æ”¯æŒç§»åŠ¨æ„é€ å‡½æ•°
+  // åˆå§‹åŒ–æ„é€ å‡½æ•°åˆ›å»ºjoinableå¯¹è±¡ï¼Œé”€æ¯ä¹‹å‰å¿…é¡»è¢«ä¸»çº¿ç¨‹joinæˆ–ç½®ä¸ºdetached
+  // æ”¯æŒç§»åŠ¨æ“ä½œï¼Œä¸å¯joinableçš„å¯¹è±¡ä¼ å³å€¼å¼•ç”¨
+  // æ‹·è´æ“ä½œç¬¦ç½®ä¸ºdeleted
   //
-  // ÆäËû³ÉÔ±º¯Êı£º
+  // å…¶ä»–æˆå‘˜å‡½æ•°ï¼š
   // get_id/joinable/join/detach/swap/native_handle/hardware_concurrency[static]
 
   cout << endl << "====threadTest====" << endl;
 
   uint32_t runTimes = 2;
-  thread threadConsDefault; // ÎŞ·¨ÔËĞĞ
-  thread threadConsValue(threadParValue, runTimes); // Ïß³ÌÖ÷º¯Êı²ÎÊı´«Öµ
-  thread threadConsRef(threadParRef, std::ref(runTimes)); // Ïß³ÌÖ÷º¯Êı²ÎÊı´«ÒıÓÃ
-  thread threadConsMove(std::move(threadConsRef)); // ÒÆ¶¯¹¹Ôìº¯Êı
+  thread threadConsDefault; // æ— æ³•è¿è¡Œ
+  thread threadConsValue(threadParValue, runTimes); // çº¿ç¨‹ä¸»å‡½æ•°å‚æ•°ä¼ å€¼
+  thread threadConsRef(threadParRef, std::ref(runTimes)); // çº¿ç¨‹ä¸»å‡½æ•°å‚æ•°ä¼ å¼•ç”¨
+  thread threadConsMove(std::move(threadConsRef)); // ç§»åŠ¨æ„é€ å‡½æ•°
   thread threadCopy = thread(threadParValue, runTimes);
 
   threadConsValue.join();
@@ -144,7 +135,7 @@ void threadMutexUniqueLock(mutex &mtx)
   try
   {
     unique_lock<mutex> uniqueLock(mtx);
-    //uniqueLock.lock(); // ´´½¨Í¬Ê±Ö´ĞĞlock
+    //uniqueLock.lock(); // åˆ›å»ºåŒæ—¶æ‰§è¡Œlock
     throw (std::logic_error("ERROR"));
     uniqueLock.unlock();
   }
@@ -159,12 +150,12 @@ void mutexTest(void)
   cout << endl << "====mutexTest====" << endl;
 
   // Mutex
-  // std::mutex                 »ù´¡mutex
-  // std::recursive_mutex       µİ¹émutex£¬Í¬Ò»¸öÏß³Ì¿ÉÒÔ¶à´Î¶ÔÍ¬Ò»¸ömutexÉÏËø£¬±ØĞë½âËøÏàÍ¬´ÎÊı
-  // std::time_mutex            ¶¨Ê±mutex£¬ÔÚÖ¸¶¨Ê±¼ä×èÈûÏß³Ì£¬³¬Ê±·µ»Øfalse
-  // std::recursive_timed_mutex ¶¨Ê±µİ¹émutex
+  // std::mutex                 åŸºç¡€mutex
+  // std::recursive_mutex       é€’å½’mutexï¼ŒåŒä¸€ä¸ªçº¿ç¨‹å¯ä»¥å¤šæ¬¡å¯¹åŒä¸€ä¸ªmutexä¸Šé”ï¼Œå¿…é¡»è§£é”ç›¸åŒæ¬¡æ•°
+  // std::time_mutex            å®šæ—¶mutexï¼Œåœ¨æŒ‡å®šæ—¶é—´é˜»å¡çº¿ç¨‹ï¼Œè¶…æ—¶è¿”å›false
+  // std::recursive_timed_mutex å®šæ—¶é€’å½’mutex
 
-  // ¸Õ´´½¨µÄmutexÎ´unlocked×´Ì¬
+  // åˆšåˆ›å»ºçš„mutexæœªunlockedçŠ¶æ€
   cout << endl << "----MUTEX----" << endl;
 
   mutex mtx;
@@ -183,14 +174,14 @@ void mutexTest(void)
   threadMutex5.join();
 
   // Lock
-  // std::lock_guard    ÊµÏÖmutexÉúÃüÖÜÆÚµÄMutex RAII£¬Ö»ÓĞ¹¹Ôìº¯Êı
-  // std::unique_lock   Í¬ÉÏ£¬Ìá¹©¸üºÃµÄÉÏËøºÍ½âËø¿ØÖÆº¯Êı£¬¼´¿ÉÒÔÔÚ¹¹ÔìÊ±²»lock£¬ÊÖ¶¯lockºÍunlock£¬ÆäÊµÀı¿Émove
-  // Èç¹û²»ĞèÒªunique_lockÌá¹©µÄ¶îÍâ¹¦ÄÜ£¬ÔòÑ¡ÓÃlock_guard¡£
+  // std::lock_guard    å®ç°mutexç”Ÿå‘½å‘¨æœŸçš„Mutex RAIIï¼Œåªæœ‰æ„é€ å‡½æ•°
+  // std::unique_lock   åŒä¸Šï¼Œæä¾›æ›´å¥½çš„ä¸Šé”å’Œè§£é”æ§åˆ¶å‡½æ•°ï¼Œå³å¯ä»¥åœ¨æ„é€ æ—¶ä¸lockï¼Œæ‰‹åŠ¨lockå’Œunlockï¼Œå…¶å®ä¾‹å¯move
+  // å¦‚æœä¸éœ€è¦unique_lockæä¾›çš„é¢å¤–åŠŸèƒ½ï¼Œåˆ™é€‰ç”¨lock_guardã€‚
   // RAII: Resource Acquisition Is Initialization
-  // ÔÚÀàµÄ¹¹Ôìº¯ÊıÖĞ·ÖÅä×ÊÔ´£¬ÔÚÎö¹¹º¯ÊıÖĞÊÍ·Å×ÊÔ´¡£
-  // µ±Ò»¸ö¶ÔÏó´´½¨µÄÊ±ºò£¬¹¹Ôìº¯Êı»á×Ô¶¯µØ±»µ÷ÓÃ£»
-  // ¶øµ±Õâ¸ö¶ÔÏó±»ÊÍ·ÅµÄÊ±ºò£¬Îö¹¹º¯ÊıÒ²»á±»×Ô¶¯µ÷ÓÃ¡£
-  // ¼´Ê¹Òì³£·¢Éú£¬×ÊÔ´Ò²ÄÜÕı³£ÊÍ·Å
+  // åœ¨ç±»çš„æ„é€ å‡½æ•°ä¸­åˆ†é…èµ„æºï¼Œåœ¨ææ„å‡½æ•°ä¸­é‡Šæ”¾èµ„æºã€‚
+  // å½“ä¸€ä¸ªå¯¹è±¡åˆ›å»ºçš„æ—¶å€™ï¼Œæ„é€ å‡½æ•°ä¼šè‡ªåŠ¨åœ°è¢«è°ƒç”¨ï¼›
+  // è€Œå½“è¿™ä¸ªå¯¹è±¡è¢«é‡Šæ”¾çš„æ—¶å€™ï¼Œææ„å‡½æ•°ä¹Ÿä¼šè¢«è‡ªåŠ¨è°ƒç”¨ã€‚
+  // å³ä½¿å¼‚å¸¸å‘ç”Ÿï¼Œèµ„æºä¹Ÿèƒ½æ­£å¸¸é‡Šæ”¾
 
   cout << endl << "----MUTEX LOCK GUARD----" << endl;
   thread threadMutex6(threadMutexLockGuard, std::ref(mtx));
@@ -211,16 +202,18 @@ void mutexTest(void)
   // std::defer_lock_t
   // std::try_to_lock_t
 
-  // std::try_lock    ³¢ÊÔÍ¬Ê±¶Ô¶à¸ömutexÉÏËø
-  // std::lock        Í¬Ê±¶Ô¶à¸ömutexÉÏËø
-  // std::call_once   ¶àÏß³Ì¶ÔÄ³¸öº¯ÊıÖ»µ÷ÓÃÒ»´Î
+  // std::try_lock    å°è¯•åŒæ—¶å¯¹å¤šä¸ªmutexä¸Šé”
+  // std::lock        åŒæ—¶å¯¹å¤šä¸ªmutexä¸Šé”
+  // std::call_once   å¤šçº¿ç¨‹å¯¹æŸä¸ªå‡½æ•°åªè°ƒç”¨ä¸€æ¬¡
 
 }
 
 void threadPromise(future<int> & refFuture)
 {
+  sleep_for(seconds(1));
   cout << "threadPromise " << get_id() << " wating..." << endl;
-  cout << "threadPromise " << get_id() << " get: " << refFuture.get() << endl;
+  // è·å–å…±äº«çŠ¶æ€çš„å€¼å¹¶æ‰“å°
+  cout << "threadPromise " << get_id() << " get data from future: " << refFuture.get() << endl;
 }
 
 void threadPackagedTask(void)
@@ -234,7 +227,7 @@ void threadPackagedTask(void)
 
 void asyncMain(int runTimes)
 {
-  for (int i = 0; i != runTimes; i++)
+  for (int i = 0; i <= runTimes; i++)
   {
     cout << "asyncMain " << get_id() << " working: " << i << endl;
     sleep_for(seconds(1));
@@ -245,52 +238,78 @@ void futureTest(void)
 {
   cout << endl << "====futureTest====" << endl;
 
-  // future¶ÔÏóÓÉÒì²½ÈÎÎñµÄÌá¹©ÕßproviderÀ´´´½¨£¬½«¹²Ïí×´Ì¬Óëfuture¶ÔÏó°ó¶¨
-  // ÔÚÆäËûÏß³ÌÀïfuture¶ÔÏóÀ´get¹²Ïí×´Ì¬£¬Èç¹û¹²Ïí×´Ì¬±êÖ¾²»Îªready£¬¾Í×èÈû
-  // providerÉèÖÃ¹²Ïí×´Ì¬µÄÖµºó£¬get¾Í½â³ı×èÈû
-  // provider¿ÉÒÔÊÇº¯Êı»òÕßÀà£º
-  // - asyncº¯Êı
-  // - promiseÀàµÄget_futureº¯Êı
-  // - packaged_taskÀàµÄget_futureº¯Êı
-  //
-  // shared_futureºÍfutureÀàËÆ£¬¿É¹²Ïí×´Ì¬µÄ½á¹û
-  // future_error¼Ì³Ğlogic_error±ê×¼Òì³£
+  // futureè¡¨ç¤ºä¸€ä¸ªå¯èƒ½è¿˜æ²¡æœ‰å®é™…å®Œæˆçš„å¼‚æ­¥ä»»åŠ¡çš„ç»“æœ
+  // futureçš„çŠ¶æ€é€šè¿‡future_statusæ¥è·å–ï¼Œæœ‰ä¸‰ç§ï¼š
+  // * deferredï¼šå¼‚æ­¥æ“ä½œè¿˜æ²¡å¼€å§‹
+  // * ready: å¼‚æ­¥æ“ä½œå·²ç»å®Œæˆ
+  // * timeoutï¼šå¼‚æ­¥æ“ä½œè¶…æ—¶
+  // è·å–futureç»“æœæœ‰ä¸‰ç§æ–¹å¼ï¼š
+  // getï¼šç­‰å¾…å¼‚æ­¥æ“ä½œç»“æŸå¹¶è¿”å›ç»“æœ
+  // waitï¼šç­‰å¾…å¼‚æ­¥æ“ä½œå®Œæˆï¼Œæ²¡æœ‰è¿”å›å€¼
+  // wait_forï¼šè¶…æ—¶ç­‰å¾…è¿”å›ç»“æœ
 
+  // futureå¯¹è±¡ç”±å¼‚æ­¥ä»»åŠ¡çš„æä¾›è€…provideræ¥åˆ›å»ºï¼Œå°†å…±äº«çŠ¶æ€ä¸futureå¯¹è±¡ç»‘å®š
+  // åœ¨å…¶ä»–çº¿ç¨‹é‡Œfutureå¯¹è±¡æ¥getå…±äº«çŠ¶æ€ï¼Œå¦‚æœå…±äº«çŠ¶æ€æ ‡å¿—ä¸ä¸ºreadyï¼Œå°±é˜»å¡
+  // providerè®¾ç½®å…±äº«çŠ¶æ€çš„å€¼åï¼Œgetå°±è§£é™¤é˜»å¡
+  // providerå¯ä»¥æ˜¯å‡½æ•°æˆ–è€…ç±»ï¼š
+  // - asyncå‡½æ•°
+  // - promiseç±»çš„get_futureå‡½æ•°
+  // - packaged_taskç±»çš„get_futureå‡½æ•°
+  //
+  // shared_futureå’Œfutureç±»ä¼¼ï¼Œå¯å…±äº«çŠ¶æ€çš„ç»“æœ
+  // future_errorç»§æ‰¿logic_erroræ ‡å‡†å¼‚å¸¸
+#if 0
   cout << endl << "----PROMISE----" << endl;
-  promise<int> promiseInt;
-  future<int> futureInt = promiseInt.get_future(); // »ñÈ¡promise¹ØÁªµÄfuture
-  thread threadFuture1(threadPromise, std::ref(futureInt));
+  promise<int> promiseInt; // ç”Ÿæˆç±»å‹ä¸ºintçš„promiseå¯¹è±¡ï¼Œä¿å­˜äº†intç±»å‹çš„å…±äº«çŠ¶æ€
+  future<int> futureInt = promiseInt.get_future(); // è·å–promiseå…±äº«çŠ¶æ€å…³è”çš„futureå¯¹è±¡
+  thread threadFuture1(threadPromise, std::ref(futureInt)); // è®²futureäº¤ç»™å¦ä¸€ä¸ªçº¿ç¨‹
+  cout << "main sleeps 5 seconds." << endl;
   sleep_for(seconds(5));
-  cout << "main worked for 5 seconds." << endl;
-  promiseInt.set_value(123);
+  cout << "main wakes up." << endl;
+  promiseInt.set_value(123); // è®¾ç½®å…±äº«çŠ¶æ€çš„å€¼ï¼Œæ­¤åpromiseçš„å…±äº«çŠ¶æ€å˜ä¸ºready
   threadFuture1.join();
 
   cout << endl << "----PACKAGED_TASK----" << endl;
-  packaged_task<void(void)> pkgTask(threadPackagedTask); //¿Éµ÷ÓÃ¶ÔÏó´«¸øpackaged_task
-  future<void> futureVoid = pkgTask.get_future(); // »ñÈ¡pakcaged_task¹ØÁªµÄfuture
-  cout << "main waiting for packaged_task." << endl;
-  thread threadFuture2(std::move(pkgTask)); // ÓÃpackaged_task´´½¨Ïß³Ì
+  packaged_task<void(void)> pkgTask(threadPackagedTask); //packaged_taskä¿å­˜äº†å¯è°ƒç”¨å¯¹è±¡
+  future<void> futureVoid = pkgTask.get_future(); // è·å–pakcaged_taskå…³è”çš„future
+  thread threadFuture2(std::move(pkgTask)); // ç”¨packaged_taskåˆ›å»ºçº¿ç¨‹
+  cout << "main going to get." << endl;
   futureVoid.get();
+  cout << "main going to join." << endl;
   threadFuture2.join();
-
+#endif
   cout << endl << "----ASYNC----" << endl;
   cout << "main waiting for async." << endl;
-  future<void> futureAsync = async(asyncMain, 3);
+  future<void> futureAsync = async(asyncMain, 3); // é»˜è®¤policyï¼Œç›¸å½“äºstd::launch::async
   while (futureAsync.wait_for(milliseconds(100)) == std::future_status::timeout)
   {
     cout << ".";
   }
+  if (futureAsync.wait_for(milliseconds(100)) == std::future_status::ready)
+  {
+    cout << "async status is ready." << endl;
+  }
   futureAsync.get();
+  cout << "main waiting for deferred async." << endl;
+  future<void> futureDeferred = async(std::launch::deferred, asyncMain, 3);
+  sleep_for(seconds(5));
+  if (futureDeferred.wait_for(milliseconds(100)) == std::future_status::deferred)
+  {
+    cout << "async status is deferred." << endl;
+  }
+  //futureDeferred.get(); // è°ƒç”¨getæˆ–waitæ¥å¯åŠ¨async
+  futureDeferred.wait(); // è°ƒç”¨getæˆ–waitæ¥å¯åŠ¨async
+  cout << "main after get or wait." << endl;
 }
 
 void threadWait(condition_variable &cv, mutex &mtx, bool &isReady)
 {
-  unique_lock<mutex> uniLock(mtx); // ´´½¨Ê±×Ô¶¯lock
+  unique_lock<mutex> uniLock(mtx); // åˆ›å»ºæ—¶è‡ªåŠ¨lock
   cout << "threadWait " << get_id() << " warting." << endl;
   while (!isReady)
   {
     cv.wait(uniLock);
-  } // wait»á×Ô¶¯unlock£¬waitµ½ºó×Ô¶¯ÔÙ´Îlock
+  } // waitä¼šè‡ªåŠ¨unlockï¼Œwaitåˆ°åè‡ªåŠ¨å†æ¬¡lock
   cout << "threadWait " << get_id() << " done." << endl;
   uniLock.unlock();
 }
@@ -298,7 +317,7 @@ void threadWait(condition_variable &cv, mutex &mtx, bool &isReady)
 void threadNotify(condition_variable &cv, mutex &mtx, bool &isReady)
 {
   cout << "threadNotify " << get_id() << " notifying." << endl;
-  unique_lock<mutex> uniLock(mtx); // ´´½¨Ê±×Ô¶¯lock
+  unique_lock<mutex> uniLock(mtx); // åˆ›å»ºæ—¶è‡ªåŠ¨lock
   isReady = true;
   uniLock.unlock();
   cv.notify_one();
@@ -327,20 +346,20 @@ void threadCheckAtomicFlag(atomic<bool> &atomicBool, atomic_flag &atomicFlag)
   while (!atomicBool)
   { yield(); }
 
-  // test_and_setÊÇRMW£¨Read-Modify_Write£©µÄÔ­×Ó²Ù×÷
-  while (atomicFlag.test_and_set()) // Èç¹ûtest·¢ÏÖÎ´set£¬Ôòset£¬·µ»ØÎ´set
+  // test_and_setæ˜¯RMWï¼ˆRead-Modify_Writeï¼‰çš„åŸå­æ“ä½œ
+  while (atomicFlag.test_and_set()) // å¦‚æœtestå‘ç°æœªsetï¼Œåˆ™setï¼Œè¿”å›æœªset
   { ; }
 
-  // Ã»ÖÃÎ»
+  // æ²¡ç½®ä½
   cout << "threadCheckAtomicFlag " << get_id() << " sets atomic flag." << endl;
-  // Çå³ıÖÃÎ»£¬ÈÃÆäËûÏß³Ì¿ÉÒÔ¼ÌĞø
+  // æ¸…é™¤ç½®ä½ï¼Œè®©å…¶ä»–çº¿ç¨‹å¯ä»¥ç»§ç»­
   atomicFlag.clear();
 }
 
 void atomicTest(void)
 {
   atomic<bool> atomicBool(false);
-  atomic_flag atomicFlagBool = ATOMIC_FLAG_INIT; // ÓÃºê³õÊ¼»¯×´Ì¬Îªclear
+  atomic_flag atomicFlagBool = ATOMIC_FLAG_INIT; // ç”¨å®åˆå§‹åŒ–çŠ¶æ€ä¸ºclear
 
   thread threadAtomic1(threadCheckAtomicFlag, std::ref(atomicBool), std::ref(atomicFlagBool));
   thread threadAtomic2(threadCheckAtomicFlag, std::ref(atomicBool), std::ref(atomicFlagBool));
@@ -356,7 +375,7 @@ void multiThreadTest(void)
 {
   //threadTest();
   //mutexTest();
-  //futureTest();
+  futureTest();
   //conditionVariableTest();
-  atomicTest();
+  //atomicTest();
 }

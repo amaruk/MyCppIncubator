@@ -9,8 +9,8 @@
 int main()
 {
   //chronoTest();
-  //multiThreadTest();
-  unorderedMapTest();
+  multiThreadTest();
+  //unorderedMapTest();
   return 0;
 }
 
