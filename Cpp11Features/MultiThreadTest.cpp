@@ -306,8 +306,10 @@ void threadWait(condition_variable &cv, mutex &mtx, bool &isReady)
 {
   unique_lock<mutex> uniLock(mtx); // 创建时自动lock
   cout << "threadWait " << get_id() << " warting." << endl;
+  
   while (!isReady)
   {
+    cout << "threadWait " << get_id() << "..." << endl;
     cv.wait(uniLock);
   } // wait会自动unlock，wait到后自动再次lock
   cout << "threadWait " << get_id() << " done." << endl;
@@ -333,6 +335,7 @@ void conditionVariableTest(void)
   condition_variable cv;
   bool isReady = false;
 
+  // 注意，如果先notify再wait会wait不到。此处没问题是由于有isReady，即使先notify，另一个线程也因为isReady被置位而不wait。
   thread threadWaiter(threadWait, std::ref(cv), std::ref(mtx), std::ref(isReady));
   sleep_for(seconds(1));
   thread threadNotifier(threadNotify, std::ref(cv), std::ref(mtx), std::ref(isReady));
