@@ -349,7 +349,7 @@ void threadCheckAtomicFlag(atomic<bool> &atomicBool, atomic_flag &atomicFlag)
   while (!atomicBool)
   { yield(); }
 
-  // test_and_set是RMW（Read-Modify_Write）的原子操作
+  // test_and_set是RMW（Read-Modify-Write）的原子操作
   while (atomicFlag.test_and_set()) // 如果test发现未set，则set，返回未set
   { ; }
 

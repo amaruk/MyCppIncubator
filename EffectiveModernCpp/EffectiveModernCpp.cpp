@@ -124,8 +124,8 @@ int main()
   //Item36().ItemEntry();
   //Item37().ItemEntry();
   //Item38().ItemEntry();
-  Item39().ItemEntry();
-  //TODO Item40().ItemEntry();
+  //Item39().ItemEntry();
+  Item40().ItemEntry();
   
 ////////// Chapter Eight: Tweaks //////////
 
