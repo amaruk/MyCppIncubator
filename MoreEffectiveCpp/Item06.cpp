@@ -14,7 +14,7 @@ namespace ITEM06
       return *this;
     }
     // 为了能重载prefix和postfix，postfix接收int参数，编译器永远传0作为参数
-    // 不写行参变量命，以免编译器告警
+    // 不写行参变量名，以免编译器告警
     // const为了不让连续调用： i++++；
     const MyIncDecOpers operator++(int)   // Postfix: i++
     {

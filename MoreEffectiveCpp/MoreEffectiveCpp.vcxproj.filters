@@ -117,6 +117,12 @@
     <ClInclude Include="Item18.h">
       <Filter>Header Files\Chapter04</Filter>
     </ClInclude>
+    <ClInclude Include="Item19.h">
+      <Filter>Header Files\Chapter04</Filter>
+    </ClInclude>
+    <ClInclude Include="Item20.h">
+      <Filter>Header Files\Chapter04</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -180,6 +186,12 @@
       <Filter>Source Files\Chapter04</Filter>
     </ClCompile>
     <ClCompile Include="Item18.cpp">
+      <Filter>Source Files\Chapter04</Filter>
+    </ClCompile>
+    <ClCompile Include="Item19.cpp">
+      <Filter>Source Files\Chapter04</Filter>
+    </ClCompile>
+    <ClCompile Include="Item20.cpp">
       <Filter>Source Files\Chapter04</Filter>
     </ClCompile>
   </ItemGroup>

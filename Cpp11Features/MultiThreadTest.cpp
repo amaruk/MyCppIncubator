@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "MultiThreadTest.h"
 #include <stdint.h>
 #include <iostream>
