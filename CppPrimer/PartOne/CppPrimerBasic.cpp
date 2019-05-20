@@ -167,6 +167,11 @@ void CppPrimer::displayArithTypes(void)
   //  在C++里是对某种unsigned类型的typedef，用于计数（如char*的string里字符的个数，STL容器的元素个数），
   //  也是操作符[]函数接受的参数类型，如vector，deque，string。
   //  对string对象或vector对象执行sizeof只返回固定部分的大小，而不计算对象中的元素占用多少空间。
+  //  注意64位系统上使用unsigned int等类型作为容器索引时的问题。摘自CppReference: 
+  //  std::size_t is commonly used for array indexing and loop counting.
+  //  Programs that use other types, such as unsigned int, for array indexing may fail on,
+  //  e.g. 64-bit systems when the index exceeds UINT_MAX or 
+  //  if it relies on 32-bit modular arithmetic.
 
   //// 命名的强制类型转换
   // cast name<type>(expression);
